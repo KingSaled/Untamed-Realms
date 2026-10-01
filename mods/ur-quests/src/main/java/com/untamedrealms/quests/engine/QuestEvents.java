@@ -47,7 +47,11 @@ public final class QuestEvents {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onKill(LivingDeathEvent event) {
-        if (event.isCanceled() || !(event.getSource().getEntity() instanceof ServerPlayer player)) return;
+        if (event.isCanceled()) return;
+        // The killer, or whoever set it burning / poisoned it (see KillCredit).
+        ServerPlayer player = event.getSource().getEntity() instanceof ServerPlayer direct ? direct
+                : com.untamedrealms.core.world.KillCredit.creditedPlayer(event.getEntity()) instanceof ServerPlayer credited ? credited : null;
+        if (player == null) return;
         var type = event.getEntity().getType();
         QuestApi.progress(player, QuestApi.KILL, target -> Targets.entity(target, type), 1);
     }

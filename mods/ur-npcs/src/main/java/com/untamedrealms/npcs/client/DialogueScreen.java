@@ -12,7 +12,8 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 /**
- * Skyrim-style conversation: the NPC's line at the top, the player's responses listed below.
+ * Skyrim-style conversation in a panel at the bottom of the screen: the NPC's line, then the
+ * player's responses.
  * Number keys 1-9 pick responses; Esc says goodbye.
  */
 public class DialogueScreen extends Screen {
@@ -27,32 +28,41 @@ public class DialogueScreen extends Screen {
 
     @Override
     protected void init() {
-        boxW = Math.min(width - 24, 380);
+        boxW = Math.min(width - 24, 420);
         boxX = (width - boxW) / 2;
-        boxY = height / 2 - 10;
+    }
+
+    /** Height of the panel for the current text and options. */
+    private int panelHeight() {
+        int textLines = font.split(data.text(), boxW - 24).size();
+        return 12 + 12 + textLines * 11 + 12 + data.options().size() * 13 + 8;
     }
 
     @Override
     public void renderBackground(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
-        // no blur: keep the NPC visible behind the conversation
-        g.fillGradient(0, height / 2 - 40, width, height, 0x00000000, 0xC0000000);
+        // no blur: keep the NPC visible above the conversation panel
+        g.fillGradient(0, height / 2, width, height, 0x00000000, 0x90000000);
     }
 
     @Override
     public void render(GuiGraphics g, int mouseX, int mouseY, float partialTick) {
         super.render(g, mouseX, mouseY, partialTick);
-        int y = boxY;
+        int panelH = panelHeight();
+        boxY = height - panelH - 10;
+        UiKit.panel(g, boxX, boxY, boxW, panelH);
+
+        int y = boxY + 8;
         Component header = data.title().getString().isEmpty() ? data.name()
-                : Component.empty().append(data.name()).append(Component.literal("  —  ").withStyle(s -> s.withColor(UiKit.TEXT_DIM & 0xFFFFFF))).append(data.title());
+                : Component.empty().append(data.name()).append(Component.literal("  —  ").withStyle(st -> st.withColor(UiKit.TEXT_DIM & 0xFFFFFF))).append(data.title());
         g.drawCenteredString(font, header, width / 2, y, UiKit.GOLD);
         y += 14;
-        for (FormattedCharSequence line : font.split(data.text(), boxW)) {
+        for (FormattedCharSequence line : font.split(data.text(), boxW - 24)) {
             g.drawCenteredString(font, line, width / 2, y, UiKit.TEXT);
             y += 11;
         }
-        y += 8;
+        y += 4;
         g.fill(boxX + boxW / 4, y, boxX + boxW * 3 / 4, y + 1, UiKit.TRIM);
-        y += 8;
+        y += 7;
         optionsY = y;
         hovered = -1;
         List<Component> options = data.options();
@@ -60,10 +70,10 @@ public class DialogueScreen extends Screen {
             Component label = Component.literal((i + 1) + ". ").append(options.get(i));
             int w = font.width(label);
             int x = width / 2 - w / 2;
-            boolean hover = mouseY >= y - 1 && mouseY < y + 11 && mouseX >= boxX && mouseX < boxX + boxW;
+            boolean hover = mouseY >= y - 2 && mouseY < y + 11 && mouseX >= boxX && mouseX < boxX + boxW;
             if (hover) {
                 hovered = i;
-                g.fill(x - 6, y - 2, x + w + 6, y + 10, 0x40E8C872);
+                g.fill(boxX + 6, y - 2, boxX + boxW - 6, y + 10, UiKit.BG_HOVER);
             }
             g.drawString(font, label, x, y, hover ? UiKit.GOLD : UiKit.TEXT, true);
             y += 13;

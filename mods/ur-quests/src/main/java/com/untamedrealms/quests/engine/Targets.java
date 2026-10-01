@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,10 +22,12 @@ import net.minecraft.world.level.levelgen.structure.Structure;
 public final class Targets {
     private Targets() {}
 
+    /** Entity targets also accept {@code @monster} (any hostile creature). */
     public static boolean entity(String target, EntityType<?> type) {
         for (String alt : target.split("\\|")) {
             alt = alt.trim();
             if (alt.equals("*")) return true;
+            if (alt.equals("@monster") && type.getCategory() == MobCategory.MONSTER) return true;
             if (alt.startsWith("#")) {
                 ResourceLocation id = ResourceLocation.tryParse(alt.substring(1));
                 if (id != null && type.is(TagKey.create(Registries.ENTITY_TYPE, id))) return true;

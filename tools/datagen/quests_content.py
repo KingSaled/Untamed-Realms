@@ -54,11 +54,10 @@ write("main/the_elders_request", quest(
 
 write("main/trouble_on_the_roads", quest(
     "Trouble on the Roads",
-    "The dead are walking the roads at night in numbers no one remembers. The Guard Captain wants them thinned out before the next caravan.",
+    "Monsters are prowling the roads, the caves and the woods in numbers no one remembers. The Guard Captain wants them thinned out before the next caravan.",
     [stage("Speak with the Guard Captain.", obj("talk", NPC("guard_captain"), text="Speak with the Guard Captain")),
-     stage("Clear the roads of the walking dead.",
-           obj("kill", "minecraft:zombie|minecraft:husk|minecraft:zombie_villager", 10, "Slay zombies"),
-           obj("kill", "minecraft:skeleton|minecraft:stray|minecraft:bogged", 6, "Slay skeletons"),
+     stage("Clear the lands around the village of monsters.",
+           obj("kill", "@monster", 12, "Slay hostile creatures"),
            obj("turn_in", NPC("guard_captain"), text="Report to the Guard Captain"))],
     category="main", giver=NPC("village_elder"), abandonable=False,
     requires={"quests": ["urquests:main/the_elders_request"]},
@@ -246,6 +245,7 @@ lang = {
     "objective.urquests.anything": "anything",
     "command.urquests.started": "Started %s for %s.",
     "command.urquests.reset": "Reset all quests for %s.",
+    "message.urquests.arrived": "You arrive at a settlement. Find the Village Elder.",
 }
 os.makedirs(os.path.join(BASE, "assets", "urquests", "lang"), exist_ok=True)
 json.dump(lang, open(os.path.join(BASE, "assets", "urquests", "lang", "en_us.json"), "w"), indent=2)

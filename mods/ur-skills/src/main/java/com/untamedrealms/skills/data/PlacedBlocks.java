@@ -30,5 +30,7 @@ public final class PlacedBlocks {
     /** Removes the position, returning whether it was player-placed. */
     public boolean remove(BlockPos pos) { return positions.remove(pos.asLong()); }
 
+    public boolean contains(BlockPos pos) { return positions.contains(pos.asLong()); }
+
     public boolean shouldSave() { return !positions.isEmpty(); }
 }

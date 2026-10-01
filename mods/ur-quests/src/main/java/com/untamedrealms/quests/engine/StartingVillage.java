@@ -2,10 +2,10 @@ package com.untamedrealms.quests.engine;
 
 import com.mojang.datafixers.util.Pair;
 import com.untamedrealms.core.api.UR;
+import com.untamedrealms.core.world.GroundSpots;
 import com.untamedrealms.quests.QuestsConfig;
 import com.untamedrealms.quests.UntamedQuests;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -13,7 +13,6 @@ import net.minecraft.nbt.NbtUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.status.ChunkStatus;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
@@ -77,23 +76,12 @@ public final class StartingVillage {
         UR.subtle(player, Component.translatable("message.urquests.arrived"));
     }
 
-    /** A standable spot near {@code center}: sturdy, dry ground with two air blocks above. */
+    /** Open ground (a street if possible) near {@code center}, never a roof. */
     private static BlockPos safeSurface(ServerLevel level, BlockPos center) {
-        for (int r = 0; r <= 24; r += 2) {
-            for (int dx = -r; dx <= r; dx += 2) {
-                for (int dz = -r; dz <= r; dz += 2) {
-                    if (Math.max(Math.abs(dx), Math.abs(dz)) != r) continue;
-                    int x = center.getX() + dx, z = center.getZ() + dz;
-                    int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-                    BlockPos pos = new BlockPos(x, y, z);
-                    BlockState below = level.getBlockState(pos.below());
-                    if (below.isFaceSturdy(level, pos.below(), Direction.UP) && below.getFluidState().isEmpty()
-                            && level.getBlockState(pos).isAir() && level.getBlockState(pos.above()).isAir()) {
-                        return pos;
-                    }
-                }
-            }
-        }
+        // make sure the chunks around the centre exist before searching them
+        for (int dx = -2; dx <= 2; dx++) for (int dz = -2; dz <= 2; dz++) level.getChunk((center.getX() >> 4) + dx, (center.getZ() >> 4) + dz);
+        BlockPos pos = GroundSpots.nearest(level, center, 32);
+        if (pos != null) return pos;
         return new BlockPos(center.getX(), level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, center.getX(), center.getZ()), center.getZ());
     }
 

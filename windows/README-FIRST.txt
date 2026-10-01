@@ -26,6 +26,12 @@ you run them and update this folder automatically (your world in "server\world" 
 After an update, run Install-Modpack.bat again so the game has the same mods as the server.
 The launcher always keeps exactly one "Untamed Realms" installation.
 
+START OVER (fresh world for testing)
+------------------------------------
+Stop the server (type  stop ), then double-click  Reset-World.bat . It moves the current world and
+every character in it to server\old-worlds (the 3 newest are kept); the next Start-Server.bat
+creates a brand-new world with a new seed, and you pick a class again when you join.
+
 FRIENDS
 -------
 Friends run only Install-Modpack.bat and connect to your IP address. They can only reach a

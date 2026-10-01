@@ -30,6 +30,8 @@ public final class SkillsConfig {
     public static final ModConfigSpec.EnumValue<RequirementMode> ARMOR_REQUIREMENTS;
     public static final ModConfigSpec.EnumValue<RequirementMode> BLOCK_REQUIREMENTS;
     public static final ModConfigSpec.BooleanValue ANTI_PLACE_EXPLOIT;
+    public static final ModConfigSpec.BooleanValue TREE_FELLING;
+    public static final ModConfigSpec.IntValue TREE_FELLING_MAX_LOGS;
 
     public enum RequirementMode { OFF, SOFT, HARD }
 
@@ -61,6 +63,13 @@ public final class SkillsConfig {
         GATHER_SPEED_PER_LEVEL = BUILDER.comment("Mining / Woodcutting speed per level.").defineInRange("gatherSpeedPerLevel", 0.005, 0.0, 1.0);
         EXTRA_DROP_PER_LEVEL = BUILDER.comment("Chance per level of a double drop when gathering.").defineInRange("extraDropPerLevel", 0.002, 0.0, 1.0);
         BASE_SNEAK_ATTACK_MULTIPLIER = BUILDER.comment("Damage multiplier for attacks on mobs that have not noticed you.").defineInRange("baseSneakAttackMultiplier", 2.0, 1.0, 100.0);
+        BUILDER.pop();
+
+        BUILDER.comment("Woodcutting").push("woodcutting");
+        TREE_FELLING = BUILDER.comment("Chopping a natural tree with an axe fells the whole tree (sneak to cut a single log).",
+                        "Woodcutting XP is per tree: a log's XP x (1 + sqrt(logs - 1)), so big trees are worth more but not per log.")
+                .define("treeFelling", true);
+        TREE_FELLING_MAX_LOGS = BUILDER.defineInRange("maxLogs", 256, 1, 2048);
         BUILDER.pop();
 
         BUILDER.comment("Skill requirements (RuneScape style). SOFT = penalty, HARD = blocked.").push("requirements");

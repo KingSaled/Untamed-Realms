@@ -82,6 +82,14 @@ jobs:
           if ($log -notmatch 'Done \(') { Get-Content server-console.txt -Tail 80; throw "server did not finish starting" }
           if (Test-Path Untamed-Realms\server\crash-reports) { throw "crash report written" }
           ($log -split "`n" | Select-String 'Done \(').Line
+      - name: Reset-World moves the world aside
+        shell: powershell
+        run: |
+          $env:UR_ASSUME_YES = '1'
+          powershell -NoProfile -ExecutionPolicy Bypass -File Untamed-Realms\scripts\reset-world.ps1
+          if ($LASTEXITCODE -ne 0) { throw "reset-world.ps1 failed" }
+          if (Test-Path Untamed-Realms\server\world) { throw "world still there" }
+          if (-not (Get-ChildItem Untamed-Realms\server\old-worlds -Directory)) { throw "old world not archived" }
       - name: Server log on failure
         if: failure()
         shell: powershell

@@ -23,6 +23,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
@@ -37,7 +38,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import org.jetbrains.annotations.Nullable;
+
+import java.util.EnumSet;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * A townsperson. Its archetype ({@link NpcDef}) decides skin, title, dialogue, shop and trainer; the
@@ -49,6 +54,7 @@ public class NpcEntity extends PathfinderMob {
 
     private BlockPos home;
     private int talkingTicks;
+    private @Nullable UUID talkingTo;
     private long angryUntil;
 
     public NpcEntity(EntityType<? extends PathfinderMob> type, Level level) {
@@ -74,6 +80,7 @@ public class NpcEntity extends PathfinderMob {
     @Override
     protected void registerGoals() {
         goalSelector.addGoal(0, new FloatGoal(this));
+        goalSelector.addGoal(0, new TalkGoal());
         goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.8, false) {
             @Override public boolean canUse() { return isArmed() && super.canUse(); }
         });
@@ -154,7 +161,8 @@ public class NpcEntity extends PathfinderMob {
             Pickpocket.attempt(serverPlayer, this);
             return InteractionResult.CONSUME;
         }
-        talkingTicks = 200;
+        talkingTicks = 1200;
+        talkingTo = player.getUUID();
         getNavigation().stop();
         getLookControl().setLookAt(player);
         DialogueManager.open(serverPlayer, this);
@@ -168,7 +176,44 @@ public class NpcEntity extends PathfinderMob {
     @Override
     public void aiStep() {
         super.aiStep();
-        if (talkingTicks > 0) talkingTicks--;
+        if (talkingTicks > 0) {
+            talkingTicks--;
+            Player partner = talkingPartner();
+            if (partner == null || partner.distanceToSqr(this) > 64) stopTalking();
+        }
+    }
+
+    private @Nullable Player talkingPartner() {
+        return talkingTo == null ? null : level().getPlayerByUUID(talkingTo);
+    }
+
+    /** The conversation ended (goodbye, walked away): resume wandering. */
+    public void stopTalking() {
+        talkingTicks = 0;
+        talkingTo = null;
+    }
+
+    /** Stands still and faces the player while a conversation or trade is open. */
+    private final class TalkGoal extends Goal {
+        TalkGoal() {
+            setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Goal.Flag.JUMP));
+        }
+
+        @Override public boolean canUse() { return talkingTicks > 0 && talkingPartner() != null; }
+
+        @Override public boolean requiresUpdateEveryTick() { return true; }
+
+        @Override
+        public void start() {
+            getNavigation().stop();
+        }
+
+        @Override
+        public void tick() {
+            Player partner = talkingPartner();
+            if (partner != null) getLookControl().setLookAt(partner, 30f, 30f);
+            getNavigation().stop();
+        }
     }
 
     @Override

@@ -141,7 +141,8 @@ public final class DialogueManager {
     }
 
     public static void close(ServerPlayer player) {
-        SESSIONS.remove(player.getUUID());
+        Session session = SESSIONS.remove(player.getUUID());
+        if (session != null && player.level().getEntity(session.entityId()) instanceof NpcEntity npc) npc.stopTalking();
         NpcsNetwork.closeDialogue(player);
     }
 

@@ -95,7 +95,7 @@ public final class VitalsHandler {
 
     @SubscribeEvent
     public static void onJump(LivingEvent.LivingJumpEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) {
+        if (event.getEntity() instanceof ServerPlayer player && CoreConfig.JUMP_COST.get() > 0) {
             VitalsApi.drainStamina(player, CoreConfig.JUMP_COST.get().floatValue());
         }
     }

@@ -16,15 +16,18 @@ public final class CoreConfig {
     public static final ModConfigSpec.IntValue MAGICKA_REGEN_DELAY_TICKS;
     public static final ModConfigSpec.DoubleValue EXHAUSTED_DAMAGE_MULTIPLIER;
 
+    public static final ModConfigSpec.DoubleValue HUNGER_RATE;
+    public static final ModConfigSpec.BooleanValue SPRINT_COSTS_HUNGER;
+
     public static final ModConfigSpec.BooleanValue KEEP_WALLET_ON_DEATH;
     public static final ModConfigSpec.DoubleValue DEATH_COIN_LOSS;
 
     static {
-        BUILDER.comment("Stamina: drained by sprinting, jumping and melee attacks, regenerates after a short pause.")
+        BUILDER.comment("Stamina: drained by sprinting and melee attacks (and jumping if jumpCost > 0), regenerates after a short pause.")
                 .push("stamina");
         STAMINA_ENABLED = BUILDER.define("enabled", true);
         SPRINT_COST_PER_SECOND = BUILDER.defineInRange("sprintCostPerSecond", 4.0, 0.0, 1000.0);
-        JUMP_COST = BUILDER.defineInRange("jumpCost", 3.0, 0.0, 1000.0);
+        JUMP_COST = BUILDER.defineInRange("jumpCost", 0.0, 0.0, 1000.0);
         ATTACK_COST = BUILDER.defineInRange("attackCost", 2.5, 0.0, 1000.0);
         STAMINA_REGEN_PER_SECOND = BUILDER.defineInRange("regenPerSecond", 9.0, 0.0, 1000.0);
         STAMINA_REGEN_DELAY_TICKS = BUILDER.defineInRange("regenDelayTicks", 25, 0, 1200);
@@ -36,6 +39,13 @@ public final class CoreConfig {
         BUILDER.push("magicka");
         MAGICKA_REGEN_PER_SECOND = BUILDER.defineInRange("regenPerSecond", 3.0, 0.0, 1000.0);
         MAGICKA_REGEN_DELAY_TICKS = BUILDER.defineInRange("regenDelayTicks", 40, 0, 1200);
+        BUILDER.pop();
+
+        BUILDER.comment("Hunger: stamina covers sprinting and jumping, so food lasts longer than in vanilla.").push("hunger");
+        HUNGER_RATE = BUILDER.comment("Multiplier on how fast food runs out (1 = vanilla).")
+                .defineInRange("rate", 0.5, 0.0, 4.0);
+        SPRINT_COSTS_HUNGER = BUILDER.comment("Whether sprinting and jumping also use food, as in vanilla.")
+                .define("sprintCostsHunger", false);
         BUILDER.pop();
 
         BUILDER.comment("The Crown economy (wallet balance is separate from physical coin items).").push("economy");

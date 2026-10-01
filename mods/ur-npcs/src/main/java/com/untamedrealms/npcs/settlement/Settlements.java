@@ -1,5 +1,6 @@
 package com.untamedrealms.npcs.settlement;
 
+import com.untamedrealms.core.world.GroundSpots;
 import com.untamedrealms.npcs.UntamedNpcs;
 import com.untamedrealms.npcs.data.NpcDef;
 import com.untamedrealms.npcs.data.NpcsData;
@@ -14,9 +15,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureStart;
@@ -102,20 +101,8 @@ public final class Settlements {
         UntamedNpcs.LOGGER.info("Populated settlement at {} with {} NPCs", center, spawned);
     }
 
-    /** A standable surface spot near {@code center}: solid below, two air blocks, not water. */
+    /** A spot on open ground (a street or grass, never a roof) near {@code center}. */
     private static BlockPos findSpot(ServerLevel level, BlockPos center, int radius, RandomSource random) {
-        for (int attempt = 0; attempt < 24; attempt++) {
-            int x = center.getX() + random.nextInt(radius * 2 + 1) - radius;
-            int z = center.getZ() + random.nextInt(radius * 2 + 1) - radius;
-            if (!level.hasChunkAt(new BlockPos(x, 0, z))) continue;
-            int y = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
-            BlockPos pos = new BlockPos(x, y, z);
-            BlockState below = level.getBlockState(pos.below());
-            if (below.isFaceSturdy(level, pos.below(), Direction.UP) && level.getBlockState(pos).isAir()
-                    && level.getBlockState(pos.above()).isAir() && !below.is(Blocks.WATER)) {
-                return pos;
-            }
-        }
-        return null;
+        return GroundSpots.random(level, center, radius, random);
     }
 }

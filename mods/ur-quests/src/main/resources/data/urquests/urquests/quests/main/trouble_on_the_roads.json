@@ -1,6 +1,6 @@
 {
   "title": "Trouble on the Roads",
-  "description": "The dead are walking the roads at night in numbers no one remembers. The Guard Captain wants them thinned out before the next caravan.",
+  "description": "Monsters are prowling the roads, the caves and the woods in numbers no one remembers. The Guard Captain wants them thinned out before the next caravan.",
   "category": "main",
   "stages": [
     {
@@ -14,19 +14,13 @@
       ]
     },
     {
-      "description": "Clear the roads of the walking dead.",
+      "description": "Clear the lands around the village of monsters.",
       "objectives": [
         {
           "type": "kill",
-          "target": "minecraft:zombie|minecraft:husk|minecraft:zombie_villager",
-          "count": 10,
-          "text": "Slay zombies"
-        },
-        {
-          "type": "kill",
-          "target": "minecraft:skeleton|minecraft:stray|minecraft:bogged",
-          "count": 6,
-          "text": "Slay skeletons"
+          "target": "@monster",
+          "count": 12,
+          "text": "Slay hostile creatures"
         },
         {
           "type": "turn_in",

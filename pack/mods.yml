@@ -36,7 +36,6 @@ qol:                  # ---- quality of life
   - jade               # what-am-I-looking-at tooltip
   - appleskin          # food values
   - mouse-tweaks
-  - inventory-profiles-next  # sorting, auto-refill
   - controlling        # keybind search & conflict view
   - xaeros-minimap
   - xaeros-world-map
@@ -96,3 +95,5 @@ exclude:              # ---- never ship these, even if something pulls them in a
   - supplementaries
   - idas               # hard-requires Create + Quark + Supplementaries
   - integrated-api
+  - inventory-profiles-next  # its profile bar and buttons clutter every inventory screen
+  - libipn

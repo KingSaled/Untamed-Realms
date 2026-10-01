@@ -30,6 +30,8 @@ You need only the normal **Minecraft Launcher** (Java Edition). Java, NeoForge a
 4. Open the Minecraft Launcher, pick **Untamed Realms** next to the green *PLAY* button, press *PLAY*.
 5. In game: *Multiplayer → Direct Connection →* `localhost` *→ Join Server*. In the server window type `op YourName` to become admin.
 
+**Start over:** stop the server (`stop`), double-click **`Reset-World.bat`**, then `Start-Server.bat` again for a brand-new world and character.
+
 If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*. Full notes are in `README-FIRST.txt` inside the zip.
 **Updating:** just run `Start-Server.bat` and `Install-Modpack.bat` again. Both download the newest build automatically and keep your world; you never need to download the zip again. The launcher keeps exactly one *Untamed Realms* installation.
 

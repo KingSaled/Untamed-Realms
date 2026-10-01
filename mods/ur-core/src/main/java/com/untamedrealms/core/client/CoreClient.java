@@ -8,7 +8,11 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.AccessibilityOnboardingScreen;
 import net.minecraft.client.gui.screens.TitleScreen;
+import net.minecraft.client.gui.components.toasts.AdvancementToast;
+import net.minecraft.client.gui.components.toasts.RecipeToast;
+import net.minecraft.client.gui.components.toasts.TutorialToast;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.tutorial.TutorialSteps;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +23,7 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.client.event.ToastAddEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 public final class CoreClient {
@@ -66,6 +71,22 @@ public final class CoreClient {
         public static void onScreenOpening(ScreenEvent.Opening event) {
             if (event.getNewScreen() instanceof TitleScreen || event.getNewScreen() instanceof AccessibilityOnboardingScreen) {
                 KeybindProfile.onFirstMenu();
+                if (CoreClientConfig.HIDE_VANILLA_POPUPS.get()) {
+                    Minecraft mc = Minecraft.getInstance();
+                    if (mc.options.tutorialStep != TutorialSteps.NONE) {
+                        mc.getTutorial().setStep(TutorialSteps.NONE);
+                        mc.options.save();
+                    }
+                }
+            }
+        }
+
+        /** Quests replace vanilla's tutorial hints, advancement and recipe pop-ups. */
+        @SubscribeEvent
+        public static void onToast(ToastAddEvent event) {
+            if (!CoreClientConfig.HIDE_VANILLA_POPUPS.get()) return;
+            if (event.getToast() instanceof AdvancementToast || event.getToast() instanceof RecipeToast || event.getToast() instanceof TutorialToast) {
+                event.setCanceled(true);
             }
         }
 

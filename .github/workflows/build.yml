@@ -121,6 +121,10 @@ jobs:
           { echo "### Key bindings ($(tail -1 "$f"))"; echo '```'; grep -v '^#' "$f" | awk -F' [|] ' '$6 != ""'; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
           n=$(tail -1 "$f" | grep -oE '[0-9]+$')
           if [ "$n" != "0" ]; then echo "::error::$n key bindings clash in game - fix mods/ur-core/src/main/resources/assets/urcore/keybinds.json"; exit 1; fi
+      - name: Default HUD-mod configs (for tuning pack/config)
+        if: always()
+        shell: bash
+        run: for f in run/client/config/jade/*.json; do [ -f "$f" ] && { echo "== $f"; cat "$f"; echo; }; done; true
       - uses: actions/upload-artifact@v4
         if: always()
         with:

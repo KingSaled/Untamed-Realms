@@ -10,6 +10,7 @@ public final class CoreClientConfig {
     public static final ModConfigSpec.BooleanValue HIDE_FULL_VITALS;
     public static final ModConfigSpec.BooleanValue SHOW_WALLET_IN_INVENTORY;
     public static final ModConfigSpec.BooleanValue SHOW_NOTIFICATIONS;
+    public static final ModConfigSpec.BooleanValue HIDE_VANILLA_POPUPS;
 
     static {
         BUILDER.push("hud");
@@ -17,6 +18,8 @@ public final class CoreClientConfig {
         HIDE_FULL_VITALS = BUILDER.comment("Fade the bars out when they are full (Skyrim style).").define("hideFullVitals", true);
         SHOW_WALLET_IN_INVENTORY = BUILDER.define("showWalletInInventory", true);
         SHOW_NOTIFICATIONS = BUILDER.comment("Show level-up / quest banners.").define("showNotifications", true);
+        HIDE_VANILLA_POPUPS = BUILDER.comment("Hide vanilla tutorial hints, advancement and recipe pop-ups (quests replace them).")
+                .define("hideVanillaPopups", true);
         BUILDER.pop();
     }
 
