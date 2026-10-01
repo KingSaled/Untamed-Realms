@@ -1,0 +1,13 @@
+name = "More Culling"
+filename = "moreculling-neoforge-1.21.1-1.0.10.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/51shyZVL/versions/5M4T2FfG/moreculling-neoforge-1.21.1-1.0.10.jar"
+hash-format = "sha512"
+hash = "64b6d1c71b7251915a35d93ddfb2a0a44851c9962b081fc8a7bb9458a19cb1ce6efb8eeef447bb7217c67010ed7e903d2bed8ed6d166053cacc3f8fb6d2df3d4"
+
+[update]
+[update.modrinth]
+mod-id = "51shyZVL"
+version = "5M4T2FfG"

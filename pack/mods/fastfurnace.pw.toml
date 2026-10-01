@@ -1,0 +1,13 @@
+name = "FastFurnace"
+filename = "FastFurnace-1.21.1-9.0.1.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/9X0318ev/versions/pqj92Yco/FastFurnace-1.21.1-9.0.1.jar"
+hash-format = "sha512"
+hash = "f140b7c12528aed92ac1646737c745ffd5e89e91551b6e174d9e999f9f5e8f95225d993fdb862486e79d6577da8571dabffc58085fbfd86cb74c0fa30abd9f00"
+
+[update]
+[update.modrinth]
+mod-id = "9X0318ev"
+version = "pqj92Yco"
