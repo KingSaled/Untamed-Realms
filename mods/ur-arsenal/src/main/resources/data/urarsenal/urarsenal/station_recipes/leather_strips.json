@@ -1,0 +1,13 @@
+{
+  "station": "tanning_rack",
+  "result": "urarsenal:leather_strips",
+  "count": 4,
+  "inputs": [
+    {
+      "item": "minecraft:leather"
+    }
+  ],
+  "level": 1,
+  "xp": 2,
+  "category": "materials"
+}

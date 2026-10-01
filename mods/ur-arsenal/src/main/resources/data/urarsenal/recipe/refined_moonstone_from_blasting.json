@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "urarsenal:raw_moonstone"
+  },
+  "result": {
+    "id": "urarsenal:refined_moonstone"
+  },
+  "experience": 0.8,
+  "cookingtime": 100
+}

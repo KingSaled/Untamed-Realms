@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:dwarven_boots",
+  "inputs": [
+    {
+      "item": "urarsenal:dwarven_ingot",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    }
+  ],
+  "level": 30,
+  "xp": 42.0,
+  "category": "armor"
+}

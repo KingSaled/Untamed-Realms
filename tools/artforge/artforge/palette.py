@@ -27,6 +27,11 @@ ORCISH    = ramp("1d2420", "34413a", "4f6153", "728a73", "a4b8a0")
 MOONSTONE = ramp("3a4452", "5e6a7c", "8c99ab", "bcc7d4", "eef3f8")
 DAEDRIC   = ramp("1a0608", "3d0c10", "6e1418", "a8282a", "e05a4a")
 
+# Stone (blocks)
+STONE     = ramp("4a4a4f", "626268", "7a7a80", "8f8f95", "a8a8ad")
+DEEPSLATE = ramp("232327", "2e2e33", "3c3c42", "4a4a50", "5c5c63")
+FIRE      = ramp("5a1606", "a8360c", "e0661a", "f8a838", "ffe48a")
+
 # Organics
 LEATHER   = ramp("3a2214", "5a3620", "7d4f2f", "a46e45", "c99a6c")
 WOOD_DARK = ramp("2a1a10", "43291a", "5f3c25", "7c5233", "9c6c45")

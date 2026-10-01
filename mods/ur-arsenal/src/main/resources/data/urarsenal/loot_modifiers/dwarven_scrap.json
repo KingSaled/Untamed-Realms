@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarsenal:inject/dwarven_scrap",
+  "chance": 0.25,
+  "prefixes": [
+    "chests/"
+  ]
+}

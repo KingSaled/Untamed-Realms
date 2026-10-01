@@ -1,0 +1,13 @@
+{
+  "station": "tanning_rack",
+  "result": "minecraft:leather",
+  "inputs": [
+    {
+      "item": "minecraft:rabbit_hide",
+      "count": 4
+    }
+  ],
+  "level": 1,
+  "xp": 2,
+  "category": "materials"
+}

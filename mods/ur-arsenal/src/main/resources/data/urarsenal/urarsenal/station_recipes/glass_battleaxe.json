@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:glass_battleaxe",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_malachite",
+      "count": 4
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 55,
+  "xp": 134.0,
+  "category": "weapons"
+}

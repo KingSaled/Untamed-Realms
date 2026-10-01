@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:hide_leggings",
+  "inputs": [
+    {
+      "item": "minecraft:leather",
+      "count": 3
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 1,
+  "xp": 19.5,
+  "category": "armor"
+}

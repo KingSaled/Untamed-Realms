@@ -1,0 +1,556 @@
+{
+  "requirements": [
+    {
+      "match": "urarsenal:steel_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:orcish_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:dwarven_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:elven_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:glass_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:ebony_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:daedric_dagger",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_war_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_mace",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_greatsword",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_battleaxe",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_warhammer",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_bow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:leather_helmet",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:leather_chestplate",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:leather_leggings",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:leather_boots",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:elven_helmet",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_chestplate",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_leggings",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:elven_boots",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 40
+    },
+    {
+      "match": "urarsenal:glass_helmet",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_chestplate",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_leggings",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:glass_boots",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 55
+    },
+    {
+      "match": "urarsenal:steel_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:steel_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "urarsenal:orcish_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:orcish_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:dwarven_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:dwarven_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "urarsenal:ebony_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:ebony_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 70
+    },
+    {
+      "match": "urarsenal:daedric_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:daedric_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 85
+    },
+    {
+      "match": "urarsenal:orichalcum_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 20
+    },
+    {
+      "match": "urarsenal:moonstone_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 35
+    },
+    {
+      "match": "urarsenal:malachite_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 45
+    },
+    {
+      "match": "urarsenal:ebony_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 60
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:steel_leggings",
+  "inputs": [
+    {
+      "item": "urarsenal:steel_ingot",
+      "count": 3
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 10,
+  "xp": 33.0,
+  "category": "armor"
+}

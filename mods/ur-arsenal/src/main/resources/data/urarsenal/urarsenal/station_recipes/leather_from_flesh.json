@@ -1,0 +1,13 @@
+{
+  "station": "tanning_rack",
+  "result": "minecraft:leather",
+  "inputs": [
+    {
+      "item": "minecraft:rotten_flesh",
+      "count": 4
+    }
+  ],
+  "level": 5,
+  "xp": 2,
+  "category": "materials"
+}

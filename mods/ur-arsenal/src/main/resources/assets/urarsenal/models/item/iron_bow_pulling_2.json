@@ -1,0 +1,6 @@
+{
+  "parent": "urarsenal:item/iron_bow",
+  "textures": {
+    "layer0": "urarsenal:item/iron_bow_pulling_2"
+  }
+}

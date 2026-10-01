@@ -1,0 +1,11 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_overworld",
+  "features": [
+    "urarsenal:ore_orichalcum",
+    "urarsenal:ore_moonstone",
+    "urarsenal:ore_malachite",
+    "urarsenal:ore_ebony"
+  ],
+  "step": "underground_ores"
+}

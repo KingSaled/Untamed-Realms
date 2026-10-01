@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:hide_helmet",
+  "inputs": [
+    {
+      "item": "minecraft:leather",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    }
+  ],
+  "level": 1,
+  "xp": 13.0,
+  "category": "armor"
+}

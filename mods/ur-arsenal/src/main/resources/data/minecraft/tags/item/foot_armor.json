@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:hide_boots",
+    "urarsenal:leather_boots",
+    "urarsenal:elven_boots",
+    "urarsenal:glass_boots",
+    "urarsenal:iron_boots",
+    "urarsenal:steel_boots",
+    "urarsenal:orcish_boots",
+    "urarsenal:dwarven_boots",
+    "urarsenal:ebony_boots",
+    "urarsenal:daedric_boots"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:glass_boots",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_malachite",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    },
+    {
+      "item": "minecraft:leather",
+      "count": 1
+    }
+  ],
+  "level": 55,
+  "xp": 67.0,
+  "category": "armor"
+}

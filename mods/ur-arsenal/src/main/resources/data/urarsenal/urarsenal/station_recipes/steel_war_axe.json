@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:steel_war_axe",
+  "inputs": [
+    {
+      "item": "urarsenal:steel_ingot",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    }
+  ],
+  "level": 10,
+  "xp": 22.0,
+  "category": "weapons"
+}

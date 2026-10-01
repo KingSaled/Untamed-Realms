@@ -294,3 +294,97 @@ def all_armor_sprites():
     """{<set>_<piece>: icon} for every armor set."""
     return {f"{name}_{piece}": armor_icon(piece, light, ramps)
             for name, (ramps, light) in armor_sets().items() for piece in ARMOR_PIECES}
+
+
+# -------------------------------------------------------------------------------------- materials
+
+INGOT = ["..........", "....####..", "..#+####..", ".#+######.", "#########.", ".#######..", "..####...."]
+RAW = ["...##...", "..####..", ".##+###.", "######..", ".#####..", "..###..."]
+HEART = [".##.##..", "#+#####.", "#######.", ".#####..", "..###...", "...#...."]
+STRIPS = ["##......", ".##.....", "..##..##", "...##.##", ".....##.", "......##"]
+SCRAP = ["#..##...", "##.###..", ".####.#.", "..######", ".###.##.", "#..#...."]
+
+# material item: (mask, ramp)
+MATERIALS = {
+    "steel_ingot": (INGOT, P.STEEL),
+    "orichalcum_ingot": (INGOT, P.ORCISH),
+    "dwarven_ingot": (INGOT, P.DWARVEN),
+    "refined_moonstone": (INGOT, P.MOONSTONE),
+    "refined_malachite": (INGOT, P.GLASS),
+    "ebony_ingot": (INGOT, P.EBONY),
+    "raw_orichalcum": (RAW, P.ORCISH),
+    "raw_moonstone": (RAW, P.MOONSTONE),
+    "raw_malachite": (RAW, P.GLASS),
+    "raw_ebony": (RAW, P.EBONY),
+    "dwarven_scrap": (SCRAP, P.DWARVEN),
+    "daedra_heart": (HEART, P.DAEDRIC),
+    "leather_strips": (STRIPS, P.LEATHER),
+}
+
+
+def material(name):
+    mask, ramp = MATERIALS[name]
+    img = canvas()
+    w, h = len(mask[0]), len(mask)
+    head(img, ramp, mask, (16 - w) // 2, (16 - h) // 2)
+    return outline(img, P.OUTLINE)
+
+
+# ore: (vein ramp, base ramp)
+ORES = {"orichalcum_ore": (P.ORCISH, P.STONE), "moonstone_ore": (P.MOONSTONE, P.STONE),
+        "malachite_ore": (P.GLASS, P.STONE), "ebony_ore": (P.EBONY, P.DEEPSLATE)}
+
+
+def ore(name, seed=7):
+    """Stone with chunky lit specks of the ore (block texture, no outline)."""
+    import random
+    from artforge.procedural import noise_texture
+    vein, base = ORES[name]
+    img = noise_texture(base, seed=seed + len(name))
+    rnd = random.Random(seed * 31 + len(name))
+    for _ in range(6):
+        cx, cy = rnd.randrange(1, 14), rnd.randrange(1, 14)
+        for dx, dy, idx in ((0, 0, 3), (1, 0, 2), (0, 1, 2), (1, 1, 1), (-1, 0, 4)):
+            put(img, cx + dx, cy + dy, vein[idx])
+    return img
+
+
+def all_material_sprites():
+    return {name: material(name) for name in MATERIALS}
+
+
+# -------------------------------------------------------------------------------------- stations
+
+def stations():
+    """Forge, tanning rack and workbench models (docs/ART_STYLE.md section 5)."""
+    from artforge.model3d import Model
+    from artforge import procedural as G
+    wood = G.planks(P.WOOD_DARK, seed=11, boards=4)
+    iron = G.noise_texture(P.IRON, seed=12, weights=(1, 2, 5, 3, 1))
+    stone = G.noise_texture(P.STONE, seed=13)
+    fire = G.noise_texture(P.FIRE, seed=14, weights=(1, 2, 3, 4, 3))
+    hide = G.noise_texture(P.LEATHER, seed=15, weights=(0, 2, 5, 3, 1))
+    top = G.planks(P.WOOD, seed=16, boards=4, vertical=False)
+
+    forge = Model("forge", {"stone": stone, "fire": fire, "iron": iron}, namespace="urarsenal")
+    forge.cube((0, 0, 0), (16, 9, 16), "stone", name="hearth")
+    forge.cube((2, 9, 2), (14, 10, 14), "fire", name="coals")
+    forge.cube((0, 9, 0), (16, 12, 2), "stone", name="back_wall")
+    forge.cube((0, 9, 0), (2, 12, 16), "stone", name="left_wall")
+    forge.cube((14, 9, 0), (16, 12, 16), "stone", name="right_wall")
+    forge.cube((4, 10, 5), (12, 11, 11), "iron", name="grate")
+
+    rack = Model("tanning_rack", {"wood": wood, "hide": hide}, namespace="urarsenal")
+    rack.cube((0, 0, 7), (2, 16, 9), "wood", name="post_left")
+    rack.cube((14, 0, 7), (16, 16, 9), "wood", name="post_right")
+    rack.cube((0, 14, 7), (16, 16, 9), "wood", name="top_bar")
+    rack.cube((0, 2, 7), (16, 4, 9), "wood", name="bottom_bar")
+    rack.cube((3, 4, 7.5), (13, 14, 8.5), "hide", name="hide")
+
+    bench = Model("workbench", {"wood": wood, "top": top, "iron": iron}, namespace="urarsenal")
+    bench.cube((0, 12, 0), (16, 15, 16), "top", name="table_top")
+    for i, (x, z) in enumerate(((1, 1), (13, 1), (1, 13), (13, 13))):
+        bench.cube((x, 0, z), (x + 2, 12, z + 2), "wood", name=f"leg_{i}")
+    bench.cube((3, 15, 4), (9, 17, 7), "iron", name="whetstone")
+    bench.cube((10, 15, 9), (14, 16, 13), "iron", name="tongs")
+    return [forge, rack, bench]

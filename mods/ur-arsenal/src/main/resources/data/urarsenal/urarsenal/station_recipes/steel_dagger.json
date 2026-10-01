@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:steel_dagger",
+  "inputs": [
+    {
+      "item": "urarsenal:steel_ingot",
+      "count": 1
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    }
+  ],
+  "level": 10,
+  "xp": 11.0,
+  "category": "weapons"
+}

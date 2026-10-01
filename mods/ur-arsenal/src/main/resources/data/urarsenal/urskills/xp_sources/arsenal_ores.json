@@ -1,0 +1,22 @@
+{
+  "skill": "mining",
+  "trigger": "break_block",
+  "entries": [
+    {
+      "match": "urarsenal:orichalcum_ore",
+      "xp": 30
+    },
+    {
+      "match": "urarsenal:moonstone_ore",
+      "xp": 45
+    },
+    {
+      "match": "urarsenal:malachite_ore",
+      "xp": 60
+    },
+    {
+      "match": "urarsenal:ebony_ore",
+      "xp": 90
+    }
+  ]
+}

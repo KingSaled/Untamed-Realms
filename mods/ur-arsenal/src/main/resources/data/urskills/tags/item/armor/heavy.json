@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:iron_helmet",
+    "urarsenal:iron_chestplate",
+    "urarsenal:iron_leggings",
+    "urarsenal:iron_boots",
+    "urarsenal:steel_helmet",
+    "urarsenal:steel_chestplate",
+    "urarsenal:steel_leggings",
+    "urarsenal:steel_boots",
+    "urarsenal:orcish_helmet",
+    "urarsenal:orcish_chestplate",
+    "urarsenal:orcish_leggings",
+    "urarsenal:orcish_boots",
+    "urarsenal:dwarven_helmet",
+    "urarsenal:dwarven_chestplate",
+    "urarsenal:dwarven_leggings",
+    "urarsenal:dwarven_boots",
+    "urarsenal:ebony_helmet",
+    "urarsenal:ebony_chestplate",
+    "urarsenal:ebony_leggings",
+    "urarsenal:ebony_boots",
+    "urarsenal:daedric_helmet",
+    "urarsenal:daedric_chestplate",
+    "urarsenal:daedric_leggings",
+    "urarsenal:daedric_boots"
+  ]
+}

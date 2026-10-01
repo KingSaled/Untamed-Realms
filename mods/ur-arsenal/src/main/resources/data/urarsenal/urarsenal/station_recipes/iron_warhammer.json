@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:iron_warhammer",
+  "inputs": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 5
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 1,
+  "xp": 32.5,
+  "category": "weapons"
+}

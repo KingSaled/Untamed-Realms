@@ -1,0 +1,6 @@
+{
+  "parent": "urarsenal:item/glass_bow",
+  "textures": {
+    "layer0": "urarsenal:item/glass_bow_pulling_0"
+  }
+}

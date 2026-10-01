@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:hide_helmet",
+    "urarsenal:hide_chestplate",
+    "urarsenal:hide_leggings",
+    "urarsenal:hide_boots",
+    "urarsenal:leather_helmet",
+    "urarsenal:leather_chestplate",
+    "urarsenal:leather_leggings",
+    "urarsenal:leather_boots",
+    "urarsenal:elven_helmet",
+    "urarsenal:elven_chestplate",
+    "urarsenal:elven_leggings",
+    "urarsenal:elven_boots",
+    "urarsenal:glass_helmet",
+    "urarsenal:glass_chestplate",
+    "urarsenal:glass_leggings",
+    "urarsenal:glass_boots"
+  ]
+}

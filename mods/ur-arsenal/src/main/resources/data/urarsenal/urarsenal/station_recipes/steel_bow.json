@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:steel_bow",
+  "inputs": [
+    {
+      "item": "urarsenal:steel_ingot",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    },
+    {
+      "item": "minecraft:string",
+      "count": 2
+    }
+  ],
+  "level": 10,
+  "xp": 22.0,
+  "category": "weapons"
+}

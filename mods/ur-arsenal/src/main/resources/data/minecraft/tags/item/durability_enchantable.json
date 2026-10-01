@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:iron_bow",
+    "urarsenal:steel_bow",
+    "urarsenal:orcish_bow",
+    "urarsenal:dwarven_bow",
+    "urarsenal:elven_bow",
+    "urarsenal:glass_bow",
+    "urarsenal:ebony_bow",
+    "urarsenal:daedric_bow"
+  ]
+}

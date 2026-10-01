@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:elven_dagger",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_moonstone",
+      "count": 1
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    }
+  ],
+  "level": 40,
+  "xp": 26.0,
+  "category": "weapons"
+}

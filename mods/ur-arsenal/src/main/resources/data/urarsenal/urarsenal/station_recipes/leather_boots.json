@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:leather_boots",
+  "inputs": [
+    {
+      "item": "minecraft:leather",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 1
+    }
+  ],
+  "level": 10,
+  "xp": 22.0,
+  "category": "armor"
+}

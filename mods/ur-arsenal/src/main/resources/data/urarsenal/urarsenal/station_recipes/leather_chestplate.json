@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:leather_chestplate",
+  "inputs": [
+    {
+      "item": "minecraft:leather",
+      "count": 4
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    },
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 1
+    }
+  ],
+  "level": 10,
+  "xp": 44.0,
+  "category": "armor"
+}

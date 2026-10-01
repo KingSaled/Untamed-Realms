@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:orcish_leggings",
+  "inputs": [
+    {
+      "item": "urarsenal:orichalcum_ingot",
+      "count": 3
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 20,
+  "xp": 48.0,
+  "category": "armor"
+}

@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:orcish_bow",
+  "inputs": [
+    {
+      "item": "urarsenal:orichalcum_ingot",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    },
+    {
+      "item": "minecraft:string",
+      "count": 2
+    }
+  ],
+  "level": 20,
+  "xp": 32.0,
+  "category": "weapons"
+}

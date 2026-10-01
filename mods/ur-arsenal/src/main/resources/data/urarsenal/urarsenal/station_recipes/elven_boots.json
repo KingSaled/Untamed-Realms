@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:elven_boots",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_moonstone",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 1
+    },
+    {
+      "item": "minecraft:leather",
+      "count": 1
+    }
+  ],
+  "level": 40,
+  "xp": 52.0,
+  "category": "armor"
+}

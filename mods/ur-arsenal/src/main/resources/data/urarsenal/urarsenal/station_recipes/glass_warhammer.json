@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:glass_warhammer",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_malachite",
+      "count": 5
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 55,
+  "xp": 167.5,
+  "category": "weapons"
+}

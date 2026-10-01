@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:iron_greatsword",
+    "urarsenal:iron_battleaxe",
+    "urarsenal:iron_warhammer",
+    "urarsenal:steel_greatsword",
+    "urarsenal:steel_battleaxe",
+    "urarsenal:steel_warhammer",
+    "urarsenal:orcish_greatsword",
+    "urarsenal:orcish_battleaxe",
+    "urarsenal:orcish_warhammer",
+    "urarsenal:dwarven_greatsword",
+    "urarsenal:dwarven_battleaxe",
+    "urarsenal:dwarven_warhammer",
+    "urarsenal:elven_greatsword",
+    "urarsenal:elven_battleaxe",
+    "urarsenal:elven_warhammer",
+    "urarsenal:glass_greatsword",
+    "urarsenal:glass_battleaxe",
+    "urarsenal:glass_warhammer",
+    "urarsenal:ebony_greatsword",
+    "urarsenal:ebony_battleaxe",
+    "urarsenal:ebony_warhammer",
+    "urarsenal:daedric_greatsword",
+    "urarsenal:daedric_battleaxe",
+    "urarsenal:daedric_warhammer"
+  ]
+}

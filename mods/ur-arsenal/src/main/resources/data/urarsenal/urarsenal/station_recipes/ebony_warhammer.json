@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:ebony_warhammer",
+  "inputs": [
+    {
+      "item": "urarsenal:ebony_ingot",
+      "count": 5
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 70,
+  "xp": 205.0,
+  "category": "weapons"
+}

@@ -1,0 +1,15 @@
+{
+  "station": "forge",
+  "result": "urarsenal:steel_ingot",
+  "inputs": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "#minecraft:coals"
+    }
+  ],
+  "level": 1,
+  "xp": 4,
+  "category": "materials"
+}

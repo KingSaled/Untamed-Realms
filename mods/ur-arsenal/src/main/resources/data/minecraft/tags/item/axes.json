@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:iron_war_axe",
+    "urarsenal:iron_battleaxe",
+    "urarsenal:steel_war_axe",
+    "urarsenal:steel_battleaxe",
+    "urarsenal:orcish_war_axe",
+    "urarsenal:orcish_battleaxe",
+    "urarsenal:dwarven_war_axe",
+    "urarsenal:dwarven_battleaxe",
+    "urarsenal:elven_war_axe",
+    "urarsenal:elven_battleaxe",
+    "urarsenal:glass_war_axe",
+    "urarsenal:glass_battleaxe",
+    "urarsenal:ebony_war_axe",
+    "urarsenal:ebony_battleaxe",
+    "urarsenal:daedric_war_axe",
+    "urarsenal:daedric_battleaxe"
+  ]
+}

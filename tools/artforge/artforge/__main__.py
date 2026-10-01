@@ -12,10 +12,10 @@ sys.path.insert(0, TOOL)
 
 from artforge.sprite import upscale                   # noqa: E402
 from artforge.model3d import blockstate_horizontal    # noqa: E402
-from assets import items, spells, npcs, models, ui    # noqa: E402
+from assets import items, spells, npcs, models, ui, arsenal    # noqa: E402
 
 MODULES = {"urcore": "ur-core", "urskills": "ur-skills", "urclasses": "ur-classes",
-           "urquests": "ur-quests", "urnpcs": "ur-npcs", "urmagic": "ur-magic"}
+           "urquests": "ur-quests", "urnpcs": "ur-npcs", "urmagic": "ur-magic", "urarsenal": "ur-arsenal"}
 
 
 def assets_dir(modid):
@@ -27,7 +27,7 @@ def collect():
     files = {}
     for (modid, tex), img in {**items.all_items(), **spells.all_spell_icons(), **npcs.all_skins()}.items():
         files[os.path.join(assets_dir(modid), "textures", tex + ".png")] = img
-    for m in models.all_models():
+    for m in models.all_models() + arsenal.stations():
         base = assets_dir(m.namespace)
         for key, img in m.textures.items():
             files[os.path.join(base, "textures", m.folder, f"{m.name}_{key}.png")] = img
@@ -35,6 +35,16 @@ def collect():
         files[os.path.join(base, "models", "item", m.name + ".json")] = {"parent": f"{m.namespace}:block/{m.name}"}
         files[os.path.join(base, "blockstates", m.name + ".json")] = blockstate_horizontal(f"{m.namespace}:block/{m.name}")
         files[os.path.join(TOOL, "out", "bbmodel", m.name + ".bbmodel")] = m.to_bbmodel()
+    # ur-arsenal: weapons, armor icons + layers, materials, ores
+    ars = assets_dir("urarsenal")
+    for name, img in {**arsenal.all_weapon_sprites(), **arsenal.all_armor_sprites(), **arsenal.all_material_sprites()}.items():
+        files[os.path.join(ars, "textures", "item", name + ".png")] = img
+    for name in arsenal.ORES:
+        files[os.path.join(ars, "textures", "block", name + ".png")] = arsenal.ore(name)
+    for name, (ramps, light) in arsenal.armor_sets().items():
+        l1, l2 = arsenal.armor_layers(ramps, light)
+        files[os.path.join(ars, "textures", "models", "armor", name + "_layer_1.png")] = l1
+        files[os.path.join(ars, "textures", "models", "armor", name + "_layer_2.png")] = l2
     # UI theme: overrides vanilla GUI textures, shipped in ur-core
     gui = os.path.join(REPO, "mods", "ur-core", "src", "main", "resources", "assets", "minecraft", "textures", "gui")
     for rel, obj in ui.all_ui().items():
@@ -69,8 +79,25 @@ def previews():
         sheet.alpha_composite(upscale(paper_doll(img), 4), (i * 70 + 3, 8))
     sheet.save(os.path.join(out, "npc_skins.png"))
 
-    for m in models.all_models():
+    for m in models.all_models() + arsenal.stations():
         m.render_iso(scale=14).save(os.path.join(out, f"model_{m.name}.png"))
+
+    # ur-arsenal sheet: one row per weapon type across the tiers, then armor sets, then materials
+    weapons = arsenal.all_weapon_sprites()
+    armor = arsenal.all_armor_sprites()
+    mats = arsenal.all_material_sprites()
+    tiers = list(arsenal.TIERS)
+    rows = [[weapons[f"{t}_{k}"] for t in tiers] for k in arsenal.WEAPONS + ["bow"]]
+    names = list(arsenal.armor_sets())
+    for piece in arsenal.ARMOR_PIECES:
+        rows.append([armor[f"{n}_{piece}"] for n in names])
+    rows.append(list(mats.values()))
+    cols = max(len(r) for r in rows)
+    sheet = Image.new("RGBA", (cols * 72, len(rows) * 72), (32, 28, 36, 255))
+    for y, row in enumerate(rows):
+        for x, img in enumerate(row):
+            sheet.alpha_composite(upscale(img, 4), (x * 72 + 4, y * 72 + 4))
+    sheet.save(os.path.join(out, "arsenal.png"))
 
     # UI theme preview: hotbar, buttons and the three container screens
     textures = ui.all_ui()
@@ -117,7 +144,7 @@ def style_problems():
 def extra_sprite_families():
     """Further linted sprite sets, {family: {name: image}}."""
     from assets import arsenal
-    return {"weapon": arsenal.all_weapon_sprites(), "item": arsenal.all_armor_sprites()}
+    return {"weapon": arsenal.all_weapon_sprites(), "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites()}}
 
 
 def main():

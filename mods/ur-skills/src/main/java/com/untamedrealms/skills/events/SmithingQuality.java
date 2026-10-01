@@ -31,7 +31,11 @@ public final class SmithingQuality {
     @SubscribeEvent
     public static void onCrafted(PlayerEvent.ItemCraftedEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
-        ItemStack stack = event.getCrafting();
+        roll(player, event.getCrafting());
+    }
+
+    /** Rolls a crafted piece of gear's quality from the crafter's Smithing (also used by ur-arsenal's forge). */
+    public static void roll(ServerPlayer player, ItemStack stack) {
         if (!isGear(stack) || stack.has(SkillsComponents.QUALITY.get())) return;
         int level = SkillsApi.level(player, Skill.SMITHING);
         float bonus = SkillsApi.effect(player, EffectTypes.SMITHING_QUALITY, "");
@@ -65,7 +69,7 @@ public final class SmithingQuality {
         }
     }
 
-    private static boolean isGear(ItemStack stack) {
+    public static boolean isGear(ItemStack stack) {
         if (stack.isEmpty() || !stack.isDamageableItem()) return false;
         if (stack.getItem() instanceof ArmorItem) return true;
         ItemAttributeModifiers modifiers = stack.getOrDefault(net.minecraft.core.component.DataComponents.ATTRIBUTE_MODIFIERS, ItemAttributeModifiers.EMPTY);

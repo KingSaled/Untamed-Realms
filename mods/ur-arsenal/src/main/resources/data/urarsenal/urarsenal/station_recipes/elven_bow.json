@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:elven_bow",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_moonstone",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    },
+    {
+      "item": "minecraft:string",
+      "count": 2
+    }
+  ],
+  "level": 40,
+  "xp": 52.0,
+  "category": "weapons"
+}

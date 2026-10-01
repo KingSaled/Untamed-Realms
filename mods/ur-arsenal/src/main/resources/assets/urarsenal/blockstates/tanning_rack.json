@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "urarsenal:block/tanning_rack"
+    },
+    "facing=east": {
+      "model": "urarsenal:block/tanning_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "urarsenal:block/tanning_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "urarsenal:block/tanning_rack",
+      "y": 270
+    }
+  }
+}

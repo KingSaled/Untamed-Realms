@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "urarsenal:raw_malachite"
+  },
+  "result": {
+    "id": "urarsenal:refined_malachite"
+  },
+  "experience": 0.8,
+  "cookingtime": 200
+}

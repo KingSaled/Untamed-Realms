@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:hide_chestplate",
+    "urarsenal:leather_chestplate",
+    "urarsenal:elven_chestplate",
+    "urarsenal:glass_chestplate",
+    "urarsenal:iron_chestplate",
+    "urarsenal:steel_chestplate",
+    "urarsenal:orcish_chestplate",
+    "urarsenal:dwarven_chestplate",
+    "urarsenal:ebony_chestplate",
+    "urarsenal:daedric_chestplate"
+  ]
+}

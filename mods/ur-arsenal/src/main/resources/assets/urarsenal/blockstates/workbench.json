@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "urarsenal:block/workbench"
+    },
+    "facing=east": {
+      "model": "urarsenal:block/workbench",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "urarsenal:block/workbench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "urarsenal:block/workbench",
+      "y": 270
+    }
+  }
+}

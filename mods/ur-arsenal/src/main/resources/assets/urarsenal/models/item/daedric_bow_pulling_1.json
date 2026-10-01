@@ -1,0 +1,6 @@
+{
+  "parent": "urarsenal:item/daedric_bow",
+  "textures": {
+    "layer0": "urarsenal:item/daedric_bow_pulling_1"
+  }
+}

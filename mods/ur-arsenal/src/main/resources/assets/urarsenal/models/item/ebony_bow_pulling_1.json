@@ -1,0 +1,6 @@
+{
+  "parent": "urarsenal:item/ebony_bow",
+  "textures": {
+    "layer0": "urarsenal:item/ebony_bow_pulling_1"
+  }
+}

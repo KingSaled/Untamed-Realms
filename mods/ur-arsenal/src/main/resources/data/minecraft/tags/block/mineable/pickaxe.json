@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:forge",
+    "urarsenal:orichalcum_ore",
+    "urarsenal:moonstone_ore",
+    "urarsenal:malachite_ore",
+    "urarsenal:ebony_ore"
+  ]
+}

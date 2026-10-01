@@ -1,0 +1,21 @@
+{
+  "station": "forge",
+  "result": "urarsenal:daedric_leggings",
+  "inputs": [
+    {
+      "item": "urarsenal:ebony_ingot",
+      "count": 3
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:daedra_heart",
+      "count": 1
+    }
+  ],
+  "level": 85,
+  "xp": 145.5,
+  "category": "armor"
+}

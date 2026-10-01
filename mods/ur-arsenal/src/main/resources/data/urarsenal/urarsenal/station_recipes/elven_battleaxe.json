@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:elven_battleaxe",
+  "inputs": [
+    {
+      "item": "urarsenal:refined_moonstone",
+      "count": 4
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 40,
+  "xp": 104.0,
+  "category": "weapons"
+}

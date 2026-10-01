@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:hide_chestplate",
+  "inputs": [
+    {
+      "item": "minecraft:leather",
+      "count": 4
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 1,
+  "xp": 26.0,
+  "category": "armor"
+}

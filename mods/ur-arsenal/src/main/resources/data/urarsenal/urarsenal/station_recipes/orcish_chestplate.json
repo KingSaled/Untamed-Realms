@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:orcish_chestplate",
+  "inputs": [
+    {
+      "item": "urarsenal:orichalcum_ingot",
+      "count": 4
+    },
+    {
+      "item": "urarsenal:leather_strips",
+      "count": 2
+    }
+  ],
+  "level": 20,
+  "xp": 64.0,
+  "category": "armor"
+}

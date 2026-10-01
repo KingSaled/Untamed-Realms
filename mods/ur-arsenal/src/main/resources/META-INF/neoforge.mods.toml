@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urarsenal"
+version = "${suite_version}"
+displayName = "Untamed Realms: Arsenal"
+authors = "${mod_authors}"
+description = '''
+Skyrim's material tiers - Iron, Steel, Orcish, Dwarven, Elven, Glass, Ebony, Daedric - as daggers, swords, war axes, maces, greatswords, battleaxes, warhammers, bows and light & heavy armor, forged at a forge, tanned at a tanning rack and tempered at a workbench, gated by Smithing.
+'''
+
+[[dependencies.urarsenal]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urarsenal]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urarsenal]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

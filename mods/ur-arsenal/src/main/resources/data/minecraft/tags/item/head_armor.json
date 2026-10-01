@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "urarsenal:hide_helmet",
+    "urarsenal:leather_helmet",
+    "urarsenal:elven_helmet",
+    "urarsenal:glass_helmet",
+    "urarsenal:iron_helmet",
+    "urarsenal:steel_helmet",
+    "urarsenal:orcish_helmet",
+    "urarsenal:dwarven_helmet",
+    "urarsenal:ebony_helmet",
+    "urarsenal:daedric_helmet"
+  ]
+}
