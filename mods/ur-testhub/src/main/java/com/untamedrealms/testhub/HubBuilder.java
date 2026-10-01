@@ -538,7 +538,7 @@ public final class HubBuilder {
     }
 
     /** Every item of a mod, a full stack each, in registration order. */
-    static List<ItemStack> namespace(String ns, Predicate<Item> filter) {
+    public static List<ItemStack> namespace(String ns, Predicate<Item> filter) {
         List<ItemStack> out = new ArrayList<>();
         for (Item item : BuiltInRegistries.ITEM) {
             if (item == Items.AIR || !BuiltInRegistries.ITEM.getKey(item).getNamespace().equals(ns) || !filter.test(item)) continue;
@@ -548,11 +548,11 @@ public final class HubBuilder {
     }
 
     /** For the game test: how many NPCs the hub holds. */
-    static int npcCount() {
+    public static int npcCount() {
         return NpcsData.NPCS.entries().size();
     }
 
-    static int dummyCount() {
+    public static int dummyCount() {
         return DUMMIES.length;
     }
 }
