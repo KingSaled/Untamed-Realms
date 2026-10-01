@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-73 mods in manifest, 0 failed.
+71 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -75,12 +75,6 @@
 | content | `mowzies-mobs` | locked |  |
 | content | `l_enders-cataclysm` | locked |  |
 | content | `curios` | locked |  |
-| exclude | `inventory-profiles-next` | removed | Loading modpack...
-Removing file from index...
-inventory-profiles-next removed successfully! |
-| exclude | `libipn` | removed | Loading modpack...
-Removing file from index...
-libipn removed successfully! |
 
 ## Pulled in as dependencies (review these)
 
