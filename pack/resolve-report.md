@@ -37,7 +37,7 @@
 | qol | `corpse` | locked |  |
 | qol | `sophisticated-backpacks` | locked |  |
 | qol | `polymorph` | locked |  |
-| qol | `loot-journal` | added | Project "Loot Journal: Pickup Notifier" successfully added! (loot_journal-neoforge-1.21.1-6.2.2.jar) |
+| qol | `loot-journal` | locked |  |
 | qol | `chat-heads` | locked |  |
 | qol | `betterf3` | locked |  |
 | qol | `carry-on` | locked |  |
@@ -55,8 +55,8 @@
 | world | `choicetheorems-overhauled-village` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/choicetheorems-overhauled-village: 404 -- candidates: no matches |
 | world | `dungeons-and-taverns` | locked |  |
 | world | `explorify` | locked |  |
-| world | `repurposed-structures-forge` | added | Project "Repurposed Structures - Neoforge/Forge" successfully added! (repurposed_structures-7.5.22+1.21.1-neoforge.jar) |
-| world | `repurposed-structures-farmers-delight-compat` | added | Project "Repurposed Structures - Farmer's Delight Compat" successfully added! (repurposed_structures_farmers_delight_compat_v7.jar) |
+| world | `repurposed-structures-forge` | locked |  |
+| world | `repurposed-structures-farmers-delight-compat` | locked |  |
 | world | `structory` | locked |  |
 | world | `moogs-voyager-structures` | locked |  |
 | world | `when-dungeons-arise` | locked |  |
