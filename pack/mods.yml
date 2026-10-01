@@ -70,7 +70,6 @@ world:                # ---- adventure-first world generation
   - structory
   - moogs-voyager-structures
   - when-dungeons-arise   # huge set-piece dungeons
-  - idas               # Integrated Dungeons and Structures
   - yungs-better-dungeons
   - yungs-better-mineshafts
   - yungs-better-strongholds
@@ -95,3 +94,5 @@ exclude:              # ---- never ship these, even if something pulls them in a
   - create             # tech/automation: wrong genre for this pack
   - quark              # large content overhaul; conflicts with our design
   - supplementaries
+  - idas               # hard-requires Create + Quark + Supplementaries
+  - integrated-api
