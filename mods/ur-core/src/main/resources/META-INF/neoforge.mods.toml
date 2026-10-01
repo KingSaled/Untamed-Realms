@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urcore"
+version = "${suite_version}"
+displayName = "Untamed Realms: Core"
+authors = "${mod_authors}"
+description = '''
+Shared foundation of the Untamed Realms RPG suite: Magicka & Stamina vitals, the Crown economy,
+data-driven content sync, notifications and the common UI kit.
+'''
+
+[[dependencies.urcore]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urcore]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"

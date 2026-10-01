@@ -1,0 +1,50 @@
+// Not a mod. Aggregates every Untamed Realms module so they can be run together
+// (runClient / runServer) and exercised by the headless game-test server in CI.
+
+def suite = [
+    urcore   : ':ur-core',
+    urskills : ':ur-skills',
+    urclasses: ':ur-classes',
+    urquests : ':ur-quests',
+    urnpcs   : ':ur-npcs',
+    urmagic  : ':ur-magic',
+]
+
+suite.values().each { evaluationDependsOn(it) }
+
+dependencies {
+    suite.values().each { implementation project(it) }
+}
+
+neoForge {
+    mods {
+        suite.each { modId, path ->
+            "${modId}" {
+                sourceSet project(path).sourceSets.main
+            }
+        }
+    }
+
+    runs {
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.INFO
+        }
+        client {
+            client()
+            gameDirectory = rootProject.file('run/client')
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            gameDirectory = rootProject.file('run/server')
+        }
+        gameTestServer {
+            type = 'gameTestServer'
+            gameDirectory = rootProject.file('run/gametest')
+            systemProperty 'neoforge.enabledGameTestNamespaces', suite.keySet().join(',')
+        }
+    }
+}
+
+tasks.named('jar').configure { enabled = false }

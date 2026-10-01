@@ -1,0 +1,18 @@
+# Gradle / IDE
+.gradle/
+build/
+out/
+run/
+*.iml
+.idea/
+.vscode/
+bin/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Local server installs
+server/install/

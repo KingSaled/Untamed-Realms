@@ -1,0 +1,7 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urcore:inject/coins",
+  "chance": 0.6,
+  "prefixes": ["chests/"]
+}

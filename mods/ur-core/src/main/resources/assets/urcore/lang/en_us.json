@@ -1,0 +1,19 @@
+{
+  "itemGroup.untamedrealms": "Untamed Realms",
+  "item.urcore.crown": "Crown",
+  "item.urcore.crown_purse": "Purse of Crowns",
+  "tooltip.urcore.coin_value": "Worth %s Crowns",
+  "tooltip.urcore.coin_use": "Use to add to your purse",
+  "message.urcore.deposit": "+%s Crowns (purse: %s)",
+  "gui.urcore.wallet": "%s Crowns",
+  "attribute.urcore.max_magicka": "Max Magicka",
+  "attribute.urcore.max_stamina": "Max Stamina",
+  "attribute.urcore.magicka_regen": "Magicka Regeneration",
+  "attribute.urcore.stamina_regen": "Stamina Regeneration",
+  "attribute.urcore.stamina_cost": "Stamina Cost",
+  "command.urcore.wallet.self": "Your purse holds %s Crowns.",
+  "command.urcore.wallet.set": "Set %s's purse to %s Crowns.",
+  "command.urcore.wallet.give": "Gave %s Crowns to %s.",
+  "command.urcore.vitals.refill": "Restored %s's health, magicka and stamina.",
+  "key.categories.untamedrealms": "Untamed Realms"
+}

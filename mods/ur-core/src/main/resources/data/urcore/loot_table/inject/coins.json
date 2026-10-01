@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "urcore:crown",
+          "weight": 10,
+          "functions": [ { "function": "minecraft:set_count", "count": { "type": "minecraft:uniform", "min": 3, "max": 24 } } ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urcore:crown_purse",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

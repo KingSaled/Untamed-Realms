@@ -1,0 +1,76 @@
+package com.untamedrealms.core.client;
+
+import com.untamedrealms.core.CoreClientConfig;
+import com.untamedrealms.core.UntamedCore;
+import com.untamedrealms.core.client.ui.UiKit;
+import com.untamedrealms.core.registry.CoreItems;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.ScreenEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
+
+public final class CoreClient {
+    private CoreClient() {}
+
+    @EventBusSubscriber(modid = UntamedCore.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static final class ModEvents {
+        @SubscribeEvent
+        public static void registerLayers(RegisterGuiLayersEvent event) {
+            event.registerAbove(VanillaGuiLayers.HOTBAR, UntamedCore.id("vitals"), VitalsHud::render);
+            event.registerAboveAll(UntamedCore.id("notifications"), NotificationHud::render);
+        }
+    }
+
+    @EventBusSubscriber(modid = UntamedCore.MODID, value = Dist.CLIENT)
+    public static final class GameEvents {
+        @SubscribeEvent
+        public static void onClientTick(ClientTickEvent.Post event) {
+            NotificationHud.tick();
+            preventExhaustedSprint();
+        }
+
+        @SubscribeEvent
+        public static void onClientTickPre(ClientTickEvent.Pre event) {
+            preventExhaustedSprint();
+        }
+
+        private static void preventExhaustedSprint() {
+            Minecraft mc = Minecraft.getInstance();
+            LocalPlayer player = mc.player;
+            if (player != null && ClientCoreState.exhausted() && !player.isCreative()) {
+                if (player.isSprinting()) player.setSprinting(false);
+                mc.options.keySprint.setDown(false);
+            }
+        }
+
+        @SubscribeEvent
+        public static void onLogout(ClientPlayerNetworkEvent.LoggingOut event) {
+            ClientCoreState.reset();
+            NotificationHud.clear();
+        }
+
+        /** Shows the Crown balance under the survival inventory. */
+        @SubscribeEvent
+        public static void onScreenRender(ScreenEvent.Render.Post event) {
+            if (!(event.getScreen() instanceof InventoryScreen screen) || !CoreClientConfig.SHOW_WALLET_IN_INVENTORY.get()) return;
+            GuiGraphics g = event.getGuiGraphics();
+            int x = screen.getGuiLeft() + 4;
+            int y = screen.getGuiTop() + screen.getYSize() + 3;
+            Component text = Component.translatable("gui.urcore.wallet", UiKit.compact(ClientCoreState.crowns()));
+            int w = Minecraft.getInstance().font.width(text) + 26;
+            UiKit.inset(g, x, y, w, 20);
+            g.renderItem(new ItemStack(CoreItems.CROWN.get()), x + 2, y + 2);
+            g.drawString(Minecraft.getInstance().font, text, x + 21, y + 6, UiKit.GOLD, true);
+        }
+    }
+}

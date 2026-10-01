@@ -1,0 +1,64 @@
+// Shared configuration for every Untamed Realms mod module.
+// Each module only declares its mod id, display name, description and inter-module dependencies
+// in its own build.gradle; everything else (toolchain, NeoForge, metadata expansion) lives here.
+
+plugins {
+    id 'net.neoforged.moddev' version '2.0.148' apply false
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'net.neoforged.moddev'
+
+    group = mod_group_id
+    version = "${minecraft_version}-${suite_version}"
+
+    java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+    repositories {
+        mavenCentral()
+    }
+
+    neoForge {
+        version = project.neo_version
+        parchment {
+            mappingsVersion = project.parchment_mappings_version
+            minecraftVersion = project.parchment_minecraft_version
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 21
+        options.compilerArgs << '-Xlint:deprecation'
+    }
+
+    // Expand ${...} placeholders in neoforge.mods.toml using module + suite properties.
+    tasks.named('processResources', ProcessResources).configure {
+        def props = [
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            mod_license            : mod_license,
+            mod_authors            : mod_authors,
+            suite_version          : suite_version,
+        ]
+        inputs.properties(props)
+        filesMatching(['META-INF/neoforge.mods.toml']) {
+            expand(props)
+        }
+    }
+
+    tasks.named('jar', Jar).configure {
+        archiveBaseName = project.name
+        manifest {
+            attributes([
+                'Implementation-Title'  : project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor' : 'Untamed Realms',
+            ])
+        }
+    }
+}

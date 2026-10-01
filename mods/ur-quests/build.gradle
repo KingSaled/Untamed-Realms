@@ -1,0 +1,4 @@
+dependencies {
+    api project(':ur-core')
+    api project(':ur-skills')
+}
