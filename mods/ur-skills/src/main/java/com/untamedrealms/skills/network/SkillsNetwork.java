@@ -48,7 +48,7 @@ public final class SkillsNetwork {
         PacketDistributor.sendToPlayer(player, new SkillsPayloads.Sync(tag));
     }
 
-    @EventBusSubscriber(modid = UntamedSkills.MODID, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = UntamedSkills.MODID)
     public static final class Registration {
         @SubscribeEvent
         public static void register(RegisterPayloadHandlersEvent event) {

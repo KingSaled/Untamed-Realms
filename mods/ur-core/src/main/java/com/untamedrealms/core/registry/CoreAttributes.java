@@ -15,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
  * Player attributes added by the suite. Using real attributes (instead of plain numbers) means
  * any mod - perks, gear, potions, other mods' items - can modify them through attribute modifiers.
  */
-@EventBusSubscriber(modid = UntamedCore.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = UntamedCore.MODID)
 public final class CoreAttributes {
     public static final DeferredRegister<Attribute> REGISTER = DeferredRegister.create(Registries.ATTRIBUTE, UntamedCore.MODID);
 

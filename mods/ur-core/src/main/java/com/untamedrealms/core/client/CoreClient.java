@@ -22,7 +22,7 @@ import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 public final class CoreClient {
     private CoreClient() {}
 
-    @EventBusSubscriber(modid = UntamedCore.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = UntamedCore.MODID, value = Dist.CLIENT)
     public static final class ModEvents {
         @SubscribeEvent
         public static void registerLayers(RegisterGuiLayersEvent event) {

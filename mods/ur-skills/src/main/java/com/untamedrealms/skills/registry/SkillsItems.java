@@ -12,7 +12,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@EventBusSubscriber(modid = UntamedSkills.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = UntamedSkills.MODID)
 public final class SkillsItems {
     public static final DeferredRegister.Items REGISTER = DeferredRegister.createItems(UntamedSkills.MODID);
 

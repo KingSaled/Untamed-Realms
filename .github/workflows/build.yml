@@ -42,7 +42,7 @@ jobs:
       - name: Compiler errors
         if: failure()
         run: |
-          grep -E "error:|\.java:[0-9]+:|What went wrong" -A2 build.log | head -n 250 || true
+          grep -E "error:|What went wrong" -A3 build.log | head -n 250 || true
       - name: Run game tests (headless server, all modules loaded)
         run: ./gradlew :devenv:runGameTestServer
       - name: Show game-test log on failure

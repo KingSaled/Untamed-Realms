@@ -25,7 +25,7 @@ import java.util.List;
 public final class SkillsClient {
     private SkillsClient() {}
 
-    @EventBusSubscriber(modid = UntamedSkills.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = UntamedSkills.MODID, value = Dist.CLIENT)
     public static final class ModEvents {
         @SubscribeEvent
         public static void registerKeys(RegisterKeyMappingsEvent event) {

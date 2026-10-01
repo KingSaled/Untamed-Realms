@@ -16,7 +16,7 @@ import net.neoforged.neoforge.network.registration.PayloadRegistrar;
  * Payload registration for the core module. Client-bound handlers delegate through lambdas so that
  * client-only classes are never resolved on a dedicated server.
  */
-@EventBusSubscriber(modid = UntamedCore.MODID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = UntamedCore.MODID)
 public final class CoreNetwork {
     public static final String PROTOCOL = "1";
 
