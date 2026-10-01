@@ -27,7 +27,6 @@ performance:          # ---- engine & server performance (mostly invisible)
   - fastworkbench
   - fastfurnace
   - packet-fixer       # raises packet size limits for big modpacks
-  - connectivity       # fixes login timeouts / disconnects on large packs
   - spark              # profiler (/spark) for diagnosing lag
   - chunky             # world pre-generation (/chunky)
   - yeetus-experimentus # hides the experimental-world warning
@@ -45,7 +44,7 @@ qol:                  # ---- quality of life
   - corpse             # your gear waits at your corpse instead of despawning
   - sophisticated-backpacks
   - polymorph          # resolves recipe conflicts
-  - pickup-notifier    # "+3 Iron Ore" pickup toasts
+  - loot-journal       # "+3 Iron Ore" pickup toasts (formerly Pickup Notifier)
   - chat-heads
   - betterf3
   - carry-on
@@ -64,10 +63,11 @@ world:                # ---- adventure-first world generation
   - terralith          # dramatic overworld terrain
   - lithostitched      # worldgen compatibility library
   - towns-and-towers   # medieval towns, towers & outposts
-  - ctov               # overhauled villages: bigger, regional, lived-in
+  - choicetheorems-overhauled-village  # CTOV: bigger, regional, lived-in villages
   - dungeons-and-taverns
   - explorify
-  - repurposed-structures
+  - repurposed-structures-forge
+  - repurposed-structures-farmers-delight-compat
   - structory
   - moogs-voyager-structures
   - when-dungeons-arise   # huge set-piece dungeons
