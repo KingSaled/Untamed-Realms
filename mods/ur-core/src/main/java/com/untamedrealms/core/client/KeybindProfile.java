@@ -200,9 +200,17 @@ public final class KeybindProfile {
         return m.getKeyConflictContext() == KeyConflictContext.IN_GAME || m.getKeyConflictContext() == KeyConflictContext.UNIVERSAL;
     }
 
-    /** Pairs that share a key on purpose: Jade's "show details" is meant to be held with sneak. */
+    /**
+     * Sharing that is fine: Jade's "show details" is meant to be held with sneak, and a key bound to a
+     * bare modifier (e.g. JEI "hold Shift to pause") alongside a modifier combination (Shift+PageDown).
+     */
     private static boolean intended(KeyMapping a, KeyMapping b) {
-        return isPair(a, b, "key.sneak", "key.jade.show_details");
+        return isPair(a, b, "key.sneak", "key.jade.show_details") || modifierAlone(a, b) || modifierAlone(b, a);
+    }
+
+    private static boolean modifierAlone(KeyMapping bare, KeyMapping combo) {
+        return combo.getKeyModifier() != KeyModifier.NONE && combo.getKeyModifier().matches(bare.getKey())
+                && !combo.getKey().equals(bare.getKey());
     }
 
     private static boolean isPair(KeyMapping a, KeyMapping b, String x, String y) {
