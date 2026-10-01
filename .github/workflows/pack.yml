@@ -42,7 +42,7 @@ jobs:
           else
             git commit -m "Lock modpack (automated packwiz resolve)"
             # other commits may land while we resolve: rebase onto them and retry
-            git status --short
+            git status --short   # should be empty; a dirty tree (e.g. line endings) blocks the rebase below
             pushed=no
             for i in 1 2 3 4 5; do
               if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then pushed=yes; break; fi
