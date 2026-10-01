@@ -1,0 +1,13 @@
+name = "No Moon Network Fix"
+filename = "no-moon-network-patch-0.0.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/R6x50yQC/versions/QSZPugZE/no-moon-network-patch-0.0.3.jar"
+hash-format = "sha512"
+hash = "f893b4737ed635400ea8bfcffda349ecf33dcd59e156932fc026440b7e53abf500291182559de9724cdf42399bc5c1c45d3ca6bc1cf4f1f327996d5262d8c504"
+
+[update]
+[update.modrinth]
+mod-id = "R6x50yQC"
+version = "QSZPugZE"

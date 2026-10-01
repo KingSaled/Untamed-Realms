@@ -1,0 +1,13 @@
+name = "Better Loot Zibura"
+filename = "betterloot-zibura-neoforge-1.21.1-2.0.3.jar"
+side = "both"
+
+[download]
+url = "https://cdn.modrinth.com/data/XdmLK51k/versions/56dO4dYQ/betterloot-zibura-neoforge-1.21.1-2.0.3.jar"
+hash-format = "sha512"
+hash = "a1d9215fbd4832bbb31757e3acf26c811a888ec9cfb3fcfb249b1fd88195d62862bb111c866a1e270a849e52972aac1430a431ac6263a9a8266a77771cefa29a"
+
+[update]
+[update.modrinth]
+mod-id = "XdmLK51k"
+version = "56dO4dYQ"
