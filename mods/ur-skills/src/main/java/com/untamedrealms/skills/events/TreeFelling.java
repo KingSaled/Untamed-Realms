@@ -82,7 +82,7 @@ public final class TreeFelling {
                 queue.add(immutable);
             }
         }
-        found.sort(Comparator.comparingInt(BlockPos::getY).reversed());
+        found.sort(Comparator.comparingInt((BlockPos p) -> p.getY()).reversed());
         return found;
     }
 

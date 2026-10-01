@@ -12,7 +12,7 @@ sys.path.insert(0, TOOL)
 
 from artforge.sprite import upscale                   # noqa: E402
 from artforge.model3d import blockstate_horizontal    # noqa: E402
-from assets import items, spells, npcs, models        # noqa: E402
+from assets import items, spells, npcs, models, ui    # noqa: E402
 
 MODULES = {"urcore": "ur-core", "urskills": "ur-skills", "urclasses": "ur-classes",
            "urquests": "ur-quests", "urnpcs": "ur-npcs", "urmagic": "ur-magic"}
@@ -35,6 +35,10 @@ def collect():
         files[os.path.join(base, "models", "item", m.name + ".json")] = {"parent": f"{m.namespace}:block/{m.name}"}
         files[os.path.join(base, "blockstates", m.name + ".json")] = blockstate_horizontal(f"{m.namespace}:block/{m.name}")
         files[os.path.join(TOOL, "out", "bbmodel", m.name + ".bbmodel")] = m.to_bbmodel()
+    # UI theme: overrides vanilla GUI textures, shipped in ur-core
+    gui = os.path.join(REPO, "mods", "ur-core", "src", "main", "resources", "assets", "minecraft", "textures", "gui")
+    for rel, obj in ui.all_ui().items():
+        files[os.path.join(gui, rel)] = obj
     return files
 
 
@@ -65,6 +69,19 @@ def previews():
 
     for m in models.all_models():
         m.render_iso(scale=14).save(os.path.join(out, f"model_{m.name}.png"))
+
+    # UI theme preview: hotbar, buttons and the three container screens
+    textures = ui.all_ui()
+    sheet = Image.new("RGBA", (3 * 188 + 8, 300), (32, 28, 36, 255))
+    for i, name in enumerate(("inventory", "generic_54", "crafting_table")):
+        tex = textures[f"container/{name}.png"]
+        crop = tex.crop((0, 0, 176, 222 if name == "generic_54" else 166))
+        sheet.alpha_composite(crop, (8 + i * 188, 8))
+    sheet.alpha_composite(textures["sprites/hud/hotbar.png"], (8, 240))
+    sheet.alpha_composite(textures["sprites/hud/hotbar_selection.png"], (8 + 2 * 20 - 1, 239))
+    for i, name in enumerate(("button", "button_highlighted", "button_disabled")):
+        sheet.alpha_composite(textures[f"sprites/widget/{name}.png"].crop((0, 0, 120, 20)), (200 + i * 124, 241))
+    upscale(sheet, 2).save(os.path.join(out, "ui.png"))
 
 
 def paper_doll(skin):

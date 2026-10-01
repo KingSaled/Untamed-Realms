@@ -15,5 +15,9 @@
   "command.urcore.wallet.set": "Set %s's purse to %s Crowns.",
   "command.urcore.wallet.give": "Gave %s Crowns to %s.",
   "command.urcore.vitals.refill": "Restored %s's health, magicka and stamina.",
-  "key.categories.untamedrealms": "Untamed Realms"
+  "key.categories.untamedrealms": "Untamed Realms",
+  "menu.urcore.title": "Untamed Realms",
+  "menu.urcore.tagline": "A realm of skills, spells and story",
+  "menu.urcore.play": "Play",
+  "menu.urcore.server": "Server: %s"
 }

@@ -71,6 +71,9 @@ public final class CoreClient {
         public static void onScreenOpening(ScreenEvent.Opening event) {
             if (event.getNewScreen() instanceof TitleScreen || event.getNewScreen() instanceof AccessibilityOnboardingScreen) {
                 KeybindProfile.onFirstMenu();
+                if (event.getNewScreen() instanceof TitleScreen && CoreClientConfig.CUSTOM_TITLE_SCREEN.get()) {
+                    event.setNewScreen(new UrTitleScreen());
+                }
                 if (CoreClientConfig.HIDE_VANILLA_POPUPS.get()) {
                     Minecraft mc = Minecraft.getInstance();
                     if (mc.options.tutorialStep != TutorialSteps.NONE) {
@@ -90,15 +93,15 @@ public final class CoreClient {
             }
         }
 
-        /** Shows the Crown balance under the survival inventory. */
+        /** Shows the Crown balance on a small tab above the survival inventory's top-right corner. */
         @SubscribeEvent
         public static void onScreenRender(ScreenEvent.Render.Post event) {
             if (!(event.getScreen() instanceof InventoryScreen screen) || !CoreClientConfig.SHOW_WALLET_IN_INVENTORY.get()) return;
             GuiGraphics g = event.getGuiGraphics();
-            int x = screen.getGuiLeft() + 4;
-            int y = screen.getGuiTop() + screen.getYSize() + 3;
             Component text = Component.translatable("gui.urcore.wallet", UiKit.compact(ClientCoreState.crowns()));
             int w = Minecraft.getInstance().font.width(text) + 26;
+            int x = screen.getGuiLeft() + screen.getXSize() - w;
+            int y = screen.getGuiTop() - 21;
             UiKit.inset(g, x, y, w, 20);
             g.renderItem(new ItemStack(CoreItems.CROWN.get()), x + 2, y + 2);
             g.drawString(Minecraft.getInstance().font, text, x + 21, y + 6, UiKit.GOLD, true);
