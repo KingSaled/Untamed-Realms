@@ -53,6 +53,7 @@ public final class UntamedQuests {
         ITEMS.register(modBus);
         QuestsData.init();
         container.registerConfig(ModConfig.Type.SERVER, QuestsConfig.SPEC);
+        container.registerConfig(ModConfig.Type.CLIENT, QuestsClientConfig.SPEC);
         modBus.addListener(BuildCreativeModeTabContentsEvent.class, event -> {
             if (event.getTabKey().equals(CoreItems.TAB_KEY)) event.accept(NOTICE_BOARD_ITEM.get());
         });

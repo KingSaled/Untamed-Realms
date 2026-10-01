@@ -52,5 +52,6 @@
   "objective.urquests.cast": "Cast %s",
   "objective.urquests.anything": "anything",
   "command.urquests.started": "Started %s for %s.",
-  "command.urquests.reset": "Reset all quests for %s."
+  "command.urquests.reset": "Reset all quests for %s.",
+  "message.urquests.arrived": "You arrive at a settlement. Find the Village Elder."
 }

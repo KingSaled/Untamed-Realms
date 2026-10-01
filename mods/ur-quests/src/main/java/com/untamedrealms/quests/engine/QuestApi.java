@@ -192,7 +192,7 @@ public final class QuestApi {
         return active;
     }
 
-    private static boolean othersDone(List<QuestDef.Objective> objectives, QuestLog.Active active, int except) {
+    static boolean othersDone(List<QuestDef.Objective> objectives, QuestLog.Active active, int except) {
         for (int i = 0; i < objectives.size(); i++) {
             if (i != except && !objectives.get(i).type().equals(TURN_IN) && active.progress[i] < objectives.get(i).count()) return false;
         }

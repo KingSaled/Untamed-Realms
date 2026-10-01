@@ -35,6 +35,7 @@ public final class UntamedNpcs {
     public UntamedNpcs(IEventBus modBus, ModContainer container) {
         ENTITIES.register(modBus);
         NpcsData.init();
+        com.untamedrealms.npcs.settlement.NpcLocator.register();
         modBus.addListener(EntityAttributeCreationEvent.class, event -> event.put(NPC.get(), NpcEntity.createAttributes().build()));
     }
 

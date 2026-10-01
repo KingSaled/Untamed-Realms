@@ -8,7 +8,9 @@ import com.untamedrealms.quests.engine.QuestApi;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.ComponentSerialization;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
@@ -21,6 +23,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +40,16 @@ public final class QuestsNetwork {
     public record Sync(CompoundTag log) implements CustomPacketPayload {
         public static final Type<Sync> TYPE = new Type<>(UntamedQuests.id("sync"));
         public static final StreamCodec<ByteBuf, Sync> STREAM_CODEC = ByteBufCodecs.COMPOUND_TAG.map(Sync::new, Sync::log);
+        @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
+    }
+
+    /** Server -> client: where the tracked objective is (empty = no marker). */
+    public record Marker(Optional<BlockPos> pos, Component label) implements CustomPacketPayload {
+        public static final Type<Marker> TYPE = new Type<>(UntamedQuests.id("marker"));
+        public static final StreamCodec<RegistryFriendlyByteBuf, Marker> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.optional(BlockPos.STREAM_CODEC), Marker::pos,
+                ComponentSerialization.TRUSTED_STREAM_CODEC, Marker::label,
+                Marker::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
@@ -76,6 +89,7 @@ public final class QuestsNetwork {
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar r = event.registrar("1");
         r.playToClient(Sync.TYPE, Sync.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.onSync(p.log(), ctx.player().registryAccess())));
+        r.playToClient(Marker.TYPE, Marker.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.onMarker(p.pos().orElse(null), p.label())));
         r.playToClient(OpenBoard.TYPE, OpenBoard.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.openBoard(p.pos(), p.offers())));
         r.playToServer(Track.TYPE, Track.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
             if (!(ctx.player() instanceof ServerPlayer player)) return;
@@ -104,6 +118,10 @@ public final class QuestsNetwork {
     public static void syncNow(ServerPlayer player) {
         DIRTY.remove(player.getUUID());
         PacketDistributor.sendToPlayer(player, new Sync(QuestApi.log(player).serializeNBT(player.registryAccess())));
+    }
+
+    public static void sendMarker(ServerPlayer player, @Nullable BlockPos pos, Component label) {
+        PacketDistributor.sendToPlayer(player, new Marker(Optional.ofNullable(pos), label));
     }
 
     public static void openBoard(ServerPlayer player, BlockPos pos) {
