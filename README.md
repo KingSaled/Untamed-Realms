@@ -48,11 +48,12 @@ If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*
 | **ur-quests** | Quest engine (kill, collect, talk, turn-in, explore structures/biomes, mine, craft, smelt, fish, reach skill levels, cast spells), main story chapter 1, side quests, **radiant bounties** on town notice boards, journal (J) and on-screen tracker. |
 | **ur-npcs** | Named townsfolk with branching dialogue and Speech checks, merchants priced by Speech, Skyrim-style trainers, pickpocketing, guards. **Villages populate themselves** with an elder, guards, a court wizard, a merchant, random tradesfolk and a notice board the first time you walk in. |
 | **ur-magic** | Five schools, **23 spells** (projectiles, cones, lightning, wards, summons, bound weapons, calm/fear, invisibility...), spell tomes, a spellbook with eight quick slots, a spell wheel, Restore Magicka/Stamina potions. |
+| **ur-arsenal** | Skyrim material tiers **Iron → Steel → Orcish → Dwarven → Elven → Glass → Ebony → Daedric** for daggers, swords, war axes, maces, greatswords, battleaxes, warhammers and bows (**64 weapons**, Better Combat movesets), **10 light & heavy armor sets**, four new ores, a **forge**, **tanning rack** and **workbench** (tempering) gated by Smithing, and **12 rings & amulets** worn in Curios slots. |
 
 ### Curated third-party mods (`pack/mods.yml`)
 Performance (Sodium, Lithium, ModernFix, FerriteCore, ImmediatelyFast, Entity Culling, Noisium,
 ServerCore...), quality of life (JEI, Jade, Xaero's maps, Waystones fast travel, Corpse,
-Sophisticated Backpacks, Inventory Profiles Next...), immersion (Better Combat, Combat Roll, Sound
+Sophisticated Backpacks, Curios...), immersion (Better Combat, Combat Roll, Sound
 Physics, Ambient Sounds...) and adventure worldgen (Terralith, Towns & Towers, YUNG's suite, When
 Dungeons Arise, Dungeons & Taverns, Repurposed Structures, Explorify...) plus bosses (Mowzie's
 Mobs, L_Ender's Cataclysm) and Farmer's Delight for the Cooking skill. See
@@ -62,6 +63,9 @@ Mobs, L_Ender's Cataclysm) and Farmer's Delight for the Cooking skill. See
 Every texture, NPC skin and block model we add is **generated from code**: ASCII sprite templates ×
 material palettes, procedural spell icons, an NPC skin generator, and a cuboid modeller that exports
 Minecraft JSON, Blockbench `.bbmodel` files and isometric previews. See its [README](tools/artforge/README.md).
+Every asset follows one design language, [docs/ART_STYLE.md](docs/ART_STYLE.md) (16×16, top-left light,
+palette ramps, plum outlines, centred icons, one template per family), and `python3 -m artforge lint`
+enforces it in CI. Preview sheets live in [`docs/art/`](docs/art/).
 
 ---
 
@@ -85,7 +89,8 @@ shops, spells, perks, classes, XP tables) is JSON and can be changed with a data
 
 ## Repository layout
 ```
-mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic (+ devenv runner)
+mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic, ur-arsenal (+ devenv runner)
+                 ur-arcana (alchemy & enchanting, work in progress, not built yet)
 pack/            packwiz modpack: mods.yml (source of truth), lock files, config overrides
 server/          install / start / smoke-test scripts, JVM flags, server.properties, docker-compose
 tools/artforge/  code-driven pixel art + 3D model pipeline
@@ -100,4 +105,6 @@ docs/            architecture, roadmap, guides, art previews
   then **boots a dedicated server with the entire pack + our mods** as a smoke test.
 
 ## Status
-Early development (v0.1). See the [roadmap](docs/ROADMAP.md).
+Early development. v0.1 is playable; **v0.2 is in testing**: arsenal tiers, ores, crafting stations,
+tempering and jewelry are in, while alchemy and enchanting (ur-arcana) come after this test round.
+See the [roadmap](docs/ROADMAP.md).

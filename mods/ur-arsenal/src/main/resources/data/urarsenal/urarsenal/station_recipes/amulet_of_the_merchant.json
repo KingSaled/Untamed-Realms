@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:amulet_of_the_merchant",
+  "level": 30,
+  "xp": 50,
+  "category": "jewelry",
+  "inputs": [
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 2
+    },
+    {
+      "item": "minecraft:emerald",
+      "count": 2
+    }
+  ]
+}

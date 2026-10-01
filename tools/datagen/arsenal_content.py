@@ -236,12 +236,44 @@ write(f"data/{NS}/loot_modifiers/dwarven_scrap.json", {"type": "urcore:inject_ch
                                                       "table": f"{NS}:inject/dwarven_scrap", "chance": 0.25, "prefixes": ["chests/"]})
 write("data/neoforge/loot_modifiers/global_loot_modifiers.json", {"replace": False, "entries": [f"{NS}:dwarven_scrap"]})
 
+# ------------------------------------------------------------------ jewelry (Curios rings & amulets)
+# name: (description, metal, gem, gem count, smithing level)
+JEWELRY = {
+    "ring_of_strength": ("+10% one- and two-handed damage", "minecraft:gold_ingot", "minecraft:redstone", 8, 25),
+    "ring_of_the_archer": ("+15% archery damage", "minecraft:iron_ingot", "minecraft:emerald", 1, 25),
+    "ring_of_magicka": ("+30 Magicka", "minecraft:iron_ingot", "minecraft:lapis_lazuli", 6, 30),
+    "ring_of_stamina": ("+30 Stamina", "minecraft:gold_ingot", "minecraft:emerald", 1, 30),
+    "ring_of_vitality": ("+2 hearts", "minecraft:iron_ingot", "minecraft:redstone", 8, 35),
+    "ring_of_the_thief": ("+15% pickpocket chance, harder to notice while sneaking", "minecraft:iron_ingot", "minecraft:amethyst_shard", 4, 35),
+    "amulet_of_destruction": ("Destruction spells 15% stronger and 10% cheaper", "minecraft:gold_ingot", "minecraft:redstone", 8, 40),
+    "amulet_of_restoration": ("Restoration spells 15% stronger and 10% cheaper", "minecraft:gold_ingot", "urarsenal:refined_moonstone", 2, 40),
+    "amulet_of_the_merchant": ("10% better prices with merchants", "minecraft:gold_ingot", "minecraft:emerald", 2, 30),
+    "amulet_of_warding": ("Take 8% less damage", "minecraft:iron_ingot", "minecraft:amethyst_shard", 4, 50),
+    "amulet_of_learning": ("+10% skill experience", "minecraft:iron_ingot", "minecraft:lapis_lazuli", 6, 50),
+    "amulet_of_vigor": ("Magicka and Stamina regenerate 25% faster", "minecraft:gold_ingot", "minecraft:lapis_lazuli", 6, 45),
+}
+rings, necklaces = [], []
+for name, (desc, metal, gem, gems, level) in JEWELRY.items():
+    lang[f"item.{NS}.{name}"] = title(name).replace(" Of ", " of ").replace(" The ", " the ")
+    lang[f"item.{NS}.{name}.desc"] = desc
+    write(f"assets/{NS}/models/item/{name}.json", {"parent": "minecraft:item/generated", "textures": {"layer0": f"{NS}:item/{name}"}})
+    (rings if name.startswith("ring") else necklaces).append(f"{NS}:{name}")
+    write(f"data/{NS}/{NS}/station_recipes/{name}.json", {
+        "station": "forge", "result": f"{NS}:{name}", "level": level, "xp": 20 + level, "category": "jewelry",
+        "inputs": [{"item": metal, "count": 2}, {"item": gem, "count": gems}]})
+tag("data/curios/tags/item/ring.json", rings)
+tag("data/curios/tags/item/necklace.json", necklaces)
+write(f"data/{NS}/curios/entities/player.json", {"entities": ["player"], "slots": ["ring", "necklace"]})
+
 # ------------------------------------------------------------------ UI strings
 lang.update({
     "screen.urarsenal.all": "All",
     "screen.urarsenal.category.weapons": "Weapons",
     "screen.urarsenal.category.armor": "Armor",
     "screen.urarsenal.category.materials": "Materials",
+    "screen.urarsenal.category.jewelry": "Jewelry",
+    "tooltip.urarsenal.wear_ring": "Wear in a ring slot (accessories: G)",
+    "tooltip.urarsenal.wear_amulet": "Wear in the necklace slot (accessories: G)",
     "screen.urarsenal.craft": "Craft",
     "screen.urarsenal.craft_five": "Craft x5",
     "screen.urarsenal.temper": "Temper",

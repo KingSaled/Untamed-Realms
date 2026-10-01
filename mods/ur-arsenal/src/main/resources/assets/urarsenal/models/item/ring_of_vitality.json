@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "urarsenal:item/ring_of_vitality"
+  }
+}

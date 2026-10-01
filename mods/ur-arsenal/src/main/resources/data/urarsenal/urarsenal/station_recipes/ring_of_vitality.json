@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:ring_of_vitality",
+  "level": 35,
+  "xp": 55,
+  "category": "jewelry",
+  "inputs": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 2
+    },
+    {
+      "item": "minecraft:redstone",
+      "count": 8
+    }
+  ]
+}

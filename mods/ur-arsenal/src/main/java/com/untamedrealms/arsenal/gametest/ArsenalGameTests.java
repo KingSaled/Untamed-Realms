@@ -1,5 +1,7 @@
 package com.untamedrealms.arsenal.gametest;
 
+import com.untamedrealms.arsenal.block.Station;
+import net.minecraft.world.entity.player.Player;
 import com.untamedrealms.arsenal.ArsenalArmor;
 import com.untamedrealms.arsenal.ArsenalBlocks;
 import com.untamedrealms.arsenal.ArsenalItems;
@@ -67,21 +69,20 @@ public class ArsenalGameTests {
 
     @GameTest(template = "arena")
     public static void forgeMakesSteel(GameTestHelper helper) {
-        BlockPos forge = new BlockPos(1, 1, 1);
-        helper.setBlock(forge, ArsenalBlocks.FORGE.get());
-        ServerPlayer player = helper.makeMockServerPlayerInLevel();
-        player.setGameMode(GameType.SURVIVAL);
-        player.moveTo(helper.absoluteVec(forge.getCenter()).add(1, 0, 0));
+        // a plain mock player: mock server players have no network channels, so crafting's packets can't be sent
+        Player player = helper.makeMockPlayer(GameType.SURVIVAL);
         player.getInventory().add(new ItemStack(Items.IRON_INGOT, 2));
         player.getInventory().add(new ItemStack(Items.COAL, 2));
-        StationLogic.craft(player, helper.absolutePos(forge), UntamedArsenal.id("steel_ingot"), 2);
+        StationRecipe recipe = UntamedArsenal.RECIPES.getOrNull(UntamedArsenal.id("steel_ingot"));
+        helper.assertTrue(recipe != null && recipe.station() == Station.FORGE, "steel is made at the forge");
+        int crafted = 0;
+        while (StationLogic.craftOnce(player, recipe)) crafted++;
         int steel = 0, iron = 0;
         for (ItemStack s : player.getInventory().items) {
             if (s.is(ArsenalItems.STEEL_INGOT.get())) steel += s.getCount();
             if (s.is(Items.IRON_INGOT)) iron += s.getCount();
         }
-        helper.assertTrue(steel == 2 && iron == 0, "forge should turn 2 iron + 2 coal into 2 steel (got " + steel + " steel, " + iron + " iron left)");
-        helper.assertTrue(BuiltInRegistries.ITEM.getKey(ArsenalItems.STEEL_INGOT.get()).getPath().equals("steel_ingot"), "steel registered");
+        helper.assertTrue(crafted == 2 && steel == 2 && iron == 0, "forge should turn 2 iron + 2 coal into 2 steel (got " + steel + " steel, " + iron + " iron left)");
         helper.succeed();
     }
 }

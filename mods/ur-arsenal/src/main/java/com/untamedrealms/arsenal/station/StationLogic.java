@@ -16,6 +16,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 /** Server-side crafting at the forge / tanning rack and tempering at the workbench. */
@@ -51,6 +52,17 @@ public final class StationLogic {
         }
     }
 
+    /** Takes one set of inputs and gives one result (with a quality roll); false if inputs are missing. */
+    public static boolean craftOnce(Player player, StationRecipe recipe) {
+        boolean ok = recipe.inputs().stream().allMatch(in -> count(player.getInventory(), in) >= in.count());
+        if (!ok) return false;
+        recipe.inputs().forEach(in -> take(player.getInventory(), in));
+        ItemStack result = recipe.resultStack();
+        SmithingQuality.roll(player, result);
+        if (!player.getInventory().add(result)) player.drop(result, false);
+        return true;
+    }
+
     public static void craft(ServerPlayer player, BlockPos pos, ResourceLocation id, int times) {
         StationRecipe recipe = UntamedArsenal.RECIPES.getOrNull(id);
         if (recipe == null || !atStation(player, pos, recipe.station())) return;
@@ -60,12 +72,7 @@ public final class StationLogic {
         }
         int made = 0;
         for (int i = 0; i < Math.max(1, Math.min(64, times)); i++) {
-            boolean ok = recipe.inputs().stream().allMatch(in -> count(player.getInventory(), in) >= in.count());
-            if (!ok) break;
-            recipe.inputs().forEach(in -> take(player.getInventory(), in));
-            ItemStack result = recipe.resultStack();
-            SmithingQuality.roll(player, result);
-            if (!player.getInventory().add(result)) player.drop(result, false);
+            if (!craftOnce(player, recipe)) break;
             SkillsApi.addXp(player, recipe.skill(), recipe.xp());
             made++;
         }

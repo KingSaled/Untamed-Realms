@@ -12,13 +12,15 @@
 - [x] ArtForge: sprites, NPC skins, 3D block models, Blockbench export
 
 ## v0.2 — Arsenal & crafting depth
-- **ur-arsenal**: Skyrim-style material tiers (Iron → Steel → Orcish → Dwarven → Elven → Glass → Ebony → Daedric)
+- [x] **ur-arsenal**: Skyrim-style material tiers (Iron → Steel → Orcish → Dwarven → Elven → Glass → Ebony → Daedric)
   for daggers, swords, war axes, maces, greatswords, battleaxes, warhammers, bows; light & heavy armor sets;
   Better Combat weapon attributes; ArtForge templates for every tier.
-- Forge / tanning rack / grindstone **crafting stations** gated by Smithing; tempering at a workbench.
-- Rings & amulets as Curios accessories with enchant-like effects (SkillEffect powered).
-- Real **alchemy**: ingredients with hidden effects discovered by eating, an alchemy lab.
-- **Enchanting** overhaul: disenchant to learn, enchant with soul gems.
+- [x] Forge / tanning rack **crafting stations** gated by Smithing; tempering at a workbench (the workbench
+  took the grindstone's role).
+- [x] Rings & amulets as Curios accessories with enchant-like effects (SkillEffect powered).
+- [x] Art design language: [ART_STYLE.md](ART_STYLE.md) + ArtForge lint in CI.
+- [ ] Real **alchemy**: ingredients with hidden effects discovered by eating, an alchemy lab. *(ur-arcana, started; after the v0.2 playtest)*
+- [ ] **Enchanting** overhaul: disenchant to learn, enchant with soul gems. *(ur-arcana, started; after the v0.2 playtest)*
 
 ## v0.3 — The living world
 - Lockpicking minigame for locked chests/doors in our own dungeons.

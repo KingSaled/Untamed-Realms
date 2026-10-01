@@ -1,4 +1,9 @@
+repositories {
+    maven { url = 'https://maven.theillusivec4.top/' }   // Curios API (rings & amulets), present in the modpack at runtime
+}
+
 dependencies {
     api project(':ur-core')
     api project(':ur-skills')
+    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
 }

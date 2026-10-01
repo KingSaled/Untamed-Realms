@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urarcana"
+version = "${suite_version}"
+displayName = "Untamed Realms: Arcana"
+authors = "${mod_authors}"
+description = '''
+Skyrim-style alchemy (ingredients with hidden effects you discover by tasting and brewing at an alchemy lab) and enchanting (disenchant items to learn their enchantments, enchant gear with filled soul gems at an arcane enchanter).
+'''
+
+[[dependencies.urarcana]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urarcana]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urarcana]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

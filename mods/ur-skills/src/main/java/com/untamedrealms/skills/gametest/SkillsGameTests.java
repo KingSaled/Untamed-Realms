@@ -44,10 +44,12 @@ public class SkillsGameTests {
 
     @GameTest(template = "arena")
     public static void xpTablesAndRequirementsLoad(GameTestHelper helper) {
-        XpSource mining = SkillsData.xpSources(XpSource.Trigger.BREAK_BLOCK).stream()
-                .filter(s -> s.skill() == Skill.MINING).findFirst().orElse(null);
-        helper.assertTrue(mining != null, "mining xp table loaded");
-        XpSource.Entry diamond = SkillsData.bestEntry(mining, Blocks.DIAMOND_ORE.defaultBlockState());
+        // other modules add their own mining tables (e.g. ur-arsenal's ores), so look through all of them
+        var mining = SkillsData.xpSources(XpSource.Trigger.BREAK_BLOCK).stream()
+                .filter(s -> s.skill() == Skill.MINING).toList();
+        helper.assertTrue(!mining.isEmpty(), "mining xp table loaded");
+        XpSource.Entry diamond = mining.stream().map(s -> SkillsData.bestEntry(s, Blocks.DIAMOND_ORE.defaultBlockState()))
+                .filter(java.util.Objects::nonNull).findFirst().orElse(null);
         helper.assertTrue(diamond != null && diamond.xp() == 50, "diamond ore gives 50 mining xp (most specific entry wins)");
         helper.assertTrue(!SkillsData.requirements(Blocks.DIAMOND_ORE.defaultBlockState()).isEmpty(), "diamond ore has a mining requirement");
         helper.assertTrue(SkillsData.grantsBreakXp(Blocks.OAK_LOG.defaultBlockState()), "oak logs grant woodcutting xp");

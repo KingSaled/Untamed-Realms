@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:amulet_of_vigor",
+  "level": 45,
+  "xp": 65,
+  "category": "jewelry",
+  "inputs": [
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 2
+    },
+    {
+      "item": "minecraft:lapis_lazuli",
+      "count": 6
+    }
+  ]
+}

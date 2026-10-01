@@ -388,3 +388,44 @@ def stations():
     bench.cube((3, 15, 4), (9, 17, 7), "iron", name="whetstone")
     bench.cube((10, 15, 9), (14, 16, 13), "iron", name="tongs")
     return [forge, rack, bench]
+
+
+# -------------------------------------------------------------------------------------- jewelry
+
+RING_BAND = ["..####..", ".#....#.", "#......#", "#......#", "#......#", ".#....#.", "..####.."]
+AMULET_CHAIN = ["#........#", ".#......#.", "..#....#..", "...#..#...", "....##...."]
+GEM = [".##.", "####", "####", ".##."]
+
+# jewel: (kind, metal ramp, gem ramp)
+JEWELRY = {
+    "ring_of_strength": ("ring", P.GOLD, P.RUBY),
+    "ring_of_the_archer": ("ring", P.SILVER, P.EMERALD),
+    "ring_of_magicka": ("ring", P.SILVER, P.SAPPHIRE),
+    "ring_of_stamina": ("ring", P.GOLD, P.EMERALD),
+    "ring_of_vitality": ("ring", P.SILVER, P.RUBY),
+    "ring_of_the_thief": ("ring", P.SILVER, P.AMETHYST),
+    "amulet_of_destruction": ("amulet", P.GOLD, P.RUBY),
+    "amulet_of_restoration": ("amulet", P.GOLD, P.MOONSTONE),
+    "amulet_of_the_merchant": ("amulet", P.GOLD, P.EMERALD),
+    "amulet_of_warding": ("amulet", P.SILVER, P.AMETHYST),
+    "amulet_of_learning": ("amulet", P.SILVER, P.SAPPHIRE),
+    "amulet_of_vigor": ("amulet", P.GOLD, P.SAPPHIRE),
+}
+
+
+def jewel(name):
+    """Ring: band with the stone set at the top. Amulet: chain with a pendant stone below."""
+    kind, metal, gem = JEWELRY[name]
+    img = canvas()
+    if kind == "ring":
+        head(img, metal, RING_BAND, 4, 6)
+        head(img, gem, GEM, 6, 3)
+    else:
+        head(img, metal, AMULET_CHAIN, 3, 2)
+        head(img, metal, ["####", "#..#"], 6, 7)
+        head(img, gem, GEM, 6, 9)
+    return outline(img, P.OUTLINE)
+
+
+def all_jewelry_sprites():
+    return {name: jewel(name) for name in JEWELRY}

@@ -6,6 +6,7 @@ import com.untamedrealms.skills.api.SkillsApi;
 import com.untamedrealms.skills.effect.EffectTypes;
 import com.untamedrealms.skills.registry.SkillsComponents;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -35,7 +36,7 @@ public final class SmithingQuality {
     }
 
     /** Rolls a crafted piece of gear's quality from the crafter's Smithing (also used by ur-arsenal's forge). */
-    public static void roll(ServerPlayer player, ItemStack stack) {
+    public static void roll(Player player, ItemStack stack) {
         if (!isGear(stack) || stack.has(SkillsComponents.QUALITY.get())) return;
         int level = SkillsApi.level(player, Skill.SMITHING);
         float bonus = SkillsApi.effect(player, EffectTypes.SMITHING_QUALITY, "");

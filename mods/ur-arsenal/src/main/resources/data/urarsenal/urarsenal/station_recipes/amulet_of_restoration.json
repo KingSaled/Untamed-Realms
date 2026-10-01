@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:amulet_of_restoration",
+  "level": 40,
+  "xp": 60,
+  "category": "jewelry",
+  "inputs": [
+    {
+      "item": "minecraft:gold_ingot",
+      "count": 2
+    },
+    {
+      "item": "urarsenal:refined_moonstone",
+      "count": 2
+    }
+  ]
+}

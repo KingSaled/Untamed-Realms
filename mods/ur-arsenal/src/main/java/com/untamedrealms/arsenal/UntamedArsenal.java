@@ -24,9 +24,12 @@ public final class UntamedArsenal {
             DataRegistry.create(id("station_recipes"), "urarsenal/station_recipes", StationRecipe.CODEC, true);
 
     public UntamedArsenal(IEventBus modBus, ModContainer container) {
+        ArsenalComponents.COMPONENTS.register(modBus);
         ArsenalBlocks.BLOCKS.register(modBus);
+        com.untamedrealms.arsenal.jewelry.ArsenalJewelry.init();
         ArsenalArmor.MATERIALS.register(modBus);   // also adds the armor items to ArsenalItems.ITEMS
         ArsenalItems.ITEMS.register(modBus);
+        if (net.neoforged.fml.ModList.get().isLoaded("curios")) com.untamedrealms.arsenal.jewelry.CuriosCompat.init();
         modBus.addListener(BuildCreativeModeTabContentsEvent.class, event -> {
             if (event.getTabKey().equals(CoreItems.TAB_KEY)) {
                 ArsenalItems.ITEMS.getEntries().forEach(item -> event.accept(item.get()));

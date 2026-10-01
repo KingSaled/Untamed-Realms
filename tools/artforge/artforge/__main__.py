@@ -37,7 +37,8 @@ def collect():
         files[os.path.join(TOOL, "out", "bbmodel", m.name + ".bbmodel")] = m.to_bbmodel()
     # ur-arsenal: weapons, armor icons + layers, materials, ores
     ars = assets_dir("urarsenal")
-    for name, img in {**arsenal.all_weapon_sprites(), **arsenal.all_armor_sprites(), **arsenal.all_material_sprites()}.items():
+    for name, img in {**arsenal.all_weapon_sprites(), **arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
+                      **arsenal.all_jewelry_sprites()}.items():
         files[os.path.join(ars, "textures", "item", name + ".png")] = img
     for name in arsenal.ORES:
         files[os.path.join(ars, "textures", "block", name + ".png")] = arsenal.ore(name)
@@ -92,6 +93,7 @@ def previews():
     for piece in arsenal.ARMOR_PIECES:
         rows.append([armor[f"{n}_{piece}"] for n in names])
     rows.append(list(mats.values()))
+    rows.append(list(arsenal.all_jewelry_sprites().values()))
     cols = max(len(r) for r in rows)
     sheet = Image.new("RGBA", (cols * 72, len(rows) * 72), (32, 28, 36, 255))
     for y, row in enumerate(rows):
@@ -144,7 +146,8 @@ def style_problems():
 def extra_sprite_families():
     """Further linted sprite sets, {family: {name: image}}."""
     from assets import arsenal
-    return {"weapon": arsenal.all_weapon_sprites(), "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites()}}
+    return {"weapon": arsenal.all_weapon_sprites(), "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
+                                                                         **arsenal.all_jewelry_sprites()}}
 
 
 def main():

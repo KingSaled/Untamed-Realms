@@ -47,6 +47,19 @@ Sneak while chopping to cut a single log.
 **Crowns** are your currency. Coins you pick up go in your purse when used. Your balance shows on a tab
 above the inventory. Merchants' prices improve with Speech. You lose a little coin when you die.
 
+## Smithing & gear
+Craft a **forge** (furnace + iron + cobblestone), a **tanning rack** and a **workbench** at a crafting
+table. Right-click a station to open its recipe window: it shows what you have and what you need.
+* **Forge**: steel ingots, weapons, armor, rings and amulets. Each tier needs a Smithing level
+  (Iron 1, Steel 10, Orcish 20, Dwarven 30, Elven 40, Glass 55, Ebony 70, Daedric 85), and wielding
+  it needs the matching combat skill.
+* **Tanning rack**: leather and leather strips from hides.
+* **Workbench**: temper a piece of gear one quality step per material, up to the cap your Smithing allows.
+* **Materials**: Orichalcum (Orcish), Moonstone (Elven), Malachite (Glass) and Ebony ores underground,
+  smelted into ingots; Dwarven scrap from dungeon chests; Daedra hearts from wither skeletons, blazes
+  and piglin brutes.
+* **Rings & amulets** go in the ring and necklace slots of the accessories (Curios) screen.
+
 ## Magic
 Read **spell tomes** (bought from court wizards and priests, found in chests) to learn spells; you need
 enough skill in the spell's school. Pick a readied spell on the spell wheel (hold Z) and cast with R; arrange the wheel in the spellbook (N).

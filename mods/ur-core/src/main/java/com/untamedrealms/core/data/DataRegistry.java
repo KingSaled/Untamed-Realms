@@ -134,7 +134,8 @@ public final class DataRegistry<T> {
     // ---------------------------------------------------------------- syncing
 
     void sendTo(ServerPlayer player) {
-        if (!synced) return;
+        // game-test mock players have no negotiated channels
+        if (!synced || !player.connection.hasChannel(CorePayloads.DataSync.TYPE)) return;
         RegistryOps<Tag> ops = RegistryOps.create(NbtOps.INSTANCE, player.registryAccess());
         mapCodec.encodeStart(ops, entries)
                 .resultOrPartial(error -> UntamedCore.LOGGER.error("[{}] Failed to encode for sync: {}", id, error))

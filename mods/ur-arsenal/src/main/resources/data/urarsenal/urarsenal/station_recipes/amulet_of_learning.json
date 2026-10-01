@@ -1,0 +1,17 @@
+{
+  "station": "forge",
+  "result": "urarsenal:amulet_of_learning",
+  "level": 50,
+  "xp": 70,
+  "category": "jewelry",
+  "inputs": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 2
+    },
+    {
+      "item": "minecraft:lapis_lazuli",
+      "count": 6
+    }
+  ]
+}
