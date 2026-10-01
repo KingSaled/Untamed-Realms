@@ -1,0 +1,70 @@
+name: Release
+
+# Push a tag like v0.1.0 to publish: the Untamed Realms mod jars plus a complete .mrpack in which our
+# jars are included (downloaded from this release) alongside every Modrinth mod.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to (re)publish'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Build mods
+        run: ./gradlew build
+      - name: Collect jars
+        run: |
+          mkdir -p dist
+          for jar in $(find mods -path '*/build/libs/ur-*.jar' ! -name '*-sources.jar'); do
+            if unzip -l "$jar" | grep -q 'META-INF/neoforge.mods.toml'; then cp "$jar" dist/; fi
+          done
+          ls -l dist
+      - name: Add our jars to the pack and export .mrpack
+        env:
+          TAG: ${{ inputs.tag || github.ref_name }}
+          REPO: ${{ github.repository }}
+        run: |
+          go install github.com/packwiz/packwiz@latest
+          export PATH="$HOME/go/bin:$PATH"
+          for jar in dist/*.jar; do
+            name=$(basename "$jar" .jar | sed -E 's/-1\.21\.1-.*//')
+            cat > "pack/mods/$name.pw.toml" <<TOML
+          name = "Untamed Realms: $name"
+          filename = "$(basename "$jar")"
+          side = "both"
+
+          [download]
+          url = "https://github.com/$REPO/releases/download/$TAG/$(basename "$jar")"
+          hash-format = "sha512"
+          hash = "$(sha512sum "$jar" | cut -d' ' -f1)"
+          TOML
+            sed -i 's/^          //' "pack/mods/$name.pw.toml"
+          done
+          sed -i -E "s/^version = .*/version = \"${TAG#v}\"/" pack/pack.toml
+          cd pack && packwiz refresh && packwiz modrinth export -o "../dist/untamed-realms-${TAG#v}.mrpack"
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.tag || github.ref_name }}
+          name: Untamed Realms ${{ inputs.tag || github.ref_name }}
+          generate_release_notes: true
+          files: dist/*
