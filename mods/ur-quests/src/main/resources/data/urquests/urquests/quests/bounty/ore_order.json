@@ -7,11 +7,10 @@
       "description": "The smithy is short of ore.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "minecraft:raw_iron",
           "count": 16,
-          "consume": true,
-          "text": "Deliver raw iron"
+          "text": "Deliver raw iron at a notice board"
         }
       ]
     }

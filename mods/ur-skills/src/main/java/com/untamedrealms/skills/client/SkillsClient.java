@@ -17,6 +17,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
+import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
 
@@ -35,6 +37,7 @@ public final class SkillsClient {
         @SubscribeEvent
         public static void registerLayers(RegisterGuiLayersEvent event) {
             event.registerAboveAll(UntamedSkills.id("xp_drops"), XpDropHud::render);
+            event.registerAbove(VanillaGuiLayers.EXPERIENCE_BAR, UntamedSkills.id("level_bar"), LevelBarHud::render);
         }
     }
 
@@ -47,6 +50,15 @@ public final class SkillsClient {
             Minecraft mc = Minecraft.getInstance();
             while (SkillsKeys.OPEN_SKILLS.consumeClick()) {
                 if (mc.player != null && mc.screen == null) mc.setScreen(new SkillsScreen());
+            }
+        }
+
+        /** Our character-level bar replaces vanilla's experience bar and number. */
+        @SubscribeEvent
+        public static void hideVanillaXp(RenderGuiLayerEvent.Pre event) {
+            if ((event.getName().equals(VanillaGuiLayers.EXPERIENCE_BAR) || event.getName().equals(VanillaGuiLayers.EXPERIENCE_LEVEL))
+                    && LevelBarHud.active()) {
+                event.setCanceled(true);
             }
         }
 

@@ -18,6 +18,7 @@ public final class CoreConfig {
 
     public static final ModConfigSpec.DoubleValue HUNGER_RATE;
     public static final ModConfigSpec.BooleanValue SPRINT_COSTS_HUNGER;
+    public static final ModConfigSpec.DoubleValue FOOD_HEALING;
 
     public static final ModConfigSpec.BooleanValue KEEP_WALLET_ON_DEATH;
     public static final ModConfigSpec.DoubleValue DEATH_COIN_LOSS;
@@ -46,6 +47,9 @@ public final class CoreConfig {
                 .defineInRange("rate", 0.5, 0.0, 4.0);
         SPRINT_COSTS_HUNGER = BUILDER.comment("Whether sprinting and jumping also use food, as in vanilla.")
                 .define("sprintCostsHunger", false);
+        FOOD_HEALING = BUILDER.comment("Food heals over a few seconds: (0.6 x food points + 0.4 x saturation) x this, in half-hearts. 0 = off.",
+                        "Food can be eaten even when full.")
+                .defineInRange("foodHealing", 1.0, 0.0, 10.0);
         BUILDER.pop();
 
         BUILDER.comment("The Crown economy (wallet balance is separate from physical coin items).").push("economy");

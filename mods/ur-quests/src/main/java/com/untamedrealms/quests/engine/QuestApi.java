@@ -33,7 +33,8 @@ import java.util.function.Predicate;
 public final class QuestApi {
     /** Objective types the engine tracks itself. Any other type can be driven via {@link #progress}. */
     public static final String KILL = "kill", COLLECT = "collect", TALK = "talk", TURN_IN = "turn_in", VISIT = "visit",
-            BIOME = "biome", MINE = "mine", CRAFT = "craft", SMELT = "smelt", FISH = "fish", SKILL = "skill", LEVEL = "level";
+            BIOME = "biome", MINE = "mine", CRAFT = "craft", SMELT = "smelt", FISH = "fish", SKILL = "skill", LEVEL = "level",
+            DELIVER = "deliver";
 
     private QuestApi() {}
 
@@ -148,6 +149,34 @@ public final class QuestApi {
         if (active == null || index >= active.progress.length || active.progress[index] == value) return;
         active.progress[index] = value;
         QuestsNetwork.markDirty(player);
+    }
+
+    /**
+     * Hands in {@code amount} items from inventory slot {@code slot} for a "deliver" objective (at a
+     * notice board). Only matching items are taken, never more than the objective still needs.
+     */
+    public static boolean deliver(ServerPlayer player, ResourceLocation id, int index, int slot, int amount) {
+        QuestLog.Active active = log(player).active().get(id);
+        QuestDef def = QuestsData.get(id);
+        if (active == null || def == null || active.stage >= def.stages().size()) return false;
+        List<QuestDef.Objective> objectives = def.stages().get(active.stage).objectives();
+        if (index < 0 || index >= objectives.size() || slot < 0 || slot >= player.getInventory().items.size()) return false;
+        QuestDef.Objective obj = objectives.get(index);
+        ensureSize(active, objectives.size());
+        int needed = obj.count() - active.progress[index];
+        ItemStack stack = player.getInventory().items.get(slot);
+        if (!obj.type().equals(DELIVER) || needed <= 0 || !Targets.item(obj.target(), stack)) return false;
+        int take = Math.min(Math.min(amount, stack.getCount()), needed);
+        if (take <= 0) return false;
+        stack.shrink(take);
+        active.progress[index] += take;
+        player.level().playSound(null, player.blockPosition(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 0.6f, 0.8f);
+        if (active.progress[index] >= obj.count() && objectives.size() > 1) {
+            UR.subtle(player, Component.translatable("message.urquests.objective_done", describe(obj)).withStyle(ChatFormatting.GRAY));
+        }
+        checkStage(player, id);
+        QuestsNetwork.markDirty(player);
+        return true;
     }
 
     /** NPCs call this whenever the player talks to them. Handles both talk and turn-in objectives. */

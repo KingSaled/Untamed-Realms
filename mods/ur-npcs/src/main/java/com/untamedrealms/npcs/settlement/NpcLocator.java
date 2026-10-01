@@ -25,7 +25,7 @@ public final class NpcLocator {
         QuestMarkers.register(QuestApi.TURN_IN, 60, NpcLocator::locate);
     }
 
-    static @Nullable BlockPos locate(ServerPlayer player, String target) {
+    static @Nullable QuestMarkers.Located locate(ServerPlayer player, String target) {
         ServerLevel level = player.serverLevel();
         NpcEntity best = null;
         double bestDist = Double.MAX_VALUE;
@@ -36,7 +36,7 @@ public final class NpcLocator {
                 best = npc;
             }
         }
-        if (best != null) return best.blockPosition();
+        if (best != null) return new QuestMarkers.Located(best.blockPosition(), best.getCustomName());
 
         BlockPos nearest = null;
         double nearestDist = Double.MAX_VALUE;
@@ -49,6 +49,6 @@ public final class NpcLocator {
                 nearest = pos;
             }
         }
-        return nearest;
+        return QuestMarkers.Located.at(nearest);
     }
 }

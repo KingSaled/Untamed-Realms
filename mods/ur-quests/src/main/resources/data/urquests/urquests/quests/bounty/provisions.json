@@ -7,11 +7,10 @@
       "description": "The garrison needs cooked meat.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "minecraft:cooked_beef|minecraft:cooked_porkchop|minecraft:cooked_mutton|minecraft:cooked_chicken",
           "count": 16,
-          "consume": true,
-          "text": "Deliver cooked meat"
+          "text": "Deliver cooked meat at a notice board"
         }
       ]
     }

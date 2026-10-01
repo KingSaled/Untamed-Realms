@@ -55,21 +55,15 @@ public final class ClientClasses {
         pendingOpen = false;
     }
 
-    /** Adds "Warrior · born under The Lord" to the skills screen header. */
-    @SubscribeEvent
-    public static void onSkillsScreen(ScreenEvent.Render.Post event) {
-        if (!(event.getScreen() instanceof SkillsScreen screen)) return;
+    /** "Warrior · born under The Lord", shown under the skills screen title. */
+    public static Component classLine() {
         ClassDef def = ClassesData.CLASSES.getOrNull(classId);
-        if (def == null) return;
+        if (def == null) return null;
         Birthsign sign = ClassesData.BIRTHSIGNS.getOrNull(birthsign);
-        Component text = sign == null ? def.name().copy()
-                : Component.translatable("screen.urclasses.class_line", def.name(), sign.name());
-        GuiGraphics g = event.getGuiGraphics();
-        var font = Minecraft.getInstance().font;
-        int panelW = Math.min(screen.width - 16, 440);
-        int panelH = Math.min(screen.height - 16, 46 + 18 + 6 * 24 + 14);
-        int left = (screen.width - panelW) / 2;
-        int top = (screen.height - panelH) / 2;
-        g.drawString(font, text, left + panelW - 10 - font.width(text), top + 9, UiKit.TEXT_DIM, false);
+        return sign == null ? def.name().copy() : Component.translatable("screen.urclasses.class_line", def.name(), sign.name());
+    }
+
+    static {
+        SkillsScreen.subtitle = ClientClasses::classLine;
     }
 }

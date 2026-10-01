@@ -7,11 +7,10 @@
       "description": "The fishmonger's stall is bare.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "#minecraft:fishes",
           "count": 12,
-          "consume": true,
-          "text": "Deliver fish"
+          "text": "Deliver fish at a notice board"
         }
       ]
     }

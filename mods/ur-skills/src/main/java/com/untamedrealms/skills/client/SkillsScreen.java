@@ -24,7 +24,9 @@ import java.util.List;
  */
 public class SkillsScreen extends Screen {
     private static final int ROW_H = 24;
-    private static final int HEADER_H = 46;
+    private static final int HEADER_H = 66;
+    /** Line under the title (ur-classes sets it to "Class · born under Sign"). */
+    public static java.util.function.Supplier<Component> subtitle = () -> null;
 
     private int left, top, panelW, panelH, colW;
     private final List<Button> attributeButtons = new ArrayList<>();
@@ -35,16 +37,16 @@ public class SkillsScreen extends Screen {
 
     @Override
     protected void init() {
-        panelW = Math.min(width - 16, 440);
-        panelH = Math.min(height - 16, HEADER_H + 18 + 6 * ROW_H + 14);
+        panelW = Math.min(width - 16, 480);
+        panelH = Math.min(height - 16, HEADER_H + 18 + 6 * ROW_H + 10);
         left = (width - panelW) / 2;
         top = (height - panelH) / 2;
         colW = (panelW - 16) / 4;
 
         attributeButtons.clear();
         int bw = 62;
-        int bx = left + panelW - 8 - bw * 3 - 8;
-        int by = top + 24;
+        int bx = left + panelW - 10 - bw * 3 - 8;
+        int by = top + 43;
         String[] keys = {"health", "magicka", "stamina"};
         for (int i = 0; i < 3; i++) {
             int which = i;
@@ -83,17 +85,20 @@ public class SkillsScreen extends Screen {
 
         UiKit.heading(g, font, Component.translatable("screen.urskills.skills").withStyle(ChatFormatting.BOLD), left, top + 7, panelW);
 
-        // Character level + progress.
+        Component sub = subtitle.get();
+        if (sub != null) g.drawCenteredString(font, sub, left + panelW / 2, top + 20, UiKit.TEXT_DIM);
+
+        // Left: character level, its progress, perk points. Right: attribute choice (when available).
         int cx = left + 10;
-        int cy = top + 22;
+        int cy = top + 33;
         g.drawString(font, Component.translatable("screen.urskills.level", data.characterLevel()), cx, cy, UiKit.TEXT, true);
         int need = SkillMath.characterXpToNext(data.characterLevel());
-        UiKit.bar(g, cx, cy + 12, 120, 4, data.characterXp() / (float) need, UiKit.XP, UiKit.XP_DARK);
-        g.drawString(font, Component.translatable("screen.urskills.perk_points", data.perkPoints()),
-                cx + 130, cy, data.perkPoints() > 0 ? UiKit.GOLD : UiKit.TEXT_DIM, true);
+        UiKit.bar(g, cx, cy + 12, 140, 4, data.characterXp() / (float) need, UiKit.XP, UiKit.XP_DARK);
+        Component perks = Component.translatable("screen.urskills.perk_points", data.perkPoints());
+        g.drawString(font, perks, cx + 150, cy + 6, data.perkPoints() > 0 ? UiKit.GOLD : UiKit.TEXT_DIM, true);
         if (data.attributePoints() > 0) {
-            g.drawString(font, Component.translatable("screen.urskills.attribute_points", data.attributePoints()),
-                    cx + 130, cy + 10, UiKit.GOLD, true);
+            Component choose = Component.translatable("screen.urskills.attribute_points", data.attributePoints());
+            g.drawString(font, choose, left + panelW - 10 - font.width(choose), cy, UiKit.GOLD, true);
         }
 
         // Skill columns.

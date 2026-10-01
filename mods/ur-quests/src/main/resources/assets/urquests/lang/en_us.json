@@ -53,5 +53,13 @@
   "objective.urquests.anything": "anything",
   "command.urquests.started": "Started %s for %s.",
   "command.urquests.reset": "Reset all quests for %s.",
-  "message.urquests.arrived": "You arrive at a settlement. Find the Village Elder."
+  "objective.urquests.deliver": "Deliver %s",
+  "screen.urquests.deliver": "Hand In",
+  "screen.urquests.hand_in": "Hand in...",
+  "screen.urquests.deliver_none": "Nothing to hand in here.",
+  "screen.urquests.deliver_pick": "Your matching items:",
+  "screen.urquests.deliver_nothing": "You have none of these with you.",
+  "screen.urquests.deliver_hint": "Left-click: whole stack  Right-click: one",
+  "message.urquests.arrived": "You arrive at a settlement. Find the Village Elder.",
+  "objective.urquests.named": "%s (%s)"
 }

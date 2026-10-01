@@ -32,7 +32,14 @@ public final class QuestMarkers {
     /** Finds where an objective's target is, or null if unknown / too far. */
     @FunctionalInterface
     public interface Locator {
-        @Nullable BlockPos locate(ServerPlayer player, String target);
+        @Nullable Located locate(ServerPlayer player, String target);
+    }
+
+    /** A located target: where it is and, for people, their name ("Helga"). */
+    public record Located(BlockPos pos, @Nullable Component name) {
+        public static @Nullable Located at(@Nullable BlockPos pos) {
+            return pos == null ? null : new Located(pos, null);
+        }
     }
 
     /** {@code refreshTicks}: how often to re-run while the objective is unchanged (0 = only after moving far). */
@@ -45,13 +52,14 @@ public final class QuestMarkers {
     private static final class State {
         String key = "";
         @Nullable BlockPos origin;
-        @Nullable BlockPos target;
+        @Nullable Located target;
         long at;
     }
 
     static {
-        register(QuestApi.VISIT, 0, (player, target) -> Locate.structurePos(player.serverLevel(), target, player.blockPosition(), 64));
-        register(QuestApi.BIOME, 0, (player, target) -> Locate.biome(player.serverLevel(), target, player.blockPosition(), 2400));
+        register(QuestApi.VISIT, 0, (player, target) -> Located.at(Locate.structurePos(player.serverLevel(), target, player.blockPosition(), 64)));
+        register(QuestApi.DELIVER, 0, (player, target) -> Located.at(Locate.structurePos(player.serverLevel(), "#minecraft:village", player.blockPosition(), 64)));
+        register(QuestApi.BIOME, 0, (player, target) -> Located.at(Locate.biome(player.serverLevel(), target, player.blockPosition(), 2400)));
     }
 
     private QuestMarkers() {}
@@ -60,7 +68,7 @@ public final class QuestMarkers {
         LOCATORS.put(objectiveType, new Entry(locator, refreshTicks));
     }
 
-    private record Current(String key, QuestDef.Objective objective) {}
+    private record Current(String key, QuestDef.Objective objective, int index) {}
 
     /** The tracked quest's first unfinished objective that can be located. */
     private static @Nullable Current current(ServerPlayer player) {
@@ -75,7 +83,7 @@ public final class QuestMarkers {
             QuestDef.Objective obj = objectives.get(i);
             if (active.progress[i] >= obj.count() || !LOCATORS.containsKey(obj.type())) continue;
             if (obj.type().equals(QuestApi.TURN_IN) && !QuestApi.othersDone(objectives, active, i)) continue;
-            return new Current(player.level().dimension().location() + "|" + id + "|" + active.stage + "|" + i, obj);
+            return new Current(player.level().dimension().location() + "|" + id + "|" + active.stage + "|" + i, obj, i);
         }
         return null;
     }
@@ -90,7 +98,7 @@ public final class QuestMarkers {
                 state.key = "";
                 state.target = null;
                 state.origin = player.blockPosition();
-                QuestsNetwork.sendMarker(player, null, Component.empty());
+                QuestsNetwork.sendMarker(player, null, Component.empty(), -1, null);
             }
             return;
         }
@@ -100,7 +108,7 @@ public final class QuestMarkers {
                 || state.origin.distSqr(player.blockPosition()) > MOVE_REFRESH * MOVE_REFRESH
                 || (entry.refreshTicks() > 0 && now - state.at >= entry.refreshTicks());
         if (!refresh) return;
-        BlockPos target = null;
+        Located target = null;
         try {
             target = entry.locator().locate(player, cur.objective().target());
         } catch (Exception e) {
@@ -111,7 +119,10 @@ public final class QuestMarkers {
         state.origin = player.blockPosition();
         state.at = now;
         state.target = target;
-        if (changed) QuestsNetwork.sendMarker(player, target, QuestApi.describe(cur.objective()));
+        if (changed) {
+            QuestsNetwork.sendMarker(player, target == null ? null : target.pos(), QuestApi.describe(cur.objective()), cur.index(),
+                    target == null ? null : target.name());
+        }
     }
 
     @SubscribeEvent

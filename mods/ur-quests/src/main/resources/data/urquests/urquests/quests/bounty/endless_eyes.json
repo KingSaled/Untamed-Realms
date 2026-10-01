@@ -7,11 +7,10 @@
       "description": "The Court Wizard wants pearls from the tall ones.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "minecraft:ender_pearl",
           "count": 3,
-          "consume": true,
-          "text": "Bring ender pearls"
+          "text": "Hand in ender pearls at a notice board"
         }
       ]
     }

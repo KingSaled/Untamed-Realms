@@ -44,11 +44,13 @@ public final class QuestsNetwork {
     }
 
     /** Server -> client: where the tracked objective is (empty = no marker). */
-    public record Marker(Optional<BlockPos> pos, Component label) implements CustomPacketPayload {
+    public record Marker(Optional<BlockPos> pos, Component label, int objective, Optional<Component> name) implements CustomPacketPayload {
         public static final Type<Marker> TYPE = new Type<>(UntamedQuests.id("marker"));
         public static final StreamCodec<RegistryFriendlyByteBuf, Marker> STREAM_CODEC = StreamCodec.composite(
                 ByteBufCodecs.optional(BlockPos.STREAM_CODEC), Marker::pos,
                 ComponentSerialization.TRUSTED_STREAM_CODEC, Marker::label,
+                ByteBufCodecs.VAR_INT, Marker::objective,
+                ComponentSerialization.TRUSTED_OPTIONAL_STREAM_CODEC, Marker::name,
                 Marker::new);
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
@@ -85,11 +87,24 @@ public final class QuestsNetwork {
         @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
     }
 
+    /** Client -> server: hand items from an inventory slot in for a deliver objective, at a notice board. */
+    public record Deliver(BlockPos board, ResourceLocation quest, int objective, int slot, int amount) implements CustomPacketPayload {
+        public static final Type<Deliver> TYPE = new Type<>(UntamedQuests.id("deliver"));
+        public static final StreamCodec<ByteBuf, Deliver> STREAM_CODEC = StreamCodec.composite(
+                BlockPos.STREAM_CODEC, Deliver::board,
+                ResourceLocation.STREAM_CODEC, Deliver::quest,
+                ByteBufCodecs.VAR_INT, Deliver::objective,
+                ByteBufCodecs.VAR_INT, Deliver::slot,
+                ByteBufCodecs.VAR_INT, Deliver::amount,
+                Deliver::new);
+        @Override public Type<? extends CustomPacketPayload> type() { return TYPE; }
+    }
+
     @SubscribeEvent
     public static void register(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar r = event.registrar("1");
         r.playToClient(Sync.TYPE, Sync.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.onSync(p.log(), ctx.player().registryAccess())));
-        r.playToClient(Marker.TYPE, Marker.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.onMarker(p.pos().orElse(null), p.label())));
+        r.playToClient(Marker.TYPE, Marker.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.onMarker(p.pos().orElse(null), p.label(), p.objective(), p.name().orElse(null))));
         r.playToClient(OpenBoard.TYPE, OpenBoard.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> ClientQuests.openBoard(p.pos(), p.offers())));
         r.playToServer(Track.TYPE, Track.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
             if (!(ctx.player() instanceof ServerPlayer player)) return;
@@ -101,6 +116,12 @@ public final class QuestsNetwork {
         }));
         r.playToServer(Abandon.TYPE, Abandon.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
             if (ctx.player() instanceof ServerPlayer player) QuestApi.abandon(player, p.quest());
+        }));
+        r.playToServer(Deliver.TYPE, Deliver.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
+            if (!(ctx.player() instanceof ServerPlayer player)) return;
+            if (player.distanceToSqr(p.board().getCenter()) > 64
+                    || !player.level().getBlockState(p.board()).is(UntamedQuests.NOTICE_BOARD.get())) return;
+            QuestApi.deliver(player, p.quest(), p.objective(), p.slot(), p.amount());
         }));
         r.playToServer(AcceptBounty.TYPE, AcceptBounty.STREAM_CODEC, (p, ctx) -> ctx.enqueueWork(() -> {
             if (!(ctx.player() instanceof ServerPlayer player)) return;
@@ -120,8 +141,8 @@ public final class QuestsNetwork {
         PacketDistributor.sendToPlayer(player, new Sync(QuestApi.log(player).serializeNBT(player.registryAccess())));
     }
 
-    public static void sendMarker(ServerPlayer player, @Nullable BlockPos pos, Component label) {
-        PacketDistributor.sendToPlayer(player, new Marker(Optional.ofNullable(pos), label));
+    public static void sendMarker(ServerPlayer player, @Nullable BlockPos pos, Component label, int objective, @Nullable Component name) {
+        PacketDistributor.sendToPlayer(player, new Marker(Optional.ofNullable(pos), label, objective, Optional.ofNullable(name)));
     }
 
     public static void openBoard(ServerPlayer player, BlockPos pos) {

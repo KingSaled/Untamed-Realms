@@ -19,5 +19,6 @@
   "menu.urcore.title": "Untamed Realms",
   "menu.urcore.tagline": "A realm of skills, spells and story",
   "menu.urcore.play": "Play",
-  "menu.urcore.server": "Server: %s"
+  "menu.urcore.server": "Server: %s",
+  "tooltip.urcore.food_heal": "❤ Heals %s hearts over a few seconds"
 }

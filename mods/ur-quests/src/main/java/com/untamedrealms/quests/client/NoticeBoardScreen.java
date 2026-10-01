@@ -36,6 +36,10 @@ public class NoticeBoardScreen extends Screen {
         left = (width - panelW) / 2;
         top = (height - panelH) / 2;
         int cardW = (panelW - 16 - (cards - 1) * 8) / cards;
+        if (DeliveryScreen.hasDeliveries()) {
+            addRenderableWidget(Button.builder(Component.translatable("screen.urquests.hand_in"), b -> minecraft.setScreen(new DeliveryScreen(pos)))
+                    .bounds(left + panelW - 78, top + 4, 70, 14).build());
+        }
         for (int i = 0; i < offers.size(); i++) {
             ResourceLocation id = offers.get(i);
             int cx = left + 8 + i * (cardW + 8);

@@ -21,6 +21,15 @@ public final class QuestTrackerHud {
 
     private QuestTrackerHud() {}
 
+    /** An objective's text exactly as drawn (with "3/12" progress and the NPC's name when known). */
+    static Component line(QuestDef.Stage stage, QuestLog.Active active, int i) {
+        QuestDef.Objective obj = stage.objectives().get(i);
+        int progress = i < active.progress.length ? active.progress[i] : 0;
+        Component text = ClientQuests.describe(obj, i);
+        if (obj.count() > 1) text = Component.empty().append(text).append(Component.literal(" " + progress + "/" + obj.count()));
+        return text;
+    }
+
     public static void render(GuiGraphics g, DeltaTracker delta) {
         Minecraft mc = Minecraft.getInstance();
         if (mc.options.hideGui || !ClientQuests.trackerVisible || mc.screen != null || mc.player == null) return;
@@ -38,7 +47,7 @@ public final class QuestTrackerHud {
 
         List<FormattedCharSequence> title = font.split(def.title(), WIDTH - 8);
         int height = 6 + title.size() * 10 + 2;
-        for (int i = 0; i < stage.objectives().size(); i++) height += font.split(QuestApi.describe(stage.objectives().get(i)), WIDTH - 20).size() * 10;
+        for (int i = 0; i < stage.objectives().size(); i++) height += font.split(line(stage, active, i), WIDTH - 20).size() * 10;
         g.fill(x, y, x + WIDTH, y + height + 2, 0x70101216);
         g.fill(x, y, x + 1, y + height + 2, UiKit.TRIM);
 
@@ -53,8 +62,7 @@ public final class QuestTrackerHud {
             int progress = i < active.progress.length ? active.progress[i] : 0;
             boolean done = progress >= obj.count();
             g.drawString(font, done ? "✔" : "◇", x + 5, yy, done ? UiKit.GOOD : UiKit.TEXT_DIM, false);
-            Component text = QuestApi.describe(obj);
-            if (obj.count() > 1) text = Component.empty().append(text).append(Component.literal(" " + progress + "/" + obj.count()));
+            Component text = line(stage, active, i);
             for (FormattedCharSequence line : font.split(text, WIDTH - 20)) {
                 g.drawString(font, line, x + 15, yy, done ? UiKit.TEXT_DIM : UiKit.TEXT, false);
                 yy += 10;

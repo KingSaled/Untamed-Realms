@@ -7,11 +7,10 @@
       "description": "The carpenter needs timber for repairs.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "#minecraft:logs",
           "count": 32,
-          "consume": true,
-          "text": "Deliver logs"
+          "text": "Deliver logs at a notice board"
         }
       ]
     }

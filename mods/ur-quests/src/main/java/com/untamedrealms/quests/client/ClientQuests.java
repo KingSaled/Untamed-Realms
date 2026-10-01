@@ -36,6 +36,9 @@ public final class ClientQuests {
     static boolean trackerVisible = true;
     static @Nullable BlockPos marker;
     static Component markerLabel = Component.empty();
+    /** Index (in the tracked quest's current stage) of the objective the marker points at, and the NPC's name. */
+    static int markerObjective = -1;
+    static @Nullable Component markerName;
 
     private ClientQuests() {}
 
@@ -47,9 +50,20 @@ public final class ClientQuests {
         LOG.deserializeNBT(registries, tag);
     }
 
-    public static void onMarker(@Nullable BlockPos pos, Component label) {
+    public static void onMarker(@Nullable BlockPos pos, Component label, int objective, @Nullable Component name) {
         marker = pos;
         markerLabel = label;
+        markerObjective = objective;
+        markerName = name;
+    }
+
+    /** Objective text, naming the actual person when the objective is about one we have located. */
+    public static Component describe(com.untamedrealms.quests.data.QuestDef.Objective obj, int index) {
+        Component base = com.untamedrealms.quests.engine.QuestApi.describe(obj);
+        if (index == markerObjective && markerName != null) {
+            return Component.translatable("objective.urquests.named", base, markerName);
+        }
+        return base;
     }
 
     public static void openBoard(BlockPos pos, List<ResourceLocation> offers) {
@@ -97,6 +111,8 @@ public final class ClientQuests {
         public static void onLogout(ClientPlayerNetworkEvent.LoggingOut event) {
             LOG.deserializeNBT(null, new CompoundTag());
             marker = null;
+            markerObjective = -1;
+            markerName = null;
         }
     }
 }

@@ -237,3 +237,35 @@ def all_ui():
         files[f"sprites/widget/{name}.png"] = button(state)
         files[f"sprites/widget/{name}.png.mcmeta"] = BUTTON_META
     return files
+
+
+# ---------------------------------------------------------------------------------- Untamed Realms HUD sprites
+
+def level_bar_background():
+    """182x5: the character-level bar's empty groove."""
+    img = Image.new("RGBA", (182, 5), CLEAR)
+    rect(img, 0, 0, 181, 4, OUT)
+    rect(img, 1, 1, 180, 3, WELL)
+    rect(img, 1, 1, 180, 1, WOOD[0])
+    for x in range(18, 181, 18):                      # notches every tenth
+        rect(img, x, 1, x, 3, WOOD[1])
+    return img
+
+
+def level_bar_progress():
+    """182x5: the filled part, drawn over the background up to the progress point."""
+    img = Image.new("RGBA", (182, 5), CLEAR)
+    rect(img, 1, 1, 180, 1, GOLD_BRIGHT)
+    rect(img, 1, 2, 180, 2, P.hex_rgba("d9a63a"))
+    rect(img, 1, 3, 180, 3, P.hex_rgba("8c6420"))
+    for x in range(18, 181, 18):
+        rect(img, x, 1, x, 3, P.hex_rgba("6b4a16"))
+    return img
+
+
+def all_mod_ui():
+    """{path under assets/urcore/textures/gui/: image}."""
+    return {
+        "sprites/hud/level_bar_background.png": level_bar_background(),
+        "sprites/hud/level_bar_progress.png": level_bar_progress(),
+    }

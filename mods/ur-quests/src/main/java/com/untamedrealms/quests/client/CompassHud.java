@@ -20,7 +20,7 @@ public final class CompassHud {
     private static final int TOP = 3;
     private static final int HEIGHT = 11;
     /** How far boss bars are moved down to make room. */
-    public static final int BOSS_OFFSET = 22;
+    public static final int BOSS_OFFSET = 14;
     private static final String[] LABELS = {"S", "SW", "W", "NW", "N", "NE", "E", "SE"};
 
     private CompassHud() {}
@@ -67,10 +67,10 @@ public final class CompassHud {
             boolean ahead = Math.abs(rel) <= HALF;
             int x = cx + Math.round(Mth.clamp(rel, -HALF, HALF));
             diamond(g, x, TOP + HEIGHT / 2, ahead ? UiKit.GOLD : 0xFF8C7853);
+            // Distance sits just right of the bar, so the compass stays one line tall (Jade sits below it).
             int distance = (int) Math.sqrt(dx * dx + dz * dz);
             String text = distance < 1000 ? distance + "m" : String.format("%.1fkm", distance / 1000f);
-            int tx = Mth.clamp(x - font.width(text) / 2, cx - HALF - 3, cx + HALF + 3 - font.width(text));
-            g.drawString(font, text, tx, TOP + HEIGHT + 3, ahead ? UiKit.GOLD : UiKit.TEXT_DIM, true);
+            g.drawString(font, text, cx + HALF + 7, TOP + 2, ahead ? UiKit.GOLD : UiKit.TEXT_DIM, true);
         }
     }
 

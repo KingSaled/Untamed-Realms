@@ -39,6 +39,8 @@ def collect():
     gui = os.path.join(REPO, "mods", "ur-core", "src", "main", "resources", "assets", "minecraft", "textures", "gui")
     for rel, obj in ui.all_ui().items():
         files[os.path.join(gui, rel)] = obj
+    for rel, obj in ui.all_mod_ui().items():
+        files[os.path.join(assets_dir("urcore"), "textures", "gui", rel)] = obj
     return files
 
 

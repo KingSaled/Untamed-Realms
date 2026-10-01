@@ -24,6 +24,11 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.client.event.ToastAddEvent;
+import net.neoforged.neoforge.event.entity.player.ItemTooltipEvent;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.world.food.FoodProperties;
+import com.untamedrealms.core.vitals.FoodHealing;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 
 public final class CoreClient {
@@ -82,6 +87,17 @@ public final class CoreClient {
                     }
                 }
             }
+        }
+
+        /** Food tooltips show how much they heal. */
+        @SubscribeEvent
+        public static void onTooltip(ItemTooltipEvent event) {
+            FoodProperties food = event.getItemStack().get(DataComponents.FOOD);
+            if (food == null) return;
+            float heal = FoodHealing.healFor(food);
+            if (heal <= 0) return;
+            String hearts = heal / 2f == Math.floor(heal / 2f) ? String.valueOf((int) (heal / 2f)) : String.format("%.1f", heal / 2f);
+            event.getToolTip().add(1, Component.translatable("tooltip.urcore.food_heal", hearts).withStyle(ChatFormatting.RED));
         }
 
         /** Quests replace vanilla's tutorial hints, advancement and recipe pop-ups. */

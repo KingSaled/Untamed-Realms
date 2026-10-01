@@ -117,7 +117,8 @@ public final class TreeFelling {
                 Block.popResource(level, origin, drop);
             }
             level.destroyBlock(pos, false, player);
-            tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+            // A whole tree costs the axe what three logs would: the stump plus two more.
+            if (felled < 2) tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
             box.encapsulate(pos);
             felled++;
         }

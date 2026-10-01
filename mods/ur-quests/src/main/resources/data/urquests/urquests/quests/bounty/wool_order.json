@@ -7,11 +7,10 @@
       "description": "Winter is coming and the weavers need wool.",
       "objectives": [
         {
-          "type": "collect",
+          "type": "deliver",
           "target": "#minecraft:wool",
           "count": 16,
-          "consume": true,
-          "text": "Deliver wool"
+          "text": "Deliver wool at a notice board"
         }
       ]
     }

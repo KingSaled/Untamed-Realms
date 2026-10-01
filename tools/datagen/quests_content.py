@@ -182,12 +182,12 @@ bounty("bone_collector", "Bounty: Bone Collector", "Skeleton archers harry the f
 bounty("raider_scouts", "Bounty: Raider Scouts", "Raider scouts have been seen watching the town.", [obj("kill", "#minecraft:raiders", 5, "Defeat raiders")], 120, {"one_handed": 200, "archery": 100})
 bounty("drowned_shore", "Bounty: Drowned Shore", "Drowned crawl from the water at night.", [obj("kill", "minecraft:drowned", 6, "Slay drowned")], 70, {"one_handed": 150, "agility": 80})
 bounty("witch_hunt", "Bounty: Witch Hunt", "A witch is cursing the livestock.", [obj("kill", "minecraft:witch", 1, "Slay a witch")], 90, {"destruction": 150, "archery": 150})
-bounty("endless_eyes", "Bounty: Endless Eyes", "The Court Wizard wants pearls from the tall ones.", [obj("collect", "minecraft:ender_pearl", 3, "Bring ender pearls", consume=True)], 130, {"sneak": 200})
-bounty("timber_order", "Supply Order: Timber", "The carpenter needs timber for repairs.", [obj("collect", "#minecraft:logs", 32, "Deliver logs", consume=True)], 45, {"woodcutting": 250})
-bounty("ore_order", "Supply Order: Raw Iron", "The smithy is short of ore.", [obj("collect", "minecraft:raw_iron", 16, "Deliver raw iron", consume=True)], 70, {"mining": 300})
-bounty("provisions", "Supply Order: Provisions", "The garrison needs cooked meat.", [obj("collect", "minecraft:cooked_beef|minecraft:cooked_porkchop|minecraft:cooked_mutton|minecraft:cooked_chicken", 16, "Deliver cooked meat", consume=True)], 60, {"cooking": 250})
-bounty("wool_order", "Supply Order: Wool", "Winter is coming and the weavers need wool.", [obj("collect", "#minecraft:wool", 16, "Deliver wool", consume=True)], 40, {"farming": 200})
-bounty("fishmonger", "Supply Order: Fish", "The fishmonger's stall is bare.", [obj("collect", "#minecraft:fishes", 12, "Deliver fish", consume=True)], 50, {"fishing": 250})
+bounty("endless_eyes", "Bounty: Endless Eyes", "The Court Wizard wants pearls from the tall ones.", [obj("deliver", "minecraft:ender_pearl", 3, "Hand in ender pearls at a notice board")], 130, {"sneak": 200})
+bounty("timber_order", "Supply Order: Timber", "The carpenter needs timber for repairs.", [obj("deliver", "#minecraft:logs", 32, "Deliver logs at a notice board")], 45, {"woodcutting": 250})
+bounty("ore_order", "Supply Order: Raw Iron", "The smithy is short of ore.", [obj("deliver", "minecraft:raw_iron", 16, "Deliver raw iron at a notice board")], 70, {"mining": 300})
+bounty("provisions", "Supply Order: Provisions", "The garrison needs cooked meat.", [obj("deliver", "minecraft:cooked_beef|minecraft:cooked_porkchop|minecraft:cooked_mutton|minecraft:cooked_chicken", 16, "Deliver cooked meat at a notice board")], 60, {"cooking": 250})
+bounty("wool_order", "Supply Order: Wool", "Winter is coming and the weavers need wool.", [obj("deliver", "#minecraft:wool", 16, "Deliver wool at a notice board")], 40, {"farming": 200})
+bounty("fishmonger", "Supply Order: Fish", "The fishmonger's stall is bare.", [obj("deliver", "#minecraft:fishes", 12, "Deliver fish at a notice board")], 50, {"fishing": 250})
 
 # ---------------------------------------------------------------- lang, block loot, recipe
 lang = {
@@ -245,7 +245,15 @@ lang = {
     "objective.urquests.anything": "anything",
     "command.urquests.started": "Started %s for %s.",
     "command.urquests.reset": "Reset all quests for %s.",
+    "objective.urquests.deliver": "Deliver %s",
+    "screen.urquests.deliver": "Hand In",
+    "screen.urquests.hand_in": "Hand in...",
+    "screen.urquests.deliver_none": "Nothing to hand in here.",
+    "screen.urquests.deliver_pick": "Your matching items:",
+    "screen.urquests.deliver_nothing": "You have none of these with you.",
+    "screen.urquests.deliver_hint": "Left-click: whole stack  Right-click: one",
     "message.urquests.arrived": "You arrive at a settlement. Find the Village Elder.",
+    "objective.urquests.named": "%s (%s)",
 }
 os.makedirs(os.path.join(BASE, "assets", "urquests", "lang"), exist_ok=True)
 json.dump(lang, open(os.path.join(BASE, "assets", "urquests", "lang", "en_us.json"), "w"), indent=2)
