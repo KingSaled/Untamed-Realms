@@ -85,7 +85,8 @@ jobs:
 
   publish:
     name: Publish latest-test-build
-    needs: test
+    # Publish as soon as the zip is built; the Windows test runs alongside and reports separately.
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
