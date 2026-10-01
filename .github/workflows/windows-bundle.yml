@@ -104,6 +104,6 @@ jobs:
             - `Start-Server.bat` installs and starts the server (Java, NeoForge and mods download automatically).
             - `Install-Modpack.bat` adds an "Untamed Realms" installation to the normal Minecraft Launcher.
 
-            This build passed an automated install + server boot test on Windows.
+            An automated Windows install + server boot test runs on every build; see the Actions tab for its result.
             Built from `${{ github.ref_name }}` at ${{ github.sha }}.
           files: Untamed-Realms-Windows.zip
