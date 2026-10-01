@@ -1,0 +1,65 @@
+{
+  "order": 3,
+  "name": "Barbarian",
+  "tagline": "Born in the wilds, raised by the axe.",
+  "description": "A northern raider who hits hard and keeps moving. Excels with heavy weapons, light armor and long marches; distrusts magic.",
+  "icon": "minecraft:iron_axe",
+  "skills": {
+    "two_handed": 15,
+    "one_handed": 10,
+    "light_armor": 10,
+    "agility": 10,
+    "woodcutting": 8
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.max_health",
+      "operation": "add_value",
+      "value": 6
+    },
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": -30
+    },
+    {
+      "type": "damage_bonus",
+      "value": 0.1,
+      "key": "two_handed"
+    },
+    {
+      "type": "damage_bonus",
+      "value": 0.05,
+      "key": "one_handed"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:iron_axe",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_helmet",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1
+    },
+    {
+      "id": "minecraft:cooked_porkchop",
+      "count": 8
+    }
+  ],
+  "coins": 25
+}

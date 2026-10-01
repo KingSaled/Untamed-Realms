@@ -1,0 +1,59 @@
+{
+  "order": 2,
+  "name": "Knight",
+  "tagline": "Oath-bound and iron-clad.",
+  "description": "A sworn defender in full plate. Unmatched with a shield, hard to knock down, and well-spoken at court.",
+  "icon": "minecraft:shield",
+  "skills": {
+    "heavy_armor": 15,
+    "block": 15,
+    "one_handed": 10,
+    "speech": 8,
+    "restoration": 5
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.armor",
+      "operation": "add_value",
+      "value": 2
+    },
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.knockback_resistance",
+      "operation": "add_value",
+      "value": 0.1
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:iron_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:shield",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_helmet",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_chestplate",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_leggings",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_boots",
+      "count": 1
+    },
+    {
+      "id": "minecraft:cooked_beef",
+      "count": 6
+    }
+  ],
+  "coins": 80
+}

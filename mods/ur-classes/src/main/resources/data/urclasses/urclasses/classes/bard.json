@@ -1,0 +1,48 @@
+{
+  "order": 10,
+  "name": "Bard",
+  "tagline": "Every tavern knows your name.",
+  "description": "A wandering performer and smooth talker. Gets the best prices, the best rumours and - occasionally - the best purses.",
+  "icon": "minecraft:goat_horn",
+  "skills": {
+    "speech": 15,
+    "illusion": 8,
+    "one_handed": 8,
+    "light_armor": 8,
+    "pickpocket": 8
+  },
+  "effects": [
+    {
+      "type": "price_bonus",
+      "value": 0.1
+    },
+    {
+      "type": "xp_bonus",
+      "value": 0.1,
+      "key": "speech"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:stone_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:goat_horn",
+      "count": 1
+    },
+    {
+      "id": "minecraft:writable_book",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1
+    }
+  ],
+  "coins": 150
+}

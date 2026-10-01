@@ -1,0 +1,61 @@
+{
+  "order": 8,
+  "name": "Spellsword",
+  "tagline": "Blade in one hand, fire in the other.",
+  "description": "A battle-mage who mixes steel and sorcery. Fights in armor with a sword and opens with a firebolt.",
+  "icon": "minecraft:blaze_powder",
+  "skills": {
+    "one_handed": 12,
+    "destruction": 10,
+    "heavy_armor": 10,
+    "restoration": 8,
+    "block": 5
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": 20
+    },
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_stamina",
+      "operation": "add_value",
+      "value": 10
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:iron_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_chestplate",
+      "count": 1
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:flames"
+      }
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:healing"
+      }
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1
+    }
+  ],
+  "coins": 40
+}

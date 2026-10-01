@@ -1,0 +1,19 @@
+{
+  "name": "The Atronach",
+  "description": "+50 Magicka, but it regenerates 40% slower.",
+  "icon": "minecraft:lapis_lazuli",
+  "order": 8,
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": 50
+    },
+    {
+      "type": "regen",
+      "value": -0.4,
+      "key": "magicka"
+    }
+  ]
+}

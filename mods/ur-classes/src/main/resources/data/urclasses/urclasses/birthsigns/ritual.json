@@ -1,0 +1,17 @@
+{
+  "name": "The Ritual",
+  "description": "All spells are 10% stronger; healing 25% stronger.",
+  "icon": "minecraft:totem_of_undying",
+  "order": 9,
+  "effects": [
+    {
+      "type": "spell_power",
+      "value": 0.1
+    },
+    {
+      "type": "spell_power",
+      "value": 0.25,
+      "key": "restoration"
+    }
+  ]
+}

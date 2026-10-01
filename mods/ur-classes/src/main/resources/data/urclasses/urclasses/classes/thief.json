@@ -1,0 +1,73 @@
+{
+  "order": 5,
+  "name": "Thief",
+  "tagline": "What's yours is negotiable.",
+  "description": "A city-bred rogue. Picks locks, lifts purses and strikes from the shadows - and talks fast when caught.",
+  "icon": "minecraft:tripwire_hook",
+  "skills": {
+    "sneak": 15,
+    "lockpicking": 12,
+    "pickpocket": 12,
+    "light_armor": 8,
+    "one_handed": 5,
+    "speech": 5
+  },
+  "effects": [
+    {
+      "type": "stealth",
+      "value": 0.1
+    },
+    {
+      "type": "sneak_attack",
+      "value": 0.5,
+      "key": "melee"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:stone_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:ender_pearl",
+      "count": 2
+    },
+    {
+      "id": "minecraft:leather_helmet",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    }
+  ],
+  "coins": 60
+}

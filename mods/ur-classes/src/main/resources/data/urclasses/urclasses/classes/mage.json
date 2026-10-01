@@ -1,0 +1,74 @@
+{
+  "order": 6,
+  "name": "Mage",
+  "tagline": "Knowledge is the sharpest weapon.",
+  "description": "A scholar of the arcane. Throws fire and frost, shapes flesh into armor and calls on summoned servants - but is frail up close.",
+  "icon": "minecraft:enchanted_book",
+  "skills": {
+    "destruction": 15,
+    "alteration": 12,
+    "conjuration": 10,
+    "enchanting": 8,
+    "restoration": 8
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": 60
+    },
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.max_health",
+      "operation": "add_value",
+      "value": -2
+    },
+    {
+      "type": "regen",
+      "value": 0.25,
+      "key": "magicka"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:firebolt"
+      }
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:oakflesh"
+      }
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:conjure_familiar"
+      }
+    },
+    {
+      "id": "minecraft:book",
+      "count": 2
+    },
+    {
+      "id": "minecraft:bread",
+      "count": 6
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 3755418
+        }
+      }
+    }
+  ],
+  "coins": 50
+}

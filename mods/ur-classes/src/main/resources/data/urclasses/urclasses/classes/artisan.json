@@ -1,0 +1,66 @@
+{
+  "order": 11,
+  "name": "Artisan",
+  "tagline": "The realm runs on what you make.",
+  "description": "A miner, woodsman, cook and smith. Starts with good tools and learns every gathering and crafting skill faster.",
+  "icon": "minecraft:iron_pickaxe",
+  "skills": {
+    "mining": 12,
+    "woodcutting": 12,
+    "smithing": 12,
+    "cooking": 10,
+    "farming": 10,
+    "fishing": 10
+  },
+  "effects": [
+    {
+      "type": "xp_bonus",
+      "value": 0.15,
+      "key": "category:gathering"
+    },
+    {
+      "type": "xp_bonus",
+      "value": 0.1,
+      "key": "smithing"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:iron_pickaxe",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_axe",
+      "count": 1
+    },
+    {
+      "id": "minecraft:fishing_rod",
+      "count": 1
+    },
+    {
+      "id": "minecraft:wheat_seeds",
+      "count": 16
+    },
+    {
+      "id": "minecraft:bread",
+      "count": 8
+    },
+    {
+      "id": "minecraft:crafting_table",
+      "count": 1
+    },
+    {
+      "id": "minecraft:furnace",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1
+    }
+  ],
+  "coins": 100
+}

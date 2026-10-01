@@ -1,0 +1,13 @@
+{
+  "name": "The Thief",
+  "description": "Stealth skills improve 20% faster.",
+  "icon": "minecraft:leather_boots",
+  "order": 2,
+  "effects": [
+    {
+      "type": "xp_bonus",
+      "value": 0.2,
+      "key": "category:stealth"
+    }
+  ]
+}

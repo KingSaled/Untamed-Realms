@@ -1,0 +1,78 @@
+{
+  "order": 4,
+  "name": "Ranger",
+  "tagline": "Never seen first.",
+  "description": "A wilderness scout and hunter. Deadly with a bow, quiet on their feet and at home far from any road.",
+  "icon": "minecraft:bow",
+  "skills": {
+    "archery": 15,
+    "sneak": 10,
+    "light_armor": 10,
+    "agility": 8,
+    "woodcutting": 5,
+    "fishing": 5
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": "add_multiplied_base",
+      "value": 0.03
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:bow",
+      "count": 1
+    },
+    {
+      "id": "minecraft:arrow",
+      "count": 48
+    },
+    {
+      "id": "minecraft:stone_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_helmet",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 3830302
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 3830302
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 3830302
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 3830302
+        }
+      }
+    },
+    {
+      "id": "minecraft:cooked_chicken",
+      "count": 8
+    }
+  ],
+  "coins": 35
+}

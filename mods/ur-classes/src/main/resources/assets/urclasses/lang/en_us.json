@@ -1,0 +1,20 @@
+{
+  "screen.urclasses.title": "Create your character",
+  "screen.urclasses.step_class": "Choose your Class",
+  "screen.urclasses.step_birthsign": "Choose your Birthsign",
+  "screen.urclasses.next": "Choose Birthsign >",
+  "screen.urclasses.back": "< Back",
+  "screen.urclasses.confirm": "Begin your Journey",
+  "screen.urclasses.starting_skills": "Starting skills",
+  "screen.urclasses.starting_gear": "Starting gear",
+  "screen.urclasses.purse": "Purse: %s Crowns",
+  "screen.urclasses.summary": "You will begin as a %s, born under %s.",
+  "screen.urclasses.class_line": "%s \u00b7 born under %s",
+  "banner.urclasses.chosen": "You are a %s",
+  "banner.urclasses.born_under": "Born under %s",
+  "message.urclasses.already_chosen": "You have already chosen your path.",
+  "message.urclasses.unknown_class": "Unknown class.",
+  "message.urclasses.unknown_birthsign": "Unknown birthsign.",
+  "message.urclasses.choose_hint": "Welcome to the Untamed Realms! Choose your class to begin (or later with /ur class choose).",
+  "command.urclasses.reset": "Reset %s's class; they will be asked to choose again."
+}

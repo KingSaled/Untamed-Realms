@@ -1,0 +1,65 @@
+{
+  "order": 7,
+  "name": "Cleric",
+  "tagline": "Mend the faithful, smite the dead.",
+  "description": "A temple healer who carries a mace as readily as a prayer. Heals allies, wards blows and burns the undead.",
+  "icon": "minecraft:golden_apple",
+  "skills": {
+    "restoration": 15,
+    "heavy_armor": 10,
+    "block": 8,
+    "one_handed": 8,
+    "alchemy": 8,
+    "speech": 5
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": 25
+    },
+    {
+      "type": "spell_power",
+      "value": 0.15,
+      "key": "restoration"
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:stone_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:shield",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_helmet",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_chestplate",
+      "count": 1
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:healing"
+      }
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:turn_undead"
+      }
+    },
+    {
+      "id": "minecraft:golden_apple",
+      "count": 1
+    }
+  ],
+  "coins": 45
+}

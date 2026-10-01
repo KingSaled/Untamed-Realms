@@ -1,0 +1,13 @@
+{
+  "name": "The Apprentice",
+  "description": "Magicka regenerates 50% faster.",
+  "icon": "minecraft:book",
+  "order": 7,
+  "effects": [
+    {
+      "type": "regen",
+      "value": 0.5,
+      "key": "magicka"
+    }
+  ]
+}

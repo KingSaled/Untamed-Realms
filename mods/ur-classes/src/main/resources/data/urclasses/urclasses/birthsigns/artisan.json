@@ -1,0 +1,13 @@
+{
+  "name": "The Artisan",
+  "description": "Gathering and crafting skills improve 20% faster.",
+  "icon": "minecraft:iron_pickaxe",
+  "order": 3,
+  "effects": [
+    {
+      "type": "xp_bonus",
+      "value": 0.2,
+      "key": "category:gathering"
+    }
+  ]
+}

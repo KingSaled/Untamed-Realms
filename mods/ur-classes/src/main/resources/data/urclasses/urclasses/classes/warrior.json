@@ -1,0 +1,63 @@
+{
+  "order": 1,
+  "name": "Warrior",
+  "tagline": "Steel, shield and stubbornness.",
+  "description": "A seasoned soldier who wins fights by standing in them. Strong with one-handed weapons and shields, comfortable in heavy armor.",
+  "icon": "minecraft:iron_sword",
+  "skills": {
+    "one_handed": 15,
+    "block": 12,
+    "heavy_armor": 12,
+    "smithing": 8,
+    "archery": 5
+  },
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.max_health",
+      "operation": "add_value",
+      "value": 4
+    },
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_stamina",
+      "operation": "add_value",
+      "value": 20
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:iron_sword",
+      "count": 1
+    },
+    {
+      "id": "minecraft:shield",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_helmet",
+      "count": 1
+    },
+    {
+      "id": "minecraft:iron_chestplate",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1
+    },
+    {
+      "id": "minecraft:bread",
+      "count": 8
+    },
+    {
+      "id": "minecraft:torch",
+      "count": 16
+    }
+  ],
+  "coins": 40
+}

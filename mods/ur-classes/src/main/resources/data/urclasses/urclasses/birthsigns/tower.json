@@ -1,0 +1,18 @@
+{
+  "name": "The Tower",
+  "description": "+1 luck and a better chance of double loot in untouched chests.",
+  "icon": "minecraft:spyglass",
+  "order": 12,
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.luck",
+      "operation": "add_value",
+      "value": 1
+    },
+    {
+      "type": "loot_bonus",
+      "value": 0.15
+    }
+  ]
+}

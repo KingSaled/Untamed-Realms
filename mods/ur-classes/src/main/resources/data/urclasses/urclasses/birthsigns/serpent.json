@@ -1,0 +1,12 @@
+{
+  "name": "The Serpent",
+  "description": "Deal 5% more damage of every kind.",
+  "icon": "minecraft:spider_eye",
+  "order": 13,
+  "effects": [
+    {
+      "type": "damage_bonus",
+      "value": 0.05
+    }
+  ]
+}

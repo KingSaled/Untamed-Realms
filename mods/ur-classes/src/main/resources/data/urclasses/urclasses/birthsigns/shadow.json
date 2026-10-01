@@ -1,0 +1,16 @@
+{
+  "name": "The Shadow",
+  "description": "Harder to notice while sneaking; sneak attacks hit harder.",
+  "icon": "minecraft:black_dye",
+  "order": 10,
+  "effects": [
+    {
+      "type": "stealth",
+      "value": 0.15
+    },
+    {
+      "type": "sneak_attack",
+      "value": 0.5
+    }
+  ]
+}

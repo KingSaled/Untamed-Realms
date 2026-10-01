@@ -1,0 +1,12 @@
+{
+  "name": "The Lover",
+  "description": "All skills improve 10% faster.",
+  "icon": "minecraft:pink_tulip",
+  "order": 6,
+  "effects": [
+    {
+      "type": "xp_bonus",
+      "value": 0.1
+    }
+  ]
+}

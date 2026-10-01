@@ -1,0 +1,85 @@
+{
+  "order": 9,
+  "name": "Nightblade",
+  "tagline": "A whisper, then nothing.",
+  "description": "An assassin who blends illusion with the knife. Calms or frightens foes, vanishes, and strikes where armor is thinnest.",
+  "icon": "minecraft:ender_eye",
+  "skills": {
+    "sneak": 12,
+    "illusion": 12,
+    "light_armor": 10,
+    "one_handed": 8,
+    "destruction": 8,
+    "alchemy": 5
+  },
+  "effects": [
+    {
+      "type": "sneak_attack",
+      "value": 1.0,
+      "key": "melee"
+    },
+    {
+      "type": "attribute",
+      "attribute": "urcore:max_magicka",
+      "operation": "add_value",
+      "value": 15
+    }
+  ],
+  "loadout": [
+    {
+      "id": "minecraft:stone_sword",
+      "count": 1
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:calm"
+      }
+    },
+    {
+      "id": "urmagic:spell_tome",
+      "count": 1,
+      "components": {
+        "urmagic:spell": "urmagic:invisibility"
+      }
+    },
+    {
+      "id": "minecraft:leather_helmet",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_chestplate",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_leggings",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    },
+    {
+      "id": "minecraft:leather_boots",
+      "count": 1,
+      "components": {
+        "minecraft:dyed_color": {
+          "rgb": 2697513
+        }
+      }
+    }
+  ],
+  "coins": 45
+}

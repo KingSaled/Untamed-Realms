@@ -1,0 +1,13 @@
+{
+  "name": "The Mage",
+  "description": "Magic skills improve 20% faster.",
+  "icon": "minecraft:amethyst_shard",
+  "order": 1,
+  "effects": [
+    {
+      "type": "xp_bonus",
+      "value": 0.2,
+      "key": "category:magic"
+    }
+  ]
+}

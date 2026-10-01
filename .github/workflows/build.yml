@@ -24,6 +24,17 @@ jobs:
           curl -fsSL https://maven.parchmentmc.org/org/parchmentmc/data/parchment-1.21.1/maven-metadata.xml \
             | grep -oE '<version>[^<]+</version>' | sed -E 's/<\/?version>//g' | tail -3 || true
 
+  art:
+    name: ArtForge assets up to date
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - run: cd tools/artforge && python3 -m artforge check
+
   build:
     name: Compile & game-test
     runs-on: ubuntu-latest
@@ -44,7 +55,17 @@ jobs:
         run: |
           grep -E "error:|What went wrong" -A3 build.log | head -n 250 || true
       - name: Run game tests (headless server, all modules loaded)
-        run: ./gradlew :devenv:runGameTestServer
+        run: |
+          set -o pipefail
+          ./gradlew :devenv:runGameTestServer 2>&1 | tee gametest.log
+      - name: Game-test summary
+        if: always()
+        run: |
+          {
+            echo "### Game tests"
+            grep -E "Loaded [0-9]+ entries|required tests|GAME TESTS COMPLETE|failed|Failed to load|Exception" gametest.log | sed 's/^/    /' | head -n 80
+          } >> "$GITHUB_STEP_SUMMARY" || true
+          grep -E "required tests|Failed to load|failed!" gametest.log | head -n 40 || true
       - name: Show game-test log on failure
         if: failure()
         run: tail -n 150 run/gametest/logs/latest.log || true

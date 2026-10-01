@@ -1,0 +1,19 @@
+{
+  "name": "The Steed",
+  "description": "Move 5% faster; actions cost 10% less stamina.",
+  "icon": "minecraft:saddle",
+  "order": 11,
+  "effects": [
+    {
+      "type": "attribute",
+      "attribute": "minecraft:generic.movement_speed",
+      "operation": "add_multiplied_base",
+      "value": 0.05
+    },
+    {
+      "type": "cost_reduction",
+      "value": 0.1,
+      "key": "stamina"
+    }
+  ]
+}

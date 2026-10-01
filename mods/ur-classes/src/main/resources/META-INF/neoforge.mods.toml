@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urclasses"
+version = "${suite_version}"
+displayName = "Untamed Realms: Classes"
+authors = "${mod_authors}"
+description = '''
+Choose your class and birthsign on your first day: starting skills, gear, coin and lifelong bonuses.
+'''
+
+[[dependencies.urclasses]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urclasses]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urclasses]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
