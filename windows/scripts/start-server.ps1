@@ -70,7 +70,13 @@ try {
         $deadline = (Get-Date).AddMinutes(25)
         while (-not $proc.HasExited -and (Get-Date) -lt $deadline) {
             Start-Sleep -Seconds 5
-            if ((Test-Path $log) -and (Select-String -Path $log -Pattern 'Done \(' -Quiet)) { $proc.StandardInput.WriteLine('stop'); break }
+            if ((Test-Path $log) -and (Select-String -Path $log -Pattern 'Done \(' -Quiet)) {
+                # Windows PowerShell prefixes the first line written to stdin with a byte-order mark, so send
+                # a blank line first (the server ignores it as an unknown command), then stop.
+                $proc.StandardInput.WriteLine('')
+                $proc.StandardInput.WriteLine('stop')
+                break
+            }
         }
         if (-not $proc.WaitForExit(180000)) { $proc.Kill(); throw "Server did not stop in time" }
         if (-not (Select-String -Path $log -Pattern 'Done \(' -Quiet)) { throw "Server did not finish starting" }
