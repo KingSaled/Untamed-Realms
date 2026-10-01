@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-76 mods in manifest, 0 failed.
+74 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -59,7 +59,6 @@
 | world | `structory` | locked |  |
 | world | `moogs-voyager-structures` | locked |  |
 | world | `when-dungeons-arise` | locked |  |
-| world | `idas` | locked |  |
 | world | `yungs-better-dungeons` | locked |  |
 | world | `yungs-better-mineshafts` | locked |  |
 | world | `yungs-better-strongholds` | locked |  |
@@ -77,15 +76,12 @@
 | content | `mowzies-mobs` | locked |  |
 | content | `l_enders-cataclysm` | locked |  |
 | content | `curios` | locked |  |
-| exclude | `create` | removed | Loading modpack...
+| exclude | `idas` | removed | Loading modpack...
 Removing file from index...
-create removed successfully! |
-| exclude | `quark` | removed | Loading modpack...
+idas removed successfully! |
+| exclude | `integrated-api` | removed | Loading modpack...
 Removing file from index...
-quark removed successfully! |
-| exclude | `supplementaries` | removed | Loading modpack...
-Removing file from index...
-supplementaries removed successfully! |
+integrated-api removed successfully! |
 
 ## Pulled in as dependencies (review these)
 
@@ -96,7 +92,6 @@ supplementaries removed successfully! |
 - `cristel-lib`
 - `fragmentum`
 - `geckolib`
-- `integrated-api`
 - `kotlin-for-forge`
 - `libipn`
 - `lionfish-api`
