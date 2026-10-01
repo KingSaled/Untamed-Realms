@@ -34,13 +34,18 @@ Every skill level raises your **character level**; each character level gives a 
 an **attribute choice** (Health, Magicka or Stamina) — spend them in the Skills screen (K).
 Better gear and ores need skill levels (shown in tooltips), RuneScape style.
 
+**Woodcutting:** chop any log of a natural tree with an axe and the whole tree comes down — logs drop
+at the stump and the leaves clear away. XP is paid per tree (bigger trees pay more, but not per log).
+Sneak while chopping to cut a single log.
+
 ## Vitals
-* **Stamina** (bottom right) drains when sprinting, jumping and swinging; exhausted fighters hit softer and can't sprint.
+* **Stamina** (bottom right) drains when sprinting and swinging; exhausted fighters hit softer and can't sprint.
+* **Hunger** runs at half the vanilla speed, and sprinting or jumping no longer costs food.
 * **Magicka** (bottom left) powers spells. Both regenerate after a short pause. Potions of Restore Magicka/Stamina help.
 
 ## Money
-**Crowns** are your currency. Coins you pick up go in your purse when used. Your balance shows under
-the inventory. Merchants' prices improve with Speech. You lose a little coin when you die.
+**Crowns** are your currency. Coins you pick up go in your purse when used. Your balance shows on a tab
+above the inventory. Merchants' prices improve with Speech. You lose a little coin when you die.
 
 ## Magic
 Read **spell tomes** (bought from court wizards and priests, found in chests) to learn spells; you need
