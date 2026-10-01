@@ -64,7 +64,7 @@ if ($test) {
     Write-Host "  TEST WORLD: you spawn on the test hub above the starting village, as admin, with a control book." -ForegroundColor Magenta
     Write-Host "  Your normal world is not touched. Stop the server with:  stop" -ForegroundColor DarkGray
 } else {
-    Write-Host "  Make yourself admin by typing:  op YourMinecraftName      Stop the server with:  stop" -ForegroundColor DarkGray
+    Write-Host "  TurboSaled is made admin automatically (others: op TheirName).   Stop the server with:  stop" -ForegroundColor DarkGray
 }
 Write-Host "  If Windows Firewall asks about Java, allow it (Private networks)." -ForegroundColor DarkGray
 Write-Host ""

@@ -17,7 +17,7 @@ PLAY ON THIS PC (server + game on the same laptop)
 
 4. In game: Multiplayer -> Direct Connection -> type  localhost  -> Join Server.
 
-5. In the server window type:  op YourMinecraftName   (gives you admin commands)
+5. TurboSaled is made admin automatically. Anyone else: type  op TheirName  in the server window.
 
 TEST WORLD (everything in one place)
 ------------------------------------

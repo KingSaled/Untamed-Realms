@@ -23,6 +23,8 @@ public final class CoreConfig {
     public static final ModConfigSpec.BooleanValue KEEP_WALLET_ON_DEATH;
     public static final ModConfigSpec.DoubleValue DEATH_COIN_LOSS;
 
+    public static final ModConfigSpec.ConfigValue<java.util.List<? extends String>> AUTO_OP;
+
     static {
         BUILDER.comment("Stamina: drained by sprinting and melee attacks (and jumping if jumpCost > 0), regenerates after a short pause.")
                 .push("stamina");
@@ -57,6 +59,11 @@ public final class CoreConfig {
         DEATH_COIN_LOSS = BUILDER
                 .comment("Fraction of the wallet lost on death (0 = none). Only applies when keepWalletOnDeath is true.")
                 .defineInRange("deathCoinLoss", 0.1, 0.0, 1.0);
+        BUILDER.pop();
+
+        BUILDER.push("admin");
+        AUTO_OP = BUILDER.comment("Minecraft usernames made server operators (admins) when they join.")
+                .defineListAllowEmpty("autoOp", java.util.List.of("TurboSaled"), () -> "", o -> o instanceof String);
         BUILDER.pop();
     }
 

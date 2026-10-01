@@ -28,7 +28,7 @@ You need only the normal **Minecraft Launcher** (Java Edition). Java, NeoForge a
    If Windows asks to allow Java through the firewall, click *Allow*.
 3. **Close the Minecraft Launcher**, then double-click **`Install-Modpack.bat`** and wait for *Done!*.
 4. Open the Minecraft Launcher, pick **Untamed Realms** next to the green *PLAY* button, press *PLAY*.
-5. In game: *Multiplayer → Direct Connection →* `localhost` *→ Join Server*. In the server window type `op YourName` to become admin.
+5. In game: *Multiplayer → Direct Connection →* `localhost` *→ Join Server*. TurboSaled is made admin automatically (others: type `op TheirName` in the server window; the list is `admin.autoOp` in the server config).
 
 **Start over:** stop the server (`stop`), double-click **`Reset-World.bat`**, then `Start-Server.bat` again for a brand-new world and character.
 
