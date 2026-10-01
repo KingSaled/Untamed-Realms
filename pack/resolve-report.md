@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-74 mods in manifest, 4 failed.
+74 mods in manifest, 1 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -22,7 +22,6 @@
 | performance | `fastworkbench` | locked |  |
 | performance | `fastfurnace` | locked |  |
 | performance | `packet-fixer` | locked |  |
-| performance | `connectivity` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/connectivity: 404 -- candidates: `no-moon-network-fix` (No Moon Network Fix, 31,016 dl), `artemis-laboratory-blocks` (Artemis' Laboratory Blocks, 11,698 dl), `create-radiologistics` (Create : radiologistics, 8,039 dl), `create-pressure-gauges` (Create: Pressure Gauges, 570 dl) |
 | performance | `spark` | locked |  |
 | performance | `chunky` | locked |  |
 | performance | `yeetus-experimentus` | locked |  |
@@ -38,7 +37,7 @@
 | qol | `corpse` | locked |  |
 | qol | `sophisticated-backpacks` | locked |  |
 | qol | `polymorph` | locked |  |
-| qol | `pickup-notifier` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/pickup-notifier: 404 -- candidates: `loot-journal` (Loot Journal: Pickup Notifier, 1,000,831 dl), `loot-log` (Loot Log: Pickup Notifier, 4,538 dl) |
+| qol | `loot-journal` | added | Project "Loot Journal: Pickup Notifier" successfully added! (loot_journal-neoforge-1.21.1-6.2.2.jar) |
 | qol | `chat-heads` | locked |  |
 | qol | `betterf3` | locked |  |
 | qol | `carry-on` | locked |  |
@@ -53,14 +52,15 @@
 | world | `terralith` | locked |  |
 | world | `lithostitched` | locked |  |
 | world | `towns-and-towers` | locked |  |
-| world | `ctov` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/ctov: 404 -- candidates: `betterloot-zibura` (Better Loot Zibura, 3,246 dl) |
+| world | `choicetheorems-overhauled-village` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/choicetheorems-overhauled-village: 404 -- candidates: no matches |
 | world | `dungeons-and-taverns` | locked |  |
 | world | `explorify` | locked |  |
-| world | `repurposed-structures` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/repurposed-structures: 404 -- candidates: `repurposed-structures-forge` (Repurposed Structures - Neoforge/Forge, 5,263,952 dl), `repurposed-structures-farmers-delight-compat` (Repurposed Structures - Farmer's Delight Compat, 3,683,385 dl), `repurposed-structures-friends-and-foes-compat` (Repurposed Structures - Friends and Foes Compat, 3,301,925 dl), `repurposed-structures-better-ocean-monuments-compat-port` (Repurposed Structures - Better Ocean Monuments Compat Port, 5,934 dl) |
+| world | `repurposed-structures-forge` | added | Project "Repurposed Structures - Neoforge/Forge" successfully added! (repurposed_structures-7.5.22+1.21.1-neoforge.jar) |
+| world | `repurposed-structures-farmers-delight-compat` | added | Project "Repurposed Structures - Farmer's Delight Compat" successfully added! (repurposed_structures_farmers_delight_compat_v7.jar) |
 | world | `structory` | locked |  |
 | world | `moogs-voyager-structures` | locked |  |
 | world | `when-dungeons-arise` | locked |  |
-| world | `idas` | added | Project " Integrated Dungeons and Structures" successfully added! (idas-1.13.7+1.21.1-neoforge.jar) |
+| world | `idas` | locked |  |
 | world | `yungs-better-dungeons` | locked |  |
 | world | `yungs-better-mineshafts` | locked |  |
 | world | `yungs-better-strongholds` | locked |  |
@@ -87,6 +87,7 @@
 - `create`
 - `creativecore`
 - `cristel-lib`
+- `fragmentum`
 - `geckolib`
 - `integrated-api`
 - `kotlin-for-forge`

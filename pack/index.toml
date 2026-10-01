@@ -151,6 +151,11 @@ hash = "73360e397134d238ee8fd21d33fd7f9275e9441f74f8f1b6ed92278877c0b9f1"
 metafile = true
 
 [[files]]
+file = "mods/fragmentum.pw.toml"
+hash = "18d9fbb0f1b7585d2e6886abc7a7322c0d8a564b5299d745586440dcb4e0c400"
+metafile = true
+
+[[files]]
 file = "mods/geckolib.pw.toml"
 hash = "35779b39ddc06059ec483b33de2ecfdc3adb95c0a49e69b6701fb0024827e2f5"
 metafile = true
@@ -226,6 +231,11 @@ hash = "ee7786026fb270b31b018efd166afff9f91de67369a50832ca33644d2bc32722"
 metafile = true
 
 [[files]]
+file = "mods/loot-journal.pw.toml"
+hash = "f8ee8585f6ef37c12d3f5ea749394d3b86c9c97b0f2b98a0056d66a83a91d150"
+metafile = true
+
+[[files]]
 file = "mods/mezzconfig.pw.toml"
 hash = "12c6e23ca90b3dc4df9f51c445d944e7cd298186dec5aeff65b66e54343f3272"
 metafile = true
@@ -293,6 +303,16 @@ metafile = true
 [[files]]
 file = "mods/quark.pw.toml"
 hash = "ddf213b8ba47e0651dc89081db34c5d5350b792ba395e81da70200e593ec310c"
+metafile = true
+
+[[files]]
+file = "mods/repurposed-structures-farmers-delight-compat.pw.toml"
+hash = "1b9625747845eac9c4a92135ec74201039b9f7677abbf42bc8b61f51986b5a1a"
+metafile = true
+
+[[files]]
+file = "mods/repurposed-structures-forge.pw.toml"
+hash = "f1aab783c14673d62e516fe43887088d1647b125c92c9b9caabd3574169c8d2c"
 metafile = true
 
 [[files]]
