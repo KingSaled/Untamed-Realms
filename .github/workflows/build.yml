@@ -83,3 +83,48 @@ jobs:
           name: gametest-logs
           path: run/gametest/logs/
           if-no-files-found: ignore
+
+  client:
+    name: Boot client with the full pack (keybind check)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Fetch the pack's client mods
+        run: python3 tools/pack/fetch_mods.py --side client --dest run/client/mods
+      - name: Install a virtual display
+        run: sudo apt-get update -q && sudo apt-get install -y -q xvfb libgl1-mesa-dri
+      - name: Boot to the title screen, write the key report, quit
+        shell: bash
+        timeout-minutes: 30
+        env:
+          UR_KEY_REPORT: '1'
+          UR_EXIT_AFTER_REPORT: '1'
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: |
+          xvfb-run -a -s "-screen 0 1280x720x24" ./gradlew :devenv:runClient --no-daemon > client.log 2>&1 || status=$?
+          grep -E "ERROR|FATAL|Exception" client.log | grep -v UR-KEYS | head -60 || true
+          test -f run/client/untamedrealms-keys.txt || { tail -150 client.log; exit 1; }
+          exit ${status:-0}
+      - name: Key report
+        if: always()
+        shell: bash
+        run: |
+          f=run/client/untamedrealms-keys.txt
+          [ -f "$f" ] || exit 0
+          cat "$f"
+          { echo "### Key bindings ($(tail -1 "$f"))"; echo '```'; grep -v '^#' "$f" | awk -F' [|] ' '$6 != ""'; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: client-boot
+          path: |
+            client.log
+            run/client/untamedrealms-keys.txt
+            run/client/logs/
+            run/client/crash-reports/

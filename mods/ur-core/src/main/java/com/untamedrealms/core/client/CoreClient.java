@@ -6,6 +6,8 @@ import com.untamedrealms.core.client.ui.UiKit;
 import com.untamedrealms.core.registry.CoreItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.AccessibilityOnboardingScreen;
+import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
@@ -57,6 +59,14 @@ public final class CoreClient {
         public static void onLogout(ClientPlayerNetworkEvent.LoggingOut event) {
             ClientCoreState.reset();
             NotificationHud.clear();
+        }
+
+        /** Applies the pack's key layout once the game has finished loading (first menu). */
+        @SubscribeEvent
+        public static void onScreenOpening(ScreenEvent.Opening event) {
+            if (event.getNewScreen() instanceof TitleScreen || event.getNewScreen() instanceof AccessibilityOnboardingScreen) {
+                KeybindProfile.onFirstMenu();
+            }
         }
 
         /** Shows the Crown balance under the survival inventory. */
