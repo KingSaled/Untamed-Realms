@@ -1,0 +1,18 @@
+{
+  "name": "Invisibility",
+  "description": "Fade from sight for a short while.",
+  "school": "illusion",
+  "level": 35,
+  "cost": 70,
+  "kind": "self",
+  "element": "shadow",
+  "cooldown": 300,
+  "xp": 18,
+  "effects": [
+    {
+      "effect": "minecraft:invisibility",
+      "duration": 600,
+      "amplifier": 0
+    }
+  ]
+}

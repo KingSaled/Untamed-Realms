@@ -81,6 +81,14 @@ public final class QuestEvents {
         }
     }
 
+    /** Custom objective types reported by other modules (e.g. "cast" from ur-magic). */
+    @SubscribeEvent
+    public static void onProgress(com.untamedrealms.core.api.ProgressEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            QuestApi.progress(player, event.getType(), target -> Targets.id(target, event.getId()), event.getAmount());
+        }
+    }
+
     @SubscribeEvent
     public static void onSkillUp(SkillLevelUpEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) QuestApi.evaluateAllStatic(player);

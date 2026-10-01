@@ -1,0 +1,13 @@
+{
+  "name": "Conjure Guardian",
+  "description": "Summon a stone guardian to defend you.",
+  "school": "conjuration",
+  "level": 40,
+  "cost": 90,
+  "kind": "summon",
+  "entity": "minecraft:iron_golem",
+  "duration": 1200,
+  "element": "arcane",
+  "cooldown": 600,
+  "xp": 25
+}

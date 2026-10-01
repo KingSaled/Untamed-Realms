@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urmagic"
+version = "${suite_version}"
+displayName = "Untamed Realms: Magic"
+authors = "${mod_authors}"
+description = '''
+Five schools of magic - Destruction, Restoration, Alteration, Conjuration, Illusion - learned from spell tomes, cast from a spellbook, powered by Magicka and mastered through the matching skills.
+'''
+
+[[dependencies.urmagic]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urmagic]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urmagic]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

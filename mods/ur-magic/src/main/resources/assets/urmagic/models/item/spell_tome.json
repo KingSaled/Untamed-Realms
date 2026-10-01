@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "urmagic:item/spell_tome_destruction"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "urmagic:school": 0.09000000000000001
+      },
+      "model": "urmagic:item/spell_tome_destruction"
+    },
+    {
+      "predicate": {
+        "urmagic:school": 0.19
+      },
+      "model": "urmagic:item/spell_tome_restoration"
+    },
+    {
+      "predicate": {
+        "urmagic:school": 0.29000000000000004
+      },
+      "model": "urmagic:item/spell_tome_alteration"
+    },
+    {
+      "predicate": {
+        "urmagic:school": 0.39
+      },
+      "model": "urmagic:item/spell_tome_conjuration"
+    },
+    {
+      "predicate": {
+        "urmagic:school": 0.49
+      },
+      "model": "urmagic:item/spell_tome_illusion"
+    }
+  ]
+}

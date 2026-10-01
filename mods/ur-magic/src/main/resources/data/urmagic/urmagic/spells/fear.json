@@ -1,0 +1,14 @@
+{
+  "name": "Fear",
+  "description": "Nearby hostile creatures flee in terror.",
+  "school": "illusion",
+  "level": 20,
+  "cost": 40,
+  "kind": "area",
+  "radius": 10,
+  "duration": 200,
+  "area": "fear",
+  "element": "shadow",
+  "cooldown": 60,
+  "xp": 12
+}

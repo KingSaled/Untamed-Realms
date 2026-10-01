@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urmagic:inject/arcana",
+  "chance": 0.2,
+  "prefixes": [
+    "chests/"
+  ]
+}

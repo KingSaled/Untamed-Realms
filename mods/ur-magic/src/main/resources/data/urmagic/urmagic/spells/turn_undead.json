@@ -1,0 +1,14 @@
+{
+  "name": "Turn Undead",
+  "description": "Holy light burns and repels nearby undead.",
+  "school": "restoration",
+  "level": 25,
+  "cost": 45,
+  "kind": "area",
+  "damage": 6,
+  "radius": 8,
+  "area": "undead",
+  "element": "holy",
+  "cooldown": 60,
+  "xp": 14
+}

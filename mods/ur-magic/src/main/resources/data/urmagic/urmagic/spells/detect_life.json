@@ -1,0 +1,14 @@
+{
+  "name": "Detect Life",
+  "description": "Reveals living creatures around you, even through walls.",
+  "school": "alteration",
+  "level": 20,
+  "cost": 35,
+  "kind": "area",
+  "radius": 32,
+  "duration": 300,
+  "area": "glow",
+  "element": "arcane",
+  "cooldown": 80,
+  "xp": 10
+}

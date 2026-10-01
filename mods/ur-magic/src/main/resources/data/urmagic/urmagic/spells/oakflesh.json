@@ -1,0 +1,18 @@
+{
+  "name": "Oakflesh",
+  "description": "Your skin hardens like bark.",
+  "school": "alteration",
+  "level": 1,
+  "cost": 30,
+  "kind": "self",
+  "element": "arcane",
+  "cooldown": 60,
+  "xp": 8,
+  "effects": [
+    {
+      "effect": "minecraft:resistance",
+      "duration": 1200,
+      "amplifier": 0
+    }
+  ]
+}

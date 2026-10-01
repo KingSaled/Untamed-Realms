@@ -1,0 +1,14 @@
+{
+  "name": "Sparks",
+  "description": "Crackling lightning arcs at foes in front of you, sapping their strength.",
+  "school": "destruction",
+  "level": 20,
+  "cost": 18,
+  "kind": "cone",
+  "damage": 4,
+  "range": 7,
+  "radius": 3,
+  "element": "shock",
+  "cooldown": 10,
+  "xp": 6
+}

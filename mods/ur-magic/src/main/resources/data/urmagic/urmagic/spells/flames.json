@@ -1,0 +1,14 @@
+{
+  "name": "Flames",
+  "description": "A short stream of fire that sets foes alight.",
+  "school": "destruction",
+  "level": 1,
+  "cost": 12,
+  "kind": "cone",
+  "damage": 3,
+  "range": 6,
+  "radius": 3,
+  "element": "fire",
+  "cooldown": 8,
+  "xp": 5
+}

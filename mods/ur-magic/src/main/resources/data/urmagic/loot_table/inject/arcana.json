@@ -1,0 +1,339 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:flames"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 11,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:firebolt"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:frostbite"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 9,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:sparks"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 7,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:ice_spike"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:thunderbolt"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:healing"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 9,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:heal_other"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:ward"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 7,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:sun_fire"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:turn_undead"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:oakflesh"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:candlelight"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 9,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:detect_life"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:waterbreathing"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 11,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:featherfall"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:conjure_familiar"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:bound_sword"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:conjure_guardian"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 12,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:calm"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 9,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:fear"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 7,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:invisibility"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:spell_tome",
+          "weight": 11,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urmagic:spell": "urmagic:muffle"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:magicka_potion",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urmagic:stamina_potion",
+          "weight": 15,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

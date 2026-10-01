@@ -1,0 +1,13 @@
+{
+  "name": "Ice Spike",
+  "description": "A heavy spear of ice.",
+  "school": "destruction",
+  "level": 35,
+  "cost": 45,
+  "kind": "projectile",
+  "damage": 12,
+  "speed": 2.2,
+  "element": "frost",
+  "cooldown": 24,
+  "xp": 12
+}

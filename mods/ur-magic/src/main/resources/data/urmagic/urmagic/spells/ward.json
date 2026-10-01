@@ -1,0 +1,23 @@
+{
+  "name": "Ward",
+  "description": "A shimmering ward absorbs incoming harm.",
+  "school": "restoration",
+  "level": 15,
+  "cost": 30,
+  "kind": "self",
+  "element": "holy",
+  "cooldown": 60,
+  "xp": 10,
+  "effects": [
+    {
+      "effect": "minecraft:absorption",
+      "duration": 400,
+      "amplifier": 1
+    },
+    {
+      "effect": "minecraft:resistance",
+      "duration": 200,
+      "amplifier": 0
+    }
+  ]
+}

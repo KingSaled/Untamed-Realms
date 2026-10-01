@@ -1,0 +1,13 @@
+{
+  "name": "Conjure Familiar",
+  "description": "Summon a spectral wolf to fight at your side.",
+  "school": "conjuration",
+  "level": 1,
+  "cost": 40,
+  "kind": "summon",
+  "entity": "minecraft:wolf",
+  "duration": 1200,
+  "element": "shadow",
+  "cooldown": 100,
+  "xp": 12
+}

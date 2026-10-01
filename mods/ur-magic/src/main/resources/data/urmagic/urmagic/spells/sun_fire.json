@@ -1,0 +1,13 @@
+{
+  "name": "Sun Fire",
+  "description": "Searing holy light; devastating to the undead.",
+  "school": "restoration",
+  "level": 30,
+  "cost": 35,
+  "kind": "projectile",
+  "damage": 7,
+  "speed": 1.8,
+  "element": "holy",
+  "cooldown": 18,
+  "xp": 10
+}

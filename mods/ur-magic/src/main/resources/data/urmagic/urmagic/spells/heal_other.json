@@ -1,0 +1,13 @@
+{
+  "name": "Heal Other",
+  "description": "A mote of light that heals the ally it touches.",
+  "school": "restoration",
+  "level": 20,
+  "cost": 30,
+  "kind": "projectile",
+  "heal": 8,
+  "speed": 1.2,
+  "element": "heal",
+  "cooldown": 20,
+  "xp": 10
+}

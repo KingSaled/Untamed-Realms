@@ -1,0 +1,12 @@
+{
+  "name": "Bound Sword",
+  "description": "Conjure a blade of pure magic for a time.",
+  "school": "conjuration",
+  "level": 15,
+  "cost": 45,
+  "kind": "bound_weapon",
+  "duration": 2400,
+  "element": "arcane",
+  "cooldown": 200,
+  "xp": 12
+}

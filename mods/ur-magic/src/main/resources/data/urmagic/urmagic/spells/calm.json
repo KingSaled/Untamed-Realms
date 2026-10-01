@@ -1,0 +1,14 @@
+{
+  "name": "Calm",
+  "description": "Nearby hostile creatures lose the will to fight.",
+  "school": "illusion",
+  "level": 1,
+  "cost": 30,
+  "kind": "area",
+  "radius": 10,
+  "duration": 300,
+  "area": "calm",
+  "element": "arcane",
+  "cooldown": 60,
+  "xp": 10
+}

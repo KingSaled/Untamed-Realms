@@ -1,0 +1,12 @@
+{
+  "name": "Healing",
+  "description": "Mend your own wounds.",
+  "school": "restoration",
+  "level": 1,
+  "cost": 20,
+  "kind": "self",
+  "heal": 6,
+  "element": "heal",
+  "cooldown": 20,
+  "xp": 8
+}

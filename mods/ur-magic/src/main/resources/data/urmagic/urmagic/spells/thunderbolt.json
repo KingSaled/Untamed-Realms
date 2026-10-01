@@ -1,0 +1,14 @@
+{
+  "name": "Thunderbolt",
+  "description": "Call down lightning where you look.",
+  "school": "destruction",
+  "level": 55,
+  "cost": 80,
+  "kind": "lightning",
+  "damage": 16,
+  "range": 32,
+  "radius": 2.5,
+  "element": "shock",
+  "cooldown": 60,
+  "xp": 20
+}

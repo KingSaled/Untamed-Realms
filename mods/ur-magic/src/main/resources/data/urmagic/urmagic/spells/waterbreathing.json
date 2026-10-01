@@ -1,0 +1,18 @@
+{
+  "name": "Waterbreathing",
+  "description": "Breathe beneath the waves.",
+  "school": "alteration",
+  "level": 15,
+  "cost": 30,
+  "kind": "self",
+  "element": "arcane",
+  "cooldown": 60,
+  "xp": 8,
+  "effects": [
+    {
+      "effect": "minecraft:water_breathing",
+      "duration": 2400,
+      "amplifier": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Firebolt",
+  "description": "A bolt of fire that burns its target.",
+  "school": "destruction",
+  "level": 10,
+  "cost": 25,
+  "kind": "projectile",
+  "damage": 7,
+  "speed": 1.8,
+  "element": "fire",
+  "cooldown": 16,
+  "xp": 8
+}
