@@ -9,7 +9,7 @@ NeoForge 1.21.1 build fail loudly in the report instead of silently vanishing.
 Usage (CI):  python3 tools/pack/resolve.py [--update]
   --update   also run `packwiz update --all` to move locked mods to their newest builds
 """
-import os, re, subprocess, sys
+import json, os, re, subprocess, sys, urllib.parse, urllib.request
 
 PACK = os.path.join(os.path.dirname(__file__), "..", "..", "pack")
 MANIFEST = os.path.join(PACK, "mods.yml")
@@ -41,6 +41,19 @@ def run(args):
     return subprocess.run(args, cwd=PACK, capture_output=True, text=True, timeout=300)
 
 
+def suggest(slug):
+    """Modrinth search for NeoForge 1.21.1 projects resembling a slug that failed to resolve."""
+    facets = json.dumps([["categories:neoforge"], ["versions:1.21.1"], ["project_type:mod"]])
+    url = "https://api.modrinth.com/v2/search?" + urllib.parse.urlencode(
+        {"query": slug.replace("-", " "), "facets": facets, "limit": 4})
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "untamed-realms-pack-resolver"})
+        hits = json.load(urllib.request.urlopen(req, timeout=20))["hits"]
+        return ", ".join(f"`{h['slug']}` ({h['title']}, {h['downloads']:,} dl)" for h in hits) or "no matches"
+    except Exception as e:  # noqa: BLE001 - suggestions are best effort
+        return f"search failed: {e}"
+
+
 def main():
     update = "--update" in sys.argv
     sections = read_manifest()
@@ -60,7 +73,7 @@ def main():
                 # packwiz may name the file after the mod's display slug; treat as added.
                 results.append((section, slug, "added (renamed file)", tail))
             else:
-                results.append((section, slug, "FAILED", tail))
+                results.append((section, slug, "FAILED", tail + " -- candidates: " + suggest(slug)))
             print(f"[{section}] {slug}: {results[-1][2]} {tail}", flush=True)
 
     if update:

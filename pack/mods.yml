@@ -39,8 +39,6 @@ qol:                  # ---- quality of life
   - mouse-tweaks
   - inventory-profiles-next  # sorting, auto-refill
   - controlling        # keybind search & conflict view
-  - configured         # in-game config editor
-  - catalogue          # nicer mod list
   - xaeros-minimap
   - xaeros-world-map
   - waystones          # Skyrim-style fast travel between discovered waystones
@@ -61,7 +59,6 @@ immersion:            # ---- look, sound and feel
   - 3dskinlayers
   - sound-physics-remastered
   - ambientsounds
-  - fallingleaves
 
 world:                # ---- adventure-first world generation
   - terralith          # dramatic overworld terrain
@@ -74,7 +71,7 @@ world:                # ---- adventure-first world generation
   - structory
   - moogs-voyager-structures
   - when-dungeons-arise   # huge set-piece dungeons
-  - integrated-dungeons-and-structures
+  - idas               # Integrated Dungeons and Structures
   - yungs-better-dungeons
   - yungs-better-mineshafts
   - yungs-better-strongholds
