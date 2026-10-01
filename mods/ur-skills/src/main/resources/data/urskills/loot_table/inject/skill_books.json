@@ -1,0 +1,298 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "one_handed"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "two_handed"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "archery"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "block"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "heavy_armor"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "smithing"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "destruction"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "restoration"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "alteration"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "conjuration"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "illusion"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "enchanting"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "light_armor"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "sneak"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "lockpicking"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "pickpocket"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "speech"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "alchemy"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "mining"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "woodcutting"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "fishing"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "farming"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "cooking"
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urskills:skill_book",
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "urskills:skill": "agility"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urskills:inject/skill_books",
+  "chance": 0.12,
+  "prefixes": [
+    "chests/"
+  ]
+}

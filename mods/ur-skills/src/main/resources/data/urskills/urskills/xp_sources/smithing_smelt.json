@@ -1,0 +1,26 @@
+{
+  "skill": "smithing",
+  "trigger": "smelt",
+  "entries": [
+    {
+      "match": "minecraft:iron_ingot",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:gold_ingot",
+      "xp": 8
+    },
+    {
+      "match": "minecraft:copper_ingot",
+      "xp": 3
+    },
+    {
+      "match": "minecraft:netherite_scrap",
+      "xp": 30
+    },
+    {
+      "match": "#c:ingots",
+      "xp": 5
+    }
+  ]
+}

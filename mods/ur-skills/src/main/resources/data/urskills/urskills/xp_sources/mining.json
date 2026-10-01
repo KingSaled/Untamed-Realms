@@ -1,0 +1,78 @@
+{
+  "skill": "mining",
+  "trigger": "break_block",
+  "entries": [
+    {
+      "match": "#minecraft:base_stone_overworld",
+      "xp": 1
+    },
+    {
+      "match": "#minecraft:base_stone_nether",
+      "xp": 1
+    },
+    {
+      "match": "minecraft:end_stone",
+      "xp": 2
+    },
+    {
+      "match": "#minecraft:coal_ores",
+      "xp": 8
+    },
+    {
+      "match": "#minecraft:copper_ores",
+      "xp": 6
+    },
+    {
+      "match": "#minecraft:iron_ores",
+      "xp": 15
+    },
+    {
+      "match": "#minecraft:redstone_ores",
+      "xp": 12
+    },
+    {
+      "match": "#minecraft:lapis_ores",
+      "xp": 15
+    },
+    {
+      "match": "#minecraft:gold_ores",
+      "xp": 25
+    },
+    {
+      "match": "minecraft:nether_gold_ore",
+      "xp": 10
+    },
+    {
+      "match": "minecraft:nether_quartz_ore",
+      "xp": 10
+    },
+    {
+      "match": "#minecraft:diamond_ores",
+      "xp": 50
+    },
+    {
+      "match": "#minecraft:emerald_ores",
+      "xp": 60
+    },
+    {
+      "match": "minecraft:ancient_debris",
+      "xp": 120
+    },
+    {
+      "match": "minecraft:amethyst_cluster",
+      "xp": 10
+    },
+    {
+      "match": "minecraft:obsidian",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:crying_obsidian",
+      "xp": 8
+    },
+    {
+      "match": "#c:ores",
+      "xp": 12
+    }
+  ]
+}

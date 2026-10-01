@@ -1,0 +1,54 @@
+{
+  "skill": "cooking",
+  "trigger": "craft",
+  "entries": [
+    {
+      "match": "minecraft:bread",
+      "xp": 4
+    },
+    {
+      "match": "minecraft:cake",
+      "xp": 12
+    },
+    {
+      "match": "minecraft:pumpkin_pie",
+      "xp": 8
+    },
+    {
+      "match": "minecraft:cookie",
+      "xp": 1
+    },
+    {
+      "match": "minecraft:mushroom_stew",
+      "xp": 5
+    },
+    {
+      "match": "minecraft:rabbit_stew",
+      "xp": 12
+    },
+    {
+      "match": "minecraft:beetroot_soup",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:suspicious_stew",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:golden_carrot",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:golden_apple",
+      "xp": 15
+    },
+    {
+      "match": "#c:foods/soup",
+      "xp": 8
+    },
+    {
+      "match": "#farmersdelight:meals",
+      "xp": 12
+    }
+  ]
+}

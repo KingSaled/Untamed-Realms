@@ -1,0 +1,96 @@
+{
+  "skill": "archery",
+  "perks": [
+    {
+      "id": "overdraw_1",
+      "name": "Overdraw I",
+      "description": "Arrows deal 20% more damage (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "archery"
+        }
+      ]
+    },
+    {
+      "id": "overdraw_2",
+      "name": "Overdraw II",
+      "description": "Arrows deal 20% more damage (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "archery"
+        }
+      ],
+      "requires": [
+        "overdraw_1"
+      ]
+    },
+    {
+      "id": "overdraw_3",
+      "name": "Overdraw III",
+      "description": "Arrows deal 20% more damage (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "archery"
+        }
+      ],
+      "requires": [
+        "overdraw_2"
+      ]
+    },
+    {
+      "id": "eagle_eye",
+      "name": "Eagle Eye",
+      "description": "Sneak attacks with arrows deal +0.5x damage.",
+      "level": 20,
+      "effects": [
+        {
+          "type": "sneak_attack",
+          "value": 0.5,
+          "key": "archery"
+        }
+      ]
+    },
+    {
+      "id": "ranger",
+      "name": "Ranger",
+      "description": "Move 5% faster.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "overdraw_1"
+      ]
+    },
+    {
+      "id": "bullseye",
+      "name": "Bullseye",
+      "description": "Arrows deal another 25% damage.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.25,
+          "key": "archery"
+        }
+      ],
+      "requires": [
+        "overdraw_3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "skill": "illusion",
+  "perks": [
+    {
+      "id": "illusion_mastery_1",
+      "name": "Illusion Mastery I",
+      "description": "Spells of this school cost 15% less magicka (rank 1).",
+      "level": 1,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "illusion"
+        }
+      ]
+    },
+    {
+      "id": "illusion_mastery_2",
+      "name": "Illusion Mastery II",
+      "description": "Spells of this school cost 15% less magicka (rank 2).",
+      "level": 25,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "illusion"
+        }
+      ],
+      "requires": [
+        "illusion_mastery_1"
+      ]
+    },
+    {
+      "id": "illusion_mastery_3",
+      "name": "Illusion Mastery III",
+      "description": "Spells of this school cost 15% less magicka (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "illusion"
+        }
+      ],
+      "requires": [
+        "illusion_mastery_2"
+      ]
+    },
+    {
+      "id": "illusion_mastery_4",
+      "name": "Illusion Mastery IV",
+      "description": "Spells of this school cost 15% less magicka (rank 4).",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "illusion"
+        }
+      ],
+      "requires": [
+        "illusion_mastery_3"
+      ]
+    },
+    {
+      "id": "animage",
+      "name": "Animage",
+      "description": "Illusion spells are 25% stronger.",
+      "level": 20,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.25,
+          "key": "illusion"
+        }
+      ]
+    },
+    {
+      "id": "quiet_casting",
+      "name": "Quiet Casting",
+      "description": "You are 10% harder to notice while sneaking.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "stealth",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "animage"
+      ]
+    },
+    {
+      "id": "master_of_the_mind",
+      "name": "Master of the Mind",
+      "description": "Illusion spells are 50% stronger.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.5,
+          "key": "illusion"
+        }
+      ],
+      "requires": [
+        "quiet_casting"
+      ]
+    }
+  ]
+}

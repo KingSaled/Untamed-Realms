@@ -1,0 +1,50 @@
+{
+  "skill": "cooking",
+  "trigger": "smelt",
+  "entries": [
+    {
+      "match": "#c:foods/cooked_meat",
+      "xp": 6
+    },
+    {
+      "match": "#c:foods/cooked_fish",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:baked_potato",
+      "xp": 3
+    },
+    {
+      "match": "minecraft:dried_kelp",
+      "xp": 1
+    },
+    {
+      "match": "minecraft:cooked_beef",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:cooked_porkchop",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:cooked_chicken",
+      "xp": 5
+    },
+    {
+      "match": "minecraft:cooked_mutton",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:cooked_rabbit",
+      "xp": 6
+    },
+    {
+      "match": "minecraft:cooked_cod",
+      "xp": 5
+    },
+    {
+      "match": "minecraft:cooked_salmon",
+      "xp": 6
+    }
+  ]
+}

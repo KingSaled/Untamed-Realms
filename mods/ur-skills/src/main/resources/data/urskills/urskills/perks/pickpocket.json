@@ -1,0 +1,77 @@
+{
+  "skill": "pickpocket",
+  "perks": [
+    {
+      "id": "light_fingers_1",
+      "name": "Light Fingers I",
+      "description": "Pickpocketing is 10% more likely to succeed (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "pickpocket",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "light_fingers_2",
+      "name": "Light Fingers II",
+      "description": "Pickpocketing is 10% more likely to succeed (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "pickpocket",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "light_fingers_1"
+      ]
+    },
+    {
+      "id": "light_fingers_3",
+      "name": "Light Fingers III",
+      "description": "Pickpocketing is 10% more likely to succeed (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "pickpocket",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "light_fingers_2"
+      ]
+    },
+    {
+      "id": "cutpurse",
+      "name": "Cutpurse",
+      "description": "Pickpocketing is another 15% more likely to succeed.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "pickpocket",
+          "value": 0.15
+        }
+      ],
+      "requires": [
+        "light_fingers_2"
+      ]
+    },
+    {
+      "id": "misdirection",
+      "name": "Misdirection",
+      "description": "Pickpocketing is another 20% more likely to succeed.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "pickpocket",
+          "value": 0.2
+        }
+      ],
+      "requires": [
+        "light_fingers_3"
+      ]
+    }
+  ]
+}

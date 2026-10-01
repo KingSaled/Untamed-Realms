@@ -1,0 +1,97 @@
+{
+  "skill": "heavy_armor",
+  "perks": [
+    {
+      "id": "juggernaut_1",
+      "name": "Juggernaut I",
+      "description": "In a full set of heavy armor, take 8% less damage (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "heavy_armor"
+        }
+      ]
+    },
+    {
+      "id": "juggernaut_2",
+      "name": "Juggernaut II",
+      "description": "In a full set of heavy armor, take 8% less damage (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "heavy_armor"
+        }
+      ],
+      "requires": [
+        "juggernaut_1"
+      ]
+    },
+    {
+      "id": "juggernaut_3",
+      "name": "Juggernaut III",
+      "description": "In a full set of heavy armor, take 8% less damage (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "heavy_armor"
+        }
+      ],
+      "requires": [
+        "juggernaut_2"
+      ]
+    },
+    {
+      "id": "well_fitted",
+      "name": "Well Fitted",
+      "description": "+2 armor toughness.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "conditioning",
+      "name": "Conditioning",
+      "description": "Actions cost 15% less stamina.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "stamina"
+        }
+      ],
+      "requires": [
+        "juggernaut_2"
+      ]
+    },
+    {
+      "id": "tower_of_strength",
+      "name": "Tower of Strength",
+      "description": "+25% knockback resistance.",
+      "level": 75,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.25
+        }
+      ],
+      "requires": [
+        "juggernaut_3"
+      ]
+    }
+  ]
+}

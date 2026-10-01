@@ -1,0 +1,42 @@
+{
+  "skill": "fishing",
+  "trigger": "fish",
+  "entries": [
+    {
+      "match": "*",
+      "xp": 10
+    },
+    {
+      "match": "#minecraft:fishes",
+      "xp": 15
+    },
+    {
+      "match": "minecraft:salmon",
+      "xp": 18
+    },
+    {
+      "match": "minecraft:pufferfish",
+      "xp": 20
+    },
+    {
+      "match": "minecraft:tropical_fish",
+      "xp": 25
+    },
+    {
+      "match": "minecraft:enchanted_book",
+      "xp": 40
+    },
+    {
+      "match": "minecraft:name_tag",
+      "xp": 40
+    },
+    {
+      "match": "minecraft:nautilus_shell",
+      "xp": 40
+    },
+    {
+      "match": "minecraft:saddle",
+      "xp": 30
+    }
+  ]
+}

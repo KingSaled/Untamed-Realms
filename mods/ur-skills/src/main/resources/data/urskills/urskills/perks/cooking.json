@@ -1,0 +1,76 @@
+{
+  "skill": "cooking",
+  "perks": [
+    {
+      "id": "hearty_meals_1",
+      "name": "Hearty Meals I",
+      "description": "Food heals a little extra (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "food_healing",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "id": "hearty_meals_2",
+      "name": "Hearty Meals II",
+      "description": "Food heals a little extra (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "food_healing",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "hearty_meals_1"
+      ]
+    },
+    {
+      "id": "hearty_meals_3",
+      "name": "Hearty Meals III",
+      "description": "Food heals a little extra (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "food_healing",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "hearty_meals_2"
+      ]
+    },
+    {
+      "id": "chef",
+      "name": "Chef",
+      "description": "Cooking XP +20%.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "xp_bonus",
+          "value": 0.2,
+          "key": "cooking"
+        }
+      ]
+    },
+    {
+      "id": "feast",
+      "name": "Feast",
+      "description": "Slowly regenerate health.",
+      "level": 75,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.5,
+          "key": "health"
+        }
+      ],
+      "requires": [
+        "hearty_meals_3"
+      ]
+    }
+  ]
+}

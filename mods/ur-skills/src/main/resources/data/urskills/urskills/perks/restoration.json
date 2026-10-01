@@ -1,0 +1,111 @@
+{
+  "skill": "restoration",
+  "perks": [
+    {
+      "id": "restoration_mastery_1",
+      "name": "Restoration Mastery I",
+      "description": "Spells of this school cost 15% less magicka (rank 1).",
+      "level": 1,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "restoration"
+        }
+      ]
+    },
+    {
+      "id": "restoration_mastery_2",
+      "name": "Restoration Mastery II",
+      "description": "Spells of this school cost 15% less magicka (rank 2).",
+      "level": 25,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "restoration"
+        }
+      ],
+      "requires": [
+        "restoration_mastery_1"
+      ]
+    },
+    {
+      "id": "restoration_mastery_3",
+      "name": "Restoration Mastery III",
+      "description": "Spells of this school cost 15% less magicka (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "restoration"
+        }
+      ],
+      "requires": [
+        "restoration_mastery_2"
+      ]
+    },
+    {
+      "id": "restoration_mastery_4",
+      "name": "Restoration Mastery IV",
+      "description": "Spells of this school cost 15% less magicka (rank 4).",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "restoration"
+        }
+      ],
+      "requires": [
+        "restoration_mastery_3"
+      ]
+    },
+    {
+      "id": "regeneration",
+      "name": "Regeneration",
+      "description": "Healing spells are 50% stronger.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.5,
+          "key": "restoration"
+        }
+      ]
+    },
+    {
+      "id": "recovery",
+      "name": "Recovery",
+      "description": "Magicka regenerates 25% faster.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.25,
+          "key": "magicka"
+        }
+      ],
+      "requires": [
+        "regeneration"
+      ]
+    },
+    {
+      "id": "avoid_death",
+      "name": "Avoid Death",
+      "description": "Slowly regenerate health at all times.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 1.0,
+          "key": "health"
+        }
+      ],
+      "requires": [
+        "recovery"
+      ]
+    }
+  ]
+}

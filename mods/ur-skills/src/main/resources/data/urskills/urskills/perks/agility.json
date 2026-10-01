@@ -1,0 +1,94 @@
+{
+  "skill": "agility",
+  "perks": [
+    {
+      "id": "fleet_foot_1",
+      "name": "Fleet Foot I",
+      "description": "Move 3% faster (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.03
+        }
+      ]
+    },
+    {
+      "id": "fleet_foot_2",
+      "name": "Fleet Foot II",
+      "description": "Move 3% faster (rank 2).",
+      "level": 40,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.03
+        }
+      ],
+      "requires": [
+        "fleet_foot_1"
+      ]
+    },
+    {
+      "id": "fleet_foot_3",
+      "name": "Fleet Foot III",
+      "description": "Move 3% faster (rank 3).",
+      "level": 70,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.03
+        }
+      ],
+      "requires": [
+        "fleet_foot_2"
+      ]
+    },
+    {
+      "id": "light_landing",
+      "name": "Light Landing",
+      "description": "Take 20% less fall damage.",
+      "level": 25,
+      "effects": [
+        {
+          "type": "fall_reduction",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "second_wind",
+      "name": "Second Wind",
+      "description": "Stamina regenerates 30% faster.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.3,
+          "key": "stamina"
+        }
+      ]
+    },
+    {
+      "id": "marathoner",
+      "name": "Marathoner",
+      "description": "Actions cost 20% less stamina.",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.2,
+          "key": "stamina"
+        }
+      ],
+      "requires": [
+        "second_wind"
+      ]
+    }
+  ]
+}

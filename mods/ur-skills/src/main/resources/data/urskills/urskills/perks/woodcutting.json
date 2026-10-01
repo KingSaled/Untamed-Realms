@@ -1,0 +1,79 @@
+{
+  "skill": "woodcutting",
+  "perks": [
+    {
+      "id": "lumberjack_1",
+      "name": "Lumberjack I",
+      "description": "Chop 15% faster (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "speed_bonus",
+          "value": 0.15,
+          "key": "woodcutting"
+        }
+      ]
+    },
+    {
+      "id": "lumberjack_2",
+      "name": "Lumberjack II",
+      "description": "Chop 15% faster (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "speed_bonus",
+          "value": 0.15,
+          "key": "woodcutting"
+        }
+      ],
+      "requires": [
+        "lumberjack_1"
+      ]
+    },
+    {
+      "id": "lumberjack_3",
+      "name": "Lumberjack III",
+      "description": "Chop 15% faster (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "speed_bonus",
+          "value": 0.15,
+          "key": "woodcutting"
+        }
+      ],
+      "requires": [
+        "lumberjack_2"
+      ]
+    },
+    {
+      "id": "timber",
+      "name": "Timber",
+      "description": "+10% chance of double logs.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.1,
+          "key": "woodcutting"
+        }
+      ]
+    },
+    {
+      "id": "forester",
+      "name": "Forester",
+      "description": "+15% chance of double logs.",
+      "level": 75,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.15,
+          "key": "woodcutting"
+        }
+      ],
+      "requires": [
+        "timber"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "skill": "fishing",
+  "perks": [
+    {
+      "id": "angler_1",
+      "name": "Angler I",
+      "description": "+8% chance of an extra catch (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.08,
+          "key": "fishing"
+        }
+      ]
+    },
+    {
+      "id": "angler_2",
+      "name": "Angler II",
+      "description": "+8% chance of an extra catch (rank 2).",
+      "level": 40,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.08,
+          "key": "fishing"
+        }
+      ],
+      "requires": [
+        "angler_1"
+      ]
+    },
+    {
+      "id": "sea_legs",
+      "name": "Sea Legs",
+      "description": "Hold your breath longer.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.oxygen_bonus",
+          "operation": "add_value",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "master_angler",
+      "name": "Master Angler",
+      "description": "+1 luck of the sea.",
+      "level": 70,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 1
+        }
+      ],
+      "requires": [
+        "angler_2"
+      ]
+    }
+  ]
+}

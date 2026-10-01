@@ -1,0 +1,98 @@
+{
+  "skill": "destruction",
+  "perks": [
+    {
+      "id": "destruction_mastery_1",
+      "name": "Destruction Mastery I",
+      "description": "Spells of this school cost 15% less magicka (rank 1).",
+      "level": 1,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "destruction"
+        }
+      ]
+    },
+    {
+      "id": "destruction_mastery_2",
+      "name": "Destruction Mastery II",
+      "description": "Spells of this school cost 15% less magicka (rank 2).",
+      "level": 25,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "destruction"
+        }
+      ],
+      "requires": [
+        "destruction_mastery_1"
+      ]
+    },
+    {
+      "id": "destruction_mastery_3",
+      "name": "Destruction Mastery III",
+      "description": "Spells of this school cost 15% less magicka (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "destruction"
+        }
+      ],
+      "requires": [
+        "destruction_mastery_2"
+      ]
+    },
+    {
+      "id": "destruction_mastery_4",
+      "name": "Destruction Mastery IV",
+      "description": "Spells of this school cost 15% less magicka (rank 4).",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "destruction"
+        }
+      ],
+      "requires": [
+        "destruction_mastery_3"
+      ]
+    },
+    {
+      "id": "augmented_flames",
+      "name": "Augmented Elements",
+      "description": "Destruction spells are 25% stronger.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.25,
+          "key": "destruction"
+        }
+      ],
+      "requires": [
+        "destruction_mastery_2"
+      ]
+    },
+    {
+      "id": "impact",
+      "name": "Impact",
+      "description": "Destruction spells are another 25% stronger.",
+      "level": 60,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.25,
+          "key": "destruction"
+        }
+      ],
+      "requires": [
+        "augmented_flames"
+      ]
+    }
+  ]
+}

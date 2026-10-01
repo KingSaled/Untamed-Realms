@@ -1,0 +1,64 @@
+{
+  "skill": "lockpicking",
+  "perks": [
+    {
+      "id": "treasure_hunter_1",
+      "name": "Treasure Hunter I",
+      "description": "Unlooted chests are 10% more likely to hold double loot.",
+      "level": 10,
+      "effects": [
+        {
+          "type": "loot_bonus",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "golden_touch",
+      "name": "Golden Touch",
+      "description": "+1 luck.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 1
+        }
+      ],
+      "requires": [
+        "treasure_hunter_1"
+      ]
+    },
+    {
+      "id": "treasure_hunter_2",
+      "name": "Treasure Hunter II",
+      "description": "Unlooted chests are another 15% more likely to hold double loot.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "loot_bonus",
+          "value": 0.15
+        }
+      ],
+      "requires": [
+        "treasure_hunter_1"
+      ]
+    },
+    {
+      "id": "locksmith",
+      "name": "Locksmith",
+      "description": "Unlooted chests are another 20% more likely to hold double loot.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "loot_bonus",
+          "value": 0.2
+        }
+      ],
+      "requires": [
+        "treasure_hunter_2"
+      ]
+    }
+  ]
+}

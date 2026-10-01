@@ -10,6 +10,11 @@ def suite = [
     urmagic  : ':ur-magic',
 ]
 
+// Only modules that already ship a mod descriptor take part (lets new modules land incrementally).
+suite = suite.findAll { modId, path ->
+    rootProject.file("mods/${path.substring(1)}/src/main/resources/META-INF/neoforge.mods.toml").exists()
+}
+
 suite.values().each { evaluationDependsOn(it) }
 
 dependencies {

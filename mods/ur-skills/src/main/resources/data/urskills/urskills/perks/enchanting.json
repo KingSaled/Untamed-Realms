@@ -1,0 +1,83 @@
+{
+  "skill": "enchanting",
+  "perks": [
+    {
+      "id": "enchanter_1",
+      "name": "Enchanter I",
+      "description": "+0.5 luck, improving enchantments and loot (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 0.5
+        }
+      ]
+    },
+    {
+      "id": "enchanter_2",
+      "name": "Enchanter II",
+      "description": "+0.5 luck, improving enchantments and loot (rank 2).",
+      "level": 35,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 0.5
+        }
+      ],
+      "requires": [
+        "enchanter_1"
+      ]
+    },
+    {
+      "id": "enchanter_3",
+      "name": "Enchanter III",
+      "description": "+0.5 luck, improving enchantments and loot (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 0.5
+        }
+      ],
+      "requires": [
+        "enchanter_2"
+      ]
+    },
+    {
+      "id": "soul_siphon",
+      "name": "Soul Siphon",
+      "description": "Magicka regenerates 15% faster.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.15,
+          "key": "magicka"
+        }
+      ]
+    },
+    {
+      "id": "extra_effect",
+      "name": "Extra Effect",
+      "description": "+2 luck.",
+      "level": 90,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.luck",
+          "operation": "add_value",
+          "value": 2
+        }
+      ],
+      "requires": [
+        "enchanter_3"
+      ]
+    }
+  ]
+}

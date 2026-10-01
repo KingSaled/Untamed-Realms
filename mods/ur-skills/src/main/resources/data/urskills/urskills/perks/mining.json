@@ -1,0 +1,95 @@
+{
+  "skill": "mining",
+  "perks": [
+    {
+      "id": "prospector_1",
+      "name": "Prospector I",
+      "description": "+5% chance of double ore (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.05,
+          "key": "mining"
+        }
+      ]
+    },
+    {
+      "id": "prospector_2",
+      "name": "Prospector II",
+      "description": "+5% chance of double ore (rank 2).",
+      "level": 35,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.05,
+          "key": "mining"
+        }
+      ],
+      "requires": [
+        "prospector_1"
+      ]
+    },
+    {
+      "id": "prospector_3",
+      "name": "Prospector III",
+      "description": "+5% chance of double ore (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.05,
+          "key": "mining"
+        }
+      ],
+      "requires": [
+        "prospector_2"
+      ]
+    },
+    {
+      "id": "rock_breaker",
+      "name": "Rock Breaker",
+      "description": "Mine 15% faster.",
+      "level": 20,
+      "effects": [
+        {
+          "type": "speed_bonus",
+          "value": 0.15,
+          "key": "mining"
+        }
+      ]
+    },
+    {
+      "id": "deep_miner",
+      "name": "Deep Miner",
+      "description": "Mine another 20% faster.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "speed_bonus",
+          "value": 0.2,
+          "key": "mining"
+        }
+      ],
+      "requires": [
+        "rock_breaker"
+      ]
+    },
+    {
+      "id": "gem_finder",
+      "name": "Gem Finder",
+      "description": "+10% chance of double ore.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.1,
+          "key": "mining"
+        }
+      ],
+      "requires": [
+        "prospector_3"
+      ]
+    }
+  ]
+}

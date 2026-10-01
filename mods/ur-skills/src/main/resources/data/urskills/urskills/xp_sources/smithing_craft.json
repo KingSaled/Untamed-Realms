@@ -1,0 +1,82 @@
+{
+  "skill": "smithing",
+  "trigger": "craft",
+  "entries": [
+    {
+      "match": "#minecraft:swords",
+      "xp": 15
+    },
+    {
+      "match": "#minecraft:axes",
+      "xp": 12
+    },
+    {
+      "match": "#minecraft:pickaxes",
+      "xp": 12
+    },
+    {
+      "match": "#minecraft:shovels",
+      "xp": 6
+    },
+    {
+      "match": "#minecraft:hoes",
+      "xp": 6
+    },
+    {
+      "match": "#c:armors",
+      "xp": 20
+    },
+    {
+      "match": "#minecraft:head_armor",
+      "xp": 18
+    },
+    {
+      "match": "#minecraft:chest_armor",
+      "xp": 28
+    },
+    {
+      "match": "#minecraft:leg_armor",
+      "xp": 24
+    },
+    {
+      "match": "#minecraft:foot_armor",
+      "xp": 16
+    },
+    {
+      "match": "minecraft:shield",
+      "xp": 12
+    },
+    {
+      "match": "minecraft:bow",
+      "xp": 10
+    },
+    {
+      "match": "minecraft:crossbow",
+      "xp": 14
+    },
+    {
+      "match": "minecraft:anvil",
+      "xp": 30
+    },
+    {
+      "match": "minecraft:iron_bars",
+      "xp": 1
+    },
+    {
+      "match": "minecraft:chain",
+      "xp": 2
+    },
+    {
+      "match": "minecraft:lantern",
+      "xp": 2
+    },
+    {
+      "match": "minecraft:netherite_ingot",
+      "xp": 60
+    },
+    {
+      "match": "minecraft:mace",
+      "xp": 60
+    }
+  ]
+}

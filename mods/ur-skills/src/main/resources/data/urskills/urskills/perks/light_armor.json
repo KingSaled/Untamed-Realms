@@ -1,0 +1,95 @@
+{
+  "skill": "light_armor",
+  "perks": [
+    {
+      "id": "agile_defender_1",
+      "name": "Agile Defender I",
+      "description": "In a full set of light armor, take 8% less damage (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "light_armor"
+        }
+      ]
+    },
+    {
+      "id": "agile_defender_2",
+      "name": "Agile Defender II",
+      "description": "In a full set of light armor, take 8% less damage (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "light_armor"
+        }
+      ],
+      "requires": [
+        "agile_defender_1"
+      ]
+    },
+    {
+      "id": "agile_defender_3",
+      "name": "Agile Defender III",
+      "description": "In a full set of light armor, take 8% less damage (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.08,
+          "key": "light_armor"
+        }
+      ],
+      "requires": [
+        "agile_defender_2"
+      ]
+    },
+    {
+      "id": "custom_fit",
+      "name": "Custom Fit",
+      "description": "Move 3% faster.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.movement_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.03
+        }
+      ]
+    },
+    {
+      "id": "wind_walker",
+      "name": "Wind Walker",
+      "description": "Stamina regenerates 25% faster.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.25,
+          "key": "stamina"
+        }
+      ],
+      "requires": [
+        "agile_defender_2"
+      ]
+    },
+    {
+      "id": "deft_movement",
+      "name": "Deft Movement",
+      "description": "Take 10% less damage from all sources.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "agile_defender_3"
+      ]
+    }
+  ]
+}

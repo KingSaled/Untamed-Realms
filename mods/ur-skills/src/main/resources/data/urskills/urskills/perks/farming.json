@@ -1,0 +1,78 @@
+{
+  "skill": "farming",
+  "perks": [
+    {
+      "id": "green_thumb_1",
+      "name": "Green Thumb I",
+      "description": "+10% chance of double harvest (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.1,
+          "key": "farming"
+        }
+      ]
+    },
+    {
+      "id": "green_thumb_2",
+      "name": "Green Thumb II",
+      "description": "+10% chance of double harvest (rank 2).",
+      "level": 35,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.1,
+          "key": "farming"
+        }
+      ],
+      "requires": [
+        "green_thumb_1"
+      ]
+    },
+    {
+      "id": "green_thumb_3",
+      "name": "Green Thumb III",
+      "description": "+10% chance of double harvest (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "extra_drop",
+          "value": 0.1,
+          "key": "farming"
+        }
+      ],
+      "requires": [
+        "green_thumb_2"
+      ]
+    },
+    {
+      "id": "animal_husbandry",
+      "name": "Animal Husbandry",
+      "description": "Farming XP +15%.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "xp_bonus",
+          "value": 0.15,
+          "key": "farming"
+        }
+      ]
+    },
+    {
+      "id": "harvest_festival",
+      "name": "Harvest Festival",
+      "description": "Food heals a little extra.",
+      "level": 70,
+      "effects": [
+        {
+          "type": "food_healing",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "green_thumb_3"
+      ]
+    }
+  ]
+}

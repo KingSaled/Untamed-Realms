@@ -1,0 +1,98 @@
+{
+  "skill": "block",
+  "perks": [
+    {
+      "id": "shield_wall_1",
+      "name": "Shield Wall I",
+      "description": "+10% knockback resistance (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "shield_wall_2",
+      "name": "Shield Wall II",
+      "description": "+10% knockback resistance (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "shield_wall_1"
+      ]
+    },
+    {
+      "id": "shield_wall_3",
+      "name": "Shield Wall III",
+      "description": "+10% knockback resistance (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.knockback_resistance",
+          "operation": "add_value",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "shield_wall_2"
+      ]
+    },
+    {
+      "id": "deflect",
+      "name": "Deflect",
+      "description": "Take 5% less damage from all sources.",
+      "level": 25,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "id": "quick_reflexes",
+      "name": "Quick Reflexes",
+      "description": "Take 15% less damage while blocking.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.15,
+          "key": "block"
+        }
+      ],
+      "requires": [
+        "shield_wall_2"
+      ]
+    },
+    {
+      "id": "unbreakable",
+      "name": "Unbreakable",
+      "description": "+2 armor toughness.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.armor_toughness",
+          "operation": "add_value",
+          "value": 2
+        }
+      ],
+      "requires": [
+        "shield_wall_3"
+      ]
+    }
+  ]
+}

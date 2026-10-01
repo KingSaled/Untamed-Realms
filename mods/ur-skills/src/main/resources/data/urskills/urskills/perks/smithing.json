@@ -1,0 +1,75 @@
+{
+  "skill": "smithing",
+  "perks": [
+    {
+      "id": "steel_smithing",
+      "name": "Steel Smithing",
+      "description": "Crafted gear is more likely to be of fine quality.",
+      "level": 10,
+      "effects": [
+        {
+          "type": "smithing_quality",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "id": "ore_sense",
+      "name": "Ore Sense",
+      "description": "Mining XP +10%.",
+      "level": 20,
+      "effects": [
+        {
+          "type": "xp_bonus",
+          "value": 0.1,
+          "key": "mining"
+        }
+      ]
+    },
+    {
+      "id": "arcane_blacksmith",
+      "name": "Arcane Blacksmith",
+      "description": "Crafted gear quality improves further.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "smithing_quality",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "steel_smithing"
+      ]
+    },
+    {
+      "id": "masterwork",
+      "name": "Masterwork",
+      "description": "Crafted gear quality improves greatly.",
+      "level": 70,
+      "effects": [
+        {
+          "type": "smithing_quality",
+          "value": 0.15
+        }
+      ],
+      "requires": [
+        "arcane_blacksmith"
+      ]
+    },
+    {
+      "id": "forgemaster",
+      "name": "Forgemaster",
+      "description": "Your craft is legendary.",
+      "level": 90,
+      "effects": [
+        {
+          "type": "smithing_quality",
+          "value": 0.2
+        }
+      ],
+      "requires": [
+        "masterwork"
+      ]
+    }
+  ]
+}

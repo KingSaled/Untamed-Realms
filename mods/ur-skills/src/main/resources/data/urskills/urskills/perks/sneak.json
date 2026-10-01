@@ -1,0 +1,107 @@
+{
+  "skill": "sneak",
+  "perks": [
+    {
+      "id": "stealth_1",
+      "name": "Stealth I",
+      "description": "You are 10% harder to notice while sneaking (rank 1).",
+      "level": 5,
+      "effects": [
+        {
+          "type": "stealth",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "stealth_2",
+      "name": "Stealth II",
+      "description": "You are 10% harder to notice while sneaking (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "stealth",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "stealth_1"
+      ]
+    },
+    {
+      "id": "stealth_3",
+      "name": "Stealth III",
+      "description": "You are 10% harder to notice while sneaking (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "stealth",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "stealth_2"
+      ]
+    },
+    {
+      "id": "backstab",
+      "name": "Backstab",
+      "description": "Melee sneak attacks deal +1x damage.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "sneak_attack",
+          "value": 1.0,
+          "key": "melee"
+        }
+      ],
+      "requires": [
+        "stealth_1"
+      ]
+    },
+    {
+      "id": "deadly_aim",
+      "name": "Deadly Aim",
+      "description": "Ranged sneak attacks deal +1x damage.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "sneak_attack",
+          "value": 1.0,
+          "key": "archery"
+        }
+      ],
+      "requires": [
+        "stealth_1"
+      ]
+    },
+    {
+      "id": "muffled_movement",
+      "name": "Muffled Movement",
+      "description": "Take 20% less fall damage.",
+      "level": 45,
+      "effects": [
+        {
+          "type": "fall_reduction",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "assassins_blade",
+      "name": "Assassin's Blade",
+      "description": "Melee sneak attacks deal +2x damage.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "sneak_attack",
+          "value": 2.0,
+          "key": "melee"
+        }
+      ],
+      "requires": [
+        "backstab"
+      ]
+    }
+  ]
+}

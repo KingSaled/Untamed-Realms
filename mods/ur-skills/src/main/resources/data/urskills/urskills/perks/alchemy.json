@@ -1,0 +1,75 @@
+{
+  "skill": "alchemy",
+  "perks": [
+    {
+      "id": "alchemist_1",
+      "name": "Alchemist I",
+      "description": "Potions you drink last 15% longer (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "potion_duration",
+          "value": 0.15
+        }
+      ]
+    },
+    {
+      "id": "alchemist_2",
+      "name": "Alchemist II",
+      "description": "Potions you drink last 15% longer (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "potion_duration",
+          "value": 0.15
+        }
+      ],
+      "requires": [
+        "alchemist_1"
+      ]
+    },
+    {
+      "id": "alchemist_3",
+      "name": "Alchemist III",
+      "description": "Potions you drink last 15% longer (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "potion_duration",
+          "value": 0.15
+        }
+      ],
+      "requires": [
+        "alchemist_2"
+      ]
+    },
+    {
+      "id": "physician",
+      "name": "Physician",
+      "description": "Slowly regenerate health.",
+      "level": 40,
+      "effects": [
+        {
+          "type": "regen",
+          "value": 0.5,
+          "key": "health"
+        }
+      ]
+    },
+    {
+      "id": "purity",
+      "name": "Purity",
+      "description": "Potions you drink last another 30% longer.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "potion_duration",
+          "value": 0.3
+        }
+      ],
+      "requires": [
+        "alchemist_3"
+      ]
+    }
+  ]
+}

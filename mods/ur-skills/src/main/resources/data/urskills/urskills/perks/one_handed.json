@@ -1,0 +1,102 @@
+{
+  "skill": "one_handed",
+  "perks": [
+    {
+      "id": "armsman_1",
+      "name": "Armsman I",
+      "description": "One-handed weapons deal 20% more damage (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "one_handed"
+        }
+      ]
+    },
+    {
+      "id": "armsman_2",
+      "name": "Armsman II",
+      "description": "One-handed weapons deal 20% more damage (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "one_handed"
+        }
+      ],
+      "requires": [
+        "armsman_1"
+      ]
+    },
+    {
+      "id": "armsman_3",
+      "name": "Armsman III",
+      "description": "One-handed weapons deal 20% more damage (rank 3).",
+      "level": 60,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.2,
+          "key": "one_handed"
+        }
+      ],
+      "requires": [
+        "armsman_2"
+      ]
+    },
+    {
+      "id": "fighting_stance",
+      "name": "Fighting Stance",
+      "description": "Actions cost 25% less stamina.",
+      "level": 20,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.25,
+          "key": "stamina"
+        }
+      ]
+    },
+    {
+      "id": "savage_strike",
+      "name": "Savage Strike",
+      "description": "One-handed attacks deal another 10% damage and knock foes harder.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "damage_bonus",
+          "value": 0.1,
+          "key": "one_handed"
+        },
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.attack_knockback",
+          "operation": "add_value",
+          "value": 0.5
+        }
+      ],
+      "requires": [
+        "armsman_2"
+      ]
+    },
+    {
+      "id": "bladesman",
+      "name": "Bladesman",
+      "description": "Attack 10% faster.",
+      "level": 75,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.attack_speed",
+          "operation": "add_multiplied_base",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "armsman_3"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "requirements": [
+    {
+      "match": "minecraft:iron_pickaxe",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_shovel",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 5
+    },
+    {
+      "match": "minecraft:iron_axe",
+      "kind": "tool",
+      "skill": "woodcutting",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:iron_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:diamond_pickaxe",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_shovel",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 25
+    },
+    {
+      "match": "minecraft:diamond_axe",
+      "kind": "tool",
+      "skill": "woodcutting",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "minecraft:diamond_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 30
+    },
+    {
+      "match": "minecraft:netherite_pickaxe",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_shovel",
+      "kind": "tool",
+      "skill": "mining",
+      "level": 45
+    },
+    {
+      "match": "minecraft:netherite_axe",
+      "kind": "tool",
+      "skill": "woodcutting",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_sword",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_axe",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_helmet",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_chestplate",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_leggings",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 50
+    },
+    {
+      "match": "minecraft:netherite_boots",
+      "kind": "armor",
+      "skill": "heavy_armor",
+      "level": 50
+    },
+    {
+      "match": "minecraft:chainmail_helmet",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:golden_helmet",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 5
+    },
+    {
+      "match": "minecraft:chainmail_chestplate",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:golden_chestplate",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 5
+    },
+    {
+      "match": "minecraft:chainmail_leggings",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:golden_leggings",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 5
+    },
+    {
+      "match": "minecraft:chainmail_boots",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 10
+    },
+    {
+      "match": "minecraft:golden_boots",
+      "kind": "armor",
+      "skill": "light_armor",
+      "level": 5
+    },
+    {
+      "match": "minecraft:mace",
+      "kind": "weapon",
+      "skill": "two_handed",
+      "level": 30
+    },
+    {
+      "match": "minecraft:trident",
+      "kind": "weapon",
+      "skill": "one_handed",
+      "level": 25
+    },
+    {
+      "match": "minecraft:crossbow",
+      "kind": "weapon",
+      "skill": "archery",
+      "level": 10
+    },
+    {
+      "match": "#minecraft:diamond_ores",
+      "kind": "block",
+      "skill": "mining",
+      "level": 25
+    },
+    {
+      "match": "#minecraft:emerald_ores",
+      "kind": "block",
+      "skill": "mining",
+      "level": 30
+    },
+    {
+      "match": "minecraft:ancient_debris",
+      "kind": "block",
+      "skill": "mining",
+      "level": 45
+    },
+    {
+      "match": "minecraft:obsidian",
+      "kind": "block",
+      "skill": "mining",
+      "level": 15
+    }
+  ]
+}

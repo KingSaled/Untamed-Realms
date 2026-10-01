@@ -1,0 +1,79 @@
+{
+  "skill": "farming",
+  "trigger": "break_block",
+  "entries": [
+    {
+      "match": "minecraft:wheat",
+      "xp": 4,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:carrots",
+      "xp": 4,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:potatoes",
+      "xp": 4,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:beetroots",
+      "xp": 5,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:nether_wart",
+      "xp": 6,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:cocoa",
+      "xp": 5,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:torchflower_crop",
+      "xp": 8,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:pitcher_crop",
+      "xp": 8,
+      "mature_only": true
+    },
+    {
+      "match": "minecraft:melon",
+      "xp": 3
+    },
+    {
+      "match": "minecraft:pumpkin",
+      "xp": 5
+    },
+    {
+      "match": "#minecraft:crops",
+      "xp": 3,
+      "mature_only": true
+    },
+    {
+      "match": "farmersdelight:cabbages",
+      "xp": 5,
+      "mature_only": true
+    },
+    {
+      "match": "farmersdelight:tomatoes",
+      "xp": 5,
+      "mature_only": true
+    },
+    {
+      "match": "farmersdelight:onions",
+      "xp": 5,
+      "mature_only": true
+    },
+    {
+      "match": "farmersdelight:rice_panicles",
+      "xp": 5,
+      "mature_only": true
+    }
+  ]
+}

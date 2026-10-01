@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urskills"
+version = "${suite_version}"
+displayName = "Untamed Realms: Skills"
+authors = "${mod_authors}"
+description = '''
+Learn-by-doing skills (1-99) across Combat, Magic, Stealth and Gathering, character levels,
+perk trees, attribute choices, skill requirements and skill books.
+'''
+
+[[dependencies.urskills]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urskills]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

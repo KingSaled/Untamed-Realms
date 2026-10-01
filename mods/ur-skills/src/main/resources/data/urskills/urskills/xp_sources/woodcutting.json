@@ -1,0 +1,54 @@
+{
+  "skill": "woodcutting",
+  "trigger": "break_block",
+  "entries": [
+    {
+      "match": "#minecraft:logs",
+      "xp": 5
+    },
+    {
+      "match": "#minecraft:oak_logs",
+      "xp": 5
+    },
+    {
+      "match": "#minecraft:birch_logs",
+      "xp": 6
+    },
+    {
+      "match": "#minecraft:spruce_logs",
+      "xp": 6
+    },
+    {
+      "match": "#minecraft:jungle_logs",
+      "xp": 7
+    },
+    {
+      "match": "#minecraft:acacia_logs",
+      "xp": 7
+    },
+    {
+      "match": "#minecraft:dark_oak_logs",
+      "xp": 8
+    },
+    {
+      "match": "#minecraft:mangrove_logs",
+      "xp": 8
+    },
+    {
+      "match": "#minecraft:cherry_logs",
+      "xp": 9
+    },
+    {
+      "match": "#minecraft:crimson_stems",
+      "xp": 10
+    },
+    {
+      "match": "#minecraft:warped_stems",
+      "xp": 10
+    },
+    {
+      "match": "minecraft:mushroom_stem",
+      "xp": 4
+    }
+  ]
+}

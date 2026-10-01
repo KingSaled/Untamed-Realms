@@ -1,0 +1,75 @@
+{
+  "skill": "speech",
+  "perks": [
+    {
+      "id": "haggling_1",
+      "name": "Haggling I",
+      "description": "Prices are 5% better (rank 1).",
+      "level": 10,
+      "effects": [
+        {
+          "type": "price_bonus",
+          "value": 0.05
+        }
+      ]
+    },
+    {
+      "id": "haggling_2",
+      "name": "Haggling II",
+      "description": "Prices are 5% better (rank 2).",
+      "level": 30,
+      "effects": [
+        {
+          "type": "price_bonus",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "haggling_1"
+      ]
+    },
+    {
+      "id": "haggling_3",
+      "name": "Haggling III",
+      "description": "Prices are 5% better (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "price_bonus",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "haggling_2"
+      ]
+    },
+    {
+      "id": "persuasion",
+      "name": "Persuasion",
+      "description": "Speech XP +20%.",
+      "level": 25,
+      "effects": [
+        {
+          "type": "xp_bonus",
+          "value": 0.2,
+          "key": "speech"
+        }
+      ]
+    },
+    {
+      "id": "master_trader",
+      "name": "Master Trader",
+      "description": "Prices are another 10% better.",
+      "level": 80,
+      "effects": [
+        {
+          "type": "price_bonus",
+          "value": 0.1
+        }
+      ],
+      "requires": [
+        "haggling_3"
+      ]
+    }
+  ]
+}

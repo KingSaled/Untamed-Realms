@@ -1,0 +1,18 @@
+{
+  "skill": "alchemy",
+  "trigger": "brew",
+  "entries": [
+    {
+      "match": "minecraft:potion",
+      "xp": 15
+    },
+    {
+      "match": "minecraft:splash_potion",
+      "xp": 20
+    },
+    {
+      "match": "minecraft:lingering_potion",
+      "xp": 25
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "skill": "alteration",
+  "perks": [
+    {
+      "id": "alteration_mastery_1",
+      "name": "Alteration Mastery I",
+      "description": "Spells of this school cost 15% less magicka (rank 1).",
+      "level": 1,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "alteration"
+        }
+      ]
+    },
+    {
+      "id": "alteration_mastery_2",
+      "name": "Alteration Mastery II",
+      "description": "Spells of this school cost 15% less magicka (rank 2).",
+      "level": 25,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "alteration"
+        }
+      ],
+      "requires": [
+        "alteration_mastery_1"
+      ]
+    },
+    {
+      "id": "alteration_mastery_3",
+      "name": "Alteration Mastery III",
+      "description": "Spells of this school cost 15% less magicka (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "alteration"
+        }
+      ],
+      "requires": [
+        "alteration_mastery_2"
+      ]
+    },
+    {
+      "id": "alteration_mastery_4",
+      "name": "Alteration Mastery IV",
+      "description": "Spells of this school cost 15% less magicka (rank 4).",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "alteration"
+        }
+      ],
+      "requires": [
+        "alteration_mastery_3"
+      ]
+    },
+    {
+      "id": "mage_armor",
+      "name": "Mage Armor",
+      "description": "+4 armor.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "attribute",
+          "attribute": "minecraft:generic.armor",
+          "operation": "add_value",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "id": "magic_resistance",
+      "name": "Magic Resistance",
+      "description": "Take 5% less damage from all sources.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "damage_reduction",
+          "value": 0.05
+        }
+      ],
+      "requires": [
+        "mage_armor"
+      ]
+    },
+    {
+      "id": "stability",
+      "name": "Stability",
+      "description": "Alteration spells are 50% stronger.",
+      "level": 70,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.5,
+          "key": "alteration"
+        }
+      ],
+      "requires": [
+        "alteration_mastery_3"
+      ]
+    }
+  ]
+}

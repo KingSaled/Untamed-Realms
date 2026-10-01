@@ -1,0 +1,95 @@
+{
+  "skill": "conjuration",
+  "perks": [
+    {
+      "id": "conjuration_mastery_1",
+      "name": "Conjuration Mastery I",
+      "description": "Spells of this school cost 15% less magicka (rank 1).",
+      "level": 1,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "conjuration"
+        }
+      ]
+    },
+    {
+      "id": "conjuration_mastery_2",
+      "name": "Conjuration Mastery II",
+      "description": "Spells of this school cost 15% less magicka (rank 2).",
+      "level": 25,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "conjuration"
+        }
+      ],
+      "requires": [
+        "conjuration_mastery_1"
+      ]
+    },
+    {
+      "id": "conjuration_mastery_3",
+      "name": "Conjuration Mastery III",
+      "description": "Spells of this school cost 15% less magicka (rank 3).",
+      "level": 50,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "conjuration"
+        }
+      ],
+      "requires": [
+        "conjuration_mastery_2"
+      ]
+    },
+    {
+      "id": "conjuration_mastery_4",
+      "name": "Conjuration Mastery IV",
+      "description": "Spells of this school cost 15% less magicka (rank 4).",
+      "level": 75,
+      "effects": [
+        {
+          "type": "cost_reduction",
+          "value": 0.15,
+          "key": "conjuration"
+        }
+      ],
+      "requires": [
+        "conjuration_mastery_3"
+      ]
+    },
+    {
+      "id": "summoner",
+      "name": "Summoner",
+      "description": "Conjured allies are 30% stronger and last longer.",
+      "level": 30,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.3,
+          "key": "conjuration"
+        }
+      ]
+    },
+    {
+      "id": "twin_souls",
+      "name": "Twin Souls",
+      "description": "Conjured allies are another 50% stronger.",
+      "level": 70,
+      "effects": [
+        {
+          "type": "spell_power",
+          "value": 0.5,
+          "key": "conjuration"
+        }
+      ],
+      "requires": [
+        "summoner"
+      ]
+    }
+  ]
+}
