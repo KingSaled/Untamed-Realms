@@ -13,8 +13,10 @@ on:
 permissions:
   contents: write
 
+# Keyed by the calling workflow too: the Modpack workflow also runs this file, and a shared group
+# made the two runs cancel each other.
 concurrency:
-  group: windows-bundle-${{ github.ref }}
+  group: windows-bundle-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
