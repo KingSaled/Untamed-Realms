@@ -1,0 +1,54 @@
+{
+  "title": "Trouble on the Roads",
+  "description": "The dead are walking the roads at night in numbers no one remembers. The Guard Captain wants them thinned out before the next caravan.",
+  "category": "main",
+  "stages": [
+    {
+      "description": "Speak with the Guard Captain.",
+      "objectives": [
+        {
+          "type": "talk",
+          "target": "urnpcs:guard_captain",
+          "text": "Speak with the Guard Captain"
+        }
+      ]
+    },
+    {
+      "description": "Clear the roads of the walking dead.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:zombie|minecraft:husk|minecraft:zombie_villager",
+          "count": 10,
+          "text": "Slay zombies"
+        },
+        {
+          "type": "kill",
+          "target": "minecraft:skeleton|minecraft:stray|minecraft:bogged",
+          "count": 6,
+          "text": "Slay skeletons"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:guard_captain",
+          "text": "Report to the Guard Captain"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:village_elder",
+  "rewards": {
+    "coins": 120,
+    "xp": {
+      "one_handed": 300,
+      "archery": 150,
+      "block": 150
+    }
+  },
+  "requirements": {
+    "quests": [
+      "urquests:main/the_elders_request"
+    ]
+  },
+  "abandonable": false
+}

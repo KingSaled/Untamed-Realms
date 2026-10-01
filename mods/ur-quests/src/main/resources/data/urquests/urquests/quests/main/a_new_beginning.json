@@ -1,0 +1,34 @@
+{
+  "title": "A New Beginning",
+  "description": "You wake on the road with a little coin and less memory. Every traveller in these lands says the same thing: find a town, and the Elder will know what to do with you.",
+  "category": "main",
+  "stages": [
+    {
+      "description": "Find a settlement.",
+      "objectives": [
+        {
+          "type": "visit",
+          "target": "#minecraft:village",
+          "text": "Find a village or town"
+        }
+      ]
+    },
+    {
+      "description": "Speak with the Village Elder.",
+      "objectives": [
+        {
+          "type": "talk",
+          "target": "urnpcs:village_elder",
+          "text": "Speak with the Village Elder"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 50,
+    "xp": {
+      "speech": 60
+    }
+  },
+  "abandonable": false
+}

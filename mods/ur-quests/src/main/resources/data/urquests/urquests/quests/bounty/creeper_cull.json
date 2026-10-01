@@ -1,0 +1,27 @@
+{
+  "title": "Bounty: Creeper Cull",
+  "description": "Something keeps blowing holes in the town wall.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Something keeps blowing holes in the town wall.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:creeper",
+          "count": 6,
+          "text": "Slay creepers"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 80,
+    "xp": {
+      "archery": 200
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

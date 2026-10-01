@@ -1,0 +1,56 @@
+{
+  "title": "An Alchemist's Errand",
+  "description": "The temple priest is brewing remedies for a fever in the lower town and needs reagents.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Gather reagents.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:spider_eye",
+          "count": 4,
+          "consume": true,
+          "text": "Gather spider eyes"
+        },
+        {
+          "type": "collect",
+          "target": "minecraft:sugar",
+          "count": 4,
+          "consume": true,
+          "text": "Gather sugar"
+        },
+        {
+          "type": "collect",
+          "target": "minecraft:glistering_melon_slice|minecraft:golden_carrot",
+          "consume": true,
+          "text": "A glistering melon or golden carrot"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:priest",
+          "text": "Bring them to the Priest"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:priest",
+  "rewards": {
+    "coins": 90,
+    "xp": {
+      "alchemy": 400,
+      "restoration": 150
+    },
+    "items": [
+      {
+        "id": "minecraft:potion",
+        "count": 2,
+        "components": {
+          "minecraft:potion_contents": {
+            "potion": "minecraft:healing"
+          }
+        }
+      }
+    ]
+  }
+}

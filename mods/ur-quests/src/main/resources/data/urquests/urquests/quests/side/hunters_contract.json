@@ -1,0 +1,38 @@
+{
+  "title": "The Hunter's Contract",
+  "description": "Spiders have been taking the hunter's snares - and the occasional dog. Clear them out and bring hides for the tanner.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Hunt spiders and gather hides.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:spider|minecraft:cave_spider",
+          "count": 8,
+          "text": "Slay spiders"
+        },
+        {
+          "type": "collect",
+          "target": "minecraft:leather",
+          "count": 8,
+          "consume": true,
+          "text": "Gather leather"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:hunter",
+          "text": "Return to the Hunter"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:hunter",
+  "rewards": {
+    "coins": 70,
+    "xp": {
+      "archery": 250,
+      "sneak": 150
+    }
+  }
+}

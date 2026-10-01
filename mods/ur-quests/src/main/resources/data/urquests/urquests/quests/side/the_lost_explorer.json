@@ -1,0 +1,35 @@
+{
+  "title": "The Lost Explorer",
+  "description": "A cartographer went looking for the sunken temples of the south and never came back. Their last letter mentions sand and a pyramid.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Search the desert for an ancient temple.",
+      "objectives": [
+        {
+          "type": "visit",
+          "target": "minecraft:desert_pyramid|#minecraft:desert_pyramid|betterdeserttemples:desert_temple",
+          "text": "Find a desert temple"
+        }
+      ]
+    },
+    {
+      "description": "Report what you found.",
+      "objectives": [
+        {
+          "type": "talk",
+          "target": "urnpcs:court_wizard",
+          "text": "Report to the Court Wizard"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:court_wizard",
+  "rewards": {
+    "coins": 120,
+    "xp": {
+      "agility": 300,
+      "lockpicking": 200
+    }
+  }
+}

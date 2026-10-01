@@ -1,0 +1,34 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urquests"
+version = "${suite_version}"
+displayName = "Untamed Realms: Quests"
+authors = "${mod_authors}"
+description = '''
+Data-driven quests: main story, side quests and radiant bounties, with a journal, an on-screen tracker and town notice boards.
+'''
+
+[[dependencies.urquests]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urquests]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urquests]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

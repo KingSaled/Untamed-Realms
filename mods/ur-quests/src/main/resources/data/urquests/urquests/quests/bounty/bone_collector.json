@@ -1,0 +1,28 @@
+{
+  "title": "Bounty: Bone Collector",
+  "description": "Skeleton archers harry the farms.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Skeleton archers harry the farms.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:skeleton|minecraft:stray|minecraft:bogged",
+          "count": 10,
+          "text": "Slay skeletons"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 65,
+    "xp": {
+      "block": 150,
+      "one_handed": 100
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

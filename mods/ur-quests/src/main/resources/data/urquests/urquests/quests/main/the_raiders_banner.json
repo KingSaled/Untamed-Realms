@@ -1,0 +1,49 @@
+{
+  "title": "The Raider's Banner",
+  "description": "The undead were driven toward the roads by something. Survivors speak of raiders under a grey banner camped in the wilds, digging for something old.",
+  "category": "main",
+  "stages": [
+    {
+      "description": "Find the raiders' outpost.",
+      "objectives": [
+        {
+          "type": "visit",
+          "target": "minecraft:pillager_outpost",
+          "text": "Find a pillager outpost"
+        }
+      ]
+    },
+    {
+      "description": "Break the raiders.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "#minecraft:raiders",
+          "count": 8,
+          "text": "Defeat raiders"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:village_elder",
+          "text": "Return to the Elder"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:guard_captain",
+  "rewards": {
+    "coins": 200,
+    "perk_points": 1,
+    "xp": {
+      "one_handed": 250,
+      "two_handed": 250,
+      "archery": 250
+    }
+  },
+  "requirements": {
+    "quests": [
+      "urquests:main/trouble_on_the_roads"
+    ]
+  },
+  "abandonable": false
+}

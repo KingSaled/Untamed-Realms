@@ -1,0 +1,28 @@
+{
+  "title": "Supply Order: Fish",
+  "description": "The fishmonger's stall is bare.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "The fishmonger's stall is bare.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "#minecraft:fishes",
+          "count": 12,
+          "consume": true,
+          "text": "Deliver fish"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 50,
+    "xp": {
+      "fishing": 250
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

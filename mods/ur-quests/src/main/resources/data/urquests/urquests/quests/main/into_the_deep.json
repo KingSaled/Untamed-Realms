@@ -1,0 +1,65 @@
+{
+  "title": "Into the Deep",
+  "description": "Among the raiders' plunder was a copper key stamped with a sigil the Court Wizard recognised at once - the Old Kingdom's trial halls lie beneath the earth.",
+  "category": "main",
+  "stages": [
+    {
+      "description": "Show the key to the Court Wizard.",
+      "objectives": [
+        {
+          "type": "talk",
+          "target": "urnpcs:court_wizard",
+          "text": "Speak with the Court Wizard"
+        }
+      ]
+    },
+    {
+      "description": "Find the Trial Chambers.",
+      "objectives": [
+        {
+          "type": "visit",
+          "target": "minecraft:trial_chambers",
+          "text": "Find the Trial Chambers"
+        }
+      ]
+    },
+    {
+      "description": "Claim a vault's reward.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:trial_key|minecraft:ominous_trial_key|minecraft:heavy_core|minecraft:breeze_rod",
+          "text": "Recover a relic from the Trial Chambers"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:court_wizard",
+          "text": "Return to the Court Wizard"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:court_wizard",
+  "rewards": {
+    "coins": 300,
+    "perk_points": 1,
+    "xp": {
+      "destruction": 300,
+      "alteration": 300
+    },
+    "items": [
+      {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:thunderbolt"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "quests": [
+      "urquests:main/the_raiders_banner"
+    ]
+  },
+  "abandonable": false
+}

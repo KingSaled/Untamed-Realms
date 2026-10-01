@@ -1,0 +1,28 @@
+{
+  "title": "Bounty: Endless Eyes",
+  "description": "The Court Wizard wants pearls from the tall ones.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "The Court Wizard wants pearls from the tall ones.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:ender_pearl",
+          "count": 3,
+          "consume": true,
+          "text": "Bring ender pearls"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 130,
+    "xp": {
+      "sneak": 200
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

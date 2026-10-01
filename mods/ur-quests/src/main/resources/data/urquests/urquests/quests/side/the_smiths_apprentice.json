@@ -1,0 +1,31 @@
+{
+  "title": "The Smith's Apprentice",
+  "description": "The blacksmith's forge is cold for want of iron. Bring ingots and you might learn a thing or two at the anvil.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Bring iron to the blacksmith.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:iron_ingot",
+          "count": 12,
+          "consume": true,
+          "text": "Bring iron ingots"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:blacksmith",
+          "text": "Deliver to the Blacksmith"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:blacksmith",
+  "rewards": {
+    "coins": 60,
+    "xp": {
+      "smithing": 400
+    }
+  }
+}

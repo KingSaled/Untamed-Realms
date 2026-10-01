@@ -1,0 +1,28 @@
+{
+  "title": "Bounty: Drowned Shore",
+  "description": "Drowned crawl from the water at night.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Drowned crawl from the water at night.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:drowned",
+          "count": 6,
+          "text": "Slay drowned"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 70,
+    "xp": {
+      "one_handed": 150,
+      "agility": 80
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

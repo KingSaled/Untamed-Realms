@@ -1,0 +1,28 @@
+{
+  "title": "Supply Order: Raw Iron",
+  "description": "The smithy is short of ore.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "The smithy is short of ore.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:raw_iron",
+          "count": 16,
+          "consume": true,
+          "text": "Deliver raw iron"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 70,
+    "xp": {
+      "mining": 300
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

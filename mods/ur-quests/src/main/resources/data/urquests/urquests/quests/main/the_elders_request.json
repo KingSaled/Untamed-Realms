@@ -1,0 +1,45 @@
+{
+  "title": "The Elder's Request",
+  "description": "The Elder will vouch for a stranger who proves useful. Winter stores are thin - timber and bread would go a long way.",
+  "category": "main",
+  "stages": [
+    {
+      "description": "Gather supplies for the village.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "#minecraft:logs",
+          "count": 16,
+          "consume": true,
+          "text": "Gather logs"
+        },
+        {
+          "type": "collect",
+          "target": "minecraft:bread",
+          "count": 6,
+          "consume": true,
+          "text": "Bring bread"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:village_elder",
+          "text": "Return to the Elder"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:village_elder",
+  "rewards": {
+    "coins": 75,
+    "xp": {
+      "woodcutting": 150,
+      "speech": 80
+    }
+  },
+  "requirements": {
+    "quests": [
+      "urquests:main/a_new_beginning"
+    ]
+  },
+  "abandonable": false
+}

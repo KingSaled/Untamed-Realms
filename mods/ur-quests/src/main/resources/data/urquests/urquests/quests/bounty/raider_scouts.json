@@ -1,0 +1,28 @@
+{
+  "title": "Bounty: Raider Scouts",
+  "description": "Raider scouts have been seen watching the town.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Raider scouts have been seen watching the town.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "#minecraft:raiders",
+          "count": 5,
+          "text": "Defeat raiders"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 120,
+    "xp": {
+      "one_handed": 200,
+      "archery": 100
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

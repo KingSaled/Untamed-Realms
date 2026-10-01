@@ -1,0 +1,28 @@
+{
+  "title": "Bounty: Spider Nest",
+  "description": "Spiders are nesting near the roads.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Spiders are nesting near the roads.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:spider|minecraft:cave_spider",
+          "count": 8,
+          "text": "Slay spiders"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 55,
+    "xp": {
+      "archery": 150,
+      "one_handed": 100
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

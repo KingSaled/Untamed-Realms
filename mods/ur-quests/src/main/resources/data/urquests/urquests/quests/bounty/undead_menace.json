@@ -1,0 +1,27 @@
+{
+  "title": "Bounty: Undead Menace",
+  "description": "The restless dead plague the outskirts.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "The restless dead plague the outskirts.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "#minecraft:undead",
+          "count": 12,
+          "text": "Slay the undead"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 70,
+    "xp": {
+      "one_handed": 200
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

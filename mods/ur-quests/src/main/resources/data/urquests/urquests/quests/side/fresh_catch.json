@@ -1,0 +1,32 @@
+{
+  "title": "Fresh Catch",
+  "description": "The innkeeper's stew pot is empty and the travellers are grumbling. Fresh fish, quickly!",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Catch fish for the inn.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "#minecraft:fishes",
+          "count": 10,
+          "consume": true,
+          "text": "Bring fish"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:innkeeper",
+          "text": "Deliver to the Innkeeper"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:innkeeper",
+  "rewards": {
+    "coins": 45,
+    "xp": {
+      "fishing": 250,
+      "cooking": 120
+    }
+  }
+}

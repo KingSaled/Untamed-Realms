@@ -1,0 +1,38 @@
+{
+  "title": "A Merchant's Favour",
+  "description": "The merchant's caravan lost a crate of trade goods to the river. Emeralds and gold will make it right.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Recover the merchant's goods.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:emerald",
+          "count": 3,
+          "consume": true,
+          "text": "Bring emeralds"
+        },
+        {
+          "type": "collect",
+          "target": "minecraft:gold_ingot",
+          "count": 4,
+          "consume": true,
+          "text": "Bring gold ingots"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:merchant",
+          "text": "Return to the Merchant"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:merchant",
+  "rewards": {
+    "coins": 160,
+    "xp": {
+      "speech": 300
+    }
+  }
+}

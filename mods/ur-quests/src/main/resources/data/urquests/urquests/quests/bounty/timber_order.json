@@ -1,0 +1,28 @@
+{
+  "title": "Supply Order: Timber",
+  "description": "The carpenter needs timber for repairs.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "The carpenter needs timber for repairs.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "#minecraft:logs",
+          "count": 32,
+          "consume": true,
+          "text": "Deliver logs"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 45,
+    "xp": {
+      "woodcutting": 250
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

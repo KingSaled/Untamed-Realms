@@ -1,0 +1,37 @@
+{
+  "title": "A Farmer's Woes",
+  "description": "Crows, blight and now zombies trampling the wheat. The farmer needs a harvest brought in and the fields made safe.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Bring in the harvest and protect the fields.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "minecraft:wheat",
+          "count": 32,
+          "consume": true,
+          "text": "Harvest wheat"
+        },
+        {
+          "type": "kill",
+          "target": "minecraft:zombie|minecraft:husk",
+          "count": 5,
+          "text": "Drive off the zombies"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:farmer",
+          "text": "Return to the Farmer"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:farmer",
+  "rewards": {
+    "coins": 60,
+    "xp": {
+      "farming": 400
+    }
+  }
+}

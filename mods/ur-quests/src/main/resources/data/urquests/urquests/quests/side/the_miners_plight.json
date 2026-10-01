@@ -1,0 +1,36 @@
+{
+  "title": "The Miner's Plight",
+  "description": "A cave-in sealed the old miner's best tunnels. They'll pay well for someone with a strong arm to dig out a fresh seam.",
+  "category": "side",
+  "stages": [
+    {
+      "description": "Mine coal and iron.",
+      "objectives": [
+        {
+          "type": "mine",
+          "target": "#minecraft:coal_ores",
+          "count": 20,
+          "text": "Mine coal ore"
+        },
+        {
+          "type": "mine",
+          "target": "#minecraft:iron_ores",
+          "count": 10,
+          "text": "Mine iron ore"
+        },
+        {
+          "type": "turn_in",
+          "target": "urnpcs:miner",
+          "text": "Report to the Miner"
+        }
+      ]
+    }
+  ],
+  "giver": "urnpcs:miner",
+  "rewards": {
+    "coins": 80,
+    "xp": {
+      "mining": 500
+    }
+  }
+}

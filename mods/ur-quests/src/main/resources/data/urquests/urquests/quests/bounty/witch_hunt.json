@@ -1,0 +1,27 @@
+{
+  "title": "Bounty: Witch Hunt",
+  "description": "A witch is cursing the livestock.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "A witch is cursing the livestock.",
+      "objectives": [
+        {
+          "type": "kill",
+          "target": "minecraft:witch",
+          "text": "Slay a witch"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 90,
+    "xp": {
+      "destruction": 150,
+      "archery": 150
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}

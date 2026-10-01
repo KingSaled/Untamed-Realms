@@ -1,0 +1,28 @@
+{
+  "title": "Supply Order: Wool",
+  "description": "Winter is coming and the weavers need wool.",
+  "category": "bounty",
+  "stages": [
+    {
+      "description": "Winter is coming and the weavers need wool.",
+      "objectives": [
+        {
+          "type": "collect",
+          "target": "#minecraft:wool",
+          "count": 16,
+          "consume": true,
+          "text": "Deliver wool"
+        }
+      ]
+    }
+  ],
+  "rewards": {
+    "coins": 40,
+    "xp": {
+      "farming": 200
+    }
+  },
+  "repeatable": true,
+  "cooldown_minutes": 20,
+  "pool": "bounty"
+}
