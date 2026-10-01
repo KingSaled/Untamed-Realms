@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-72 mods in manifest, 0 failed.
+73 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -29,7 +29,6 @@
 | qol | `jade` | locked |  |
 | qol | `appleskin` | locked |  |
 | qol | `mouse-tweaks` | locked |  |
-| qol | `inventory-profiles-next` | locked |  |
 | qol | `controlling` | locked |  |
 | qol | `xaeros-minimap` | locked |  |
 | qol | `xaeros-world-map` | locked |  |
@@ -76,6 +75,12 @@
 | content | `mowzies-mobs` | locked |  |
 | content | `l_enders-cataclysm` | locked |  |
 | content | `curios` | locked |  |
+| exclude | `inventory-profiles-next` | removed | Loading modpack...
+Removing file from index...
+inventory-profiles-next removed successfully! |
+| exclude | `libipn` | removed | Loading modpack...
+Removing file from index...
+libipn removed successfully! |
 
 ## Pulled in as dependencies (review these)
 
@@ -87,7 +92,6 @@
 - `fragmentum`
 - `geckolib`
 - `kotlin-for-forge`
-- `libipn`
 - `lionfish-api`
 - `mezzconfig`
 - `moogs-structure-lib`
