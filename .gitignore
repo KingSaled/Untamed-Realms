@@ -16,3 +16,4 @@ __pycache__/
 
 # Local server installs
 server/install/
+tools/artforge/out/
