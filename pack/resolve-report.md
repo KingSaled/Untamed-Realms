@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-74 mods in manifest, 0 failed.
+72 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -76,12 +76,6 @@
 | content | `mowzies-mobs` | locked |  |
 | content | `l_enders-cataclysm` | locked |  |
 | content | `curios` | locked |  |
-| exclude | `idas` | removed | Loading modpack...
-Removing file from index...
-idas removed successfully! |
-| exclude | `integrated-api` | removed | Loading modpack...
-Removing file from index...
-integrated-api removed successfully! |
 
 ## Pulled in as dependencies (review these)
 
