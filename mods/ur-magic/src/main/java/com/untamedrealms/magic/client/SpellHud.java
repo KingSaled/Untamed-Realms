@@ -9,7 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 
-/** Readied spell next to the hotbar: icon, cooldown sweep, and five slot pips. */
+/** Readied spell next to the hotbar: icon, cooldown sweep, and one pip per quick slot. */
 public final class SpellHud {
     private SpellHud() {}
 
@@ -37,9 +37,9 @@ public final class SpellHud {
             g.fill(x + 3, y + 3 + 16 - h, x + 19, y + 19, 0xA0000000);
         }
         for (int i = 0; i < SpellBook.SLOTS; i++) {
-            int px = x + 1 + i * 4;
+            int px = x + i * 3;
             int color = book.slot(i) == null ? 0xFF333333 : i == book.selected() ? UiKit.GOLD : 0xFF8A8A8A;
-            g.fill(px, y + 24, px + 3, y + 26, color);
+            g.fill(px, y + 24, px + 2, y + 26, color);
         }
     }
 }

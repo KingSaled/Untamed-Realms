@@ -1,4 +1,28 @@
 {
-  "_comment": "Untamed Realms default key layout, applied once per player by ur-core (see KeybindProfile). 'none' unbinds; prefixes ctrl+/shift+/alt+ add a modifier.",
-  "bindings": {}
+  "_comment": "Untamed Realms default key layout, applied once per player by ur-core (see KeybindProfile). 'none' unbinds; prefixes ctrl+/shift+/alt+ add a modifier. CI fails if two keys that work at the same time share a button.",
+  "bindings": {
+    "key.urmagic.cast": "key.keyboard.r",
+    "key.urmagic.wheel": "key.keyboard.z",
+    "key.urmagic.next": "none",
+    "key.urmagic.spellbook": "key.keyboard.n",
+    "key.urskills.open_skills": "key.keyboard.k",
+    "key.urquests.journal": "key.keyboard.j",
+
+    "keybinds.combat_roll.roll": "key.keyboard.left.alt",
+
+    "gui.xaero_enlarge_map": "none",
+    "gui.xaero_new_waypoint": "none",
+    "key.corpse.death_history": "none",
+
+    "key.sophisticatedbackpacks.inventory_interaction": "none",
+    "key.sophisticatedbackpacks.toggle_upgrade_1": "none",
+    "key.sophisticatedbackpacks.toggle_upgrade_2": "none",
+
+    "key.saveToolbarActivator": "none",
+    "key.loadToolbarActivator": "none",
+
+    "key.cataclysm.helmet_ability": "key.keyboard.c",
+    "key.cataclysm.chestplate_ability": "key.keyboard.x",
+    "key.cataclysm.boots_ability": "key.keyboard.h"
+  }
 }

@@ -10,6 +10,7 @@ import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.language.I18n;
 import net.neoforged.fml.loading.FMLPaths;
+import net.neoforged.neoforge.client.settings.KeyConflictContext;
 import net.neoforged.neoforge.client.settings.KeyModifier;
 
 import java.io.IOException;
@@ -159,23 +160,52 @@ public final class KeybindProfile {
         List<KeyMapping> all = new ArrayList<>(List.of(mc.options.keyMappings));
         all.sort(Comparator.comparing(KeyMapping::getCategory).thenComparing(KeyMapping::getName));
         List<String> lines = new ArrayList<>();
-        int conflicts = 0;
-        lines.add("# category | name | label | default | current | conflicts with");
+        int conflicts = 0, overlaps = 0;
+        lines.add("# category | name | label | default | current | conflicts (both active at once) | overlaps (different screens, harmless)");
         for (KeyMapping m : all) {
-            List<String> with = new ArrayList<>();
+            List<String> real = new ArrayList<>(), soft = new ArrayList<>();
             if (!m.isUnbound()) {
                 for (KeyMapping o : all) {
-                    if (o != m && !o.isUnbound() && (m.same(o) || o.hasKeyModifierConflict(m) || m.hasKeyModifierConflict(o))) with.add(o.getName());
+                    if (o == m || o.isUnbound() || !(m.same(o) || o.hasKeyModifierConflict(m) || m.hasKeyModifierConflict(o))) continue;
+                    boolean together = activeTogether(m, o);
+                    (together && !intended(m, o) ? real : soft).add(o.getName());
                 }
             }
-            if (!with.isEmpty()) conflicts++;
-            String def = (m.getDefaultKeyModifier() == KeyModifier.NONE ? "" : m.getDefaultKeyModifier().name().toLowerCase() + "+")
+            if (!real.isEmpty()) conflicts++;
+            if (!soft.isEmpty()) overlaps++;
+            String def = (m.getDefaultKeyModifier() == KeyModifier.NONE ? "" : m.getDefaultKeyModifier().name().toLowerCase(java.util.Locale.ROOT) + "+")
                     + m.getDefaultKey().getName();
-            lines.add(String.join(" | ", m.getCategory(), m.getName(), I18n.get(m.getName()), def, spec(m), String.join(",", with)));
+            lines.add(String.join(" | ", m.getCategory(), m.getName(), I18n.get(m.getName()), def, spec(m), String.join(",", real), String.join(",", soft)));
         }
+        lines.add("# overlapping (harmless): " + overlaps);
         lines.add("# conflicting mappings: " + conflicts);
         Path out = mc.gameDirectory.toPath().resolve("untamedrealms-keys.txt");
         Files.write(out, lines, StandardCharsets.UTF_8);
         lines.forEach(l -> UntamedCore.LOGGER.info("UR-KEYS {}", l));
+    }
+
+    /**
+     * Whether two mappings on the same key can fire at the same moment: both work in the world, or
+     * both work in the same kind of screen. An in-world key and a screen-only key (e.g. JEI's
+     * "show recipe" while hovering an item) never fire together.
+     */
+    private static boolean activeTogether(KeyMapping a, KeyMapping b) {
+        boolean worldA = inWorld(a), worldB = inWorld(b);
+        if (worldA && worldB) return true;
+        if (worldA != worldB) return false;
+        return a.getKeyConflictContext().conflicts(b.getKeyConflictContext()) || b.getKeyConflictContext().conflicts(a.getKeyConflictContext());
+    }
+
+    private static boolean inWorld(KeyMapping m) {
+        return m.getKeyConflictContext() == KeyConflictContext.IN_GAME || m.getKeyConflictContext() == KeyConflictContext.UNIVERSAL;
+    }
+
+    /** Pairs that share a key on purpose: Jade's "show details" is meant to be held with sneak. */
+    private static boolean intended(KeyMapping a, KeyMapping b) {
+        return isPair(a, b, "key.sneak", "key.jade.show_details");
+    }
+
+    private static boolean isPair(KeyMapping a, KeyMapping b, String x, String y) {
+        return (a.getName().equals(x) && b.getName().equals(y)) || (a.getName().equals(y) && b.getName().equals(x));
     }
 }

@@ -31,7 +31,7 @@ You need only the normal **Minecraft Launcher** (Java Edition). Java, NeoForge a
 5. In game: *Multiplayer → Direct Connection →* `localhost` *→ Join Server*. In the server window type `op YourName` to become admin.
 
 If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*. Full notes are in `README-FIRST.txt` inside the zip.
-To update later, download the zip again, extract it over the old folder (your world is kept) and run both files again.
+**Updating:** just run `Start-Server.bat` and `Install-Modpack.bat` again. Both download the newest build automatically and keep your world; you never need to download the zip again. The launcher keeps exactly one *Untamed Realms* installation.
 
 ---
 
@@ -45,7 +45,7 @@ To update later, download the zip again, extract it over the old folder (your wo
 | **ur-classes** | Character creation on first join: **11 classes** (Warrior, Knight, Barbarian, Ranger, Thief, Mage, Cleric, Spellsword, Nightblade, Bard, Artisan) with starting skills, gear and coin, plus **14 birthsigns**. |
 | **ur-quests** | Quest engine (kill, collect, talk, turn-in, explore structures/biomes, mine, craft, smelt, fish, reach skill levels, cast spells), main story chapter 1, side quests, **radiant bounties** on town notice boards, journal (J) and on-screen tracker. |
 | **ur-npcs** | Named townsfolk with branching dialogue and Speech checks, merchants priced by Speech, Skyrim-style trainers, pickpocketing, guards. **Villages populate themselves** with an elder, guards, a court wizard, a merchant, random tradesfolk and a notice board the first time you walk in. |
-| **ur-magic** | Five schools, **23 spells** (projectiles, cones, lightning, wards, summons, bound weapons, calm/fear, invisibility...), spell tomes, a spellbook with five quick slots, Restore Magicka/Stamina potions. |
+| **ur-magic** | Five schools, **23 spells** (projectiles, cones, lightning, wards, summons, bound weapons, calm/fear, invisibility...), spell tomes, a spellbook with eight quick slots, a spell wheel, Restore Magicka/Stamina potions. |
 
 ### Curated third-party mods (`pack/mods.yml`)
 Performance (Sodium, Lithium, ModernFix, FerriteCore, ImmediatelyFast, Entity Culling, Noisium,

@@ -7,6 +7,8 @@ Write-Host ""
 Write-Host "  UNTAMED REALMS - modpack installer for the Minecraft Launcher" -ForegroundColor Yellow
 Write-Host "  Minecraft $MinecraftVersion + NeoForge $NeoForgeVersion"
 
+if (Update-Bundle) { Restart-Script $PSCommandPath }
+
 $mc = Join-Path $env:APPDATA '.minecraft'
 if (-not (Test-Path $mc)) {
     throw "Could not find $mc. Open the Minecraft Launcher once and log in, then run this installer again."
@@ -68,6 +70,12 @@ foreach ($name in 'launcher_profiles.json', 'launcher_profiles_microsoft_store.j
         gameDir       = $game
         javaArgs      = $javaArgs
     }
+    # Exactly one 'Untamed Realms' installation: update ours in place and drop any stray copies.
+    foreach ($p in @($json.profiles.PSObject.Properties)) {
+        if ($p.Name -ne 'untamed-realms' -and $p.Value.name -like 'Untamed Realms*') { $json.profiles.PSObject.Properties.Remove($p.Name) }
+    }
+    $existing = $json.profiles.PSObject.Properties['untamed-realms']
+    if ($existing -and $existing.Value.created) { $profile.created = $existing.Value.created }
     $json.profiles | Add-Member -NotePropertyName 'untamed-realms' -NotePropertyValue $profile -Force
     Write-Utf8NoBom $path ($json | ConvertTo-Json -Depth 32)
     $updated++

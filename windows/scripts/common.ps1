@@ -7,6 +7,8 @@ $Root = Split-Path -Parent $PSScriptRoot
 $NeoForgeVersion = ([regex]'neoforge\s*=\s*"([^"]+)"').Match((Get-Content "$Root\pack\pack.toml" -Raw)).Groups[1].Value
 $MinecraftVersion = ([regex]'minecraft\s*=\s*"([^"]+)"').Match((Get-Content "$Root\pack\pack.toml" -Raw)).Groups[1].Value
 
+$ReleaseBase = 'https://github.com/KingSaled/Untamed-Realms/releases/download/latest-test-build'
+
 function Write-Step([string]$msg) { Write-Host ""; Write-Host "==> $msg" -ForegroundColor Cyan }
 function Write-Done([string]$msg) { Write-Host $msg -ForegroundColor Green }
 
@@ -112,4 +114,55 @@ function Get-RamGB { [math]::Round((Get-CimInstance Win32_ComputerSystem).TotalP
 
 function Write-Utf8NoBom([string]$path, [string]$text) {
     [IO.File]::WriteAllText($path, $text, (New-Object Text.UTF8Encoding $false))
+}
+
+# Checks for a newer test build and, if there is one, updates this folder in place. Only the bundle's
+# own files are replaced (scripts, pack, ur-mods); the server folder with your world, the downloaded
+# Java and your settings are kept. Returns $true if files changed, so the caller can restart itself.
+function Update-Bundle {
+    if ($env:UR_NO_UPDATE -eq '1') { return $false }
+    Write-Step "Checking for updates"
+    $versionFile = Join-Path $Root 'VERSION.txt'
+    $local = if (Test-Path $versionFile) { (Get-Content $versionFile -TotalCount 1).Trim() } else { '' }
+    try {
+        $response = Invoke-WebRequest -Uri "$ReleaseBase/version.txt" -UseBasicParsing -TimeoutSec 20
+        $content = $response.Content
+        if ($content -is [byte[]]) { $content = [Text.Encoding]::UTF8.GetString($content) }
+        $latest = ($content -split "`r?`n")[0].Trim()
+    } catch {
+        Write-Host "  Could not check for updates (offline?). Continuing with this version." -ForegroundColor DarkGray
+        return $false
+    }
+    if (-not $latest -or $latest -eq $local) { Write-Done "  You have the latest version."; return $false }
+
+    Write-Step "Downloading the latest Untamed Realms build"
+    $tmp = Join-Path ([IO.Path]::GetTempPath()) 'untamed-realms-update'
+    Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+    New-Item -ItemType Directory -Force -Path $tmp | Out-Null
+    $zip = Join-Path $tmp 'Untamed-Realms-Windows.zip'
+    Invoke-Download "$ReleaseBase/Untamed-Realms-Windows.zip" $zip
+    Expand-Archive -Path $zip -DestinationPath $tmp -Force
+    $src = Join-Path $tmp 'Untamed-Realms'
+    if (-not (Test-Path (Join-Path $src 'scripts\common.ps1'))) { throw "The downloaded update looks incomplete; nothing was changed." }
+    foreach ($item in Get-ChildItem $src) {
+        $dest = Join-Path $Root $item.Name
+        if ($item.PSIsContainer) {
+            if (Test-Path $dest) { Remove-Item $dest -Recurse -Force }
+            Copy-Item $item.FullName $dest -Recurse -Force
+        } elseif (-not (Test-Path $dest) -or (Get-FileHash $item.FullName).Hash -ne (Get-FileHash $dest).Hash) {
+            # Unchanged files (like the .bat that is running right now) are left alone.
+            Copy-Item $item.FullName $dest -Force
+        }
+    }
+    Remove-Item $tmp -Recurse -Force -ErrorAction SilentlyContinue
+    Write-Done "  Updated to the latest build."
+    return $true
+}
+
+# Runs the calling script again (after Update-Bundle replaced it) and exits with its result.
+function Restart-Script([string]$scriptPath) {
+    $env:UR_NO_UPDATE = '1'
+    $shell = (Get-Process -Id $PID).Path
+    & $shell -NoProfile -ExecutionPolicy Bypass -File $scriptPath
+    exit $LASTEXITCODE
 }

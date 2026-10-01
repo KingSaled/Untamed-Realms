@@ -14,6 +14,9 @@ for jar in $(find "$ROOT/mods" -path '*/build/libs/ur-*.jar' ! -name '*-sources.
 done
 # Windows line endings for the batch files, whatever git did on checkout
 for f in "$OUT"/*.bat "$OUT"/scripts/*.ps1; do sed -i 's/\r$//; s/$/\r/' "$f"; done
-echo "Built $(git -C "$ROOT" rev-parse --short HEAD) on $(date -u +%Y-%m-%d)" > "$OUT/VERSION.txt"
+# Line 1 is the build id the updater compares with dist/version.txt (published next to the zip).
+BUILD_ID="$(git -C "$ROOT" rev-parse HEAD)-${GITHUB_RUN_ID:-local}"
+printf '%s\nBuilt from %s on %s\n' "$BUILD_ID" "$(git -C "$ROOT" rev-parse --short HEAD)" "$(date -u +%Y-%m-%d)" > "$OUT/VERSION.txt"
+echo "$BUILD_ID" > "$ROOT/dist/version.txt"
 (cd "$ROOT/dist" && zip -qr Untamed-Realms-Windows.zip Untamed-Realms)
 echo "dist/Untamed-Realms-Windows.zip: $(ls "$OUT/ur-mods" | wc -l) Untamed Realms mods, $(ls "$OUT/pack/mods" | wc -l) pack mods"

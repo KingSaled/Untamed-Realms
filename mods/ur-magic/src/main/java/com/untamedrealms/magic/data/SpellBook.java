@@ -16,9 +16,9 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-/** Spells a player knows, the five readied quick-slots, the selected slot and cooldowns. */
+/** Spells a player knows, the eight readied quick-slots, the selected slot and cooldowns. */
 public final class SpellBook implements INBTSerializable<CompoundTag> {
-    public static final int SLOTS = 5;
+    public static final int SLOTS = 8;
 
     private final Set<ResourceLocation> known = new LinkedHashSet<>();
     private final ResourceLocation[] slots = new ResourceLocation[SLOTS];

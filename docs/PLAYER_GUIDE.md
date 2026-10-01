@@ -3,7 +3,8 @@
 ## Your first minutes
 1. **Choose a class and birthsign** — the character creation screen opens when you first join
    (reopen with `/ur class choose`). Your class sets starting skills, gear and coin.
-2. **Follow "A New Beginning"** (journal: **J**) — find a village and speak with its Elder.
+2. **Follow "A New Beginning"** (journal: **J**) — you start in a village; the gold diamond on the
+   compass at the top of the screen points to your current objective (here: the Village Elder).
 3. Check the **notice board** in every village for bounties and supply orders.
 
 ## Keys
@@ -11,9 +12,15 @@
 |---|---|
 | **K** | Skills, perks, character level and attribute choices |
 | **J** | Quest journal (track / abandon quests) |
-| **G** | Cast your readied spell |
-| **H** | Ready the next spell |
-| **N** | Spellbook — put known spells into your 5 quick slots |
+| **R** | Cast your readied spell |
+| **Z** (hold) | Spell wheel — point at a spell and let go to ready it |
+| **N** | Spellbook — put known spells into your 8 quick slots |
+| **Left Alt** | Dodge roll |
+| **B** / **G** | Backpack / accessory (Curios) slots |
+| **M** / **U** | World map / waypoints |
+
+The pack ships a conflict-free key layout; it is applied once, and keys you change yourself are never
+overwritten. Search keys with the search box in *Options → Controls → Key Binds*.
 | Use NPC | Talk (dialogue options: click or press 1–9) |
 | Sneak + use NPC | Pickpocket |
 
@@ -37,7 +44,7 @@ the inventory. Merchants' prices improve with Speech. You lose a little coin whe
 
 ## Magic
 Read **spell tomes** (bought from court wizards and priests, found in chests) to learn spells; you need
-enough skill in the spell's school. Ready spells in the spellbook (N) and cast with G.
+enough skill in the spell's school. Pick a readied spell on the spell wheel (hold Z) and cast with R; arrange the wheel in the spellbook (N).
 
 ## Townsfolk
 Elders, guard captains, court wizards, merchants, smiths, innkeepers, priests and more. Many sell

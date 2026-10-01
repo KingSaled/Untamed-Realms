@@ -6,6 +6,8 @@ Write-Host ""
 Write-Host "  UNTAMED REALMS - dedicated server" -ForegroundColor Yellow
 Write-Host "  Minecraft $MinecraftVersion + NeoForge $NeoForgeVersion"
 
+if (Update-Bundle) { Restart-Script $PSCommandPath }
+
 $server = Join-Path $Root 'server'
 New-Item -ItemType Directory -Force -Path $server | Out-Null
 $java = Get-Java

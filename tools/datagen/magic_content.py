@@ -105,10 +105,10 @@ lang = {
     "tooltip.urmagic.restore_magicka": "Restores %s Magicka",
     "tooltip.urmagic.restore_stamina": "Restores %s Stamina",
     "banner.urmagic.learned": "Spell Learned: %s",
-    "banner.urmagic.learned.sub": "Ready it in your spellbook (N) and cast with G",
+    "banner.urmagic.learned.sub": "Pick it on the spell wheel (hold %s) and cast with %s",
     "message.urmagic.already_known": "You already know %s.",
     "message.urmagic.too_complex": "This tome is beyond you. Requires %s %s.",
-    "message.urmagic.no_spell": "No spell readied - open your spellbook (N).",
+    "message.urmagic.no_spell": "No spell readied - hold %s for the spell wheel, or open your spellbook (%s).",
     "message.urmagic.no_magicka": "Not enough Magicka.",
     "screen.urmagic.spellbook": "Spellbook",
     "screen.urmagic.hint": "Pick a slot, then a spell. Right-click a slot to clear it.",
@@ -116,6 +116,11 @@ lang = {
     "key.urmagic.cast": "Cast Readied Spell",
     "key.urmagic.next": "Next Spell",
     "key.urmagic.spellbook": "Spellbook",
+    "key.urmagic.wheel": "Spell Wheel (hold)",
+    "screen.urmagic.wheel": "Spell Wheel",
+    "screen.urmagic.wheel.cost": "%s Magicka",
+    "screen.urmagic.wheel.empty": "Empty slot",
+    "screen.urmagic.wheel.hint": "Release to ready the spell - assign slots in the Spellbook (%s)",
 }
 write("assets/urmagic/lang/en_us.json", lang)
 print(f"{len(S)} spells")

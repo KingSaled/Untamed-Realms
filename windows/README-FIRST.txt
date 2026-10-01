@@ -21,8 +21,10 @@ PLAY ON THIS PC (server + game on the same laptop)
 
 UPDATING
 --------
-Download the newest Untamed-Realms-Windows.zip, extract it over this folder (your world in
-"server\world" is kept), and run both .bat files again.
+Nothing to download: Start-Server.bat and Install-Modpack.bat check for a newer build every time
+you run them and update this folder automatically (your world in "server\world" is kept).
+After an update, run Install-Modpack.bat again so the game has the same mods as the server.
+The launcher always keeps exactly one "Untamed Realms" installation.
 
 FRIENDS
 -------
@@ -38,4 +40,5 @@ WHERE THINGS ARE
 ----------------
 Game files:   %APPDATA%\.minecraft\untamed-realms   (your normal Minecraft is untouched)
 Server files: the "server" folder next to this file
-Keys in game: K skills, J journal, N spellbook, G cast spell, H next spell
+Keys in game: K skills, J journal, R cast spell, hold Z spell wheel, N spellbook, Left Alt dodge roll,
+              B backpack, M map. Keys you change yourself are kept.

@@ -29,8 +29,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class ClientMagic {
-    public static final KeyMapping CAST = new KeyMapping("key.urmagic.cast", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_G, "key.categories.untamedrealms");
-    public static final KeyMapping NEXT = new KeyMapping("key.urmagic.next", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_H, "key.categories.untamedrealms");
+    public static final KeyMapping CAST = new KeyMapping("key.urmagic.cast", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_R, "key.categories.untamedrealms");
+    public static final KeyMapping NEXT = new KeyMapping("key.urmagic.next", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.untamedrealms");
+    public static final KeyMapping WHEEL = new KeyMapping("key.urmagic.wheel", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_Z, "key.categories.untamedrealms");
     public static final KeyMapping SPELLBOOK = new KeyMapping("key.urmagic.spellbook", InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_N, "key.categories.untamedrealms");
 
     static final SpellBook BOOK = new SpellBook();
@@ -71,6 +72,7 @@ public final class ClientMagic {
             event.register(CAST);
             event.register(NEXT);
             event.register(SPELLBOOK);
+            event.register(WHEEL);
         }
 
         @SubscribeEvent
@@ -105,6 +107,7 @@ public final class ClientMagic {
             if (mc.player == null) return;
             while (CAST.consumeClick()) if (mc.screen == null) PacketDistributor.sendToServer(new MagicNetwork.Cast(-1));
             while (NEXT.consumeClick()) if (mc.screen == null) PacketDistributor.sendToServer(new MagicNetwork.Select(1, true));
+            while (WHEEL.consumeClick()) if (mc.screen == null) mc.setScreen(new SpellWheelScreen(WHEEL));
             while (SPELLBOOK.consumeClick()) if (mc.screen == null) mc.setScreen(new SpellbookScreen());
         }
 

@@ -37,13 +37,17 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Untamed-Realms-Windows
-          path: dist/Untamed-Realms-Windows.zip
+          path: |
+            dist/Untamed-Realms-Windows.zip
+            dist/version.txt
 
   test:
     name: Test on Windows (install modpack + boot server)
     needs: build
     runs-on: windows-latest
     timeout-minutes: 40
+    env:
+      UR_NO_UPDATE: '1'   # test this build, not whatever is currently published
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -106,4 +110,6 @@ jobs:
 
             An automated Windows install + server boot test runs on every build; see the Actions tab for its result.
             Built from `${{ github.ref_name }}` at ${{ github.sha }}.
-          files: Untamed-Realms-Windows.zip
+          files: |
+            Untamed-Realms-Windows.zip
+            version.txt

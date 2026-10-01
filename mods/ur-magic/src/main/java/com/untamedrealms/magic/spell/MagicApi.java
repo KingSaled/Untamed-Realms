@@ -29,7 +29,7 @@ public final class MagicApi {
         SpellDef def = UntamedMagic.SPELLS.getOrNull(spell);
         if (def == null || !book(player).learn(spell)) return false;
         UR.banner(player, Component.translatable("banner.urmagic.learned", def.name()).withStyle(ChatFormatting.AQUA),
-                Component.translatable("banner.urmagic.learned.sub"));
+                Component.translatable("banner.urmagic.learned.sub", Component.keybind("key.urmagic.wheel"), Component.keybind("key.urmagic.cast")));
         MagicNetwork.sync(player);
         return true;
     }
@@ -53,7 +53,7 @@ public final class MagicApi {
         if (slot >= 0) book.select(slot);
         ResourceLocation id = book.selectedSpell();
         if (id == null) {
-            UR.warn(player, Component.translatable("message.urmagic.no_spell"));
+            UR.warn(player, Component.translatable("message.urmagic.no_spell", Component.keybind("key.urmagic.wheel"), Component.keybind("key.urmagic.spellbook")));
             return;
         }
         cast(player, id);
