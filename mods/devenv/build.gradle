@@ -9,6 +9,7 @@ def suite = [
     urnpcs   : ':ur-npcs',
     urmagic  : ':ur-magic',
     urarsenal: ':ur-arsenal',
+    urtesthub: ':ur-testhub',
 ]
 
 // Only modules that already ship a mod descriptor take part (lets new modules land incrementally).

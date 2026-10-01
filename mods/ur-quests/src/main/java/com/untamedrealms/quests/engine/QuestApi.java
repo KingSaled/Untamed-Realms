@@ -270,6 +270,24 @@ public final class QuestApi {
         for (QuestDef.Objective obj : stage.objectives()) {
             if (obj.type().equals(COLLECT) && obj.consume()) consumeItems(player, obj.target(), obj.count());
         }
+        advance(player, id, def, active);
+    }
+
+    /**
+     * Admin / test hub: finishes a quest's current stage whatever its objectives (nothing is taken from
+     * the inventory). Returns false if the quest is not active.
+     */
+    public static boolean skipStage(ServerPlayer player, ResourceLocation id) {
+        QuestLog.Active active = log(player).active().get(id);
+        QuestDef def = QuestsData.get(id);
+        if (active == null || def == null) return false;
+        if (active.stage >= def.stages().size()) complete(player, id, def);
+        else advance(player, id, def, active);
+        QuestsNetwork.markDirty(player);
+        return true;
+    }
+
+    private static void advance(ServerPlayer player, ResourceLocation id, QuestDef def, QuestLog.Active active) {
         NeoForge.EVENT_BUS.post(new QuestEvent.StageCompleted(player, id, active.stage));
         active.stage++;
         if (active.stage >= def.stages().size()) {

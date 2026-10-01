@@ -19,6 +19,22 @@ PLAY ON THIS PC (server + game on the same laptop)
 
 5. In the server window type:  op YourMinecraftName   (gives you admin commands)
 
+TEST WORLD (everything in one place)
+------------------------------------
+Double-click  Start-Test-World.bat  instead of Start-Server.bat (only one of the two can run at a
+time; join with  localhost  as usual). It uses the same server and mods but a separate save,
+"server\test-world", so your normal world is never touched.
+- You spawn on a floating TEST HUB above the starting village, as admin, with a CONTROL BOOK:
+  click its lines to reset your character, set every skill, learn all spells, start or skip quests,
+  change time/weather/game mode, or jump down to the real village and back.
+- Forge Yard: every station, materials, all weapons by tier, armor stands, rings & amulets.
+- Magic: spell tomes, skill books, enchanting, training dummies.
+- Town Square: every NPC (quests, shops, trainers), two notice boards, quest items and food.
+- Wilds: trees to fell, a ripe farm, a fishing pond, an ore wall, tools, and a mob arena with
+  click-to-spawn signs.
+- Broke something? Control book -> "Rebuild the hub" restocks everything.
+- Reset-Test-World.bat starts the test world over (like Reset-World.bat does for the normal one).
+
 UPDATING
 --------
 Nothing to download: Start-Server.bat and Install-Modpack.bat check for a newer build every time

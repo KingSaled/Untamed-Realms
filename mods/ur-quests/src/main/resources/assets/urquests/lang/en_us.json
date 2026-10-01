@@ -53,6 +53,8 @@
   "objective.urquests.anything": "anything",
   "command.urquests.started": "Started %s for %s.",
   "command.urquests.reset": "Reset all quests for %s.",
+  "command.urquests.skipped": "Skipped the current step of %s.",
+  "command.urquests.nothing_to_skip": "No active quest to skip (track one in the journal, or name it).",
   "objective.urquests.deliver": "Deliver %s",
   "screen.urquests.deliver": "Hand In",
   "screen.urquests.hand_in": "Hand in...",

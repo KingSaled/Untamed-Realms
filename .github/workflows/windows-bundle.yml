@@ -82,6 +82,18 @@ jobs:
           if ($log -notmatch 'Done \(') { Get-Content server-console.txt -Tail 80; throw "server did not finish starting" }
           if (Test-Path Untamed-Realms\server\crash-reports) { throw "crash report written" }
           ($log -split "`n" | Select-String 'Done \(').Line
+      - name: Start-Test-World builds the test hub
+        shell: powershell
+        run: |
+          $env:UR_SELF_TEST = '1'
+          $env:UR_TEST_WORLD = '1'
+          powershell -NoProfile -ExecutionPolicy Bypass -File Untamed-Realms\scripts\start-server.ps1 *>&1 | Tee-Object test-console.txt
+          if ($LASTEXITCODE -ne 0) { Get-Content test-console.txt -Tail 80; throw "test world failed" }
+          $log = Get-Content Untamed-Realms\server\logs\latest.log -Raw
+          if ($log -notmatch 'Test hub built') { throw "test hub not built" }
+          if (-not (Test-Path Untamed-Realms\server\test-world)) { throw "test-world save missing" }
+          if (Test-Path Untamed-Realms\server\crash-reports) { throw "crash report written" }
+          ($log -split "`n" | Select-String 'Test hub built').Line
       - name: Reset-World moves the world aside
         shell: powershell
         run: |
@@ -115,6 +127,7 @@ jobs:
             **Windows: download `Untamed-Realms-Windows.zip`, extract it, and read `README-FIRST.txt`.**
             - `Start-Server.bat` installs and starts the server (Java, NeoForge and mods download automatically).
             - `Install-Modpack.bat` adds an "Untamed Realms" installation to the normal Minecraft Launcher.
+            - `Start-Test-World.bat` starts a separate test world with everything laid out on a test hub.
 
             An automated Windows install + server boot test runs on every build; see the Actions tab for its result.
             Built from `${{ github.ref_name }}` at ${{ github.sha }}.

@@ -2,8 +2,15 @@
 # Type commands (e.g. "op YourName", "stop") directly into this window.
 . "$PSScriptRoot\common.ps1"
 
+# Start-Test-World.bat sets UR_TEST_WORLD=1: same server and mods, but the separate "test-world" save
+# with the test hub (everything laid out in one place, a control book, /ur test commands).
+$test = $env:UR_TEST_WORLD -eq '1'
+$worldArgs = if ($test) { @('--world', 'test-world') } else { @() }
+$testJvm = if ($test) { @('-Duntamed.testworld=true') } else { @() }
+
 Write-Host ""
-Write-Host "  UNTAMED REALMS - dedicated server" -ForegroundColor Yellow
+if ($test) { Write-Host "  UNTAMED REALMS - TEST WORLD" -ForegroundColor Magenta }
+else { Write-Host "  UNTAMED REALMS - dedicated server" -ForegroundColor Yellow }
 Write-Host "  Minecraft $MinecraftVersion + NeoForge $NeoForgeVersion"
 
 if (Update-Bundle) { Restart-Script $PSCommandPath }
@@ -53,7 +60,12 @@ Set-Content -Path (Join-Path $server 'user_jvm_args.txt') -Value $jvm
 Write-Step "Starting the server with $heap GB memory"
 Write-Host "  First start generates the world and takes a few minutes. Wait for: Done (..s)! For help, type ""help""" -ForegroundColor DarkGray
 Write-Host "  Then join from the game: Multiplayer -> Direct Connection -> localhost" -ForegroundColor DarkGray
-Write-Host "  Make yourself admin by typing:  op YourMinecraftName      Stop the server with:  stop" -ForegroundColor DarkGray
+if ($test) {
+    Write-Host "  TEST WORLD: you spawn on the test hub above the starting village, as admin, with a control book." -ForegroundColor Magenta
+    Write-Host "  Your normal world is not touched. Stop the server with:  stop" -ForegroundColor DarkGray
+} else {
+    Write-Host "  Make yourself admin by typing:  op YourMinecraftName      Stop the server with:  stop" -ForegroundColor DarkGray
+}
 Write-Host "  If Windows Firewall asks about Java, allow it (Private networks)." -ForegroundColor DarkGray
 Write-Host ""
 Push-Location $server
@@ -63,16 +75,19 @@ try {
         # Automated test mode (used by CI): start, wait for "Done", then stop cleanly.
         $psi = New-Object System.Diagnostics.ProcessStartInfo
         $psi.FileName = $java
-        $psi.Arguments = "@user_jvm_args.txt @$argsFile --nogui"
+        $psi.Arguments = (@('@user_jvm_args.txt') + $testJvm + @("@$argsFile", '--nogui') + $worldArgs) -join ' '
+
         $psi.WorkingDirectory = $server
         $psi.UseShellExecute = $false
         $psi.RedirectStandardInput = $true
         $proc = [System.Diagnostics.Process]::Start($psi)
         $log = Join-Path $server 'logs\latest.log'
+        # the test world is ready once its hub is built (first tick after "Done")
+        $ready = if ($test) { 'Test hub built' } else { 'Done \(' }
         $deadline = (Get-Date).AddMinutes(25)
         while (-not $proc.HasExited -and (Get-Date) -lt $deadline) {
             Start-Sleep -Seconds 5
-            if ((Test-Path $log) -and (Select-String -Path $log -Pattern 'Done \(' -Quiet)) {
+            if ((Test-Path $log) -and (Select-String -Path $log -Pattern $ready -Quiet)) {
                 # Windows PowerShell prefixes the first line written to stdin with a byte-order mark, so send
                 # a blank line first (the server ignores it as an unknown command), then stop.
                 $proc.StandardInput.WriteLine('')
@@ -81,9 +96,9 @@ try {
             }
         }
         if (-not $proc.WaitForExit(180000)) { $proc.Kill(); throw "Server did not stop in time" }
-        if (-not (Select-String -Path $log -Pattern 'Done \(' -Quiet)) { throw "Server did not finish starting" }
+        if (-not (Select-String -Path $log -Pattern $ready -Quiet)) { throw "Server did not finish starting" }
     } else {
-        & $java '@user_jvm_args.txt' "@$argsFile" '--nogui'
+        & $java '@user_jvm_args.txt' @testJvm "@$argsFile" '--nogui' @worldArgs
     }
 } finally { Pop-Location }
 Write-Host ""

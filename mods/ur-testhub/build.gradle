@@ -1,0 +1,10 @@
+// The test world's hub: depends on every gameplay module so it can lay all of their content out.
+dependencies {
+    api project(':ur-core')
+    api project(':ur-skills')
+    api project(':ur-classes')
+    api project(':ur-quests')
+    api project(':ur-npcs')
+    api project(':ur-magic')
+    api project(':ur-arsenal')
+}

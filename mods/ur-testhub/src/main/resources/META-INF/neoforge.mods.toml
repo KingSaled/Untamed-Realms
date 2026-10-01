@@ -1,0 +1,69 @@
+modLoader = "javafml"
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+issueTrackerURL = "https://github.com/KingSaled/Untamed-Realms/issues"
+
+[[mods]]
+modId = "urtesthub"
+version = "${suite_version}"
+displayName = "Untamed Realms: Test Hub"
+authors = "${mod_authors}"
+description = '''
+Developer test world. Does nothing in a normal world. When the server is started with Start-Test-World.bat it builds a floating hub with every item, station, NPC, spell and quest laid out, plus a control book of shortcuts.
+'''
+
+[[dependencies.urtesthub]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urcore"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urskills"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urclasses"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urquests"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urnpcs"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urmagic"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urarsenal"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

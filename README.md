@@ -32,6 +32,12 @@ You need only the normal **Minecraft Launcher** (Java Edition). Java, NeoForge a
 
 **Start over:** stop the server (`stop`), double-click **`Reset-World.bat`**, then `Start-Server.bat` again for a brand-new world and character.
 
+**Test world:** double-click **`Start-Test-World.bat`** instead of `Start-Server.bat` (one at a time; join `localhost` as usual). It is a
+separate save (`server/test-world`) where you spawn as admin on a floating **test hub** above the starting village: every station,
+item, weapon, armor set, spell tome, NPC and quest laid out in four quarters (Forge Yard, Magic, Town Square, Wilds with trees, farm,
+pond, ore wall and a mob arena), plus a **control book** whose lines reset your character, set skills, learn spells, start or skip
+quests and rebuild the hub. `Reset-Test-World.bat` starts it over. Your normal world is never touched.
+
 If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*. Full notes are in `README-FIRST.txt` inside the zip.
 **Updating:** just run `Start-Server.bat` and `Install-Modpack.bat` again. Both download the newest build automatically and keep your world; you never need to download the zip again. The launcher keeps exactly one *Untamed Realms* installation.
 
@@ -48,6 +54,7 @@ If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*
 | **ur-quests** | Quest engine (kill, collect, talk, turn-in, explore structures/biomes, mine, craft, smelt, fish, reach skill levels, cast spells), main story chapter 1, side quests, **radiant bounties** on town notice boards, journal (J) and on-screen tracker. |
 | **ur-npcs** | Named townsfolk with branching dialogue and Speech checks, merchants priced by Speech, Skyrim-style trainers, pickpocketing, guards. **Villages populate themselves** with an elder, guards, a court wizard, a merchant, random tradesfolk and a notice board the first time you walk in. |
 | **ur-magic** | Five schools, **23 spells** (projectiles, cones, lightning, wards, summons, bound weapons, calm/fear, invisibility...), spell tomes, a spellbook with eight quick slots, a spell wheel, Restore Magicka/Stamina potions. |
+| **ur-testhub** | Developer test world (only active via `Start-Test-World.bat`): builds the test hub and adds the control book and `/ur test` commands. |
 | **ur-arsenal** | Skyrim material tiers **Iron → Steel → Orcish → Dwarven → Elven → Glass → Ebony → Daedric** for daggers, swords, war axes, maces, greatswords, battleaxes, warhammers and bows (**64 weapons**, Better Combat movesets), **10 light & heavy armor sets**, four new ores, a **forge**, **tanning rack** and **workbench** (tempering) gated by Smithing, and **12 rings & amulets** worn in Curios slots. |
 
 ### Curated third-party mods (`pack/mods.yml`)
@@ -89,7 +96,7 @@ shops, spells, perks, classes, XP tables) is JSON and can be changed with a data
 
 ## Repository layout
 ```
-mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic, ur-arsenal (+ devenv runner)
+mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic, ur-arsenal, ur-testhub (+ devenv runner)
                  ur-arcana (alchemy & enchanting, work in progress, not built yet)
 pack/            packwiz modpack: mods.yml (source of truth), lock files, config overrides
 server/          install / start / smoke-test scripts, JVM flags, server.properties, docker-compose

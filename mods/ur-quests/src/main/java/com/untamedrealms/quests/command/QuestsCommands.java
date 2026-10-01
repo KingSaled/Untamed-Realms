@@ -68,6 +68,27 @@ public final class QuestsCommands {
                             ctx.getSource().sendSuccess(() -> Component.translatable("command.urquests.reset", target.getDisplayName()), true);
                             return 1;
                         })))
+                .then(Commands.literal("skip").requires(s -> s.hasPermission(2))
+                        .then(Commands.argument("player", EntityArgument.player()).executes(ctx -> {
+                            // no quest given: the tracked one
+                            ServerPlayer target = EntityArgument.getPlayer(ctx, "player");
+                            ResourceLocation id = QuestApi.log(target).tracked();
+                            if (id == null || !QuestApi.skipStage(target, id)) {
+                                ctx.getSource().sendFailure(Component.translatable("command.urquests.nothing_to_skip"));
+                                return 0;
+                            }
+                            ctx.getSource().sendSuccess(() -> Component.translatable("command.urquests.skipped", id.toString()), true);
+                            return 1;
+                        }).then(Commands.argument("quest", ResourceLocationArgument.id()).executes(ctx -> {
+                            ServerPlayer target = EntityArgument.getPlayer(ctx, "player");
+                            ResourceLocation id = ResourceLocationArgument.getId(ctx, "quest");
+                            if (!QuestApi.skipStage(target, id)) {
+                                ctx.getSource().sendFailure(Component.translatable("command.urquests.nothing_to_skip"));
+                                return 0;
+                            }
+                            ctx.getSource().sendSuccess(() -> Component.translatable("command.urquests.skipped", id.toString()), true);
+                            return 1;
+                        }))))
                 .then(Commands.literal("talk").requires(s -> s.hasPermission(2))
                         .then(Commands.argument("player", EntityArgument.player()).then(Commands.argument("npc", ResourceLocationArgument.id()).executes(ctx -> {
                             QuestApi.onTalk(EntityArgument.getPlayer(ctx, "player"), ResourceLocationArgument.getId(ctx, "npc"));
