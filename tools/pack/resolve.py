@@ -58,6 +58,7 @@ def main():
     update = "--update" in sys.argv
     sections = read_manifest()
     results = []
+    excluded = set(sections.pop("exclude", []))
     for section, slugs in sections.items():
         for slug in slugs:
             if locked(slug):
@@ -75,6 +76,11 @@ def main():
             else:
                 results.append((section, slug, "FAILED", tail + " -- candidates: " + suggest(slug)))
             print(f"[{section}] {slug}: {results[-1][2]} {tail}", flush=True)
+
+    for slug in sorted(excluded):
+        if locked(slug):
+            proc = run(["packwiz", "remove", slug, "-y"])
+            results.append(("exclude", slug, "removed" if proc.returncode == 0 else "FAILED to remove", proc.stdout.strip()[-120:]))
 
     if update:
         proc = run(["packwiz", "update", "--all", "-y"])

@@ -90,3 +90,8 @@ content:              # ---- adventure content that complements our own mods
   - mowzies-mobs       # boss encounters
   - l_enders-cataclysm # dungeon bosses
   - curios             # accessory slots (rings, amulets) used by Untamed Realms gear
+
+exclude:              # ---- never ship these, even if something pulls them in as a dependency
+  - create             # tech/automation: wrong genre for this pack
+  - quark              # large content overhaul; conflicts with our design
+  - supplementaries

@@ -58,10 +58,14 @@ java -jar packwiz-installer-bootstrap.jar -g -s server "$PACK_URL"
 if [[ -n "$MODS_FROM" ]]; then
   rm -f mods/ur-*.jar
   if [[ "$MODS_FROM" == "mods" ]]; then
-    find "$REPO_ROOT/mods" -path '*/build/libs/ur-*.jar' ! -name '*-sources.jar' -exec cp {} mods/ \;
+    SRC=$(find "$REPO_ROOT/mods" -path '*/build/libs/ur-*.jar' ! -name '*-sources.jar')
   else
-    cp "$MODS_FROM"/ur-*.jar mods/
+    SRC=$(ls "$MODS_FROM"/ur-*.jar)
   fi
+  for jar in $SRC; do
+    # modules still under construction have no mod descriptor yet - don't install them
+    if unzip -l "$jar" | grep -q 'META-INF/neoforge.mods.toml'; then cp "$jar" mods/; else echo "skip (not a mod yet): $jar"; fi
+  done
   echo ">> Installed Untamed Realms mods:"; ls mods/ur-*.jar
 fi
 
