@@ -73,9 +73,14 @@ jobs:
         run: bash server/scripts/install.sh --dir server-test --pack-dir pack --mods-from mods
       - name: Boot server until "Done", then stop
         run: bash server/scripts/smoke-test.sh server-test 900
-      - name: Server log
+      - name: Error digest
         if: always()
-        run: tail -n 300 server-test/logs/latest.log || true
+        run: |
+          f=server-test/logs/latest.log; [ -f "$f" ] || f=server-test/smoke.out
+          echo "== mod loading problems =="; grep -nE "Missing or unsupported|requires|is not compatible|Mod File .* needs|failed to load|Failed to create mod instance" "$f" | head -n 40 || true
+          echo "== first exceptions =="; grep -nE "Exception|Caused by|ERROR\]" "$f" | grep -v "DEBUG" | head -n 40 || true
+          echo "== crash report =="; head -n 60 server-test/crash-reports/*.txt 2>/dev/null || true
+          echo "== tail =="; tail -n 25 "$f" || true
       - name: Upload crash reports
         if: failure()
         uses: actions/upload-artifact@v4
