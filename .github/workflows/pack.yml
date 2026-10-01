@@ -42,10 +42,13 @@ jobs:
           else
             git commit -m "Lock modpack (automated packwiz resolve)"
             # other commits may land while we resolve: rebase onto them and retry
+            git status --short
+            pushed=no
             for i in 1 2 3 4 5; do
-              git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break
+              if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then pushed=yes; break; fi
               sleep $((i * 5))
             done
+            [ "$pushed" = yes ] || { echo "::error::could not push the lock files"; exit 1; }
           fi
       - name: Export Modrinth pack (.mrpack)
         working-directory: pack
