@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/hunters_contract"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Quiet. You'll scare the deer. ...What do you want?",
+      "options": [
+        {
+          "text": "Any hunting work?",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/hunters_contract"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "Spiders keep raiding my snares. Kill eight, bring me eight hides, and I'll pay.",
+      "options": [
+        {
+          "text": "I'll clear the spiders.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/hunters_contract"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Eight spiders, eight hides.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

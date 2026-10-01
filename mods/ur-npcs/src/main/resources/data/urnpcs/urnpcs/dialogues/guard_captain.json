@@ -1,0 +1,68 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_completed",
+          "target": "urquests:main/trouble_on_the_roads"
+        },
+        {
+          "type": "quest_available",
+          "target": "urquests:main/the_raiders_banner"
+        }
+      ],
+      "node": "raiders"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Captain of the watch. If you're here to cause trouble, don't. If you're here to stop it - I could use you.",
+      "options": [
+        {
+          "text": "Any news from the roads?",
+          "next": "news"
+        },
+        {
+          "text": "Can you teach me to use a shield?",
+          "next": "teach"
+        }
+      ]
+    },
+    "news": {
+      "text": "Zombies by the dozen, skeletons picking off travellers. Something is stirring them up.",
+      "options": [
+        {
+          "text": "I'll deal with them."
+        }
+      ]
+    },
+    "teach": {
+      "text": "Shield up, feet planted, let the blow slide off. Practice costs coin, mind you - steel isn't free.",
+      "options": [
+        {
+          "text": "Maybe later."
+        }
+      ]
+    },
+    "raiders": {
+      "text": "Scouts found tracks leading to a raider outpost under a grey banner. They're behind this - I'd stake my badge on it. Break them.",
+      "options": [
+        {
+          "text": "Consider it done.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:main/the_raiders_banner"
+            }
+          ]
+        },
+        {
+          "text": "Not yet."
+        }
+      ]
+    }
+  }
+}

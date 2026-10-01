@@ -1,0 +1,73 @@
+{
+  "name": "Hunter's Camp",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:bow"
+      },
+      "price": 30
+    },
+    {
+      "item": {
+        "id": "minecraft:arrow",
+        "count": 16
+      },
+      "price": 6
+    },
+    {
+      "item": {
+        "id": "minecraft:crossbow"
+      },
+      "price": 45
+    },
+    {
+      "item": {
+        "id": "minecraft:leather_chestplate"
+      },
+      "price": 25
+    },
+    {
+      "item": {
+        "id": "minecraft:leather_boots"
+      },
+      "price": 12
+    },
+    {
+      "item": {
+        "id": "minecraft:cooked_mutton",
+        "count": 2
+      },
+      "price": 7
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:leather",
+      "price": 3
+    },
+    {
+      "match": "minecraft:rabbit_hide",
+      "price": 1
+    },
+    {
+      "match": "minecraft:feather",
+      "price": 1
+    },
+    {
+      "match": "minecraft:string",
+      "price": 1
+    },
+    {
+      "match": "minecraft:spider_eye",
+      "price": 2
+    },
+    {
+      "match": "minecraft:bone",
+      "price": 1
+    },
+    {
+      "match": "minecraft:rabbit_foot",
+      "price": 8
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "title": "Guard Captain",
+  "names": [
+    "Aldric",
+    "Bram",
+    "Cedric",
+    "Dagny",
+    "Eirik",
+    "Fenwick",
+    "Gorm",
+    "Halvard",
+    "Ivor",
+    "Joren",
+    "Kell",
+    "Leif",
+    "Maddox",
+    "Njal",
+    "Osric",
+    "Torvald",
+    "Ulf",
+    "Varek",
+    "Astrid",
+    "Brenna",
+    "Calla",
+    "Dalla",
+    "Edda",
+    "Freya",
+    "Gisla",
+    "Helga",
+    "Ingrid",
+    "Jora",
+    "Kaija",
+    "Lyra",
+    "Maren",
+    "Nessa",
+    "Runa",
+    "Sigrid",
+    "Thyra",
+    "Wynne"
+  ],
+  "skin": "urnpcs:guard_captain",
+  "essential": true,
+  "wander": 10,
+  "dialogue": "urnpcs:guard_captain",
+  "trainer": {
+    "skill": "block",
+    "max_level": 40
+  },
+  "equipment": {
+    "mainhand": {
+      "id": "minecraft:iron_sword"
+    },
+    "offhand": {
+      "id": "minecraft:shield"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "name": "Farm Stall",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:wheat_seeds",
+        "count": 8
+      },
+      "price": 2
+    },
+    {
+      "item": {
+        "id": "minecraft:carrot",
+        "count": 4
+      },
+      "price": 3
+    },
+    {
+      "item": {
+        "id": "minecraft:potato",
+        "count": 4
+      },
+      "price": 3
+    },
+    {
+      "item": {
+        "id": "minecraft:beetroot_seeds",
+        "count": 8
+      },
+      "price": 2
+    },
+    {
+      "item": {
+        "id": "minecraft:bone_meal",
+        "count": 8
+      },
+      "price": 4
+    },
+    {
+      "item": {
+        "id": "minecraft:egg",
+        "count": 4
+      },
+      "price": 4
+    },
+    {
+      "item": {
+        "id": "minecraft:milk_bucket"
+      },
+      "price": 12
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_hoe"
+      },
+      "price": 30
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:wheat",
+      "price": 1
+    },
+    {
+      "match": "minecraft:pumpkin",
+      "price": 2
+    },
+    {
+      "match": "minecraft:melon_slice",
+      "price": 1
+    },
+    {
+      "match": "#minecraft:wool",
+      "price": 2,
+      "display": "minecraft:white_wool"
+    },
+    {
+      "match": "minecraft:sugar_cane",
+      "price": 1
+    },
+    {
+      "match": "minecraft:egg",
+      "price": 1
+    }
+  ]
+}

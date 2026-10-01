@@ -1,0 +1,79 @@
+{
+  "name": "Temple Remedies",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:potion",
+        "components": {
+          "minecraft:potion_contents": {
+            "potion": "minecraft:healing"
+          }
+        }
+      },
+      "price": 30
+    },
+    {
+      "item": {
+        "id": "minecraft:potion",
+        "components": {
+          "minecraft:potion_contents": {
+            "potion": "minecraft:regeneration"
+          }
+        }
+      },
+      "price": 40
+    },
+    {
+      "item": {
+        "id": "minecraft:golden_apple"
+      },
+      "price": 90
+    },
+    {
+      "item": {
+        "id": "minecraft:milk_bucket"
+      },
+      "price": 15
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:ward"
+        }
+      },
+      "price": 100
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:turn_undead"
+        }
+      },
+      "price": 140
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:spider_eye",
+      "price": 2
+    },
+    {
+      "match": "minecraft:rotten_flesh",
+      "price": 1
+    },
+    {
+      "match": "minecraft:bone",
+      "price": 1
+    },
+    {
+      "match": "minecraft:glistering_melon_slice",
+      "price": 8
+    },
+    {
+      "match": "minecraft:nether_wart",
+      "price": 3
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "name": "The Tavern",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:bread",
+        "count": 3
+      },
+      "price": 5
+    },
+    {
+      "item": {
+        "id": "minecraft:cooked_beef",
+        "count": 2
+      },
+      "price": 8
+    },
+    {
+      "item": {
+        "id": "minecraft:mushroom_stew"
+      },
+      "price": 10
+    },
+    {
+      "item": {
+        "id": "minecraft:rabbit_stew"
+      },
+      "price": 16
+    },
+    {
+      "item": {
+        "id": "minecraft:pumpkin_pie"
+      },
+      "price": 9
+    },
+    {
+      "item": {
+        "id": "minecraft:cake"
+      },
+      "price": 30
+    },
+    {
+      "item": {
+        "id": "minecraft:honey_bottle"
+      },
+      "price": 12
+    },
+    {
+      "item": {
+        "id": "minecraft:cookie",
+        "count": 4
+      },
+      "price": 4
+    }
+  ],
+  "buys": [
+    {
+      "match": "#minecraft:fishes",
+      "price": 3,
+      "display": "minecraft:cod"
+    },
+    {
+      "match": "minecraft:wheat",
+      "price": 1
+    },
+    {
+      "match": "minecraft:carrot",
+      "price": 1
+    },
+    {
+      "match": "minecraft:potato",
+      "price": 1
+    },
+    {
+      "match": "minecraft:beef|minecraft:porkchop|minecraft:mutton|minecraft:chicken",
+      "price": 2,
+      "display": "minecraft:beef"
+    },
+    {
+      "match": "minecraft:honey_bottle",
+      "price": 5
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/farmers_woes"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Mind the crops! Took me all spring to get that wheat in.",
+      "options": [
+        {
+          "text": "Trouble on the farm?",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/farmers_woes"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "Thirty-two sheaves to bring in and zombies trampling the rows at night. I can't do both.",
+      "options": [
+        {
+          "text": "I'll help with the harvest.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/farmers_woes"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Harvest's waiting, and so are the zombies.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

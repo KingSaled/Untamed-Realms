@@ -1,0 +1,96 @@
+{
+  "name": "General Goods",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:torch",
+        "count": 16
+      },
+      "price": 8
+    },
+    {
+      "item": {
+        "id": "minecraft:bread",
+        "count": 4
+      },
+      "price": 6
+    },
+    {
+      "item": {
+        "id": "minecraft:lead"
+      },
+      "price": 10
+    },
+    {
+      "item": {
+        "id": "minecraft:bucket"
+      },
+      "price": 15
+    },
+    {
+      "item": {
+        "id": "minecraft:compass"
+      },
+      "price": 40
+    },
+    {
+      "item": {
+        "id": "minecraft:map"
+      },
+      "price": 20
+    },
+    {
+      "item": {
+        "id": "minecraft:white_bed"
+      },
+      "price": 25
+    },
+    {
+      "item": {
+        "id": "minecraft:lantern"
+      },
+      "price": 12
+    },
+    {
+      "item": {
+        "id": "minecraft:paper",
+        "count": 8
+      },
+      "price": 8
+    },
+    {
+      "item": {
+        "id": "urquests:notice_board"
+      },
+      "price": 30
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:emerald",
+      "price": 12
+    },
+    {
+      "match": "minecraft:diamond",
+      "price": 60
+    },
+    {
+      "match": "#c:gems",
+      "price": 15,
+      "display": "minecraft:amethyst_shard"
+    },
+    {
+      "match": "#minecraft:wool",
+      "price": 2,
+      "display": "minecraft:white_wool"
+    },
+    {
+      "match": "minecraft:leather",
+      "price": 3
+    },
+    {
+      "match": "minecraft:feather",
+      "price": 1
+    }
+  ]
+}

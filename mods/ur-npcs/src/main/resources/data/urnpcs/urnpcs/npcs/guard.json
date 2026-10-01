@@ -1,0 +1,53 @@
+{
+  "title": "Town Guard",
+  "names": [
+    "Aldric",
+    "Bram",
+    "Cedric",
+    "Dagny",
+    "Eirik",
+    "Fenwick",
+    "Gorm",
+    "Halvard",
+    "Ivor",
+    "Joren",
+    "Kell",
+    "Leif",
+    "Maddox",
+    "Njal",
+    "Osric",
+    "Torvald",
+    "Ulf",
+    "Varek",
+    "Astrid",
+    "Brenna",
+    "Calla",
+    "Dalla",
+    "Edda",
+    "Freya",
+    "Gisla",
+    "Helga",
+    "Ingrid",
+    "Jora",
+    "Kaija",
+    "Lyra",
+    "Maren",
+    "Nessa",
+    "Runa",
+    "Sigrid",
+    "Thyra",
+    "Wynne"
+  ],
+  "skin": "urnpcs:guard",
+  "essential": false,
+  "wander": 16,
+  "equipment": {
+    "mainhand": {
+      "id": "minecraft:iron_sword"
+    },
+    "head": {
+      "id": "minecraft:iron_helmet"
+    }
+  },
+  "greeting": "Keep your weapons sheathed and we'll get along fine."
+}

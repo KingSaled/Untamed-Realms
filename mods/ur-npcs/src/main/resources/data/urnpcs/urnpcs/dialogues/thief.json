@@ -1,0 +1,63 @@
+{
+  "entry": [
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Keep your voice down. You buying, selling, or just staring?",
+      "options": [
+        {
+          "text": "What do you sell?",
+          "next": "wares"
+        },
+        {
+          "text": "Teach me your tricks. (Persuade)",
+          "next": "trick",
+          "check": {
+            "skill": "speech",
+            "level": 15,
+            "fail": "no"
+          }
+        }
+      ]
+    },
+    "wares": {
+      "text": "Things that fell off carts. Ask no questions, hear no lies.",
+      "options": [
+        {
+          "text": "I'll take a look.",
+          "actions": [
+            {
+              "type": "open_shop"
+            }
+          ]
+        }
+      ]
+    },
+    "trick": {
+      "text": "Fine, fine. Approach from behind, sneak, keep your hands light. Most folk never look back.",
+      "options": [
+        {
+          "text": "Thanks.",
+          "actions": [
+            {
+              "type": "give_xp",
+              "target": "pickpocket",
+              "value": 40
+            }
+          ]
+        }
+      ]
+    },
+    "no": {
+      "text": "Ha. Nice try, mark.",
+      "options": [
+        {
+          "text": "..."
+        }
+      ]
+    }
+  }
+}

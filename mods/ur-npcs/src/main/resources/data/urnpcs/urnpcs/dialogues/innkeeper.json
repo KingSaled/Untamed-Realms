@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/fresh_catch"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Welcome to the inn! Sit, warm yourself. Rooms are cheap and the ale's cheaper.",
+      "options": [
+        {
+          "text": "You look worried.",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/fresh_catch"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "The stew pot's empty and the roads are full of hungry travellers. Ten fresh fish would save my reputation.",
+      "options": [
+        {
+          "text": "I'll catch some fish.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/fresh_catch"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Ten fish, friend. My cook is threatening to quit.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

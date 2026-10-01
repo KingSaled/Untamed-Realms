@@ -1,0 +1,132 @@
+{
+  "name": "Arcane Wares",
+  "sells": [
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:flames"
+        }
+      },
+      "price": 80
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:healing"
+        }
+      },
+      "price": 90
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:oakflesh"
+        }
+      },
+      "price": 90
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:candlelight"
+        }
+      },
+      "price": 100
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:conjure_familiar"
+        }
+      },
+      "price": 120
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:calm"
+        }
+      },
+      "price": 120
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:frostbite"
+        }
+      },
+      "price": 180
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:sparks"
+        }
+      },
+      "price": 220
+    },
+    {
+      "item": {
+        "id": "urmagic:magicka_potion"
+      },
+      "price": 25
+    },
+    {
+      "item": {
+        "id": "minecraft:lapis_lazuli",
+        "count": 4
+      },
+      "price": 4
+    },
+    {
+      "item": {
+        "id": "minecraft:book"
+      },
+      "price": 10
+    },
+    {
+      "item": {
+        "id": "minecraft:experience_bottle"
+      },
+      "price": 30
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:enchanted_book",
+      "price": 40
+    },
+    {
+      "match": "minecraft:lapis_lazuli",
+      "price": 1
+    },
+    {
+      "match": "minecraft:amethyst_shard",
+      "price": 3
+    },
+    {
+      "match": "minecraft:ender_pearl",
+      "price": 12
+    },
+    {
+      "match": "minecraft:blaze_rod",
+      "price": 15
+    },
+    {
+      "match": "minecraft:ghast_tear",
+      "price": 25
+    },
+    {
+      "match": "urmagic:spell_tome",
+      "price": 30
+    }
+  ]
+}

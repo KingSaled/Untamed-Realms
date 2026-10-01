@@ -1,0 +1,163 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:main/the_elders_request"
+        }
+      ],
+      "node": "supplies_waiting"
+    },
+    {
+      "conditions": [
+        {
+          "type": "quest_completed",
+          "target": "urquests:main/a_new_beginning"
+        },
+        {
+          "type": "quest_available",
+          "target": "urquests:main/the_elders_request"
+        }
+      ],
+      "node": "request"
+    },
+    {
+      "conditions": [
+        {
+          "type": "quest_completed",
+          "target": "urquests:main/the_elders_request"
+        },
+        {
+          "type": "quest_available",
+          "target": "urquests:main/trouble_on_the_roads"
+        }
+      ],
+      "node": "roads"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Welcome, traveller. Few come this way any more, and fewer stay. What brings you to our village?",
+      "options": [
+        {
+          "text": "Tell me about this place.",
+          "next": "lore"
+        },
+        {
+          "text": "Is there any work?",
+          "next": "work"
+        },
+        {
+          "text": "I could use a better price on my way out of town. (Persuade)",
+          "next": "persuaded",
+          "check": {
+            "skill": "speech",
+            "level": 20,
+            "fail": "unpersuaded"
+          }
+        }
+      ]
+    },
+    "lore": {
+      "text": "This land was the heart of the Old Kingdom once. Now it's forest and ruin and the things that live in both. We keep the fires lit and the gates closed at night.",
+      "options": [
+        {
+          "text": "What happened to the Old Kingdom?",
+          "next": "kingdom"
+        },
+        {
+          "text": "Is there any work?",
+          "next": "work"
+        }
+      ]
+    },
+    "kingdom": {
+      "text": "Some say a war of mages. Some say plague. The barrows in the hills say nothing at all - but the dead in them have begun to walk.",
+      "options": [
+        {
+          "text": "I'll keep my eyes open."
+        }
+      ]
+    },
+    "work": {
+      "text": "Check the notice board - there's always a bounty or a supply order pinned to it. And if you want to earn my trust, speak to me again once you've settled in.",
+      "options": [
+        {
+          "text": "I will."
+        }
+      ]
+    },
+    "persuaded": {
+      "text": "Ha! You've a silver tongue. Here - for the road.",
+      "options": [
+        {
+          "text": "Thank you."
+        }
+      ],
+      "actions": [
+        {
+          "type": "give_coins",
+          "value": 15
+        },
+        {
+          "type": "set_flag",
+          "target": "elder_persuaded"
+        }
+      ]
+    },
+    "unpersuaded": {
+      "text": "Nice try. Coin is earned here, not talked out of old men.",
+      "options": [
+        {
+          "text": "Fair enough."
+        }
+      ]
+    },
+    "request": {
+      "text": "You found us, and you're still breathing - that's more than most. If you mean to stay, help us through the winter. Bring timber and bread.",
+      "options": [
+        {
+          "text": "I'll gather your supplies.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:main/the_elders_request"
+            }
+          ]
+        },
+        {
+          "text": "Not now."
+        }
+      ]
+    },
+    "supplies_waiting": {
+      "text": "Sixteen logs and six loaves. The cold won't wait for us, traveller.",
+      "options": [
+        {
+          "text": "I'm working on it."
+        }
+      ]
+    },
+    "roads": {
+      "text": "You've done right by us. Now a harder task: the dead walk the roads at night. Our Guard Captain is gathering anyone who can hold a blade.",
+      "options": [
+        {
+          "text": "I'll speak with the Captain.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:main/trouble_on_the_roads"
+            }
+          ]
+        },
+        {
+          "text": "Let me prepare first."
+        }
+      ]
+    }
+  }
+}

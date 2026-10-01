@@ -1,0 +1,79 @@
+{
+  "name": "The Fence",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:ender_pearl"
+      },
+      "price": 40
+    },
+    {
+      "item": {
+        "id": "minecraft:potion",
+        "components": {
+          "minecraft:potion_contents": {
+            "potion": "minecraft:invisibility"
+          }
+        }
+      },
+      "price": 60
+    },
+    {
+      "item": {
+        "id": "minecraft:leather_boots",
+        "components": {
+          "minecraft:dyed_color": {
+            "rgb": 2697513
+          }
+        }
+      },
+      "price": 20
+    },
+    {
+      "item": {
+        "id": "minecraft:name_tag"
+      },
+      "price": 50
+    },
+    {
+      "item": {
+        "id": "urmagic:spell_tome",
+        "components": {
+          "urmagic:spell": "urmagic:muffle"
+        }
+      },
+      "price": 150
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:gold_ingot",
+      "price": 9
+    },
+    {
+      "match": "minecraft:diamond",
+      "price": 65
+    },
+    {
+      "match": "minecraft:emerald",
+      "price": 14
+    },
+    {
+      "match": "#c:gems",
+      "price": 18,
+      "display": "minecraft:emerald"
+    },
+    {
+      "match": "minecraft:golden_apple",
+      "price": 40
+    },
+    {
+      "match": "minecraft:enchanted_book",
+      "price": 45
+    },
+    {
+      "match": "minecraft:name_tag",
+      "price": 20
+    }
+  ]
+}

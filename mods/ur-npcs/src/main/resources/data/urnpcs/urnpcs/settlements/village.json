@@ -1,0 +1,26 @@
+{
+  "structures": "#minecraft:village",
+  "always": [
+    "urnpcs:village_elder",
+    "urnpcs:guard_captain",
+    "urnpcs:court_wizard",
+    "urnpcs:merchant",
+    "urnpcs:guard",
+    "urnpcs:guard"
+  ],
+  "random": [
+    "urnpcs:blacksmith",
+    "urnpcs:innkeeper",
+    "urnpcs:farmer",
+    "urnpcs:miner",
+    "urnpcs:hunter",
+    "urnpcs:priest",
+    "urnpcs:bard",
+    "urnpcs:thief",
+    "urnpcs:villager",
+    "urnpcs:villager_b"
+  ],
+  "random_count": 5,
+  "notice_board": true,
+  "radius": 16
+}

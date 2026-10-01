@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/alchemists_errand"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Peace be with you. The temple's doors are open to all who are weary.",
+      "options": [
+        {
+          "text": "Can I help the temple?",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/alchemists_errand"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "A fever spreads in the lower town. I need spider eyes, sugar and something golden from the fields to brew a remedy.",
+      "options": [
+        {
+          "text": "I'll find the reagents.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/alchemists_errand"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "The sick are waiting.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

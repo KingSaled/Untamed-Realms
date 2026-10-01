@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/a_merchants_favour"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Finest goods this side of the mountains! Well - the only goods this side of the mountains.",
+      "options": [
+        {
+          "text": "You seem short of stock.",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/a_merchants_favour"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "Lost a crate to the river. Three emeralds and four gold ingots would make my creditors smile.",
+      "options": [
+        {
+          "text": "I'll recover your goods.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/a_merchants_favour"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Emeralds and gold, my friend.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

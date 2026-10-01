@@ -1,0 +1,92 @@
+{
+  "name": "Mining Supplies",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:torch",
+        "count": 16
+      },
+      "price": 7
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_pickaxe"
+      },
+      "price": 55
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_shovel"
+      },
+      "price": 25
+    },
+    {
+      "item": {
+        "id": "minecraft:ladder",
+        "count": 8
+      },
+      "price": 6
+    },
+    {
+      "item": {
+        "id": "minecraft:rail",
+        "count": 8
+      },
+      "price": 10
+    },
+    {
+      "item": {
+        "id": "minecraft:minecart"
+      },
+      "price": 20
+    },
+    {
+      "item": {
+        "id": "minecraft:tnt"
+      },
+      "price": 25
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:coal",
+      "price": 1
+    },
+    {
+      "match": "minecraft:raw_iron",
+      "price": 3
+    },
+    {
+      "match": "minecraft:raw_gold",
+      "price": 5
+    },
+    {
+      "match": "minecraft:raw_copper",
+      "price": 1
+    },
+    {
+      "match": "minecraft:redstone",
+      "price": 1
+    },
+    {
+      "match": "minecraft:lapis_lazuli",
+      "price": 1
+    },
+    {
+      "match": "minecraft:diamond",
+      "price": 50
+    },
+    {
+      "match": "minecraft:emerald",
+      "price": 10
+    },
+    {
+      "match": "minecraft:quartz",
+      "price": 1
+    },
+    {
+      "match": "minecraft:amethyst_shard",
+      "price": 2
+    }
+  ]
+}

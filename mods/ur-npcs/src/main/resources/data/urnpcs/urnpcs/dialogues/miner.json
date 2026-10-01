@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/the_miners_plight"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Mind your head. These tunnels are older than the village.",
+      "options": [
+        {
+          "text": "How's the digging?",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/the_miners_plight"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "Cave-in took my best tunnel. If you've a strong arm, dig out twenty coal and ten iron for me.",
+      "options": [
+        {
+          "text": "I'll dig you a new seam.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/the_miners_plight"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Coal and iron, from the deep seams.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

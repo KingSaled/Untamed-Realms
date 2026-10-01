@@ -1,0 +1,103 @@
+{
+  "name": "The Smithy",
+  "sells": [
+    {
+      "item": {
+        "id": "minecraft:iron_sword"
+      },
+      "price": 60
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_axe"
+      },
+      "price": 50
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_pickaxe"
+      },
+      "price": 55
+    },
+    {
+      "item": {
+        "id": "minecraft:shield"
+      },
+      "price": 35
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_helmet"
+      },
+      "price": 70
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_chestplate"
+      },
+      "price": 110
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_leggings"
+      },
+      "price": 95
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_boots"
+      },
+      "price": 60
+    },
+    {
+      "item": {
+        "id": "minecraft:chainmail_chestplate"
+      },
+      "price": 90
+    },
+    {
+      "item": {
+        "id": "minecraft:iron_ingot"
+      },
+      "price": 9
+    },
+    {
+      "item": {
+        "id": "minecraft:coal",
+        "count": 4
+      },
+      "price": 2
+    }
+  ],
+  "buys": [
+    {
+      "match": "minecraft:iron_ingot",
+      "price": 5
+    },
+    {
+      "match": "minecraft:gold_ingot",
+      "price": 7
+    },
+    {
+      "match": "minecraft:copper_ingot",
+      "price": 1
+    },
+    {
+      "match": "minecraft:raw_iron",
+      "price": 3
+    },
+    {
+      "match": "minecraft:coal",
+      "price": 1
+    },
+    {
+      "match": "minecraft:diamond",
+      "price": 55
+    },
+    {
+      "match": "#minecraft:swords",
+      "price": 6,
+      "display": "minecraft:iron_sword"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Village Elder",
+  "names": [
+    "Aldric",
+    "Halvard",
+    "Osric",
+    "Ingrid",
+    "Sigrid",
+    "Thyra",
+    "Eirik",
+    "Edda"
+  ],
+  "skin": "urnpcs:elder",
+  "essential": true,
+  "wander": 6,
+  "dialogue": "urnpcs:village_elder"
+}

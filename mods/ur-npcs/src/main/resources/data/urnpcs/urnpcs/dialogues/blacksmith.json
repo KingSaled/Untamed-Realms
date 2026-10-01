@@ -1,0 +1,58 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_active",
+          "target": "urquests:side/the_smiths_apprentice"
+        }
+      ],
+      "node": "waiting"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Hot work and honest steel. Need something forged, or are you here to sweat?",
+      "options": [
+        {
+          "text": "Need a hand at the forge?",
+          "next": "offer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/the_smiths_apprentice"
+            }
+          ]
+        }
+      ]
+    },
+    "offer": {
+      "text": "Iron's scarce since the mine flooded. Bring me twelve ingots and I'll show you how a real smith works.",
+      "options": [
+        {
+          "text": "I'll bring you iron.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/the_smiths_apprentice"
+            }
+          ]
+        },
+        {
+          "text": "Not right now."
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Twelve iron ingots. The forge is hungry.",
+      "options": [
+        {
+          "text": "I'm on it."
+        }
+      ]
+    }
+  }
+}

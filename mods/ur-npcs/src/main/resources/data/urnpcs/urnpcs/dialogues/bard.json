@@ -1,0 +1,45 @@
+{
+  "entry": [
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Ah, an audience! Shall I sing of the Old Kingdom's fall, or of the time a goat ate the Jarl's crown?",
+      "options": [
+        {
+          "text": "The Old Kingdom.",
+          "next": "song"
+        },
+        {
+          "text": "The goat. Obviously.",
+          "next": "goat"
+        }
+      ]
+    },
+    "song": {
+      "text": "'When the towers burned and the mages fell, the deep halls closed like a closing shell...' It goes on. For forty verses.",
+      "options": [
+        {
+          "text": "Lovely."
+        }
+      ]
+    },
+    "goat": {
+      "text": "A classic! The goat, I'll have you know, was later knighted.",
+      "options": [
+        {
+          "text": "Of course it was.",
+          "actions": [
+            {
+              "type": "give_xp",
+              "target": "speech",
+              "value": 10
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

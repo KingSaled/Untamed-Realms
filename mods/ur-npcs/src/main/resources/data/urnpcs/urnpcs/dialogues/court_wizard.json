@@ -1,0 +1,110 @@
+{
+  "entry": [
+    {
+      "conditions": [
+        {
+          "type": "quest_completed",
+          "target": "urquests:main/the_raiders_banner"
+        },
+        {
+          "type": "quest_available",
+          "target": "urquests:main/into_the_deep"
+        }
+      ],
+      "node": "key"
+    },
+    {
+      "conditions": [
+        {
+          "type": "quest_available",
+          "target": "urquests:side/tome_of_secrets"
+        }
+      ],
+      "node": "greet_tome"
+    },
+    {
+      "node": "greet"
+    }
+  ],
+  "nodes": {
+    "greet": {
+      "text": "Mm? Oh. A visitor. Mind the candles - and do not touch the book on the lectern. It bites.",
+      "options": [
+        {
+          "text": "Tell me about magic.",
+          "next": "magic"
+        },
+        {
+          "text": "The lost explorer - any news?",
+          "next": "explorer",
+          "conditions": [
+            {
+              "type": "quest_available",
+              "target": "urquests:side/the_lost_explorer"
+            }
+          ]
+        }
+      ]
+    },
+    "greet_tome": {
+      "text": "You have the look of someone who finds things. I collect enchanted books - for safekeeping, naturally. Bring me one and I'll teach you a spell worth knowing.",
+      "options": [
+        {
+          "text": "I'll find you a book.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/tome_of_secrets"
+            }
+          ]
+        },
+        {
+          "text": "Tell me about magic.",
+          "next": "magic"
+        }
+      ]
+    },
+    "magic": {
+      "text": "Five schools: Destruction, Restoration, Alteration, Conjuration, Illusion. Read a spell tome to learn its spell; ready it from your spellbook; cast with focus and magicka. Practice makes the rest.",
+      "options": [
+        {
+          "text": "Thank you."
+        }
+      ]
+    },
+    "explorer": {
+      "text": "A cartographer of mine went south seeking a sand-buried temple. Find it - and find out what became of them.",
+      "options": [
+        {
+          "text": "I'll go.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:side/the_lost_explorer"
+            }
+          ]
+        },
+        {
+          "text": "Not now."
+        }
+      ]
+    },
+    "key": {
+      "text": "Show me that key... yes. Yes! This is a seal of the Old Kingdom's trial halls. They are real, and they are below us. We must know what the raiders were looking for.",
+      "options": [
+        {
+          "text": "Then I'll go down.",
+          "actions": [
+            {
+              "type": "start_quest",
+              "target": "urquests:main/into_the_deep"
+            }
+          ]
+        },
+        {
+          "text": "I need time to prepare."
+        }
+      ]
+    }
+  }
+}
