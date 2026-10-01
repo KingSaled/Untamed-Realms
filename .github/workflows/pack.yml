@@ -1,0 +1,87 @@
+name: Modpack
+
+on:
+  push:
+    paths: ['pack/**', 'tools/pack/**', '.github/workflows/pack.yml', 'mods/**', 'server/**']
+  workflow_dispatch:
+    inputs:
+      update:
+        description: 'Update every locked mod to its newest NeoForge 1.21.1 build'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pack-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    name: Resolve & lock mods
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+      - name: Install packwiz
+        run: |
+          go install github.com/packwiz/packwiz@latest
+          echo "$HOME/go/bin" >> "$GITHUB_PATH"
+      - name: Resolve manifest
+        run: python3 tools/pack/resolve.py ${{ inputs.update && '--update' || '' }}
+      - name: Commit lock files
+        run: |
+          git config user.name "untamed-realms-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add pack/
+          if git diff --cached --quiet; then
+            echo "Pack already up to date."
+          else
+            git commit -m "Lock modpack (automated packwiz resolve)"
+            git push
+          fi
+      - name: Export Modrinth pack (.mrpack)
+        working-directory: pack
+        run: packwiz modrinth export -o ../untamed-realms.mrpack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: untamed-realms-mrpack
+          path: untamed-realms.mrpack
+
+  smoke-test:
+    name: Boot dedicated server with the full pack
+    needs: resolve
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: Pull the freshly locked pack
+        run: git pull --ff-only || true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build Untamed Realms mods
+        run: ./gradlew build -x test --stacktrace
+      - name: Install server
+        run: bash server/scripts/install.sh --dir server-test --pack-dir pack --mods-from mods
+      - name: Boot server until "Done", then stop
+        run: bash server/scripts/smoke-test.sh server-test 900
+      - name: Server log
+        if: always()
+        run: tail -n 300 server-test/logs/latest.log || true
+      - name: Upload crash reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-test-logs
+          path: |
+            server-test/logs/
+            server-test/crash-reports/
+          if-no-files-found: ignore

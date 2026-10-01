@@ -36,9 +36,15 @@ jobs:
           java-version: '21'
       - uses: gradle/actions/setup-gradle@v4
       - name: Build all modules
-        run: ./gradlew build --stacktrace
+        run: |
+          set -o pipefail
+          ./gradlew build 2>&1 | tee build.log
+      - name: Compiler errors
+        if: failure()
+        run: |
+          grep -E "error:|\.java:[0-9]+:|What went wrong" -A2 build.log | head -n 250 || true
       - name: Run game tests (headless server, all modules loaded)
-        run: ./gradlew :devenv:runGameTestServer --stacktrace
+        run: ./gradlew :devenv:runGameTestServer
       - name: Show game-test log on failure
         if: failure()
         run: tail -n 150 run/gametest/logs/latest.log || true

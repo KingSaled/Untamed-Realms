@@ -1,0 +1,96 @@
+# Untamed Realms - curated third-party mods (Modrinth project slugs).
+#
+# This file is the source of truth for the modpack. The "Resolve modpack" workflow reads it,
+# runs `packwiz modrinth add` for every slug (pulling the newest NeoForge 1.21.1 build plus any
+# required dependencies), refreshes the packwiz index and commits the lock files in pack/mods/.
+# Remove a line here + delete pack/mods/<slug>.pw.toml to drop a mod.
+#
+# Every mod must earn its place: performance, quality of life, or adventure content that serves
+# the "Skyrim meets RuneScape" fantasy. No tech/automation mods, no flight, no world-eaters.
+
+performance:          # ---- engine & server performance (mostly invisible)
+  - sodium             # modern renderer (client)
+  - sodium-extra       # extra video settings
+  - lithium            # game-logic optimisation (AI, physics, chunk ticking)
+  - modernfix          # faster launch, lower memory
+  - ferrite-core       # block-state memory deduplication
+  - immediatelyfast    # GUI / text / entity render batching (client)
+  - entityculling      # skip rendering hidden (block) entities (client)
+  - moreculling        # extra face culling (client)
+  - dynamic-fps        # throttle when unfocused (client)
+  - noisium            # faster world generation
+  - servercore         # server tick optimisations, dynamic view distance
+  - clumps             # merges XP orbs
+  - lmd                # Let Me Despawn: picked-up-item mobs still despawn
+  - ai-improvements    # cheaper mob AI
+  - fastsuite          # faster recipe matching
+  - fastworkbench
+  - fastfurnace
+  - packet-fixer       # raises packet size limits for big modpacks
+  - connectivity       # fixes login timeouts / disconnects on large packs
+  - spark              # profiler (/spark) for diagnosing lag
+  - chunky             # world pre-generation (/chunky)
+  - yeetusexperimentus # hides the experimental-world warning
+
+qol:                  # ---- quality of life
+  - jei                # recipe viewer
+  - jade               # what-am-I-looking-at tooltip
+  - appleskin          # food values
+  - mouse-tweaks
+  - inventory-profiles-next  # sorting, auto-refill
+  - controlling        # keybind search & conflict view
+  - configured         # in-game config editor
+  - catalogue          # nicer mod list
+  - xaeros-minimap
+  - xaeros-world-map
+  - waystones          # Skyrim-style fast travel between discovered waystones
+  - corpse             # your gear waits at your corpse instead of despawning
+  - sophisticated-backpacks
+  - polymorph          # resolves recipe conflicts
+  - pickup-notifier    # "+3 Iron Ore" pickup toasts
+  - chat-heads
+  - betterf3
+  - carry-on
+  - default-options    # ships our default keybinds / video settings
+  - travelers-titles   # "Entering: Dark Forest" title cards
+
+immersion:            # ---- look, sound and feel
+  - better-combat      # Skyrim/Souls-like weapon swings & combos
+  - combat-roll        # dodge roll
+  - not-enough-animations
+  - 3dskinlayers
+  - sound-physics-remastered
+  - ambientsounds
+  - fallingleaves
+
+world:                # ---- adventure-first world generation
+  - terralith          # dramatic overworld terrain
+  - lithostitched      # worldgen compatibility library
+  - towns-and-towers   # medieval towns, towers & outposts
+  - ctov               # overhauled villages: bigger, regional, lived-in
+  - dungeons-and-taverns
+  - explorify
+  - repurposed-structures
+  - structory
+  - moogs-voyager-structures
+  - when-dungeons-arise   # huge set-piece dungeons
+  - integrated-dungeons-and-structures
+  - yungs-better-dungeons
+  - yungs-better-mineshafts
+  - yungs-better-strongholds
+  - yungs-better-ocean-monuments
+  - yungs-better-desert-temples
+  - yungs-better-jungle-temples
+  - yungs-better-witch-huts
+  - yungs-better-nether-fortresses
+  - yungs-better-end-island
+  - yungs-bridges
+  - yungs-extras
+  - sparsestructures   # spreads structures out so they don't pile into each other
+
+content:              # ---- adventure content that complements our own mods
+  - farmers-delight    # cooking depth for the Cooking & Farming skills
+  - guard-villagers    # town guards
+  - mowzies-mobs       # boss encounters
+  - l_enders-cataclysm # dungeon bosses
+  - curios             # accessory slots (rings, amulets) used by Untamed Realms gear
