@@ -55,6 +55,13 @@ jobs:
           name: untamed-realms-mrpack
           path: untamed-realms.mrpack
 
+  bundle:
+    name: Windows bundle (with the new lock files)
+    needs: resolve
+    uses: ./.github/workflows/windows-bundle.yml
+    permissions:
+      contents: write
+
   smoke-test:
     name: Boot dedicated server with the full pack
     needs: resolve

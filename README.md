@@ -17,6 +17,24 @@ with medieval towns, dungeons and bosses instead of grinding out a base.
 
 ---
 
+## ▶ Play it on Windows (no technical setup)
+
+You need only the normal **Minecraft Launcher** (Java Edition). Java, NeoForge and all mods download automatically.
+
+1. **Download** [`Untamed-Realms-Windows.zip`](https://github.com/KingSaled/Untamed-Realms/releases/download/latest-test-build/Untamed-Realms-Windows.zip)
+   (from the [latest test build](https://github.com/KingSaled/Untamed-Realms/releases/tag/latest-test-build)) and **extract** it
+   (right-click → *Extract All…*), e.g. to your Desktop.
+2. Double-click **`Start-Server.bat`** and leave that window open. The first start takes a few minutes; it is ready when it prints `Done`.
+   If Windows asks to allow Java through the firewall, click *Allow*.
+3. **Close the Minecraft Launcher**, then double-click **`Install-Modpack.bat`** and wait for *Done!*.
+4. Open the Minecraft Launcher, pick **Untamed Realms** next to the green *PLAY* button, press *PLAY*.
+5. In game: *Multiplayer → Direct Connection →* `localhost` *→ Join Server*. In the server window type `op YourName` to become admin.
+
+If Windows shows *"Windows protected your PC"*, click *More info → Run anyway*. Full notes are in `README-FIRST.txt` inside the zip.
+To update later, download the zip again, extract it over the old folder (your world is kept) and run both files again.
+
+---
+
 ## What's in the box
 
 ### Our mods (`mods/`, built from this repo)
@@ -47,10 +65,10 @@ Minecraft JSON, Blockbench `.bbmodel` files and isometric previews. See its [REA
 
 ## Quick start
 
-**Players:** install the `.mrpack` from the latest *Modpack* workflow run (or a release) with
-Prism Launcher / Modrinth App, plus the Untamed Realms jars. Read the [player guide](docs/PLAYER_GUIDE.md).
+**Players on Windows:** see *Play it on Windows* above. Prism Launcher / Modrinth App users can import the
+`.mrpack` attached to tagged releases. Read the [player guide](docs/PLAYER_GUIDE.md).
 
-**Server owners:**
+**Server owners (Windows):** `Start-Server.bat` from the zip above. **(Linux / Docker):**
 ```bash
 ./gradlew build                                   # build the Untamed Realms mods
 bash server/scripts/install.sh --dir /srv/untamed --mods-from mods

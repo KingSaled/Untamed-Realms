@@ -1,0 +1,106 @@
+name: Windows bundle
+
+# Builds Untamed-Realms-Windows.zip (one-click server + modpack installer), tests it on a real
+# Windows machine, then publishes it to the "latest-test-build" pre-release:
+#   https://github.com/KingSaled/Untamed-Realms/releases/tag/latest-test-build
+on:
+  push:
+    branches: ['main', 'claude/**']
+    paths: ['mods/**', 'windows/**', 'pack/pack.toml', 'pack/config/**', 'tools/bundle/**', '.github/workflows/windows-bundle.yml']
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: windows-bundle-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build bundle
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use the newest lock files on this branch
+        run: git pull --ff-only origin "${GITHUB_REF_NAME}" || true
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+      - run: ./gradlew build -x test
+      - run: bash tools/bundle/make-windows-bundle.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Untamed-Realms-Windows
+          path: dist/Untamed-Realms-Windows.zip
+
+  test:
+    name: Test on Windows (install modpack + boot server)
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Untamed-Realms-Windows
+      - name: Extract
+        shell: powershell
+        run: Expand-Archive Untamed-Realms-Windows.zip -DestinationPath . -Force
+      - name: Install-Modpack into a fresh launcher folder
+        shell: powershell
+        run: |
+          $env:APPDATA = "$env:RUNNER_TEMP\appdata"
+          New-Item -ItemType Directory -Force "$env:APPDATA\.minecraft" | Out-Null
+          Set-Content "$env:APPDATA\.minecraft\launcher_profiles.json" '{"profiles":{},"settings":{},"version":3}'
+          powershell -NoProfile -ExecutionPolicy Bypass -File Untamed-Realms\scripts\install-client.ps1
+          if ($LASTEXITCODE -ne 0) { throw "installer failed" }
+          $mc = "$env:APPDATA\.minecraft"
+          Get-ChildItem "$mc\versions" | ForEach-Object { Write-Host "version: $($_.Name)" }
+          if (-not (Get-ChildItem "$mc\versions" -Filter 'neoforge-*')) { throw "NeoForge client not installed" }
+          $jars = (Get-ChildItem "$mc\untamed-realms\mods" -Filter *.jar).Count
+          Write-Host "client mods: $jars"
+          if ($jars -lt 50) { throw "too few client mods" }
+          $profiles = Get-Content "$mc\launcher_profiles.json" -Raw
+          if ($profiles -notmatch 'untamed-realms') { throw "launcher profile missing" }
+          Write-Host $profiles
+      - name: Start-Server, wait for it to finish starting, then stop
+        shell: powershell
+        run: |
+          $env:UR_SELF_TEST = '1'
+          powershell -NoProfile -ExecutionPolicy Bypass -File Untamed-Realms\scripts\start-server.ps1 *>&1 | Tee-Object server-console.txt
+          if ($LASTEXITCODE -ne 0) { Get-Content server-console.txt -Tail 80; throw "start-server.ps1 failed" }
+          $log = Get-Content Untamed-Realms\server\logs\latest.log -Raw
+          if ($log -notmatch 'Done \(') { Get-Content server-console.txt -Tail 80; throw "server did not finish starting" }
+          if (Test-Path Untamed-Realms\server\crash-reports) { throw "crash report written" }
+          ($log -split "`n" | Select-String 'Done \(').Line
+      - name: Server log on failure
+        if: failure()
+        shell: powershell
+        run: Get-Content Untamed-Realms\server\logs\latest.log -Tail 150 -ErrorAction SilentlyContinue
+
+  publish:
+    name: Publish latest-test-build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Untamed-Realms-Windows
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-test-build
+          target_commitish: ${{ github.sha }}
+          name: Untamed Realms - latest test build
+          prerelease: true
+          make_latest: false
+          body: |
+            **Windows: download `Untamed-Realms-Windows.zip`, extract it, and read `README-FIRST.txt`.**
+            - `Start-Server.bat` installs and starts the server (Java, NeoForge and mods download automatically).
+            - `Install-Modpack.bat` adds an "Untamed Realms" installation to the normal Minecraft Launcher.
+
+            This build passed an automated install + server boot test on Windows.
+            Built from `${{ github.ref_name }}` at ${{ github.sha }}.
+          files: Untamed-Realms-Windows.zip
