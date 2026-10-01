@@ -50,7 +50,8 @@ def main():
             if locked(slug):
                 results.append((section, slug, "locked", ""))
                 continue
-            proc = run(["packwiz", "modrinth", "add", slug, "-y"])
+            # --project-id does an exact lookup (Modrinth accepts slugs as ids); a bare argument is a fuzzy search.
+            proc = run(["packwiz", "modrinth", "add", "--project-id", slug, "-y"])
             out = (proc.stdout + proc.stderr).strip().splitlines()
             tail = out[-1] if out else ""
             if proc.returncode == 0 and locked(slug):
@@ -71,10 +72,14 @@ def main():
         sys.exit(1)
 
     failed = [r for r in results if r[2] == "FAILED"]
+    wanted = {slug for _, slug, _, _ in results}
+    mods_dir = os.path.join(PACK, "mods")
+    extra = sorted(f[:-len(".pw.toml")] for f in os.listdir(mods_dir) if f.endswith(".pw.toml") and f[:-len(".pw.toml")] not in wanted) if os.path.isdir(mods_dir) else []
     lines = ["# Modpack resolve report", "",
              f"{len(results)} mods in manifest, {len(failed)} failed.", "",
              "| Section | Mod | Status | Detail |", "|---|---|---|---|"]
     lines += [f"| {s} | `{slug}` | {status} | {detail.replace('|', '/')} |" for s, slug, status, detail in results]
+    lines += ["", "## Pulled in as dependencies (review these)", ""] + [f"- `{e}`" for e in extra]
     report = "\n".join(lines) + "\n"
     with open(os.path.join(PACK, "resolve-report.md"), "w") as f:
         f.write(report)

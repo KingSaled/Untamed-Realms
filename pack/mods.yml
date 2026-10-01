@@ -30,7 +30,7 @@ performance:          # ---- engine & server performance (mostly invisible)
   - connectivity       # fixes login timeouts / disconnects on large packs
   - spark              # profiler (/spark) for diagnosing lag
   - chunky             # world pre-generation (/chunky)
-  - yeetusexperimentus # hides the experimental-world warning
+  - yeetus-experimentus # hides the experimental-world warning
 
 qol:                  # ---- quality of life
   - jei                # recipe viewer
