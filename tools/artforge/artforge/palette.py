@@ -10,6 +10,7 @@ def ramp(*hexes):
 
 OUTLINE = hex_rgba("1b1420")
 OUTLINE_SOFT = hex_rgba("2c2230")
+INK = hex_rgba("3a2a1e")          # writing on parchment, maps, notices
 TRANSPARENT = (0, 0, 0, 0)
 
 # Metals
@@ -22,6 +23,8 @@ ELVEN     = ramp("4d3a12", "86692a", "bf9c48", "e2cc7c", "fbf0c0")
 DWARVEN   = ramp("4a2a12", "7b4a20", "b0753a", "d8a668", "f3d7a6")
 GLASS     = ramp("174332", "2a7356", "48a77e", "86d8ae", "d4f7e4")
 EBONY     = ramp("0f0c14", "221c2b", "3a3046", "5b4d6b", "8a7a9c")
+ORCISH    = ramp("1d2420", "34413a", "4f6153", "728a73", "a4b8a0")
+MOONSTONE = ramp("3a4452", "5e6a7c", "8c99ab", "bcc7d4", "eef3f8")
 DAEDRIC   = ramp("1a0608", "3d0c10", "6e1418", "a8282a", "e05a4a")
 
 # Organics

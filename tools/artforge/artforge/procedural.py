@@ -60,7 +60,7 @@ def parchment(size=16, seed=3, lines=True):
                 idx -= 1
             px[x, y] = P.PARCHMENT[max(0, min(4, idx))]
     if lines:
-        ink = (58, 42, 30, 255)
+        ink = P.INK
         for y in range(3, size - 2, 2):
             start = 2 + rnd.randrange(0, 2)
             end = size - 2 - rnd.randrange(0, 4)
@@ -123,3 +123,47 @@ def spell_icon(school_ramp, glyph_rows, size=16):
 
 def stretch_to(img, size):
     return img.resize(size, Image.NEAREST)
+
+
+def medallion_icon(ramp, glyph_rows, size=16):
+    """
+    v2 spell / ability icon (docs/ART_STYLE.md): a medallion symmetric about the canvas centre
+    (7.5, 7.5) with a metal rim lit from the top-left, a dark field, and an 8x8 glyph centred on it
+    with a one-pixel drop shadow. '#' glyph pixels get the bright tones, '+' the mid tone.
+    """
+    from .lint import centered_glyph
+    centered_glyph(glyph_rows, "glyph")
+    img = canvas(size, size)
+    px = img.load()
+    c = (size - 1) / 2
+    for y in range(size):
+        for x in range(size):
+            dx, dy = x - c, y - c
+            d = math.hypot(dx, dy)
+            if d > 7.6:
+                continue
+            light = -(dx + dy) / (math.sqrt(2) * max(d, 0.01))       # +1 facing top-left, -1 bottom-right
+            if d > 6.6:
+                px[x, y] = P.OUTLINE
+            elif d > 5.4:
+                px[x, y] = ramp[4 if light > 0.55 else 3 if light > 0.1 else 2 if light > -0.45 else 1]
+            else:
+                px[x, y] = ramp[1] if (light > 0.35 and d > 3.6) else ramp[0]
+    gh, gw = len(glyph_rows), len(glyph_rows[0])
+    ox, oy = (size - gw) // 2, (size - gh) // 2
+    filled = lambda gx, gy: 0 <= gy < gh and 0 <= gx < gw and glyph_rows[gy][gx] != "."
+    for gy in range(gh):                                  # shadow first, so the glyph draws over it
+        for gx in range(gw):
+            if filled(gx, gy) and not filled(gx + 1, gy + 1):
+                px[ox + gx + 1, oy + gy + 1] = P.OUTLINE
+    for gy in range(gh):
+        for gx in range(gw):
+            ch = glyph_rows[gy][gx]
+            if ch == ".":
+                continue
+            if ch == "+":
+                px[ox + gx, oy + gy] = ramp[2]
+            else:
+                lit = not filled(gx - 1, gy) or not filled(gx, gy - 1)
+                px[ox + gx, oy + gy] = ramp[4] if lit else ramp[3]
+    return img

@@ -100,8 +100,37 @@ def paper_doll(skin):
     return doll
 
 
+def style_problems():
+    """Runs the ART_STYLE.md rules (artforge.lint) over every sprite family."""
+    from artforge.lint import check_sprite
+    problems = []
+    for (modid, tex), img in items.all_items().items():
+        problems += check_sprite(f"{modid}:{tex}", img, "item")
+    for (modid, tex), img in spells.all_spell_icons().items():
+        problems += check_sprite(f"{modid}:{tex}", img, "icon")
+    for family, sprites in extra_sprite_families().items():
+        for name, img in sprites.items():
+            problems += check_sprite(name, img, family)
+    return problems
+
+
+def extra_sprite_families():
+    """Further linted sprite sets, {family: {name: image}}."""
+    from assets import arsenal
+    return {"weapon": arsenal.all_weapon_sprites(), "item": arsenal.all_armor_sprites()}
+
+
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "build"
+    if cmd == "lint" or cmd == "check":
+        problems = style_problems()
+        if problems:
+            print("Art style problems (see docs/ART_STYLE.md):")
+            for p in problems: print("  " + p)
+            sys.exit(1)
+        if cmd == "lint":
+            print("art style: all sprites pass")
+            return
     files = collect()
     if cmd == "check":
         stale = []

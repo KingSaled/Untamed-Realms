@@ -6,7 +6,7 @@ Sprite templates: ASCII grids where each character is a palette slot.
   '1'..'5'   primary ramp (dark -> light)
   'a'..'e'   secondary ramp
   'A'..'E'   tertiary ramp
-  'w'        pure white highlight, 'k' black
+  'w'        pure white highlight, 'k' ink (palette INK, never pure black)
   anything else -> looked up in the `extra` legend
 
 One template + different ramps = a whole tier set (iron / steel / elven / glass / ...).
@@ -30,7 +30,7 @@ class Template:
 
     def render(self, primary=None, secondary=None, tertiary=None, outline=P.OUTLINE, extra=None):
         legend = {".": P.TRANSPARENT, " ": P.TRANSPARENT, "o": outline, "O": P.OUTLINE_SOFT,
-                  "w": (255, 255, 255, 255), "k": (0, 0, 0, 255)}
+                  "w": (255, 255, 255, 255), "k": P.INK}
         for ramp, slots in ((primary, SLOTS_PRIMARY), (secondary, SLOTS_SECONDARY), (tertiary, SLOTS_TERTIARY)):
             if ramp:
                 for i, ch in enumerate(slots):
