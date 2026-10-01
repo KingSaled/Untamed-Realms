@@ -2,7 +2,7 @@ name: Modpack
 
 on:
   push:
-    paths: ['pack/**', 'tools/pack/**', '.github/workflows/pack.yml', 'mods/**', 'server/**']
+    paths: ['pack/mods.yml', 'pack/pack.toml', 'pack/config/**', 'tools/pack/**', '.github/workflows/pack.yml', 'server/**']
   workflow_dispatch:
     inputs:
       update:
@@ -41,7 +41,11 @@ jobs:
             echo "Pack already up to date."
           else
             git commit -m "Lock modpack (automated packwiz resolve)"
-            git push
+            # other commits may land while we resolve: rebase onto them and retry
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin "${GITHUB_REF_NAME}" && git push && break
+              sleep $((i * 5))
+            done
           fi
       - name: Export Modrinth pack (.mrpack)
         working-directory: pack
