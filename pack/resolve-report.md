@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-74 mods in manifest, 1 failed.
+76 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -52,7 +52,6 @@
 | world | `terralith` | locked |  |
 | world | `lithostitched` | locked |  |
 | world | `towns-and-towers` | locked |  |
-| world | `choicetheorems-overhauled-village` | FAILED | Failed to add project: GET https://api.modrinth.com/v2/project/choicetheorems-overhauled-village: 404 -- candidates: no matches |
 | world | `dungeons-and-taverns` | locked |  |
 | world | `explorify` | locked |  |
 | world | `repurposed-structures-forge` | locked |  |
@@ -78,13 +77,21 @@
 | content | `mowzies-mobs` | locked |  |
 | content | `l_enders-cataclysm` | locked |  |
 | content | `curios` | locked |  |
+| exclude | `create` | removed | Loading modpack...
+Removing file from index...
+create removed successfully! |
+| exclude | `quark` | removed | Loading modpack...
+Removing file from index...
+quark removed successfully! |
+| exclude | `supplementaries` | removed | Loading modpack...
+Removing file from index...
+supplementaries removed successfully! |
 
 ## Pulled in as dependencies (review these)
 
 - `almanac`
 - `balm`
 - `cloth-config`
-- `create`
 - `creativecore`
 - `cristel-lib`
 - `fragmentum`
@@ -97,8 +104,6 @@
 - `moogs-structure-lib`
 - `placebo`
 - `playeranimator`
-- `quark`
 - `searchables`
 - `sophisticated-core`
-- `supplementaries`
 - `yungs-api`
