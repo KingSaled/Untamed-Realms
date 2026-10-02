@@ -475,8 +475,9 @@ public final class HubBuilder {
         BlockPos p = at(x, dy, z);
         level.setBlock(p, placed(Blocks.CHEST.defaultBlockState(), facing), Block.UPDATE_CLIENTS);
         if (level.getBlockEntity(p) instanceof ChestBlockEntity chest) {
-            for (int i = 0; i < Math.min(items.size(), chest.getContainerSize()); i++) chest.setItem(i, items.get(i).copy());
+            // name first: applying components also applies an (empty) container component, clearing the chest
             chest.applyComponents(DataComponentMap.builder().set(DataComponents.CUSTOM_NAME, Component.literal(title)).build(), DataComponentPatch.EMPTY);
+            for (int i = 0; i < Math.min(items.size(), chest.getContainerSize()); i++) chest.setItem(i, items.get(i).copy());
             chest.setChanged();
         }
         sign(x, dy + 1, z, signRotation, null, title(title));
