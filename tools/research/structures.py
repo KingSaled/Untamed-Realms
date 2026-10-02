@@ -6,7 +6,7 @@ for path in sys.argv[1:]:
     names = z.namelist()
     structs = sorted(n for n in names if "/worldgen/structure/" in n and n.endswith(".json") and "/tags/" not in n)
     print(f"== {path}: {len(structs)} structures")
-    for n in structs[:80]:
+    for n in structs[:12]:
         print("  ", n.split("/data/")[-1] if "/data/" in n else n)
     tags = sorted(n for n in names if "/tags/worldgen/structure/" in n)
     for n in tags:

@@ -37,7 +37,7 @@ jobs:
               hits = get(f"https://api.modrinth.com/v2/search?query={urllib.parse.quote(q)}&facets={facets}&limit=6")["hits"]
               print(q, "->", [(h["slug"], h["downloads"], h["project_type"]) for h in hits])
           PY
-          for slug in ctov t_and_t towns-and-towers; do
+          for slug in ct-overhaul-village lios-overhauled-villages; do
             curl -sf "https://api.modrinth.com/v2/project/$slug/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" -o v.json || { echo "$slug: not found"; continue; }
             url=$(python3 -c "import json; v=json.load(open('v.json')); print(v[0]['files'][0]['url'] if v else '')")
             [ -n "$url" ] && curl -sL -o "$slug.jar" "$url" && echo "$slug: $url" && python3 tools/research/structures.py "$slug.jar" || echo "$slug: no 1.21.1 neoforge build"
