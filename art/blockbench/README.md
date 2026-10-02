@@ -5,15 +5,46 @@ modelled yet keeps the generated one, so you can do them one at a time.
 
 ## Weapons: `art/blockbench/arsenal/`
 
-For each weapon, put these files in the folder:
+### Recommended: glTF (`.glb`), any shapes
 
-| File | What it is |
-|---|---|
-| `<name>.json` | Required. The model, from **File > Export > Export Block/Item Model** (Java). |
-| `<texture>.png` | Required. Every texture the model uses, with the same name as in Blockbench's texture list. |
-| `<name>_icon.png` | Optional. A flat picture for inventory slots. Without it, the slot shows your 3D model using the **gui** pose from the Display tab. |
+Model however you like: cubes, cylinders, meshes, any rotation. Export with **File > Export >
+Export glTF Model**, binary (`.glb`), and keep the textures embedded (the default). Name the file
+after the item: `iron_dagger.glb`. An `ur_` prefix is fine (`ur_iron_dagger.glb`).
 
-`<name>` is the item id. Each of these tiers:
+A few rules make the weapon sit right in the hand:
+
+- **Model it standing up.** The blade or head goes up (+Y) and the pommel at the bottom.
+- **Name the part you hold `handle`** (or `grip`). The middle of that part goes in the player's hand.
+  If there's no such part, the importer uses a point 20% up from the bottom.
+- **Don't worry about size.** Each weapon is scaled to a fixed length for its type, so a dagger is
+  always shorter than a sword and a sword shorter than a greatsword. In pixels (a vanilla sword is
+  about 19):
+
+  | Type | Length |
+  |---|---|
+  | dagger | 14 |
+  | sword | 20 |
+  | war axe | 19 |
+  | mace | 18 |
+  | greatsword | 27 |
+  | battleaxe | 26 |
+  | warhammer | 26 |
+
+  Proportions are kept: a model twice as thick looks twice as thick.
+
+The importer then tilts the weapon 45 degrees and uses vanilla's sword poses for first person, third
+person, the ground and item frames. The inventory shows the 3D model, shrunk to fit the slot.
+`docs/art/blockbench_weapons.png` previews every imported weapon. Its left view puts the weapon on the
+16x16 item grid, which a vanilla sword fills corner to corner.
+
+### Also accepted: Java item models (`.json`), boxes only
+
+Use **File > Export > Export Block/Item Model**. The `.json` keeps your Display-tab poses but has
+Minecraft's limits (see below). Every texture it uses must sit next to it as a `.png`.
+
+### Names, icons and bows
+
+For either format, `<name>` is the item id. Each of these tiers:
 
     iron, steel, orcish, dwarven, elven, glass, ebony, daedric
 
@@ -21,10 +52,9 @@ goes with each of these types, as `<tier>_<type>` (for example `daedric_dagger`,
 
     dagger, sword, greatsword, war_axe, mace, battleaxe, warhammer, bow
 
-Bows also need their draw stages: `<tier>_bow_pulling_0`, `_pulling_1` and `_pulling_2`. These are
-the bow at the start, middle and full draw. Each one is its own model, and they can share one texture.
-
-Textures can be any size (16, 32, 64 px...), and several weapons can share one texture.
+- **Icons:** `<name>_icon.png` is an optional flat picture for inventory slots, used instead of the 3D model.
+- **Bows:** they also need their draw stages, `<tier>_bow_pulling_0`, `_pulling_1` and `_pulling_2`
+  (start, middle and full draw). Each stage is its own model.
 
 ### Upload to GitHub
 
@@ -41,7 +71,7 @@ Your launcher picks that build up on its next start.
 
 If a model breaks one of Minecraft's rules, the workflow fails and its log says which cube to fix.
 
-## Minecraft's limits, and how to make big weapons
+## Minecraft's limits for `.json` models (glTF models don't have them)
 
 - **Cube size:** every cube has to stay inside **-16 to 32** on every axis. That is 3 blocks, centred on the
   middle block.

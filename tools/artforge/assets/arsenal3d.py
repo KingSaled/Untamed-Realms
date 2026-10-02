@@ -728,11 +728,48 @@ def all_designs():
 CUSTOM_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "art", "blockbench", "arsenal"))
 
 
-def custom_names():
-    """Weapons (and bow pull stages) that have a hand-made model in art/blockbench/arsenal."""
+def custom_sources():
+    """{weapon (or bow pull stage): its hand-made file} from art/blockbench/arsenal: Blockbench glTF
+    exports (.glb, any shapes) or Java item models (.json, boxes only). An "ur_" prefix is ignored."""
     if not os.path.isdir(CUSTOM_DIR):
-        return set()
-    return {f[:-5] for f in os.listdir(CUSTOM_DIR) if f.endswith(".json")}
+        return {}
+    out = {}
+    for f in sorted(os.listdir(CUSTOM_DIR)):
+        stem, ext = os.path.splitext(f)
+        if ext in (".glb", ".json"):
+            out[stem[3:] if stem.startswith("ur_") else stem] = os.path.join(CUSTOM_DIR, f)
+    return out
+
+
+def custom_names():
+    return set(custom_sources())
+
+
+def glb_exports(name, path):
+    """A glTF mesh baked into an OBJ item model (artforge.meshbake): sized for its weapon type and held like
+    vanilla's sword. Its textures go to textures/item/3d/custom/<name>_<n>."""
+    from artforge import gltf, meshbake
+    from artforge.voxel import HANDHELD, BOW as BOW_DISPLAY
+    parts, textures = gltf.load_glb(path)
+    if not parts:
+        raise SystemExit(f"{os.path.relpath(path)} has no meshes")
+    kind = meshbake.kind_of(name)
+    meshbake.bake(parts, kind)
+    used = sorted(set(p.material for p in parts))
+    names = {m: f"m{i}" for i, m in enumerate(used)}
+    obj, mtl = meshbake.to_obj(name, parts, names)
+    out = {f"models/item/3d/{name}.obj": obj, f"models/item/3d/{name}.mtl": mtl}
+    tex_refs = {}
+    for m in used:
+        out[f"textures/item/3d/custom/{name}_{names[m][1:]}.png"] = textures[m]
+        tex_refs[names[m]] = f"urarsenal:item/3d/custom/{name}_{names[m][1:]}"
+    tex_refs["particle"] = tex_refs[names[used[0]]]
+    display = dict(BOW_DISPLAY if kind == "bow" else HANDHELD)
+    display["gui"] = meshbake.gui_transform(parts)
+    out[f"models/item/3d/{name}.json"] = {"loader": "neoforge:obj", "model": f"urarsenal:models/item/3d/{name}.obj",
+                                          "flip_v": True, "render_type": "minecraft:cutout", "gui_light": "front",
+                                          "textures": tex_refs, "display": display}
+    return out
 
 
 def model_problems(model):
@@ -758,6 +795,13 @@ def model_problems(model):
 
 
 def custom_exports(name):
+    path = custom_sources()[name]
+    if path.endswith(".glb"):
+        return glb_exports(name, path)
+    return json_exports(name)
+
+
+def json_exports(name):
     """
     A Blockbench "Java Block/Item" export as our files: the model goes to models/item/3d with its textures
     re-pointed to textures/item/3d/custom, and the item model shows it everywhere - or, when there is a
@@ -807,15 +851,18 @@ def exports():
             ]
         if name in custom:
             out.update(custom_exports(name))
+            model = out[f"models/item/3d/{name}.json"]
             icon_png = os.path.join(CUSTOM_DIR, name + "_icon.png")
             if os.path.exists(icon_png):
                 out[f"textures/item/{name}.png"] = Image.open(icon_png).convert("RGBA")
-                out[f"models/item/{name}.json"] = item_json(f"urarsenal:item/3d/{name}", f"urarsenal:item/{name}", overrides)
+                item = {"loader": "neoforge:separate_transforms", "base": model,
+                        "perspectives": {"gui": {"parent": "minecraft:item/generated", "textures": {"layer0": f"urarsenal:item/{name}"}}}}
             else:
-                item = {"parent": f"urarsenal:item/3d/{name}"}
-                if overrides:
-                    item["overrides"] = overrides
-                out[f"models/item/{name}.json"] = item
+                # the model itself (not a parent reference: custom geometry like OBJ is safest inline)
+                item = dict(model)
+            if overrides:
+                item["overrides"] = overrides
+            out[f"models/item/{name}.json"] = item
             continue
         tex = f"urarsenal:item/3d/{name}"
         out[f"textures/item/3d/{name}.png"] = d.img

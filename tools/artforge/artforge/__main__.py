@@ -78,6 +78,8 @@ def encode(obj):
         buf = io.BytesIO()
         obj.save(buf, "PNG", optimize=True)
         return buf.getvalue()
+    if isinstance(obj, str):
+        return obj.encode()
     return (json.dumps(obj, indent=2) + "\n").encode()
 
 
@@ -115,6 +117,18 @@ def previews():
     # weapons are 3D now: rendered on their own sheet
     from assets import arsenal3d
     arsenal3d.preview_sheet().save(os.path.join(out, "arsenal3d.png"))
+    # hand-made (Blockbench glTF) weapons: in the 16x16 item frame (the grid; vanilla's sword fills it
+    # corner to corner) and in 3D
+    from artforge import gltf, meshbake
+    glbs = {n: p for n, p in arsenal3d.custom_sources().items() if p.endswith(".glb")}
+    if glbs:
+        sheet = Image.new("RGBA", (480, 240 * len(glbs)), (32, 28, 36, 255))
+        for i, (name, path) in enumerate(sorted(glbs.items())):
+            parts, textures = gltf.load_glb(path)
+            meshbake.bake(parts, meshbake.kind_of(name))
+            sheet.paste(meshbake.render(parts, textures, scale=14, grid=True), (0, 240 * i))
+            sheet.paste(meshbake.render(parts, textures, yaw=35, pitch=20, scale=12), (240, 240 * i))
+        sheet.save(os.path.join(out, "blockbench_weapons.png"))
     armor = arsenal.all_armor_sprites()
     mats = arsenal.all_material_sprites()
     rows = []
@@ -218,6 +232,9 @@ def main():
             if isinstance(obj, Image.Image):
                 if list(Image.open(path).convert("RGBA").getdata()) != list(obj.convert("RGBA").getdata()):
                     stale.append(path)
+            elif isinstance(obj, str):
+                if open(path, encoding="utf-8").read() != obj:
+                    stale.append(path)
             elif json.load(open(path)) != obj:
                 stale.append(path)
         if stale:
@@ -233,7 +250,7 @@ def main():
     # a weapon that switched to a Blockbench model leaves its generated texture behind: remove it
     from assets import arsenal3d
     for name in arsenal3d.custom_names():
-        for rel in (f"textures/item/3d/{name}.png", f"textures/item/{name}.png"):
+        for rel in (f"textures/item/3d/{name}.png", f"textures/item/{name}.png", f"models/item/3d/{name}.obj", f"models/item/3d/{name}.mtl"):
             path = os.path.join(assets_dir("urarsenal"), rel)
             if path not in files and os.path.exists(path):
                 os.remove(path)
