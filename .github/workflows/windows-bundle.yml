@@ -131,7 +131,6 @@ jobs:
       - uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-test-build
-          target_commitish: ${{ github.sha }}
           name: Untamed Realms - latest test build
           prerelease: true
           make_latest: false
