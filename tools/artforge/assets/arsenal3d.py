@@ -15,7 +15,9 @@ pictures are fetched by .github/workflows/art-reference.yml and never stored in 
 
 Depths (model units): blade edges 0.5, blade core 1.0, grips 1.5, pommels 2, guards 2.5.
 """
+import json
 import math
+import os
 
 from PIL import Image, ImageDraw
 
@@ -722,21 +724,80 @@ def all_designs():
 
 # =============================================================================== export
 
+# Hand-made Blockbench models replace the generated ones, weapon by weapon. See art/blockbench/README.md.
+CUSTOM_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "art", "blockbench", "arsenal"))
+
+
+def custom_names():
+    """Weapons (and bow pull stages) that have a hand-made model in art/blockbench/arsenal."""
+    if not os.path.isdir(CUSTOM_DIR):
+        return set()
+    return {f[:-5] for f in os.listdir(CUSTOM_DIR) if f.endswith(".json")}
+
+
+def model_problems(model):
+    """What Minecraft would reject or silently clamp in a Java item model."""
+    problems = []
+    for i, el in enumerate(model.get("elements") or []):
+        label = el.get("name") or f"cube {i + 1}"
+        for corner in ("from", "to"):
+            if any(not -16 <= v <= 32 for v in el.get(corner, [])):
+                problems.append(f"{label}: '{corner}' {el.get(corner)} is outside -16..32 (Minecraft's model space); "
+                                "make it smaller and scale it up in the Display tab instead")
+        rot = el.get("rotation")
+        if rot and rot.get("angle", 0) not in (-45, -22.5, 0, 22.5, 45):
+            problems.append(f"{label}: rotation {rot.get('angle')} - Java models only allow -45, -22.5, 0, 22.5, 45")
+    for view, t in (model.get("display") or {}).items():
+        if any(abs(v) > 4 for v in t.get("scale", [])):
+            problems.append(f"display '{view}': scale {t['scale']} is over 4, the most Minecraft allows")
+        if any(abs(v) > 80 for v in t.get("translation", [])):
+            problems.append(f"display '{view}': translation {t['translation']} is over 80, the most Minecraft allows")
+    if not model.get("elements"):
+        problems.append("no cubes - export with File > Export > Export Block/Item Model")
+    return problems
+
+
+def custom_exports(name):
+    """
+    A Blockbench "Java Block/Item" export as our files: the model goes to models/item/3d with its textures
+    re-pointed to textures/item/3d/custom, and the item model shows it everywhere - or, when there is a
+    <name>_icon.png, the model in hand and that picture in the inventory.
+    """
+    model = json.load(open(os.path.join(CUSTOM_DIR, name + ".json")))
+    problems = model_problems(model)
+    if problems:
+        raise SystemExit(f"art/blockbench/arsenal/{name}.json can't be used in Minecraft:\n  " + "\n  ".join(problems))
+    out = {}
+    textures = {}
+    for key, ref in (model.get("textures") or {}).items():
+        if ref.startswith("#"):
+            textures[key] = ref
+            continue
+        base = ref.replace(":", "/").rsplit("/", 1)[-1]
+        if base.endswith(".png"):
+            base = base[:-4]
+        png = os.path.join(CUSTOM_DIR, base + ".png")
+        if not os.path.exists(png):
+            raise SystemExit(f"art/blockbench/arsenal/{name}.json uses texture '{ref}' but {base}.png is not next to it")
+        out[f"textures/item/3d/custom/{base}.png"] = Image.open(png).convert("RGBA")
+        textures[key] = f"urarsenal:item/3d/custom/{base}"
+    if textures:
+        model["textures"] = textures
+    out[f"models/item/3d/{name}.json"] = model
+    return out
+
+
 def exports():
     """
     {relative path under assets/urarsenal: image or json} for every weapon: the 3D texture
     (textures/item/3d), the inventory icon (textures/item), the 3D model (models/item/3d) and the item
-    model that picks between them (models/item).
+    model that picks between them (models/item). Weapons with a Blockbench model use that instead.
     """
     from artforge.voxel import model_json, item_json, icon, HANDHELD, BOW as BOW_DISPLAY, BOW_GRIP, GRIP
+    custom = custom_names()
     out = {}
     for name, d in all_designs().items():
         is_bow = "_bow" in name
-        tex = f"urarsenal:item/3d/{name}"
-        out[f"textures/item/3d/{name}.png"] = d.img
-        out[f"textures/item/{name}.png"] = icon(d, outline=P.OUTLINE)
-        out[f"models/item/3d/{name}.json"] = model_json(d, tex, display=BOW_DISPLAY if is_bow else HANDHELD,
-                                                         grip=BOW_GRIP if is_bow else GRIP)
         overrides = None
         if name.endswith("_bow"):
             overrides = [
@@ -744,6 +805,23 @@ def exports():
                 {"predicate": {"pulling": 1, "pull": 0.65}, "model": f"urarsenal:item/{name}_pulling_1"},
                 {"predicate": {"pulling": 1, "pull": 0.9}, "model": f"urarsenal:item/{name}_pulling_2"},
             ]
+        if name in custom:
+            out.update(custom_exports(name))
+            icon_png = os.path.join(CUSTOM_DIR, name + "_icon.png")
+            if os.path.exists(icon_png):
+                out[f"textures/item/{name}.png"] = Image.open(icon_png).convert("RGBA")
+                out[f"models/item/{name}.json"] = item_json(f"urarsenal:item/3d/{name}", f"urarsenal:item/{name}", overrides)
+            else:
+                item = {"parent": f"urarsenal:item/3d/{name}"}
+                if overrides:
+                    item["overrides"] = overrides
+                out[f"models/item/{name}.json"] = item
+            continue
+        tex = f"urarsenal:item/3d/{name}"
+        out[f"textures/item/3d/{name}.png"] = d.img
+        out[f"textures/item/{name}.png"] = icon(d, outline=P.OUTLINE)
+        out[f"models/item/3d/{name}.json"] = model_json(d, tex, display=BOW_DISPLAY if is_bow else HANDHELD,
+                                                         grip=BOW_GRIP if is_bow else GRIP)
         out[f"models/item/{name}.json"] = item_json(f"urarsenal:item/3d/{name}", f"urarsenal:item/{name}", overrides)
     return out
 

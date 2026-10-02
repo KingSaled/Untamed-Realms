@@ -2,7 +2,7 @@ name: Build mods
 
 on:
   push:
-    paths-ignore: ['**.md', 'docs/**']
+    paths-ignore: ['**.md', 'docs/**', 'art/blockbench/**']
   pull_request:
   workflow_dispatch:
 

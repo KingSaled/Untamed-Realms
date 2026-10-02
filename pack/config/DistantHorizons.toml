@@ -1,0 +1,24 @@
+# Untamed Realms Distant Horizons preset (DH 3.3.x). Only the settings we change are listed; DH fills
+# in the rest with its defaults the first time it starts. The installer copies this file again only
+# when the pack's copy changes, so your own tweaks in the DH menu are kept between updates.
+
+[client.advanced.graphics.quality]
+	# 128 chunks (2 km) of far terrain: the look of DH at a fraction of the default 256's cost
+	lodChunkRenderDistanceRadius = 128
+	# The dithered cross-fades drew a halftone pattern over water and the hub's edges.
+	# With both off DH starts cleanly where real chunks end.
+	ditherDhFade = false
+	vanillaFadeMode = "NONE"
+	lodBiomeBlending = 1
+
+[client.advanced.graphics.culling]
+	# DH hides "caves" (no skylight) below this height. Deep ocean floors have no skylight under 15 blocks of
+	# water, so at the default 60 they were culled and you saw the sky through the sea. 0 keeps every
+	# ocean and lake floor; deepslate caves are still culled.
+	caveCullingHeight = 0
+
+[server]
+	# match the client radius so the server never generates terrain nobody draws
+	maxGenerationRequestDistance = 256
+	maxSyncOnLoadRequestDistance = 256
+	realTimeUpdateDistanceRadiusInChunks = 128

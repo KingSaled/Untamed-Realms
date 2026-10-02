@@ -170,8 +170,10 @@ def extra_sprite_families():
     """Further linted sprite sets, {family: {name: image}}."""
     from assets import arsenal
     from assets import arsenal3d
+    custom = arsenal3d.custom_names()   # hand-made Blockbench art is the artist's call, not linted
     icons = {name: img for name, img in ((rel.rsplit("/", 1)[1][:-4], obj) for rel, obj in arsenal3d.exports().items()
-                                         if rel.startswith("textures/item/") and "/3d/" not in rel)}
+                                         if rel.startswith("textures/item/") and "/3d/" not in rel)
+             if name not in custom}
     return {"icon32": icons, "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
                                                                          **arsenal.all_jewelry_sprites()}}
 
@@ -217,6 +219,13 @@ def main():
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "wb") as f:
             f.write(encode(obj))
+    # a weapon that switched to a Blockbench model leaves its generated texture behind: remove it
+    from assets import arsenal3d
+    for name in arsenal3d.custom_names():
+        for rel in (f"textures/item/3d/{name}.png", f"textures/item/{name}.png"):
+            path = os.path.join(assets_dir("urarsenal"), rel)
+            if path not in files and os.path.exists(path):
+                os.remove(path)
     previews()
     print(f"wrote {len(files)} files + previews in docs/art/")
 

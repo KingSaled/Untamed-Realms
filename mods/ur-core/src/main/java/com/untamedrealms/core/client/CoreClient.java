@@ -76,6 +76,7 @@ public final class CoreClient {
         public static void onScreenOpening(ScreenEvent.Opening event) {
             if (event.getNewScreen() instanceof TitleScreen || event.getNewScreen() instanceof AccessibilityOnboardingScreen) {
                 KeybindProfile.onFirstMenu();
+                GraphicsDefaults.onFirstMenu();
                 if (event.getNewScreen() instanceof TitleScreen && CoreClientConfig.CUSTOM_TITLE_SCREEN.get()) {
                     event.setNewScreen(new UrTitleScreen());
                 }

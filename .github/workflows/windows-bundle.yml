@@ -72,6 +72,18 @@ jobs:
           $profiles = Get-Content "$mc\launcher_profiles.json" -Raw
           if ($profiles -notmatch 'untamed-realms') { throw "launcher profile missing" }
           Write-Host $profiles
+      - name: Pack config is copied once, and the player's changes survive a reinstall
+        shell: powershell
+        run: |
+          $env:APPDATA = "$env:RUNNER_TEMP\appdata"
+          $dh = "$env:APPDATA\.minecraft\untamed-realms\config\DistantHorizons.toml"
+          if (-not (Test-Path $dh)) { throw "DistantHorizons.toml not copied" }
+          if ((Get-Content $dh -Raw) -notmatch 'caveCullingHeight = 0') { throw "DH preset content wrong" }
+          Add-Content $dh "# changed by the player"
+          powershell -NoProfile -ExecutionPolicy Bypass -File Untamed-Realms\scripts\install-client.ps1
+          if ($LASTEXITCODE -ne 0) { throw "second install failed" }
+          if ((Get-Content $dh -Raw) -notmatch 'changed by the player') { throw "player's config change was overwritten" }
+          Get-Content "$env:APPDATA\.minecraft\untamed-realms\config\untamedrealms\pack-config-applied.txt"
       - name: Start-Server, wait for it to finish starting, then stop
         shell: powershell
         run: |

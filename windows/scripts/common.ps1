@@ -105,11 +105,33 @@ function Sync-Mods([string]$ModsDir, [string]$Side) {
     Write-Done "  $($wanted.Count) mods ready in $ModsDir"
 }
 
+# Copies the pack's config files into a game or server folder. A file is (re)copied only when it is new
+# or the pack's copy changed since the last install, so settings the player changed in game (which
+# rewrites these files) survive updates that don't touch them.
 function Copy-PackConfig([string]$GameDir) {
+    $recordFile = Join-Path $GameDir 'config\untamedrealms\pack-config-applied.txt'
+    $record = @{}
+    if (Test-Path $recordFile) {
+        foreach ($line in Get-Content $recordFile) {
+            $parts = $line -split '\|', 2
+            if ($parts.Count -eq 2) { $record[$parts[0]] = $parts[1] }
+        }
+    }
     foreach ($folder in 'config', 'defaultconfigs') {
         $src = Join-Path $Root "pack\$folder"
-        if (Test-Path $src) { Copy-Item $src -Destination $GameDir -Recurse -Force }
+        if (-not (Test-Path $src)) { continue }
+        foreach ($file in Get-ChildItem $src -Recurse -File) {
+            $rel = $folder + $file.FullName.Substring($src.Length)
+            $dest = Join-Path $GameDir $rel
+            $hash = (Get-FileHash $file.FullName -Algorithm SHA256).Hash
+            if ((Test-Path $dest) -and $record[$rel] -eq $hash) { continue }
+            New-Item -ItemType Directory -Force -Path (Split-Path -Parent $dest) | Out-Null
+            Copy-Item $file.FullName $dest -Force
+            $record[$rel] = $hash
+        }
     }
+    New-Item -ItemType Directory -Force -Path (Split-Path -Parent $recordFile) | Out-Null
+    Set-Content -Path $recordFile -Value ($record.GetEnumerator() | Sort-Object Name | ForEach-Object { "$($_.Name)|$($_.Value)" })
 }
 
 function Get-RamGB { [math]::Round((Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory / 1GB) }

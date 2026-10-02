@@ -1,0 +1,46 @@
+# Turns hand-made Blockbench models in art/blockbench/ into the game's files (via ArtForge), commits
+# them back to the same branch, then starts the build and the Windows test build for that commit.
+# Upload exports to art/blockbench/arsenal/ (see art/blockbench/README.md) and this does the rest.
+name: Import Blockbench models
+
+on:
+  push:
+    paths: ['art/blockbench/**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: art-import-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - name: Generate the game files
+        run: cd tools/artforge && python3 -m artforge build
+      - name: Commit them to this branch
+        id: commit
+        run: |
+          git add -A mods docs/art
+          if git diff --cached --quiet; then echo "nothing to import"; echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898299+github-actions[bot]@users.noreply.github.com" \
+            commit -m "Import Blockbench models from art/blockbench"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+      # pushes made with the workflow token start no workflows, so start them explicitly
+      - name: Build and publish the test build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run build.yml --ref "${GITHUB_REF_NAME}"
+          gh workflow run windows-bundle.yml --ref "${GITHUB_REF_NAME}"
