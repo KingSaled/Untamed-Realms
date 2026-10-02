@@ -1,0 +1,18 @@
+{
+  "name": "Soul Trap",
+  "description": "If the target dies within 30 seconds, its soul fills an empty soul gem you carry.",
+  "school": "conjuration",
+  "level": 10,
+  "cost": 35,
+  "kind": "projectile",
+  "speed": 1.8,
+  "element": "arcane",
+  "cooldown": 20,
+  "xp": 10,
+  "effects": [
+    {
+      "effect": "urarcana:soul_trapped",
+      "duration": 600
+    }
+  ]
+}

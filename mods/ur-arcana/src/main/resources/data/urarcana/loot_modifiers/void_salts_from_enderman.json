@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarcana:inject/enderman",
+  "chance": 0.15,
+  "prefixes": [
+    "entities/enderman"
+  ]
+}

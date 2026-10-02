@@ -1,0 +1,7 @@
+{
+  "name": "Weakness",
+  "mob_effect": "minecraft:weakness",
+  "duration": 600,
+  "harmful": true,
+  "value": 30
+}

@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:blaze_powder",
+  "effects": [
+    "urarcana:fortify_strength",
+    "urarcana:resist_fire",
+    "urarcana:ravage_magicka",
+    "urarcana:withering"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:cornflower",
+  "effects": [
+    "urarcana:restore_health",
+    "urarcana:fortify_health",
+    "urarcana:resist_damage",
+    "urarcana:ravage_magicka"
+  ]
+}

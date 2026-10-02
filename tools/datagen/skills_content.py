@@ -105,9 +105,10 @@ PERKS = {
         perk("quiet_casting", "Quiet Casting", "You are 10% harder to notice while sneaking.", 50, [fx("stealth", 0.1)], ["animage"]),
         perk("master_of_the_mind", "Master of the Mind", "Illusion spells are 50% stronger.", 80, [fx("spell_power", 0.5, "illusion")], ["quiet_casting"]),
     ],
-    "enchanting": ranked("enchanter", "Enchanter", "+0.5 luck, improving enchantments and loot (rank {rank}).", [10, 35, 60], lambda i: [attr(MS + "luck", 0.5)]) + [
+    "enchanting": ranked("enchanter", "Enchanter", "Enchantments you make are 10% stronger, and +0.5 luck (rank {rank}).", [10, 35, 60],
+                         lambda i: [fx("enchant_power", 0.1), attr(MS + "luck", 0.5)]) + [
         perk("soul_siphon", "Soul Siphon", "Magicka regenerates 15% faster.", 40, [fx("regen", 0.15, "magicka")]),
-        perk("extra_effect", "Extra Effect", "+2 luck.", 90, [attr(MS + "luck", 2)], ["enchanter_3"]),
+        perk("extra_effect", "Extra Effect", "Gear can hold two enchantments you make.", 90, [fx("enchant_slots", 1)], ["enchanter_3"]),
     ],
     "light_armor": ranked("agile_defender", "Agile Defender", "In a full set of light armor, take 8% less damage (rank {rank}).", [10, 30, 60], lambda i: [fx("damage_reduction", 0.08, "light_armor")]) + [
         perk("custom_fit", "Custom Fit", "Move 3% faster.", 30, [attr(MS + "movement_speed", 0.03, "add_multiplied_base")]),
@@ -134,9 +135,11 @@ PERKS = {
         perk("persuasion", "Persuasion", "Speech XP +20%.", 25, [fx("xp_bonus", 0.2, "speech")]),
         perk("master_trader", "Master Trader", "Prices are another 10% better.", 80, [fx("price_bonus", 0.1)], ["haggling_3"]),
     ],
-    "alchemy": ranked("alchemist", "Alchemist", "Potions you drink last 15% longer (rank {rank}).", [10, 30, 60], lambda i: [fx("potion_duration", 0.15)]) + [
+    "alchemy": ranked("alchemist", "Alchemist", "Potions and poisons you brew are 20% stronger (rank {rank}).", [10, 30, 60],
+                      lambda i: [fx("alchemy_power", 0.2)]) + [
         perk("physician", "Physician", "Slowly regenerate health.", 40, [fx("regen", 0.5, "health")]),
-        perk("purity", "Purity", "Potions you drink last another 30% longer.", 80, [fx("potion_duration", 0.3)], ["alchemist_3"]),
+        perk("experimenter", "Experimenter", "Tasting an ingredient reveals one more of its effects.", 50, [fx("alchemy_reveal", 1)], ["alchemist_2"]),
+        perk("purity", "Purity", "Potions you drink last 30% longer.", 80, [fx("potion_duration", 0.3)], ["alchemist_3"]),
     ],
     "mining": ranked("prospector", "Prospector", "+5% chance of double ore (rank {rank}).", [10, 35, 60], lambda i: [fx("extra_drop", 0.05, "mining")]) + [
         perk("rock_breaker", "Rock Breaker", "Mine 15% faster.", 20, [fx("speed_bonus", 0.15, "mining")]),

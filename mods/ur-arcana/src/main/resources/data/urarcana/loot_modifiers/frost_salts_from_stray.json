@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarcana:inject/stray",
+  "chance": 0.4,
+  "prefixes": [
+    "entities/stray"
+  ]
+}

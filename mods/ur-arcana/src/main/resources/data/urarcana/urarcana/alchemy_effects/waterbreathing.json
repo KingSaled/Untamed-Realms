@@ -1,0 +1,6 @@
+{
+  "name": "Waterbreathing",
+  "mob_effect": "minecraft:water_breathing",
+  "duration": 1800,
+  "value": 25
+}

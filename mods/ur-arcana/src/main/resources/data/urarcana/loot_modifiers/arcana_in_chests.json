@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarcana:inject/chests",
+  "chance": 0.25,
+  "prefixes": [
+    "chests/"
+  ]
+}

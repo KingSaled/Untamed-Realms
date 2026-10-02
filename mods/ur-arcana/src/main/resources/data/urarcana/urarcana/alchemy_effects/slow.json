@@ -1,0 +1,8 @@
+{
+  "name": "Slow",
+  "mob_effect": "minecraft:slowness",
+  "duration": 300,
+  "amplifier": 1,
+  "harmful": true,
+  "value": 30
+}

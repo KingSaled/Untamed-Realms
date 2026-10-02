@@ -38,6 +38,28 @@ Better gear and ores need skill levels (shown in tooltips), RuneScape style.
 at the stump and the leaves clear away. XP is paid per tree (bigger trees pay more, but not per log).
 Sneak while chopping to cut a single log.
 
+## Alchemy
+Build an **alchemy lab** (three glass bottles over a cauldron and planks). Flowers, mushrooms, berries,
+spider eyes, blaze powder, feathers, fire/frost/void salts (from blazes, strays and endermen), nirnroot
+and more are **ingredients**: each has four hidden effects.
+* **Taste** an ingredient (at the lab, or by eating it) to learn its first effect; Alchemy 25/50/75 and the
+  Experimenter perk reveal more.
+* **Brew** two or three ingredients: every effect at least two of them share goes into the result, and you
+  learn those effects. If they share nothing, the ingredients are wasted.
+* A brew whose most valuable effect is harmful is a **poison** (thrown). Your Alchemy level and the
+  Alchemist perks make brews last longer and, at higher levels, hit harder.
+* Ingredient tooltips list what you know: `Restore Health, ?, ?, ?`.
+
+## Enchanting
+Build an **arcane enchanter** (obsidian, a diamond, a book and amethyst). The vanilla enchanting table
+and brewing stand can't be crafted in Untamed Realms.
+* **Disenchant**: destroy an enchanted item or enchanted book to learn its enchantments.
+* **Soul gems** (petty → grand) come from chests or are crafted from amethyst and gold. Learn the
+  **Soul Trap** spell (Conjuration), hit a creature with it and kill it within 30 seconds: its soul fills
+  the smallest empty gem big enough to hold it.
+* **Enchant**: pick a piece of gear, a known enchantment and a filled gem. Bigger souls and higher
+  Enchanting give higher levels. Gear holds one enchantment you make (two with the Extra Effect perk).
+
 ## Vitals
 * **Stamina** (bottom right) drains when sprinting and swinging; exhausted fighters hit softer and can't sprint.
 * **Hunger** runs at half the vanilla speed, and sprinting or jumping no longer costs food.

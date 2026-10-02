@@ -1,0 +1,6 @@
+{
+  "name": "Resist Fire",
+  "mob_effect": "minecraft:fire_resistance",
+  "duration": 1800,
+  "value": 35
+}

@@ -1,0 +1,9 @@
+{
+  "item": "urarcana:fire_salts",
+  "effects": [
+    "urarcana:resist_fire",
+    "urarcana:fortify_strength",
+    "urarcana:ravage_magicka",
+    "urarcana:regenerate_health"
+  ]
+}

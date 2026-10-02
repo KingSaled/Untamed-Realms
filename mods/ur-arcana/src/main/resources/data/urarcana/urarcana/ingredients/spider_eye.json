@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:spider_eye",
+  "effects": [
+    "urarcana:lingering_damage",
+    "urarcana:ravage_stamina",
+    "urarcana:invisibility",
+    "urarcana:weakness"
+  ]
+}

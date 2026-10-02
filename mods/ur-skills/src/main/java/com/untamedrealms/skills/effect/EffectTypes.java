@@ -41,6 +41,14 @@ public final class EffectTypes {
     public static final String STEALTH = "stealth";
     /** Pickpocket success chance bonus (fraction). */
     public static final String PICKPOCKET = "pickpocket";
+    /** Strength bonus for potions and poisons you brew (added to the power multiplier). Read by ur-arcana. */
+    public static final String ALCHEMY_POWER = "alchemy_power";
+    /** Extra ingredient effects revealed by tasting. Read by ur-arcana. */
+    public static final String ALCHEMY_REVEAL = "alchemy_reveal";
+    /** Strength bonus (share of max level) for enchantments you make. Read by ur-arcana. */
+    public static final String ENCHANT_POWER = "enchant_power";
+    /** Extra enchantments gear can hold from the arcane enchanter. Read by ur-arcana. */
+    public static final String ENCHANT_SLOTS = "enchant_slots";
 
     private EffectTypes() {}
 }

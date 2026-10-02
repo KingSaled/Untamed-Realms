@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:rabbit_foot",
+  "effects": [
+    "urarcana:leaping",
+    "urarcana:swiftness",
+    "urarcana:fortune",
+    "urarcana:confusion"
+  ]
+}

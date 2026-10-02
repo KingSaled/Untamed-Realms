@@ -1,0 +1,5 @@
+{
+  "name": "Restore Magicka",
+  "mob_effect": "urarcana:restore_magicka",
+  "value": 35
+}

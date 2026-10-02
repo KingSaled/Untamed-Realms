@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:chorus_fruit",
+  "effects": [
+    "urarcana:levitation",
+    "urarcana:invisibility",
+    "urarcana:confusion",
+    "urarcana:featherfall"
+  ]
+}

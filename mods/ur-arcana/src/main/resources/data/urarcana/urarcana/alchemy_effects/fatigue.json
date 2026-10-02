@@ -1,0 +1,8 @@
+{
+  "name": "Fatigue",
+  "mob_effect": "minecraft:mining_fatigue",
+  "duration": 600,
+  "amplifier": 1,
+  "harmful": true,
+  "value": 15
+}

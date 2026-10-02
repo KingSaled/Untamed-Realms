@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:sweet_berries",
+  "effects": [
+    "urarcana:restore_stamina",
+    "urarcana:swiftness",
+    "urarcana:damage_health",
+    "urarcana:fortune"
+  ]
+}

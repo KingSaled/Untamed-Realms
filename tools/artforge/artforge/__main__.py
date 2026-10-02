@@ -15,7 +15,8 @@ from artforge.model3d import blockstate_horizontal    # noqa: E402
 from assets import items, spells, npcs, models, ui, arsenal    # noqa: E402
 
 MODULES = {"urcore": "ur-core", "urskills": "ur-skills", "urclasses": "ur-classes",
-           "urquests": "ur-quests", "urnpcs": "ur-npcs", "urmagic": "ur-magic", "urarsenal": "ur-arsenal"}
+           "urquests": "ur-quests", "urnpcs": "ur-npcs", "urmagic": "ur-magic", "urarsenal": "ur-arsenal",
+           "urarcana": "ur-arcana"}
 
 
 def assets_dir(modid):
@@ -34,7 +35,8 @@ def collect():
             files[os.path.join(assets_dir("urmagic"), "textures", "particle", f"{name}_{i}.png")] = img
         files[os.path.join(assets_dir("urmagic"), "particles", name + ".json")] = {
             "textures": [f"urmagic:{name}_{i}" for i in range(len(frames))]}
-    for m in models.all_models() + arsenal.stations():
+    from assets import arcana
+    for m in models.all_models() + arsenal.stations() + arcana.stations():
         base = assets_dir(m.namespace)
         for key, img in m.textures.items():
             files[os.path.join(base, "textures", m.folder, f"{m.name}_{key}.png")] = img
@@ -42,6 +44,9 @@ def collect():
         files[os.path.join(base, "models", "item", m.name + ".json")] = {"parent": f"{m.namespace}:block/{m.name}"}
         files[os.path.join(base, "blockstates", m.name + ".json")] = blockstate_horizontal(f"{m.namespace}:block/{m.name}")
         files[os.path.join(TOOL, "out", "bbmodel", m.name + ".bbmodel")] = m.to_bbmodel()
+    # ur-arcana: soul gems, salts, nirnroot, the Soul Trap icon
+    for tex, img in {**arcana.all_item_sprites(), **arcana.spell_icons()}.items():
+        files[os.path.join(assets_dir("urarcana"), "textures", tex + ".png")] = img
     # ur-arsenal: weapons, armor icons + layers, materials, ores
     ars = assets_dir("urarsenal")
     for name, img in {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(), **arsenal.all_jewelry_sprites()}.items():
@@ -100,7 +105,8 @@ def previews():
         sheet.alpha_composite(upscale(paper_doll(img), 4), (i * 70 + 3, 8))
     sheet.save(os.path.join(out, "npc_skins.png"))
 
-    for m in models.all_models() + arsenal.stations():
+    from assets import arcana
+    for m in models.all_models() + arsenal.stations() + arcana.stations():
         m.render_iso(scale=14).save(os.path.join(out, f"model_{m.name}.png"))
     from assets import recolors
     recolors.preview().save(os.path.join(out, "recolor_palettes.png"))
@@ -160,6 +166,11 @@ def style_problems():
         problems += check_sprite(f"{modid}:{tex}", img, "item")
     for (modid, tex), img in spells.all_spell_icons().items():
         problems += check_sprite(f"{modid}:{tex}", img, "icon")
+    from assets import arcana
+    for tex, img in arcana.all_item_sprites().items():
+        problems += check_sprite(f"urarcana:{tex}", img, "item")
+    for tex, img in arcana.spell_icons().items():
+        problems += check_sprite(f"urarcana:{tex}", img, "icon")
     for family, sprites in extra_sprite_families().items():
         for name, img in sprites.items():
             problems += check_sprite(name, img, family)

@@ -7,4 +7,5 @@ dependencies {
     api project(':ur-npcs')
     api project(':ur-magic')
     api project(':ur-arsenal')
+    api project(':ur-arcana')
 }

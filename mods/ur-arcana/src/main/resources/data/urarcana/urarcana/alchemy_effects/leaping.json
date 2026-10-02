@@ -1,0 +1,6 @@
+{
+  "name": "Leaping",
+  "mob_effect": "minecraft:jump_boost",
+  "duration": 1200,
+  "value": 15
+}

@@ -13,7 +13,6 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.monster.Husk;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.gametest.GameTestHolder;
@@ -31,7 +30,9 @@ public final class TestHubGameTests {
         BlockPos c = new BlockPos(4000, -30, 4000);
         HubBuilder.build(level, c);
         helper.assertTrue(level.getBlockState(c.offset(-6, 1, -6)).is(ArsenalBlocks.FORGE.get()), "forge in the forge yard");
-        helper.assertTrue(level.getBlockState(c.offset(26, 1, -12)).is(Blocks.ENCHANTING_TABLE), "enchanting table in the magic quarter");
+        helper.assertTrue(level.getBlockState(c.offset(26, 1, -12)).is(com.untamedrealms.arcana.UntamedArcana.ARCANE_ENCHANTER.get()), "arcane enchanter in the magic quarter");
+        helper.assertTrue(level.getBlockState(c.offset(22, 1, -12)).is(com.untamedrealms.arcana.UntamedArcana.ALCHEMY_LAB.get()), "alchemy lab in the magic quarter");
+        helper.assertTrue(level.getBlockEntity(c.offset(16, 1, -8)) instanceof ChestBlockEntity chest && !chest.isEmpty(), "ingredient chest stocked");
         helper.assertTrue(level.getBlockState(c.offset(-8, 1, 30)).getBlock().getDescriptionId().contains("notice_board"), "notice board in town");
         helper.assertTrue(level.getBlockEntity(c.offset(-6, 1, -14)) instanceof ChestBlockEntity chest && !chest.isEmpty(), "weapon chest stocked");
         helper.assertTrue(level.getBlockEntity(c.offset(6, 1, -6)) instanceof ChestBlockEntity chest && !chest.isEmpty(), "magic chest stocked");

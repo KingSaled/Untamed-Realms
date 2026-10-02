@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:glistering_melon_slice",
+  "effects": [
+    "urarcana:restore_health",
+    "urarcana:regenerate_health",
+    "urarcana:fortify_health",
+    "urarcana:swiftness"
+  ]
+}

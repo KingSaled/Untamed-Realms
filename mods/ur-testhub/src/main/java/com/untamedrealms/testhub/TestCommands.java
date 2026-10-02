@@ -80,6 +80,8 @@ public final class TestCommands {
 
         MagicApi.book(player).deserializeNBT(player.registryAccess(), new CompoundTag());
         MagicNetwork.sync(player);
+        com.untamedrealms.arcana.ArcanaApi.knowledge(player).replaceWith(java.util.Map.of(), java.util.List.of());
+        com.untamedrealms.arcana.ArcanaApi.sync(player);
 
         QuestLog log = QuestApi.log(player);
         log.deserializeNBT(player.registryAccess(), new CompoundTag());

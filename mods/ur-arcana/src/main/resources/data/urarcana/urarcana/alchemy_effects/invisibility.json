@@ -1,0 +1,6 @@
+{
+  "name": "Invisibility",
+  "mob_effect": "minecraft:invisibility",
+  "duration": 600,
+  "value": 55
+}

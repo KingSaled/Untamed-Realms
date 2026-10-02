@@ -31,7 +31,7 @@ public final class ControlBook {
         List<Component> pages = new ArrayList<>();
         pages.add(page(Component.literal("Untamed Realms\nTEST HUB\n\n").withStyle(ChatFormatting.BOLD),
                 Component.literal("Click a line to run it.\n\n"),
-                Component.literal("p2 Character\np3 Magic & world\np4 Quests\n\n"),
+                Component.literal("p2 Character\np3 Magic & world\np4 Alchemy & enchanting\np5 Quests\n\n"),
                 Component.literal("Everything here is also a command: /ur test ...").withStyle(ChatFormatting.DARK_GRAY)));
         pages.add(page(heading("Character"),
                 entry("Reset my character", "/ur test reset", "Class, skills, perks, spells, quests, coins and inventory"),
@@ -56,6 +56,13 @@ public final class ControlBook {
                 entry("Back to the hub", "/ur test hub", null),
                 entry("Village below", "/ur test village", null),
                 entry("Rebuild the hub", "/ur test rebuild", "Restocks chests, regrows trees and ores, respawns NPCs")));
+        pages.add(page(heading("Alchemy & enchanting"),
+                entry("Know every ingredient & enchantment", "/ur arcana learnall @s", "All ingredient effects and every enchantment"),
+                entry("Forget them all", "/ur arcana forget @s", "Start discovering from scratch"),
+                entry("Fill my soul gems", "/ur arcana fillgems @s", "Each empty gem you carry gets its biggest soul"),
+                entry("Learn Soul Trap", "/ur magic learn @s urarcana:soul_trap", null),
+                entry("Alchemy 50", "/ur skills set @s alchemy 50", null),
+                entry("Enchanting 50", "/ur skills set @s enchanting 50", null)));
 
         List<ResourceLocation> quests = new ArrayList<>(QuestsData.QUESTS.entries().keySet());
         Set<ResourceLocation> bounties = Set.copyOf(QuestsData.inPool(Bounties.POOL));

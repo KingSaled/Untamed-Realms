@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:magma_cream",
+  "effects": [
+    "urarcana:resist_fire",
+    "urarcana:leaping",
+    "urarcana:slow",
+    "urarcana:damage_health"
+  ]
+}

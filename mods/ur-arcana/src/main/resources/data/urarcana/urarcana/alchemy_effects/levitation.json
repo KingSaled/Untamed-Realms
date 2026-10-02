@@ -1,0 +1,7 @@
+{
+  "name": "Levitation",
+  "mob_effect": "minecraft:levitation",
+  "duration": 100,
+  "harmful": true,
+  "value": 20
+}

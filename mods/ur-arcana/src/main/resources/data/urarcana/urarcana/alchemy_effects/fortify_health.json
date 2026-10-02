@@ -1,0 +1,6 @@
+{
+  "name": "Fortify Health",
+  "mob_effect": "minecraft:health_boost",
+  "duration": 1200,
+  "value": 45
+}

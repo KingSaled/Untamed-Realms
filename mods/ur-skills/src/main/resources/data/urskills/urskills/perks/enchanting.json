@@ -4,9 +4,13 @@
     {
       "id": "enchanter_1",
       "name": "Enchanter I",
-      "description": "+0.5 luck, improving enchantments and loot (rank 1).",
+      "description": "Enchantments you make are 10% stronger, and +0.5 luck (rank 1).",
       "level": 10,
       "effects": [
+        {
+          "type": "enchant_power",
+          "value": 0.1
+        },
         {
           "type": "attribute",
           "attribute": "minecraft:generic.luck",
@@ -18,9 +22,13 @@
     {
       "id": "enchanter_2",
       "name": "Enchanter II",
-      "description": "+0.5 luck, improving enchantments and loot (rank 2).",
+      "description": "Enchantments you make are 10% stronger, and +0.5 luck (rank 2).",
       "level": 35,
       "effects": [
+        {
+          "type": "enchant_power",
+          "value": 0.1
+        },
         {
           "type": "attribute",
           "attribute": "minecraft:generic.luck",
@@ -35,9 +43,13 @@
     {
       "id": "enchanter_3",
       "name": "Enchanter III",
-      "description": "+0.5 luck, improving enchantments and loot (rank 3).",
+      "description": "Enchantments you make are 10% stronger, and +0.5 luck (rank 3).",
       "level": 60,
       "effects": [
+        {
+          "type": "enchant_power",
+          "value": 0.1
+        },
         {
           "type": "attribute",
           "attribute": "minecraft:generic.luck",
@@ -65,14 +77,12 @@
     {
       "id": "extra_effect",
       "name": "Extra Effect",
-      "description": "+2 luck.",
+      "description": "Gear can hold two enchantments you make.",
       "level": 90,
       "effects": [
         {
-          "type": "attribute",
-          "attribute": "minecraft:generic.luck",
-          "operation": "add_value",
-          "value": 2
+          "type": "enchant_slots",
+          "value": 1
         }
       ],
       "requires": [

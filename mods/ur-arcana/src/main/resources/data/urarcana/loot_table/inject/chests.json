@@ -1,0 +1,95 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:petty_soul_gem",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:lesser_soul_gem",
+          "weight": 14
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:common_soul_gem",
+          "weight": 8
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:greater_soul_gem",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:grand_soul_gem",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:nirnroot",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:fire_salts",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:frost_salts",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "urarcana:void_salts",
+          "weight": 3,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

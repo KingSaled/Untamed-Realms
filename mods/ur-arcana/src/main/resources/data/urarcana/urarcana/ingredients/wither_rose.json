@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:wither_rose",
+  "effects": [
+    "urarcana:withering",
+    "urarcana:paralysis",
+    "urarcana:ravage_stamina",
+    "urarcana:weakness"
+  ]
+}

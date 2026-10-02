@@ -1,0 +1,7 @@
+{
+  "name": "Blindness",
+  "mob_effect": "minecraft:blindness",
+  "duration": 200,
+  "harmful": true,
+  "value": 30
+}

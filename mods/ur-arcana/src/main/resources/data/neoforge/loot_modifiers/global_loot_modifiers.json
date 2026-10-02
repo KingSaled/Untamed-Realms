@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "entries": [
+    "urarcana:fire_salts_from_blaze",
+    "urarcana:frost_salts_from_stray",
+    "urarcana:void_salts_from_enderman",
+    "urarcana:arcana_in_chests",
+    "urarcana:soul_trap_tome"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "item": "urarcana:void_salts",
+  "effects": [
+    "urarcana:damage_health",
+    "urarcana:ward",
+    "urarcana:invisibility",
+    "urarcana:restore_magicka"
+  ]
+}

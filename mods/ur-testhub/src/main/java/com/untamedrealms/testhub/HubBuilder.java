@@ -1,5 +1,8 @@
 package com.untamedrealms.testhub;
 
+import com.untamedrealms.arcana.UntamedArcana;
+import com.untamedrealms.arcana.data.IngredientDef;
+import com.untamedrealms.arcana.item.SoulGemItem;
 import com.untamedrealms.arsenal.ArsenalArmor;
 import com.untamedrealms.arsenal.ArsenalBlocks;
 import com.untamedrealms.arsenal.ArsenalItems;
@@ -171,7 +174,7 @@ public final class HubBuilder {
 
     private void plaza() {
         sign(-3, 1, -3, 14, null, title("Forge Yard"), line("stations, materials,"), line("weapons & armor"));
-        sign(3, 1, -3, 2, null, title("Magic"), line("tomes, skill books,"), line("enchanting, dummies"));
+        sign(3, 1, -3, 2, null, title("Magic"), line("tomes, alchemy,"), line("enchanting, dummies"));
         sign(-3, 1, 3, 10, null, title("Town Square"), line("every NPC, notice"), line("boards, quest items"));
         sign(3, 1, 3, 6, null, title("Wilds"), line("trees, farm, pond,"), line("ores, mob arena"));
         sign(3, 1, 4, 8, "/ur test village", title("Village below"), line("click to go down"), line("(come back with"), line("/ur test hub)"));
@@ -233,18 +236,42 @@ public final class HubBuilder {
         int x = chestRow(6, -6, 2, Direction.SOUTH, "Magic", namespace("urmagic", item -> true));
         chestRow(x, -6, 2, Direction.SOUTH, "Skill books", namespace("urskills", item -> true));
 
-        // vanilla enchanting until ur-arcana replaces it
-        set(26, 1, -12, Blocks.ENCHANTING_TABLE.defaultBlockState());
-        for (int dx = -2; dx <= 2; dx++) {
-            for (int dz = -2; dz <= 2; dz++) {
-                boolean ring = Math.abs(dx) == 2 || Math.abs(dz) == 2;
-                if (!ring || (dz == 2 && dx == 0)) continue;   // keep the south side open
-                set(26 + dx, 1, -12 + dz, Blocks.BOOKSHELF.defaultBlockState());
-                set(26 + dx, 2, -12 + dz, Blocks.BOOKSHELF.defaultBlockState());
-            }
+        // Arcana: the alchemy lab and arcane enchanter, ingredients, soul gems and enchanted things to learn from
+        set(22, 1, -12, placed(UntamedArcana.ALCHEMY_LAB.get().defaultBlockState(), Direction.SOUTH));
+        set(26, 1, -12, placed(UntamedArcana.ARCANE_ENCHANTER.get().defaultBlockState(), Direction.SOUTH));
+        sign(20, 1, -12, 0, null, title("Alchemy Lab"), line("taste & brew"), line("2-3 ingredients"));
+        sign(28, 1, -12, 0, null, title("Enchanter"), line("disenchant to learn,"), line("enchant with gems"));
+        List<ItemStack> ingredients = new ArrayList<>();
+        for (IngredientDef def : UntamedArcana.INGREDIENTS.values()) {
+            Item item = BuiltInRegistries.ITEM.get(def.item());
+            if (item != Items.AIR) ingredients.add(stack(item, Math.min(16, new ItemStack(item).getMaxStackSize())));
         }
-        chestRow(22, -8, 2, Direction.SOUTH, "Enchanting", List.of(full(Items.LAPIS_LAZULI), full(Items.BOOK),
-                new ItemStack(Items.ENCHANTED_BOOK, 4), full(Items.EXPERIENCE_BOTTLE)));
+        ingredients.sort(java.util.Comparator.comparing(st -> BuiltInRegistries.ITEM.getKey(st.getItem()).toString()));
+        int ax = chestRow(16, -8, -2, Direction.SOUTH, "Ingredients", ingredients);
+
+        List<ItemStack> gems = new ArrayList<>();
+        for (var gem : UntamedArcana.SOUL_GEMS) {
+            for (int i = 0; i < 3; i++) gems.add(new ItemStack(gem.get()));
+            ItemStack filled = new ItemStack(gem.get());
+            filled.set(UntamedArcana.SOUL.get(), ((SoulGemItem) gem.get()).capacity);
+            gems.add(filled);
+            gems.add(filled.copy());
+        }
+        chestRow(ax, -8, -2, Direction.SOUTH, "Soul gems", gems);
+
+        List<ItemStack> enchanted = new ArrayList<>();
+        var enchantments = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+        enchantments.holders().filter(h -> !h.is(net.minecraft.tags.EnchantmentTags.CURSE))
+                .sorted(java.util.Comparator.comparing(h -> h.key().location().toString()))
+                .forEach(h -> enchanted.add(net.minecraft.world.item.EnchantedBookItem.createForEnchantment(
+                        new net.minecraft.world.item.enchantment.EnchantmentInstance(h, h.value().getMaxLevel()))));
+        for (Item item : List.of(Items.IRON_SWORD, Items.IRON_PICKAXE, Items.IRON_CHESTPLATE, Items.BOW, Items.IRON_BOOTS)) {
+            ItemStack gearPiece = new ItemStack(item);
+            enchantments.holders().filter(h -> h.value().canEnchant(gearPiece) && !h.is(net.minecraft.tags.EnchantmentTags.CURSE)).findFirst()
+                    .ifPresent(h -> gearPiece.enchant(h, 1));
+            enchanted.add(gearPiece);
+        }
+        chestRow(24, -8, 2, Direction.SOUTH, "Enchanted (disenchant)", enchanted);
 
         // training range: dummies in front of a backstop
         for (int bx = 10; bx <= 30; bx++) {

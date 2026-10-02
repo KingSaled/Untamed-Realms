@@ -1,0 +1,6 @@
+{
+  "name": "Ward",
+  "mob_effect": "minecraft:absorption",
+  "duration": 1200,
+  "value": 40
+}

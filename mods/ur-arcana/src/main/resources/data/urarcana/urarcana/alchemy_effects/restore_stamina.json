@@ -1,0 +1,5 @@
+{
+  "name": "Restore Stamina",
+  "mob_effect": "urarcana:restore_stamina",
+  "value": 30
+}

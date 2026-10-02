@@ -1,0 +1,5 @@
+{
+  "name": "Restore Health",
+  "mob_effect": "minecraft:instant_health",
+  "value": 40
+}

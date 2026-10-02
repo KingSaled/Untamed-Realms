@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:pufferfish",
+  "effects": [
+    "urarcana:waterbreathing",
+    "urarcana:lingering_damage",
+    "urarcana:confusion",
+    "urarcana:hunger"
+  ]
+}

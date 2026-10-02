@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "urarcana:block/alchemy_lab"
+    },
+    "facing=east": {
+      "model": "urarcana:block/alchemy_lab",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "urarcana:block/alchemy_lab",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "urarcana:block/alchemy_lab",
+      "y": 270
+    }
+  }
+}

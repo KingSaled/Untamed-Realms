@@ -1,0 +1,6 @@
+{
+  "name": "Regenerate Health",
+  "mob_effect": "minecraft:regeneration",
+  "duration": 400,
+  "value": 45
+}

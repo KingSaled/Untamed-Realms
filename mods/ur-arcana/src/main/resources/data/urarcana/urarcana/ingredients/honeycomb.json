@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:honeycomb",
+  "effects": [
+    "urarcana:restore_stamina",
+    "urarcana:regenerate_health",
+    "urarcana:resist_damage",
+    "urarcana:slow"
+  ]
+}

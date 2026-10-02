@@ -35,6 +35,18 @@ public final class ArcanaKnowledge implements INBTSerializable<CompoundTag> {
         return enchantments;
     }
 
+    /** Discovered effects per ingredient item, as bitmasks (bit i = effect i). */
+    public Map<ResourceLocation, Integer> ingredients() {
+        return ingredients;
+    }
+
+    public void replaceWith(Map<ResourceLocation, Integer> ingredients, java.util.Collection<ResourceLocation> enchantments) {
+        this.ingredients.clear();
+        this.ingredients.putAll(ingredients);
+        this.enchantments.clear();
+        this.enchantments.addAll(enchantments);
+    }
+
     @Override
     public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
         CompoundTag tag = new CompoundTag();

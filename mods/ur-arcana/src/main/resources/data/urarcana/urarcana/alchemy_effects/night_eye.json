@@ -1,0 +1,6 @@
+{
+  "name": "Night Eye",
+  "mob_effect": "minecraft:night_vision",
+  "duration": 1800,
+  "value": 20
+}

@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "urarcana:petty_soul_gem",
+    "urarcana:lesser_soul_gem",
+    "urarcana:common_soul_gem",
+    "urarcana:greater_soul_gem",
+    "urarcana:grand_soul_gem"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:beetroot",
+  "effects": [
+    "urarcana:restore_health",
+    "urarcana:fortify_strength",
+    "urarcana:fortune",
+    "urarcana:fatigue"
+  ]
+}

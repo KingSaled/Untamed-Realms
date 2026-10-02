@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:fermented_spider_eye",
+  "effects": [
+    "urarcana:weakness",
+    "urarcana:invisibility",
+    "urarcana:paralysis",
+    "urarcana:blindness"
+  ]
+}

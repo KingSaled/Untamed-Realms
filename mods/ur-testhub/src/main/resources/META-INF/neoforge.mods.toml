@@ -67,3 +67,10 @@ type = "required"
 versionRange = "[${suite_version},)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[dependencies.urtesthub]]
+modId = "urarcana"
+type = "required"
+versionRange = "[${suite_version},)"
+ordering = "AFTER"
+side = "BOTH"

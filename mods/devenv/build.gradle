@@ -9,6 +9,7 @@ def suite = [
     urnpcs   : ':ur-npcs',
     urmagic  : ':ur-magic',
     urarsenal: ':ur-arsenal',
+    urarcana : ':ur-arcana',
     urtesthub: ':ur-testhub',
 ]
 

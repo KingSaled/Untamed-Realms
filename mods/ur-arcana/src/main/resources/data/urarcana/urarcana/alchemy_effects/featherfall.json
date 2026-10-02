@@ -1,0 +1,6 @@
+{
+  "name": "Featherfall",
+  "mob_effect": "minecraft:slow_falling",
+  "duration": 600,
+  "value": 20
+}

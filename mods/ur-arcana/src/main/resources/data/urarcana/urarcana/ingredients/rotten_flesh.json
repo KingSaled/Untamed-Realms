@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:rotten_flesh",
+  "effects": [
+    "urarcana:hunger",
+    "urarcana:restore_health",
+    "urarcana:lingering_damage",
+    "urarcana:fortify_strength"
+  ]
+}

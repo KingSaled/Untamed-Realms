@@ -1,0 +1,8 @@
+{
+  "name": "Paralysis",
+  "mob_effect": "minecraft:slowness",
+  "duration": 80,
+  "amplifier": 5,
+  "harmful": true,
+  "value": 60
+}

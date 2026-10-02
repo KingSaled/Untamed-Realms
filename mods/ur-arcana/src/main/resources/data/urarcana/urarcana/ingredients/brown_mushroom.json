@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:brown_mushroom",
+  "effects": [
+    "urarcana:fatigue",
+    "urarcana:restore_stamina",
+    "urarcana:night_eye",
+    "urarcana:lingering_damage"
+  ]
+}

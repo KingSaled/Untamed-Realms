@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarcana:inject/soul_trap_tome",
+  "chance": 0.05,
+  "prefixes": [
+    "chests/"
+  ]
+}

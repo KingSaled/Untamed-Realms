@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:allium",
+  "effects": [
+    "urarcana:restore_stamina",
+    "urarcana:invisibility",
+    "urarcana:ward",
+    "urarcana:lingering_damage"
+  ]
+}

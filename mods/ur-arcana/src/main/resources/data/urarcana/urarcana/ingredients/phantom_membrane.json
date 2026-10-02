@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:phantom_membrane",
+  "effects": [
+    "urarcana:featherfall",
+    "urarcana:night_eye",
+    "urarcana:fatigue",
+    "urarcana:levitation"
+  ]
+}

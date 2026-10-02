@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:slime_ball",
+  "effects": [
+    "urarcana:leaping",
+    "urarcana:slow",
+    "urarcana:featherfall",
+    "urarcana:resist_damage"
+  ]
+}

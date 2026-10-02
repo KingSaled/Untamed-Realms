@@ -1,0 +1,6 @@
+{
+  "name": "Fortune",
+  "mob_effect": "minecraft:luck",
+  "duration": 2400,
+  "value": 20
+}

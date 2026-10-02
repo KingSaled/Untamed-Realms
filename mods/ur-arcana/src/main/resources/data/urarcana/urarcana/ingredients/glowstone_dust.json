@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:glowstone_dust",
+  "effects": [
+    "urarcana:night_eye",
+    "urarcana:fortify_mining",
+    "urarcana:ward",
+    "urarcana:resist_fire"
+  ]
+}

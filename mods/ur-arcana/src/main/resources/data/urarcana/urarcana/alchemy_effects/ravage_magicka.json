@@ -1,0 +1,6 @@
+{
+  "name": "Ravage Magicka",
+  "mob_effect": "urarcana:ravage_magicka",
+  "harmful": true,
+  "value": 30
+}

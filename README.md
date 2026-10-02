@@ -96,8 +96,9 @@ shops, spells, perks, classes, XP tables) is JSON and can be changed with a data
 
 ## Repository layout
 ```
-mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic, ur-arsenal, ur-testhub (+ devenv runner)
-                 ur-arcana (alchemy & enchanting, work in progress, not built yet)
+mods/            ur-core, ur-skills, ur-classes, ur-quests, ur-npcs, ur-magic, ur-arsenal, ur-arcana, ur-testhub
+                 (+ devenv runner)
+art/blockbench/  hand-made Blockbench models that replace generated ones (see its README)
 pack/            packwiz modpack: mods.yml (source of truth), lock files, config overrides
 server/          install / start / smoke-test scripts, JVM flags, server.properties, docker-compose
 tools/artforge/  code-driven pixel art + 3D model pipeline
@@ -113,5 +114,6 @@ docs/            architecture, roadmap, guides, art previews
 
 ## Status
 Early development. v0.1 is playable; **v0.2 is in testing**: arsenal tiers, ores, crafting stations,
-tempering and jewelry are in, while alchemy and enchanting (ur-arcana) come after this test round.
+tempering, jewelry, and now Skyrim alchemy and enchanting (ur-arcana). Weapon models are being
+redone by hand in Blockbench ([art/blockbench](art/blockbench/README.md)).
 See the [roadmap](docs/ROADMAP.md).

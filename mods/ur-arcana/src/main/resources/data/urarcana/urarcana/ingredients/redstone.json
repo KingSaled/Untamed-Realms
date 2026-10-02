@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:redstone",
+  "effects": [
+    "urarcana:swiftness",
+    "urarcana:fortify_mining",
+    "urarcana:confusion",
+    "urarcana:damage_health"
+  ]
+}

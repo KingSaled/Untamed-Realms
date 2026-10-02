@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:feather",
+  "effects": [
+    "urarcana:featherfall",
+    "urarcana:leaping",
+    "urarcana:swiftness",
+    "urarcana:levitation"
+  ]
+}

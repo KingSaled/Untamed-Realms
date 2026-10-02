@@ -19,8 +19,11 @@
   took the grindstone's role).
 - [x] Rings & amulets as Curios accessories with enchant-like effects (SkillEffect powered).
 - [x] Art design language: [ART_STYLE.md](ART_STYLE.md) + ArtForge lint in CI.
-- [ ] Real **alchemy**: ingredients with hidden effects discovered by eating, an alchemy lab. *(ur-arcana, started; after the v0.2 playtest)*
-- [ ] **Enchanting** overhaul: disenchant to learn, enchant with soul gems. *(ur-arcana, started; after the v0.2 playtest)*
+- [x] Real **alchemy** (ur-arcana): 41 ingredients with four hidden effects each, learned by tasting and
+  brewing at an alchemy lab; potions and thrown poisons whose strength follows Alchemy.
+- [x] **Enchanting** overhaul (ur-arcana): disenchant to learn, enchant with soul gems filled by Soul Trap;
+  the vanilla enchanting table and brewing stand can no longer be crafted.
+- [ ] Hand-made Blockbench weapon models (pipeline ready: [art/blockbench](../art/blockbench/README.md)).
 
 ## v0.3 — The living world
 - Lockpicking minigame for locked chests/doors in our own dungeons.

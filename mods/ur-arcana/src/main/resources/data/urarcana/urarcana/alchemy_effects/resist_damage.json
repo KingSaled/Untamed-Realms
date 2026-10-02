@@ -1,0 +1,6 @@
+{
+  "name": "Resist Damage",
+  "mob_effect": "minecraft:resistance",
+  "duration": 600,
+  "value": 50
+}

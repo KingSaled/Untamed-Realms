@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:red_mushroom",
+  "effects": [
+    "urarcana:lingering_damage",
+    "urarcana:fortify_strength",
+    "urarcana:confusion",
+    "urarcana:ravage_magicka"
+  ]
+}

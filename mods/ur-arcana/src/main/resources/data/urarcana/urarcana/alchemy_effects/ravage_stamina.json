@@ -1,0 +1,6 @@
+{
+  "name": "Ravage Stamina",
+  "mob_effect": "urarcana:ravage_stamina",
+  "harmful": true,
+  "value": 25
+}

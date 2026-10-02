@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:amethyst_shard",
+  "effects": [
+    "urarcana:ward",
+    "urarcana:restore_magicka",
+    "urarcana:fortify_mining",
+    "urarcana:paralysis"
+  ]
+}

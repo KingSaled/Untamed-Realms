@@ -6,6 +6,8 @@ import com.untamedrealms.arcana.block.ArcanaStationBlock;
 import com.untamedrealms.arcana.data.AlchemyEffect;
 import com.untamedrealms.arcana.data.ArcanaKnowledge;
 import com.untamedrealms.arcana.data.IngredientDef;
+import com.untamedrealms.arcana.effect.SoulTrappedEffect;
+import com.untamedrealms.arcana.effect.VitalEffect;
 import com.untamedrealms.arcana.item.SoulGemItem;
 import com.untamedrealms.core.data.DataRegistry;
 import com.untamedrealms.core.registry.CoreItems;
@@ -34,13 +36,12 @@ import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * Untamed Realms: Arcana. Alchemy - ingredients with hidden effects, discovered by tasting and
- * brewing at the alchemy lab - and enchanting - learn enchantments by disenchanting, apply them with
- * soul gems at the arcane enchanter.
+ * Untamed Realms: Arcana. Skyrim's alchemy - ingredients with four hidden effects, learned by tasting
+ * and brewing at the alchemy lab - and enchanting - learn enchantments by disenchanting gear at the
+ * arcane enchanter, then put them on your own gear with soul gems filled by Soul Trap.
  */
 @Mod(UntamedArcana.MODID)
 public final class UntamedArcana {
@@ -55,12 +56,16 @@ public final class UntamedArcana {
             () -> AttachmentType.serializable(ArcanaKnowledge::new).copyOnDeath().build());
 
     public static final DeferredRegister.DataComponents COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, MODID);
+    /** The soul a soul gem holds: 0 empty, 1 petty .. 5 grand. */
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> SOUL = COMPONENTS.registerComponentType("soul",
             b -> b.persistent(Codec.intRange(0, 5)).networkSynchronized(ByteBufCodecs.VAR_INT));
 
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, MODID);
-    public static final DeferredHolder<MobEffect, RestoreEffect> RESTORE_MAGICKA = MOB_EFFECTS.register("restore_magicka", () -> new RestoreEffect(true, 0x3C7FE0));
-    public static final DeferredHolder<MobEffect, RestoreEffect> RESTORE_STAMINA = MOB_EFFECTS.register("restore_stamina", () -> new RestoreEffect(false, 0x4FC24F));
+    public static final DeferredHolder<MobEffect, VitalEffect> RESTORE_MAGICKA = MOB_EFFECTS.register("restore_magicka", () -> new VitalEffect(true, true, 0x3C7FE0));
+    public static final DeferredHolder<MobEffect, VitalEffect> RESTORE_STAMINA = MOB_EFFECTS.register("restore_stamina", () -> new VitalEffect(false, true, 0x4FC24F));
+    public static final DeferredHolder<MobEffect, VitalEffect> RAVAGE_MAGICKA = MOB_EFFECTS.register("ravage_magicka", () -> new VitalEffect(true, false, 0x1D2F6B));
+    public static final DeferredHolder<MobEffect, VitalEffect> RAVAGE_STAMINA = MOB_EFFECTS.register("ravage_stamina", () -> new VitalEffect(false, false, 0x2F5A1D));
+    public static final DeferredHolder<MobEffect, SoulTrappedEffect> SOUL_TRAPPED = MOB_EFFECTS.register("soul_trapped", SoulTrappedEffect::new);
 
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
     public static final DeferredBlock<ArcanaStationBlock> ALCHEMY_LAB = BLOCKS.register("alchemy_lab", () -> new ArcanaStationBlock(false,
@@ -72,7 +77,13 @@ public final class UntamedArcana {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
     public static final DeferredItem<BlockItem> ALCHEMY_LAB_ITEM = ITEMS.registerSimpleBlockItem(ALCHEMY_LAB);
     public static final DeferredItem<BlockItem> ARCANE_ENCHANTER_ITEM = ITEMS.registerSimpleBlockItem(ARCANE_ENCHANTER);
+    /** Index 0 = petty .. 4 = grand. */
     public static final List<DeferredItem<SoulGemItem>> SOUL_GEMS = new ArrayList<>();
+    /** Our own alchemy ingredients; most ingredients are vanilla items (see the ingredient data). */
+    public static final DeferredItem<Item> FIRE_SALTS = ITEMS.registerSimpleItem("fire_salts");
+    public static final DeferredItem<Item> FROST_SALTS = ITEMS.registerSimpleItem("frost_salts");
+    public static final DeferredItem<Item> VOID_SALTS = ITEMS.registerSimpleItem("void_salts", new Item.Properties().rarity(Rarity.UNCOMMON));
+    public static final DeferredItem<Item> NIRNROOT = ITEMS.registerSimpleItem("nirnroot", new Item.Properties().rarity(Rarity.UNCOMMON));
 
     static {
         Rarity[] rarity = {Rarity.COMMON, Rarity.COMMON, Rarity.UNCOMMON, Rarity.UNCOMMON, Rarity.RARE, Rarity.EPIC};
@@ -96,13 +107,5 @@ public final class UntamedArcana {
 
     public static ResourceLocation id(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
-    }
-
-    /** The ingredient definition for an item, or null. */
-    public static IngredientDef ingredient(ResourceLocation item) {
-        for (Map.Entry<ResourceLocation, IngredientDef> e : INGREDIENTS.entries().entrySet()) {
-            if (e.getValue().item().equals(item)) return e.getValue();
-        }
-        return null;
     }
 }

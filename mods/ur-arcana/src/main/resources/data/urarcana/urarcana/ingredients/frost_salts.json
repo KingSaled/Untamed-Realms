@@ -1,0 +1,9 @@
+{
+  "item": "urarcana:frost_salts",
+  "effects": [
+    "urarcana:slow",
+    "urarcana:restore_magicka",
+    "urarcana:ward",
+    "urarcana:fatigue"
+  ]
+}

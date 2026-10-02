@@ -1,0 +1,7 @@
+{
+  "name": "Confusion",
+  "mob_effect": "minecraft:nausea",
+  "duration": 300,
+  "harmful": true,
+  "value": 10
+}

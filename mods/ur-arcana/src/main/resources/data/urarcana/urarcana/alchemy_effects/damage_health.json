@@ -1,0 +1,6 @@
+{
+  "name": "Damage Health",
+  "mob_effect": "minecraft:instant_damage",
+  "harmful": true,
+  "value": 45
+}

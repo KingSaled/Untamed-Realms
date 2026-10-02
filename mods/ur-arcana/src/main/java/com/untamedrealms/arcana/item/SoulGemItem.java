@@ -10,8 +10,8 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 /**
- * A soul gem: holds one soul up to its size (Petty 1 .. Grand 5). Filled by killing a creature while
- * carrying it; spent (emptied) at the arcane enchanter.
+ * A soul gem: holds one soul up to its size (Petty 1 .. Grand 5). Filled when a creature dies under Soul
+ * Trap while you carry it (enchanting.SoulTrap); spent (emptied) at the arcane enchanter.
  */
 public class SoulGemItem extends Item {
     public static final String[] SIZES = {"", "petty", "lesser", "common", "greater", "grand"};

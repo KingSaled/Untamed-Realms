@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:dandelion",
+  "effects": [
+    "urarcana:featherfall",
+    "urarcana:fortune",
+    "urarcana:swiftness",
+    "urarcana:hunger"
+  ]
+}

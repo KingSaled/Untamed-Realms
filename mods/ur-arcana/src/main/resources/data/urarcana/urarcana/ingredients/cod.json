@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:cod",
+  "effects": [
+    "urarcana:waterbreathing",
+    "urarcana:restore_stamina",
+    "urarcana:fortify_health",
+    "urarcana:hunger"
+  ]
+}

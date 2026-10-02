@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:poppy",
+  "effects": [
+    "urarcana:restore_magicka",
+    "urarcana:ravage_stamina",
+    "urarcana:fortune",
+    "urarcana:damage_health"
+  ]
+}

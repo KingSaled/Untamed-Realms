@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:sugar",
+  "effects": [
+    "urarcana:swiftness",
+    "urarcana:restore_stamina",
+    "urarcana:hunger",
+    "urarcana:confusion"
+  ]
+}

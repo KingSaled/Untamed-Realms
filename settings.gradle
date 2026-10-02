@@ -19,7 +19,7 @@ rootProject.name = 'untamed-realms'
 //   ur-core  <-  ur-skills  <-  ur-arsenal, ur-arcana
 //   ur-testhub depends on everything (builds the test world's hub)
 // devenv is not a mod: it aggregates every module for dev runs and CI game tests.
-['ur-core', 'ur-skills', 'ur-classes', 'ur-quests', 'ur-npcs', 'ur-magic', 'ur-arsenal', 'ur-testhub'].each {
+['ur-core', 'ur-skills', 'ur-classes', 'ur-quests', 'ur-npcs', 'ur-magic', 'ur-arsenal', 'ur-arcana', 'ur-testhub'].each {
     include ":$it"
     project(":$it").projectDir = file("mods/$it")
 }

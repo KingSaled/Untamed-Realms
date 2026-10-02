@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:kelp",
+  "effects": [
+    "urarcana:waterbreathing",
+    "urarcana:restore_health",
+    "urarcana:hunger",
+    "urarcana:swiftness"
+  ]
+}

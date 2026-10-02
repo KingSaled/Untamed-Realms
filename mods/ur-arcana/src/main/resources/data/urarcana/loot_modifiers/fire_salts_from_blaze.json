@@ -1,0 +1,9 @@
+{
+  "type": "urcore:inject_chest_loot",
+  "conditions": [],
+  "table": "urarcana:inject/blaze",
+  "chance": 0.5,
+  "prefixes": [
+    "entities/blaze"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:turtle_scute",
+  "effects": [
+    "urarcana:resist_damage",
+    "urarcana:waterbreathing",
+    "urarcana:slow",
+    "urarcana:fortify_health"
+  ]
+}

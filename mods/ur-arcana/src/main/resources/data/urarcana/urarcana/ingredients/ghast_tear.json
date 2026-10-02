@@ -1,0 +1,9 @@
+{
+  "item": "minecraft:ghast_tear",
+  "effects": [
+    "urarcana:regenerate_health",
+    "urarcana:featherfall",
+    "urarcana:withering",
+    "urarcana:resist_damage"
+  ]
+}

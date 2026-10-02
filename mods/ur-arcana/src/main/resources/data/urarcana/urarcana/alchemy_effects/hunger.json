@@ -1,0 +1,7 @@
+{
+  "name": "Hunger",
+  "mob_effect": "minecraft:hunger",
+  "duration": 600,
+  "harmful": true,
+  "value": 10
+}

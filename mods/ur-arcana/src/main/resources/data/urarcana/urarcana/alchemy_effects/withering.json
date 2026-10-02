@@ -1,0 +1,7 @@
+{
+  "name": "Withering",
+  "mob_effect": "minecraft:wither",
+  "duration": 200,
+  "harmful": true,
+  "value": 45
+}

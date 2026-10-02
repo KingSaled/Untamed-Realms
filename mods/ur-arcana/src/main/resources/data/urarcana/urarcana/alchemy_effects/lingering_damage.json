@@ -1,0 +1,7 @@
+{
+  "name": "Lingering Damage Health",
+  "mob_effect": "minecraft:poison",
+  "duration": 200,
+  "harmful": true,
+  "value": 40
+}

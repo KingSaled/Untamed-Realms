@@ -1,0 +1,9 @@
+{
+  "item": "urarcana:nirnroot",
+  "effects": [
+    "urarcana:damage_health",
+    "urarcana:ravage_stamina",
+    "urarcana:invisibility",
+    "urarcana:resist_damage"
+  ]
+}

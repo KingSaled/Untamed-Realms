@@ -4,24 +4,24 @@
     {
       "id": "alchemist_1",
       "name": "Alchemist I",
-      "description": "Potions you drink last 15% longer (rank 1).",
+      "description": "Potions and poisons you brew are 20% stronger (rank 1).",
       "level": 10,
       "effects": [
         {
-          "type": "potion_duration",
-          "value": 0.15
+          "type": "alchemy_power",
+          "value": 0.2
         }
       ]
     },
     {
       "id": "alchemist_2",
       "name": "Alchemist II",
-      "description": "Potions you drink last 15% longer (rank 2).",
+      "description": "Potions and poisons you brew are 20% stronger (rank 2).",
       "level": 30,
       "effects": [
         {
-          "type": "potion_duration",
-          "value": 0.15
+          "type": "alchemy_power",
+          "value": 0.2
         }
       ],
       "requires": [
@@ -31,12 +31,12 @@
     {
       "id": "alchemist_3",
       "name": "Alchemist III",
-      "description": "Potions you drink last 15% longer (rank 3).",
+      "description": "Potions and poisons you brew are 20% stronger (rank 3).",
       "level": 60,
       "effects": [
         {
-          "type": "potion_duration",
-          "value": 0.15
+          "type": "alchemy_power",
+          "value": 0.2
         }
       ],
       "requires": [
@@ -57,9 +57,24 @@
       ]
     },
     {
+      "id": "experimenter",
+      "name": "Experimenter",
+      "description": "Tasting an ingredient reveals one more of its effects.",
+      "level": 50,
+      "effects": [
+        {
+          "type": "alchemy_reveal",
+          "value": 1
+        }
+      ],
+      "requires": [
+        "alchemist_2"
+      ]
+    },
+    {
       "id": "purity",
       "name": "Purity",
-      "description": "Potions you drink last another 30% longer.",
+      "description": "Potions you drink last 30% longer.",
       "level": 80,
       "effects": [
         {
