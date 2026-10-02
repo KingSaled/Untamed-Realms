@@ -1,0 +1,27 @@
+name: Art reference (draft, never published)
+
+# Fetches Skyrim reference pictures for the arsenal models into a DRAFT release, which only repo
+# collaborators can see. Nothing is committed. Delete the draft when the art is done.
+on:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/research/fetch_reference.py', '.github/workflows/art-reference.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/research/fetch_reference.py reference
+      - run: cd reference && zip -q ../art-reference.zip * && ls | wc -l
+      - name: Upload to the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete art-reference-draft --yes 2>/dev/null || true
+          gh release create art-reference-draft --draft --title "art reference (draft, private)" \
+            --notes "Reference pictures for modelling. Draft only - do not publish." art-reference.zip
