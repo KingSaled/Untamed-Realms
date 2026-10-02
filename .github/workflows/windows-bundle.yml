@@ -128,7 +128,22 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: Untamed-Realms-Windows
-      - uses: softprops/action-gh-release@v2
+      # Replace the files on the existing release. Only the asset calls are used: editing the release
+      # itself ("update a release") began failing for the workflow token with "Resource not accessible
+      # by integration", and the launcher only needs version.txt and the zip.
+      - name: Upload to the existing release
+        id: upload
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view latest-test-build --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release upload latest-test-build Untamed-Realms-Windows.zip version.txt --clobber --repo "$GITHUB_REPOSITORY"
+            echo "done=true" >> "$GITHUB_OUTPUT"
+            echo "uploaded $(cat version.txt) from ${GITHUB_REF_NAME} at ${GITHUB_SHA}"
+          fi
+      - name: Create the release (first time only)
+        if: steps.upload.outputs.done != 'true'
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: latest-test-build
           name: Untamed Realms - latest test build
