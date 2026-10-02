@@ -18,7 +18,12 @@ public final class ArsenalBlocks {
     public static final DeferredBlock<DropExperienceBlock> ORICHALCUM_ORE = BLOCKS.register("orichalcum_ore", () -> ore(3.0f, false));
     public static final DeferredBlock<DropExperienceBlock> MOONSTONE_ORE = BLOCKS.register("moonstone_ore", () -> ore(3.0f, false));
     public static final DeferredBlock<DropExperienceBlock> MALACHITE_ORE = BLOCKS.register("malachite_ore", () -> ore(3.5f, false));
-    public static final DeferredBlock<DropExperienceBlock> EBONY_ORE = BLOCKS.register("ebony_ore", () -> ore(4.5f, true));
+    public static final DeferredBlock<DropExperienceBlock> EBONY_ORE = BLOCKS.register("ebony_ore", () -> ore(4.5f, false));
+    // deepslate variants (vanilla deepslate ores are 1.5 harder)
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_ORICHALCUM_ORE = BLOCKS.register("deepslate_orichalcum_ore", () -> ore(4.5f, true));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_MOONSTONE_ORE = BLOCKS.register("deepslate_moonstone_ore", () -> ore(4.5f, true));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_MALACHITE_ORE = BLOCKS.register("deepslate_malachite_ore", () -> ore(5.0f, true));
+    public static final DeferredBlock<DropExperienceBlock> DEEPSLATE_EBONY_ORE = BLOCKS.register("deepslate_ebony_ore", () -> ore(6.0f, true));
 
     public static final DeferredBlock<StationBlock> FORGE = BLOCKS.register("forge", () -> new StationBlock(Station.FORGE,
             BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.5f).sound(SoundType.STONE).requiresCorrectToolForDrops()

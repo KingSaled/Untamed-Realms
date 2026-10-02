@@ -81,6 +81,14 @@ public final class ClientMagic {
         }
 
         @SubscribeEvent
+        public static void registerParticles(net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent event) {
+            for (String name : com.untamedrealms.magic.fx.MagicFx.PARTICLE_NAMES) {
+                MagicParticle.Motion motion = MagicParticle.Motion.valueOf(name.toUpperCase(java.util.Locale.ROOT));
+                event.registerSpriteSet(com.untamedrealms.magic.fx.MagicFx.PARTICLE.get(name).get(), sprites -> new MagicParticle.Provider(sprites, motion));
+            }
+        }
+
+        @SubscribeEvent
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(UntamedMagic.SPELL_PROJECTILE.get(), NoopRenderer::new);
         }

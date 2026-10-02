@@ -375,10 +375,12 @@ public final class HubBuilder {
             }
         }
 
-        // an ore wall: vanilla ores and the four Arsenal ores, two of each
+        // an ore wall: vanilla ores and the Arsenal ores (stone and deepslate), two of each
         List<Block> ores = List.of(Blocks.COAL_ORE, Blocks.IRON_ORE, Blocks.COPPER_ORE, Blocks.GOLD_ORE, Blocks.REDSTONE_ORE,
-                Blocks.LAPIS_ORE, Blocks.DIAMOND_ORE, Blocks.EMERALD_ORE, Blocks.DEEPSLATE_IRON_ORE, Blocks.DEEPSLATE_DIAMOND_ORE,
-                ArsenalBlocks.ORICHALCUM_ORE.get(), ArsenalBlocks.MOONSTONE_ORE.get(), ArsenalBlocks.MALACHITE_ORE.get(), ArsenalBlocks.EBONY_ORE.get());
+                Blocks.DIAMOND_ORE, Blocks.DEEPSLATE_IRON_ORE,
+                ArsenalBlocks.ORICHALCUM_ORE.get(), ArsenalBlocks.MOONSTONE_ORE.get(), ArsenalBlocks.MALACHITE_ORE.get(), ArsenalBlocks.EBONY_ORE.get(),
+                ArsenalBlocks.DEEPSLATE_ORICHALCUM_ORE.get(), ArsenalBlocks.DEEPSLATE_MOONSTONE_ORE.get(),
+                ArsenalBlocks.DEEPSLATE_MALACHITE_ORE.get(), ArsenalBlocks.DEEPSLATE_EBONY_ORE.get());
         for (int i = 0; i < ores.size(); i++) {
             int x = 8 + 2 * i;
             set(x, 1, 26, ores.get(i).defaultBlockState());

@@ -29,6 +29,7 @@ performance:          # ---- engine & server performance (mostly invisible)
   - packet-fixer       # raises packet size limits for big modpacks
   - spark              # profiler (/spark) for diagnosing lag
   - chunky             # world pre-generation (/chunky)
+  - distanthorizons    # far-away terrain as cheap level-of-detail meshes: huge view distance (client; server sends LODs)
   - yeetus-experimentus # hides the experimental-world warning
 
 qol:                  # ---- quality of life
@@ -62,6 +63,7 @@ world:                # ---- adventure-first world generation
   - terralith          # dramatic overworld terrain
   - lithostitched      # worldgen compatibility library
   - towns-and-towers   # medieval towns, towers & outposts
+  - ct-overhaul-village # ChoiceTheorem's Overhauled Village: rebuilt, biome-themed villages that feel like real settlements
   - dungeons-and-taverns
   - explorify
   - repurposed-structures-forge

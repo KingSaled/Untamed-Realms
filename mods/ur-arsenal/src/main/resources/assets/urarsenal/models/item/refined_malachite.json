@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "urarsenal:item/refined_malachite"
+    "layer0": "minecraft:item/iron_ingot_urarsenal_malachite"
   }
 }

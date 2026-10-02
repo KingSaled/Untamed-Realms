@@ -85,6 +85,7 @@ public final class UntamedMagic {
         ITEMS.register(modBus);
         ENTITIES.register(modBus);
         EFFECTS.register(modBus);
+        com.untamedrealms.magic.fx.MagicFx.register(modBus);
         container.registerConfig(ModConfig.Type.SERVER, MagicConfig.SPEC);
         modBus.addListener(BuildCreativeModeTabContentsEvent.class, event -> {
             if (!event.getTabKey().equals(CoreItems.TAB_KEY)) return;

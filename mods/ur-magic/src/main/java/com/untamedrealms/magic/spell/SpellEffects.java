@@ -3,6 +3,7 @@ package com.untamedrealms.magic.spell;
 import com.untamedrealms.magic.UntamedMagic;
 import com.untamedrealms.magic.data.SpellDef;
 import com.untamedrealms.magic.entity.SpellProjectile;
+import com.untamedrealms.magic.fx.SpellFx;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -65,18 +66,8 @@ public final class SpellEffects {
                 return false;
             }
         }
-        level.playSound(null, caster.blockPosition(), castSound(def), SoundSource.PLAYERS, 0.8f, 1.0f + caster.getRandom().nextFloat() * 0.2f);
+        SpellFx.cast(caster, def.element(), def.kind());
         return true;
-    }
-
-    private static net.minecraft.sounds.SoundEvent castSound(SpellDef def) {
-        return switch (def.element()) {
-            case "fire" -> SoundEvents.BLAZE_SHOOT;
-            case "frost" -> SoundEvents.GLASS_BREAK;
-            case "shock" -> SoundEvents.BEACON_POWER_SELECT;
-            case "heal", "holy" -> SoundEvents.AMETHYST_BLOCK_CHIME;
-            default -> SoundEvents.EVOKER_CAST_SPELL;
-        };
     }
 
     /** What a spell does to a creature it hits (projectiles, cones, lightning). */
@@ -117,14 +108,21 @@ public final class SpellEffects {
         Vec3 eye = caster.getEyePosition();
         Vec3 look = caster.getLookAngle();
         ServerLevel level = caster.serverLevel();
-        for (int i = 1; i <= (int) def.range(); i++) {
-            Vec3 p = eye.add(look.scale(i));
-            level.sendParticles(SpellProjectile.particle(def.element()), p.x, p.y, p.z, 4 + i, 0.15 * i, 0.15 * i, 0.15 * i, 0.02);
+        SpellFx.cone(caster, def.element(), def.range());
+        boolean shock = "shock".equals(def.element());
+        if (shock) {
+            // a couple of stray arcs into the air even when nothing is hit
+            for (int i = 0; i < 2; i++) {
+                Vec3 miss = eye.add(look.add((caster.getRandom().nextDouble() - 0.5) * 0.5, (caster.getRandom().nextDouble() - 0.5) * 0.5,
+                        (caster.getRandom().nextDouble() - 0.5) * 0.5).normalize().scale(def.range() * (0.5 + caster.getRandom().nextDouble() * 0.5)));
+                SpellFx.arc(level, SpellFx.hand(caster), miss, caster.getRandom());
+            }
         }
         AABB box = caster.getBoundingBox().expandTowards(look.scale(def.range())).inflate(def.radius() / 2);
         for (LivingEntity target : level.getEntitiesOfClass(LivingEntity.class, box, e -> e != caster && e.isAlive())) {
             Vec3 to = target.position().add(0, target.getBbHeight() / 2, 0).subtract(eye);
             if (to.length() > def.range() + 1 || to.normalize().dot(look) < 0.82) continue;
+            if (shock) SpellFx.arc(level, SpellFx.hand(caster), target.position().add(0, target.getBbHeight() / 2, 0), caster.getRandom());
             applyToTarget(caster, def, target, power, caster);
         }
     }
@@ -143,6 +141,8 @@ public final class SpellEffects {
         bolt.moveTo(strike);
         bolt.setVisualOnly(true);
         level.addFreshEntity(bolt);
+        SpellFx.arc(level, SpellFx.hand(caster), strike, caster.getRandom());
+        SpellFx.impact(level, strike, def.element(), caster.getRandom());
         for (LivingEntity target : level.getEntitiesOfClass(LivingEntity.class, new AABB(strike, strike).inflate(def.radius()), e -> e != caster)) {
             applyToTarget(caster, def, target, power, caster);
         }
@@ -159,13 +159,13 @@ public final class SpellEffects {
             caster.getActiveEffects().stream().filter(e -> !e.getEffect().value().isBeneficial()).map(MobEffectInstance::getEffect).toList()
                     .forEach(caster::removeEffect);
         }
-        caster.serverLevel().sendParticles(SpellProjectile.particle(def.element()), caster.getX(), caster.getY() + 1, caster.getZ(), 20, 0.4, 0.6, 0.4, 0.02);
+        SpellFx.spiral(caster, def.element());
     }
 
     private static void area(ServerPlayer caster, SpellDef def, float power) {
         ServerLevel level = caster.serverLevel();
         float radius = def.radius() * Math.min(2f, power);
-        level.sendParticles(SpellProjectile.particle(def.element()), caster.getX(), caster.getY() + 0.5, caster.getZ(), 60, radius / 2, 0.5, radius / 2, 0.05);
+        SpellFx.ring(caster, def.element(), radius);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, caster.getBoundingBox().inflate(radius), e -> e != caster && e.isAlive());
         for (LivingEntity target : targets) {
             switch (def.area()) {
@@ -227,7 +227,7 @@ public final class SpellEffects {
             mob.setHealth(mob.getMaxHealth());
         }
         level.addFreshEntity(mob);
-        level.sendParticles(net.minecraft.core.particles.ParticleTypes.PORTAL, mob.getX(), mob.getY() + 0.5, mob.getZ(), 40, 0.4, 0.6, 0.4, 0.3);
+        SpellFx.pillar(level, mob.position(), def.element());
         long expires = level.getGameTime() + Math.round(def.duration() * power);
         mob.getPersistentData().putLong(EXPIRES_TAG, expires);
         SUMMONS.put(mob.getUUID(), expires);
@@ -238,6 +238,7 @@ public final class SpellEffects {
         ItemStack sword = new ItemStack(UntamedMagic.BOUND_SWORD.get());
         sword.set(UntamedMagic.EXPIRES.get(), caster.serverLevel().getGameTime() + Math.round(def.duration() * power));
         sword.set(DataComponents.UNBREAKABLE, new Unbreakable(false));
+        SpellFx.spiral(caster, def.element());
         if (caster.getMainHandItem().isEmpty()) caster.setItemInHand(net.minecraft.world.InteractionHand.MAIN_HAND, sword);
         else if (!caster.getInventory().add(sword)) caster.drop(sword, false);
     }

@@ -1,0 +1,106 @@
+{
+  "fire_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:fire_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.fire_cast"
+  },
+  "fire_impact": {
+    "sounds": [
+      {
+        "name": "urmagic:fire_impact"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.fire_impact"
+  },
+  "shock_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:shock_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.shock_cast"
+  },
+  "shock_impact": {
+    "sounds": [
+      {
+        "name": "urmagic:shock_impact"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.shock_impact"
+  },
+  "frost_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:frost_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.frost_cast"
+  },
+  "frost_impact": {
+    "sounds": [
+      {
+        "name": "urmagic:frost_impact"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.frost_impact"
+  },
+  "holy_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:holy_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.holy_cast"
+  },
+  "holy_impact": {
+    "sounds": [
+      {
+        "name": "urmagic:holy_impact"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.holy_impact"
+  },
+  "heal_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:heal_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.heal_cast"
+  },
+  "shadow_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:shadow_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.shadow_cast"
+  },
+  "arcane_cast": {
+    "sounds": [
+      {
+        "name": "urmagic:arcane_cast"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.arcane_cast"
+  },
+  "arcane_impact": {
+    "sounds": [
+      {
+        "name": "urmagic:arcane_impact"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.arcane_impact"
+  },
+  "conjure": {
+    "sounds": [
+      {
+        "name": "urmagic:conjure"
+      }
+    ],
+    "subtitle": "subtitles.urmagic.conjure"
+  }
+}

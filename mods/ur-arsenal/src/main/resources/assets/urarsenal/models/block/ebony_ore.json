@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "urarsenal:block/ebony_ore"
+    "all": "minecraft:block/iron_ore_urarsenal_ebony"
   }
 }

@@ -125,15 +125,16 @@ def weapon(kind, tier):
 
 def bow(tier, pull=-1):
     """
-    Bow: the limb arcs towards the top-right (the shooting direction), the string runs between the
-    tips; pull 0..2 draws the string's middle back towards the bottom-left (pulling animation).
+    Bow, oriented like vanilla's (measured by tools/research/inspect.py): the limb arcs towards the
+    top-left, the string runs between the tips at top-right and bottom-left; pull 0..2 draws the
+    string's middle back towards the bottom-right with an arrow nocked, its head pointing top-left.
     """
     import math
     metal, wrap, accent = TIERS[tier]
     img = canvas()
-    t1, t2 = (2, 2), (13, 13)
+    t1, t2 = (13, 2), (2, 13)
     bulge = 5.5
-    nx, ny = 1 / math.sqrt(2), -1 / math.sqrt(2)          # towards the top-right
+    nx, ny = -1 / math.sqrt(2), -1 / math.sqrt(2)          # towards the top-left
     pts = []
     for k in range(0, 61):
         u = k / 60
@@ -142,7 +143,7 @@ def bow(tier, pull=-1):
     for x, y, u in pts:
         mid = abs(u - 0.5) < 0.09
         put(img, x, y, wrap[2] if mid else metal[3])
-        put(img, x - 1, y + 1, wrap[1] if mid else metal[1])     # inner (shadow) side of the limb
+        put(img, x + 1, y + 1, wrap[1] if mid else metal[1])     # inner (shadow) side of the limb
     for tx, ty in (t1, t2):
         put(img, tx, ty, accent[3])
     back = 0 if pull < 0 else 1 + pull
@@ -151,7 +152,16 @@ def bow(tier, pull=-1):
         x = t1[0] + (t2[0] - t1[0]) * u
         y = t1[1] + (t2[1] - t1[1]) * u
         pullback = back * (1 - abs(u - 0.5) * 2)
-        put(img, round(x - pullback * 0.7), round(y + pullback * 0.7), P.CLOTH_WHITE[3])
+        put(img, round(x + pullback * 0.7), round(y + pullback * 0.7), P.CLOTH_WHITE[3])
+    if pull >= 0:
+        # the arrow: nock at the drawn string, shaft through the grip, head past the limb
+        nock = (round(7.5 + back * 0.7), round(7.5 + back * 0.7))
+        length = 7 + back
+        for i in range(length):
+            x, y = nock[0] - i, nock[1] - i
+            put(img, x, y, P.IRON[4] if i >= length - 2 else P.WOOD[3])
+        put(img, nock[0] + 1, nock[1], P.CLOTH_WHITE[4])
+        put(img, nock[0], nock[1] + 1, P.CLOTH_WHITE[4])
     return outline(img, P.OUTLINE)
 
 
@@ -349,8 +359,12 @@ def ore(name, seed=7):
     return img
 
 
+# Ores, raw ores and ingots are recoloured vanilla iron at runtime (assets/recolors.py); these are ours.
+OWN_MATERIALS = ("dwarven_scrap", "daedra_heart", "leather_strips")
+
+
 def all_material_sprites():
-    return {name: material(name) for name in MATERIALS}
+    return {name: material(name) for name in MATERIALS if name in OWN_MATERIALS}
 
 
 # -------------------------------------------------------------------------------------- stations

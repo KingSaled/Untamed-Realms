@@ -130,9 +130,17 @@ for set_name, (light, level, material) in ARMOR.items():
             "xp": round(count * (6 + level * 0.5), 1), "category": "armor"})
 
 # ------------------------------------------------------------------ materials, ores, stations
+# Ores, raw ores and ingots use the player's vanilla iron textures, recoloured at load time
+# (tools/artforge/assets/recolors.py); the sprite names are minecraft:<vanilla>_urarsenal_<material>.
+RECOLOR = {"raw_orichalcum": ("item/raw_iron", "orichalcum"), "raw_moonstone": ("item/raw_iron", "moonstone"),
+           "raw_malachite": ("item/raw_iron", "malachite"), "raw_ebony": ("item/raw_iron", "ebony"),
+           "steel_ingot": ("item/iron_ingot", "steel"), "orichalcum_ingot": ("item/iron_ingot", "orichalcum"),
+           "dwarven_ingot": ("item/iron_ingot", "dwarven"), "ebony_ingot": ("item/iron_ingot", "ebony"),
+           "refined_moonstone": ("item/iron_ingot", "moonstone"), "refined_malachite": ("item/iron_ingot", "malachite")}
 for m in MATERIALS:
     lang[f"item.{NS}.{m}"] = MATERIAL_NAMES.get(m, title(m))
-    write(f"assets/{NS}/models/item/{m}.json", {"parent": "minecraft:item/generated", "textures": {"layer0": f"{NS}:item/{m}"}})
+    tex = f"minecraft:{RECOLOR[m][0]}_urarsenal_{RECOLOR[m][1]}" if m in RECOLOR else f"{NS}:item/{m}"
+    write(f"assets/{NS}/models/item/{m}.json", {"parent": "minecraft:item/generated", "textures": {"layer0": tex}})
 
 write(f"data/{NS}/{NS}/station_recipes/steel_ingot.json", {
     "station": "forge", "result": f"{NS}:steel_ingot", "inputs": [{"item": "minecraft:iron_ingot"}, {"item": "#minecraft:coals"}],
@@ -151,11 +159,12 @@ block_requirements = []
 pickaxe, axe, needs_iron, needs_diamond = ["forge"], ["tanning_rack", "workbench"], [], []
 ore_features = []
 xp_entries = []
-for ore, (raw, ingot, mining, xp, (ymin, ymax), count, size, deep) in ORES.items():
-    block = f"{ore}_ore"
-    lang[f"block.{NS}.{block}"] = f"{title(ore)} Ore"
+def ore_block(block, vanilla, label, ore, raw, mining, xp, deep):
+    """One ore block: vanilla iron ore (stone or deepslate) recoloured to the ore's material."""
+    lang[f"block.{NS}.{block}"] = label
     write(f"assets/{NS}/blockstates/{block}.json", {"variants": {"": {"model": f"{NS}:block/{block}"}}})
-    write(f"assets/{NS}/models/block/{block}.json", {"parent": "minecraft:block/cube_all", "textures": {"all": f"{NS}:block/{block}"}})
+    write(f"assets/{NS}/models/block/{block}.json", {"parent": "minecraft:block/cube_all",
+                                                     "textures": {"all": f"minecraft:block/{vanilla}_urarsenal_{ore}"}})
     write(f"assets/{NS}/models/item/{block}.json", {"parent": f"{NS}:block/{block}"})
     pickaxe.append(block)
     (needs_diamond if deep else needs_iron).append(block)
@@ -169,14 +178,22 @@ for ore, (raw, ingot, mining, xp, (ymin, ymax), count, size, deep) in ORES.items
             {"type": "minecraft:item", "name": f"{NS}:{raw}", "functions": [
                 {"function": "minecraft:apply_bonus", "enchantment": "minecraft:fortune", "formula": "minecraft:ore_drops"},
                 {"function": "minecraft:explosion_decay"}]}]}]}]})
+
+
+for ore, (raw, ingot, mining, xp, (ymin, ymax), count, size, deep) in ORES.items():
+    ore_block(f"{ore}_ore", "iron_ore", f"{title(ore)} Ore", ore, raw, mining, xp, deep)
+    ore_block(f"deepslate_{ore}_ore", "deepslate_iron_ore", f"Deepslate {title(ore)} Ore", ore, raw, mining, xp, deep)
     for kind, time in (("smelting", 200), ("blasting", 100)):
         write(f"data/{NS}/recipe/{ingot}_from_{kind}.json", {
             "type": f"minecraft:{kind}", "ingredient": {"item": f"{NS}:{raw}"},
             "result": {"id": f"{NS}:{ingot}"}, "experience": 0.8, "cookingtime": time})
-    target = "minecraft:deepslate_ore_replaceables" if deep else "minecraft:stone_ore_replaceables"
+    targets = [{"target": {"predicate_type": "minecraft:tag_match", "tag": "minecraft:deepslate_ore_replaceables"},
+                "state": {"Name": f"{NS}:deepslate_{ore}_ore"}}]
+    if not deep:
+        targets.insert(0, {"target": {"predicate_type": "minecraft:tag_match", "tag": "minecraft:stone_ore_replaceables"},
+                           "state": {"Name": f"{NS}:{ore}_ore"}})
     write(f"data/{NS}/worldgen/configured_feature/ore_{ore}.json", {
-        "type": "minecraft:ore", "config": {"size": size, "discard_chance_on_air_exposure": 0.0, "targets": [
-            {"target": {"predicate_type": "minecraft:tag_match", "tag": target}, "state": {"Name": f"{NS}:{block}"}}]}})
+        "type": "minecraft:ore", "config": {"size": size, "discard_chance_on_air_exposure": 0.0, "targets": targets}})
     write(f"data/{NS}/worldgen/placed_feature/ore_{ore}.json", {
         "feature": f"{NS}:ore_{ore}", "placement": [
             {"type": "minecraft:count", "count": count}, {"type": "minecraft:in_square"},

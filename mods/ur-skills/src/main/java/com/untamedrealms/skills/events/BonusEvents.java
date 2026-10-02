@@ -42,6 +42,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
@@ -214,6 +215,37 @@ public final class BonusEvents {
         if (!(event.getEntity() instanceof ServerPlayer player)) return;
         float reduction = SkillsApi.level(player, Skill.AGILITY) * 0.003f + SkillsApi.effect(player, EffectTypes.FALL_REDUCTION, "");
         if (reduction > 0) event.setDamageMultiplier(event.getDamageMultiplier() * (1f - Math.min(0.75f, reduction)));
+    }
+
+    /** HARD weapon requirements: bows, crossbows and tridents can't be drawn without the skill. */
+    @SubscribeEvent
+    public static void onStartUsing(LivingEntityUseItemEvent.Start event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || player.isCreative()) return;
+        if (SkillsConfig.WEAPON_REQUIREMENTS.get() != SkillsConfig.RequirementMode.HARD) return;
+        RequirementSet.Requirement unmet = unmetWeapon(player, event.getItem());
+        if (unmet != null) {
+            event.setCanceled(true);
+            UR.warn(player, Component.translatable("requirement.urskills.weapon", unmet.skill().displayName(), unmet.level()));
+        }
+    }
+
+    /** HARD weapon requirements: swinging a weapon you lack the skill for does nothing. */
+    @SubscribeEvent
+    public static void onAttack(AttackEntityEvent event) {
+        if (!(event.getEntity() instanceof ServerPlayer player) || player.isCreative()) return;
+        if (SkillsConfig.WEAPON_REQUIREMENTS.get() != SkillsConfig.RequirementMode.HARD) return;
+        RequirementSet.Requirement unmet = unmetWeapon(player, player.getMainHandItem());
+        if (unmet != null) {
+            event.setCanceled(true);
+            UR.warn(player, Component.translatable("requirement.urskills.weapon", unmet.skill().displayName(), unmet.level()));
+        }
+    }
+
+    private static RequirementSet.Requirement unmetWeapon(ServerPlayer player, ItemStack stack) {
+        for (RequirementSet.Requirement req : SkillsData.requirements(RequirementSet.Kind.WEAPON, stack)) {
+            if (SkillsApi.level(player, req.skill()) < req.level()) return req;
+        }
+        return null;
     }
 
     @SubscribeEvent

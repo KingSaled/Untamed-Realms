@@ -35,7 +35,8 @@ Preview sheets: [`docs/art/`](art/).
   centred on the medallion. **[lint: centered]**, and `lint.centered_glyph()` refuses to build a
   glyph that breaks it.
 * **Weapons are diagonal**, pointing from bottom-left (grip) to top-right (tip), like vanilla
-  swords. Bows face right. Every weapon type keeps the same grip position, so a whole hotbar of
+  swords. Bows match vanilla's bow: the limb arcs towards the top-left, the drawn arrow points top-left
+  (measured by `tools/research/inspect.py`, since a mirrored bow is held backwards in game). Every weapon type keeps the same grip position, so a whole hotbar of
   weapons lines up.
 * **Armor icons** are front-facing and centred, with the same shoulder height across a set.
 * Leave at least a 1px transparent margin unless the shape must touch the edge (long blades).
@@ -62,6 +63,11 @@ its own hue. Higher tiers get a more saturated, more contrasted ramp, and the ac
 ### Magic schools
 Destruction = fire orange, Restoration = gold, Alteration = violet-blue, Conjuration = purple,
 Illusion = teal. Anything school-related (tomes, icons, spell effects) uses its school's ramp.
+
+## 4b. Ores and metals are vanilla iron, recoloured
+Ores (stone and deepslate), raw ores and ingots are the player's own vanilla iron textures recoloured
+at load time with palettes (`assets/recolors.py`), so they sit naturally next to vanilla ores. A new
+metal needs only a ramp in `palette.py` and an entry in `recolors.py`.
 
 ## 5. 3D models (blocks, stations)
 * Cuboids on the 16-unit grid (`artforge/model3d.py`). Texture density **1 texel = 1/16 block** on

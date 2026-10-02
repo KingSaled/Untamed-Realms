@@ -27,6 +27,13 @@ def collect():
     files = {}
     for (modid, tex), img in {**items.all_items(), **spells.all_spell_icons(), **npcs.all_skins()}.items():
         files[os.path.join(assets_dir(modid), "textures", tex + ".png")] = img
+    # spell particles: frames + the particle definition listing them
+    from assets import particles
+    for name, frames in particles.all_particles().items():
+        for i, img in enumerate(frames):
+            files[os.path.join(assets_dir("urmagic"), "textures", "particle", f"{name}_{i}.png")] = img
+        files[os.path.join(assets_dir("urmagic"), "particles", name + ".json")] = {
+            "textures": [f"urmagic:{name}_{i}" for i in range(len(frames))]}
     for m in models.all_models() + arsenal.stations():
         base = assets_dir(m.namespace)
         for key, img in m.textures.items():
@@ -40,8 +47,11 @@ def collect():
     for name, img in {**arsenal.all_weapon_sprites(), **arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
                       **arsenal.all_jewelry_sprites()}.items():
         files[os.path.join(ars, "textures", "item", name + ".png")] = img
-    for name in arsenal.ORES:
-        files[os.path.join(ars, "textures", "block", name + ".png")] = arsenal.ore(name)
+    # ores, raw ores, ingots: palettes for recolouring the player's vanilla iron textures
+    from assets import recolors
+    for rel, img in recolors.palettes().items():
+        files[os.path.join(ars, "textures", rel + ".png")] = img
+    files[os.path.join(REPO, "mods", "ur-arsenal", "src", "main", "resources", "assets", "minecraft", "atlases", "blocks.json")] = recolors.atlas()
     for name, (ramps, light) in arsenal.armor_sets().items():
         l1, l2 = arsenal.armor_layers(ramps, light)
         files[os.path.join(ars, "textures", "models", "armor", name + "_layer_1.png")] = l1
@@ -66,6 +76,13 @@ def encode(obj):
 def previews():
     out = os.path.join(REPO, "docs", "art")
     os.makedirs(out, exist_ok=True)
+    from assets import particles
+    parts = particles.all_particles()
+    sheet = Image.new("RGBA", (5 * 72, len(parts) * 72), (32, 28, 36, 255))
+    for r, frames in enumerate(parts.values()):
+        for c, img in enumerate(frames):
+            sheet.paste(upscale(img, 8), (c * 72 + 4, r * 72 + 4), upscale(img, 8))
+    sheet.save(os.path.join(out, "particles.png"))
     sprites = {**items.all_items(), **spells.all_spell_icons()}
     cols = 10
     rows = (len(sprites) + cols - 1) // cols
@@ -82,6 +99,8 @@ def previews():
 
     for m in models.all_models() + arsenal.stations():
         m.render_iso(scale=14).save(os.path.join(out, f"model_{m.name}.png"))
+    from assets import recolors
+    recolors.preview().save(os.path.join(out, "recolor_palettes.png"))
 
     # ur-arsenal sheet: one row per weapon type across the tiers, then armor sets, then materials
     weapons = arsenal.all_weapon_sprites()
@@ -152,6 +171,13 @@ def extra_sprite_families():
 
 def main():
     cmd = sys.argv[1] if len(sys.argv) > 1 else "build"
+    if cmd == "sounds":
+        # synthesised spell sounds (needs numpy + ffmpeg); not part of build/check
+        from assets import sounds
+        out = os.path.join(REPO, "mods", "ur-magic", "src", "main", "resources", "assets", "urmagic", "sounds")
+        names = sounds.build(out)
+        print(f"wrote {len(names)} sounds to {os.path.relpath(out, REPO)}")
+        return
     if cmd == "lint" or cmd == "check":
         problems = style_problems()
         if problems:

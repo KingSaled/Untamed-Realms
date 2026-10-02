@@ -74,7 +74,9 @@ public final class SkillsConfig {
 
         BUILDER.comment("Skill requirements (RuneScape style). SOFT = penalty, HARD = blocked.").push("requirements");
         TOOL_REQUIREMENTS = BUILDER.comment("Tools without the skill mine at 25% speed (SOFT) or not at all (HARD).").defineEnum("tools", RequirementMode.SOFT);
-        WEAPON_REQUIREMENTS = BUILDER.comment("Weapons without the skill deal 50% damage (SOFT) or none (HARD).").defineEnum("weapons", RequirementMode.SOFT);
+        // (key renamed from "weapons" so existing worlds pick up the HARD default)
+        WEAPON_REQUIREMENTS = BUILDER.comment("Weapons without the skill deal 50% damage (SOFT) or cannot be used at all: no swing damage, bows can't be drawn (HARD).")
+                .defineEnum("weaponUse", RequirementMode.HARD);
         ARMOR_REQUIREMENTS = BUILDER.comment("Armor without the skill cannot be worn (HARD) or slows you (SOFT).").defineEnum("armor", RequirementMode.HARD);
         BLOCK_REQUIREMENTS = BUILDER.comment("Blocks (ores) without the skill cannot be mined (HARD) or mine very slowly (SOFT).").defineEnum("blocks", RequirementMode.HARD);
         ANTI_PLACE_EXPLOIT = BUILDER.comment("Blocks placed by players give no gathering XP when broken.").define("antiPlaceExploit", true);

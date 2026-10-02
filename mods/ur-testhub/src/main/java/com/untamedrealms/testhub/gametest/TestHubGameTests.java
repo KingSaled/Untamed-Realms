@@ -35,7 +35,7 @@ public final class TestHubGameTests {
         helper.assertTrue(level.getBlockState(c.offset(-8, 1, 30)).getBlock().getDescriptionId().contains("notice_board"), "notice board in town");
         helper.assertTrue(level.getBlockEntity(c.offset(-6, 1, -14)) instanceof ChestBlockEntity chest && !chest.isEmpty(), "weapon chest stocked");
         helper.assertTrue(level.getBlockEntity(c.offset(6, 1, -6)) instanceof ChestBlockEntity chest && !chest.isEmpty(), "magic chest stocked");
-        helper.assertTrue(level.getBlockState(c.offset(34, 1, 26)).is(ArsenalBlocks.EBONY_ORE.get()), "ebony ore on the ore wall");
+        helper.assertTrue(level.getBlockState(c.offset(28, 1, 26)).is(ArsenalBlocks.EBONY_ORE.get()), "ebony ore on the ore wall");
         helper.assertTrue(ControlBook.create(level.getServer()).has(DataComponents.WRITTEN_BOOK_CONTENT), "control book");
         AABB box = new AABB(c.getX() - 41, c.getY() - 4, c.getZ() - 41, c.getX() + 41, c.getY() + 23, c.getZ() + 41);
         helper.succeedWhen(() -> {

@@ -1,0 +1,46 @@
+{
+  "sources": [
+    {
+      "type": "paletted_permutations",
+      "textures": [
+        "minecraft:block/iron_ore",
+        "minecraft:block/deepslate_iron_ore"
+      ],
+      "palette_key": "urarsenal:palettes/iron_ore_key",
+      "permutations": {
+        "urarsenal_orichalcum": "urarsenal:palettes/ore_orichalcum",
+        "urarsenal_moonstone": "urarsenal:palettes/ore_moonstone",
+        "urarsenal_malachite": "urarsenal:palettes/ore_malachite",
+        "urarsenal_ebony": "urarsenal:palettes/ore_ebony"
+      }
+    },
+    {
+      "type": "paletted_permutations",
+      "textures": [
+        "minecraft:item/raw_iron"
+      ],
+      "palette_key": "urarsenal:palettes/raw_iron_key",
+      "permutations": {
+        "urarsenal_ebony": "urarsenal:palettes/raw_ebony",
+        "urarsenal_malachite": "urarsenal:palettes/raw_malachite",
+        "urarsenal_moonstone": "urarsenal:palettes/raw_moonstone",
+        "urarsenal_orichalcum": "urarsenal:palettes/raw_orichalcum"
+      }
+    },
+    {
+      "type": "paletted_permutations",
+      "textures": [
+        "minecraft:item/iron_ingot"
+      ],
+      "palette_key": "urarsenal:palettes/iron_ingot_key",
+      "permutations": {
+        "urarsenal_dwarven": "urarsenal:palettes/ingot_dwarven",
+        "urarsenal_ebony": "urarsenal:palettes/ingot_ebony",
+        "urarsenal_malachite": "urarsenal:palettes/ingot_malachite",
+        "urarsenal_moonstone": "urarsenal:palettes/ingot_moonstone",
+        "urarsenal_orichalcum": "urarsenal:palettes/ingot_orichalcum",
+        "urarsenal_steel": "urarsenal:palettes/ingot_steel"
+      }
+    }
+  ]
+}

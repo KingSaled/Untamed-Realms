@@ -7,7 +7,15 @@
       "xp": 30
     },
     {
+      "match": "urarsenal:deepslate_orichalcum_ore",
+      "xp": 30
+    },
+    {
       "match": "urarsenal:moonstone_ore",
+      "xp": 45
+    },
+    {
+      "match": "urarsenal:deepslate_moonstone_ore",
       "xp": 45
     },
     {
@@ -15,7 +23,15 @@
       "xp": 60
     },
     {
+      "match": "urarsenal:deepslate_malachite_ore",
+      "xp": 60
+    },
+    {
       "match": "urarsenal:ebony_ore",
+      "xp": 90
+    },
+    {
+      "match": "urarsenal:deepslate_ebony_ore",
       "xp": 90
     }
   ]

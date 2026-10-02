@@ -535,7 +535,19 @@
       "level": 20
     },
     {
+      "match": "urarsenal:deepslate_orichalcum_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 20
+    },
+    {
       "match": "urarsenal:moonstone_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 35
+    },
+    {
+      "match": "urarsenal:deepslate_moonstone_ore",
       "kind": "block",
       "skill": "mining",
       "level": 35
@@ -547,7 +559,19 @@
       "level": 45
     },
     {
+      "match": "urarsenal:deepslate_malachite_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 45
+    },
+    {
       "match": "urarsenal:ebony_ore",
+      "kind": "block",
+      "skill": "mining",
+      "level": 60
+    },
+    {
+      "match": "urarsenal:deepslate_ebony_ore",
       "kind": "block",
       "skill": "mining",
       "level": 60

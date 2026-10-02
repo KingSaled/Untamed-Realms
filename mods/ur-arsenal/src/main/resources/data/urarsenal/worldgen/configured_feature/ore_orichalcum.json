@@ -12,6 +12,15 @@
         "state": {
           "Name": "urarsenal:orichalcum_ore"
         }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:deepslate_ore_replaceables"
+        },
+        "state": {
+          "Name": "urarsenal:deepslate_orichalcum_ore"
+        }
       }
     ]
   }

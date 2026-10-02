@@ -2,7 +2,10 @@
   "replace": false,
   "values": [
     "urarsenal:orichalcum_ore",
+    "urarsenal:deepslate_orichalcum_ore",
     "urarsenal:moonstone_ore",
-    "urarsenal:malachite_ore"
+    "urarsenal:deepslate_moonstone_ore",
+    "urarsenal:malachite_ore",
+    "urarsenal:deepslate_malachite_ore"
   ]
 }

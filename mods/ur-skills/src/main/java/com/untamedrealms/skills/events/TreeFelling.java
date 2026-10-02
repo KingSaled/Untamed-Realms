@@ -1,5 +1,8 @@
 package com.untamedrealms.skills.events;
 
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.BlockParticleOption;
 import com.untamedrealms.skills.SkillsConfig;
 import com.untamedrealms.skills.UntamedSkills;
 import com.untamedrealms.skills.api.Skill;
@@ -116,13 +119,16 @@ public final class TreeFelling {
             for (ItemStack drop : Block.getDrops(state, level, pos, level.getBlockEntity(pos), player, tool)) {
                 Block.popResource(level, origin, drop);
             }
-            level.destroyBlock(pos, false, player);
+            // removed quietly (one sound for the whole tree below), with a puff of wood particles
+            level.removeBlock(pos, false);
+            level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, state), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 8, 0.25, 0.25, 0.25, 0.05);
             // A whole tree costs the axe what three logs would: the stump plus two more.
             if (felled < 2) tool.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
             box.encapsulate(pos);
             felled++;
         }
         if (felled == 0) return;
+        level.playSound(null, origin, originState.getSoundType(level, origin, player).getBreakSound(), SoundSource.BLOCKS, 1.0f, 0.8f);
 
         // Woodcutting XP per tree: the stump already paid one log's worth.
         float perLog = logXp(originState);
@@ -148,12 +154,21 @@ public final class TreeFelling {
         SWEEPS.removeIf(sweep -> {
             if (sweep.level().getGameTime() < sweep.at()) return false;
             BoundingBox b = sweep.box();
+            ServerLevel level = sweep.level();
+            BlockPos first = null;
+            BlockState firstState = null;
             for (BlockPos pos : BlockPos.betweenClosed(b.minX(), b.minY(), b.minZ(), b.maxX(), b.maxY(), b.maxZ())) {
-                BlockState s = sweep.level().getBlockState(pos);
+                BlockState s = level.getBlockState(pos);
                 if (s.getBlock() instanceof LeavesBlock && !s.getValue(LeavesBlock.PERSISTENT) && s.getValue(LeavesBlock.DISTANCE) >= LeavesBlock.DECAY_DISTANCE) {
-                    sweep.level().destroyBlock(pos, true);
+                    // drops (saplings, sticks, apples) without a break sound per leaf
+                    Block.dropResources(s, level, pos);
+                    level.removeBlock(pos, false);
+                    level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, s), pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 3, 0.3, 0.3, 0.3, 0.02);
+                    if (first == null) { first = pos.immutable(); firstState = s; }
                 }
             }
+            // one rustle for the whole canopy
+            if (first != null) level.playSound(null, first, firstState.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0f, 0.9f);
             return true;
         });
     }

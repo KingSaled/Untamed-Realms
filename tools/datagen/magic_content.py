@@ -121,6 +121,13 @@ lang = {
     "screen.urmagic.wheel.cost": "%s Magicka",
     "screen.urmagic.wheel.empty": "Empty slot",
     "screen.urmagic.wheel.hint": "Release to ready the spell - assign slots in the Spellbook (%s)",
+    "subtitles.urmagic.fire_cast": "Fire roars", "subtitles.urmagic.fire_impact": "Fire bursts",
+    "subtitles.urmagic.shock_cast": "Lightning crackles", "subtitles.urmagic.shock_impact": "Lightning strikes",
+    "subtitles.urmagic.frost_cast": "Frost chimes", "subtitles.urmagic.frost_impact": "Ice shatters",
+    "subtitles.urmagic.holy_cast": "Holy light rings", "subtitles.urmagic.holy_impact": "Holy light strikes",
+    "subtitles.urmagic.heal_cast": "Healing magic", "subtitles.urmagic.shadow_cast": "Shadows whisper",
+    "subtitles.urmagic.arcane_cast": "Magic hums", "subtitles.urmagic.arcane_impact": "Magic pops",
+    "subtitles.urmagic.conjure": "A portal opens",
 }
 write("assets/urmagic/lang/en_us.json", lang)
 print(f"{len(S)} spells")

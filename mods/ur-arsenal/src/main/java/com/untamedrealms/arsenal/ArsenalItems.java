@@ -39,6 +39,10 @@ public final class ArsenalItems {
     public static final DeferredItem<BlockItem> MOONSTONE_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.MOONSTONE_ORE);
     public static final DeferredItem<BlockItem> MALACHITE_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.MALACHITE_ORE);
     public static final DeferredItem<BlockItem> EBONY_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.EBONY_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_ORICHALCUM_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.DEEPSLATE_ORICHALCUM_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_MOONSTONE_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.DEEPSLATE_MOONSTONE_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_MALACHITE_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.DEEPSLATE_MALACHITE_ORE);
+    public static final DeferredItem<BlockItem> DEEPSLATE_EBONY_ORE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.DEEPSLATE_EBONY_ORE);
     public static final DeferredItem<BlockItem> FORGE = ITEMS.registerSimpleBlockItem(ArsenalBlocks.FORGE);
     public static final DeferredItem<BlockItem> TANNING_RACK = ITEMS.registerSimpleBlockItem(ArsenalBlocks.TANNING_RACK);
     public static final DeferredItem<BlockItem> WORKBENCH = ITEMS.registerSimpleBlockItem(ArsenalBlocks.WORKBENCH);

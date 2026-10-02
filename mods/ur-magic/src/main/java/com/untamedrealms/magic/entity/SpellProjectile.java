@@ -3,6 +3,8 @@ package com.untamedrealms.magic.entity;
 import com.untamedrealms.magic.UntamedMagic;
 import com.untamedrealms.magic.data.SpellDef;
 import com.untamedrealms.magic.spell.SpellEffects;
+import com.untamedrealms.magic.fx.MagicFx;
+import com.untamedrealms.magic.fx.SpellFx;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -56,29 +58,17 @@ public class SpellProjectile extends ThrowableProjectile {
     @Override
     public void tick() {
         super.tick();
-        if (level().isClientSide) {
-            Vec3 v = getDeltaMovement();
-            ParticleOptions particle = particle(entityData.get(ELEMENT));
-            for (int i = 0; i < 3; i++) {
-                double t = i / 3.0;
-                level().addParticle(particle, getX() - v.x * t, getY() - v.y * t + 0.1, getZ() - v.z * t,
-                        (random.nextDouble() - 0.5) * 0.02, (random.nextDouble() - 0.5) * 0.02, (random.nextDouble() - 0.5) * 0.02);
+        if (level() instanceof net.minecraft.server.level.ServerLevel server) {
+            if (tickCount > MAX_AGE) {
+                discard();
+                return;
             }
-        } else if (tickCount > MAX_AGE) {
-            discard();
+            SpellFx.trail(server, this, entityData.get(ELEMENT), random);
         }
     }
 
     public static ParticleOptions particle(String element) {
-        return switch (element) {
-            case "fire" -> ParticleTypes.FLAME;
-            case "frost" -> ParticleTypes.SNOWFLAKE;
-            case "shock" -> ParticleTypes.ELECTRIC_SPARK;
-            case "holy" -> ParticleTypes.END_ROD;
-            case "heal" -> ParticleTypes.HAPPY_VILLAGER;
-            case "shadow" -> ParticleTypes.SMOKE;
-            default -> ParticleTypes.ENCHANT;
-        };
+        return MagicFx.particle(element);
     }
 
     @Override
@@ -100,7 +90,7 @@ public class SpellProjectile extends ThrowableProjectile {
         super.onHit(result);
         if (!level().isClientSide) {
             if (level() instanceof net.minecraft.server.level.ServerLevel server) {
-                server.sendParticles(particle(entityData.get(ELEMENT)), getX(), getY(), getZ(), 12, 0.2, 0.2, 0.2, 0.05);
+                SpellFx.impact(server, position().add(0, 0.2, 0), entityData.get(ELEMENT), random);
             }
             discard();
         }
