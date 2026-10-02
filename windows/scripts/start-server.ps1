@@ -5,8 +5,9 @@
 # Start-Test-World.bat sets UR_TEST_WORLD=1: same server and mods, but the separate "test-world" save
 # with the test hub (everything laid out in one place, a control book, /ur test commands).
 $test = $env:UR_TEST_WORLD -eq '1'
+# (the test-mode system property goes into user_jvm_args.txt: Windows PowerShell mangles "-Dname.with.dots=..."
+# arguments passed to native programs)
 $worldArgs = if ($test) { @('--world', 'test-world') } else { @() }
-$testJvm = if ($test) { @('-Duntamed.testworld=true') } else { @() }
 
 Write-Host ""
 if ($test) { Write-Host "  UNTAMED REALMS - TEST WORLD" -ForegroundColor Magenta }
@@ -54,7 +55,9 @@ $jvm = @(
     "-XX:InitiatingHeapOccupancyPercent=15", "-XX:G1MixedGCLiveThresholdPercent=90", "-XX:G1RSetUpdatingPauseTimePercent=5",
     "-XX:SurvivorRatio=32", "-XX:+PerfDisableSharedMem", "-XX:MaxTenuringThreshold=1", "-Dfile.encoding=UTF-8"
 )
+if ($test) { $jvm += '-Duntamed.testworld=true' }
 Set-Content -Path (Join-Path $server 'user_jvm_args.txt') -Value $jvm
+$runArgs = @('@user_jvm_args.txt', "@$argsFile", '--nogui') + $worldArgs
 
 # 4. Run
 Write-Step "Starting the server with $heap GB memory"
@@ -75,7 +78,7 @@ try {
         # Automated test mode (used by CI): start, wait for "Done", then stop cleanly.
         $psi = New-Object System.Diagnostics.ProcessStartInfo
         $psi.FileName = $java
-        $psi.Arguments = (@('@user_jvm_args.txt') + $testJvm + @("@$argsFile", '--nogui') + $worldArgs) -join ' '
+        $psi.Arguments = $runArgs -join ' '
 
         $psi.WorkingDirectory = $server
         $psi.UseShellExecute = $false
@@ -98,7 +101,7 @@ try {
         if (-not $proc.WaitForExit(180000)) { $proc.Kill(); throw "Server did not stop in time" }
         if (-not (Select-String -Path $log -Pattern $ready -Quiet)) { throw "Server did not finish starting" }
     } else {
-        & $java '@user_jvm_args.txt' @testJvm "@$argsFile" '--nogui' @worldArgs
+        & $java $runArgs
     }
 } finally { Pop-Location }
 Write-Host ""
