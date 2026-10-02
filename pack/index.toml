@@ -1,6 +1,10 @@
 hash-format = "sha256"
 
 [[files]]
+file = "config/DistantHorizons.toml"
+hash = "2811b70a5214a35c4b042ee19079d7116b7584e6737c6d0db94b175de9051d24"
+
+[[files]]
 file = "config/jade/jade.json"
 hash = "b1b99a5f5d5237eee04a534d5aac57da8529abd4385a39d6377d01150db0c54a"
 
