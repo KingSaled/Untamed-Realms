@@ -1,6 +1,14 @@
 {
-  "parent": "urarsenal:item/orcish_bow",
-  "textures": {
-    "layer0": "urarsenal:item/orcish_bow_pulling_1"
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "urarsenal:item/3d/orcish_bow_pulling_1"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "urarsenal:item/orcish_bow_pulling_1"
+      }
+    }
   }
 }

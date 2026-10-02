@@ -1,7 +1,15 @@
 {
-  "parent": "minecraft:item/bow",
-  "textures": {
-    "layer0": "urarsenal:item/ebony_bow"
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "urarsenal:item/3d/ebony_bow"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "urarsenal:item/ebony_bow"
+      }
+    }
   },
   "overrides": [
     {

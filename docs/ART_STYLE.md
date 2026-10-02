@@ -69,6 +69,20 @@ Ores (stone and deepslate), raw ores and ingots are the player's own vanilla iro
 at load time with palettes (`assets/recolors.py`), so they sit naturally next to vanilla ores. A new
 metal needs only a ramp in `palette.py` and an entry in `recolors.py`.
 
+## 4c. Weapons are 3D, modelled on Skyrim
+Weapons are not flat sprites. Each one is an upright design drawn at **3 texels per model unit**
+(finer than vanilla, so blades can be long and slender), plus a depth per texel: blade edges 0.5,
+blade core 1, grips 1.5, pommels 2, guards 2.5 (`artforge/voxel.py` turns that into cuboids). The
+model is laid diagonally about its grip so it sits in the hand exactly where vanilla's sword does;
+inventories show a **32x32 icon** of the same design (NeoForge `separate_transforms`).
+* Designs follow Skyrim's weapons per tier (`assets/arsenal3d.py`), from reference pictures that CI
+  fetches into a private draft release (`.github/workflows/art-reference.yml`); nothing from Skyrim is
+  stored in the repo.
+* Metals come from the palette (Skyrim ramps: `IRON_AGED`, `STEEL`, `ORCISH_BRASS`, `DWARVEN`,
+  `ELVEN`, `GLASS` + `MOONSTONE`, `EBONY`, `DAEDRIC_BLACK` + `EMBER_RED`). Light from the left in the
+  upright design (top-left once laid diagonally).
+* `docs/art/arsenal3d.png` shows every weapon rendered in 3D by ArtForge's software renderer.
+
 ## 5. 3D models (blocks, stations)
 * Cuboids on the 16-unit grid (`artforge/model3d.py`). Texture density **1 texel = 1/16 block** on
   every face, so stretched faces are forbidden.

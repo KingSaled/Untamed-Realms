@@ -1,6 +1,14 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "urarsenal:item/daedric_battleaxe"
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "urarsenal:item/3d/daedric_battleaxe"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "urarsenal:item/daedric_battleaxe"
+      }
+    }
   }
 }

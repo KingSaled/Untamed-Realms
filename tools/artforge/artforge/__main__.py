@@ -44,9 +44,12 @@ def collect():
         files[os.path.join(TOOL, "out", "bbmodel", m.name + ".bbmodel")] = m.to_bbmodel()
     # ur-arsenal: weapons, armor icons + layers, materials, ores
     ars = assets_dir("urarsenal")
-    for name, img in {**arsenal.all_weapon_sprites(), **arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
-                      **arsenal.all_jewelry_sprites()}.items():
+    for name, img in {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(), **arsenal.all_jewelry_sprites()}.items():
         files[os.path.join(ars, "textures", "item", name + ".png")] = img
+    # 3D weapons (assets/arsenal3d.py): textures, icons, models
+    from assets import arsenal3d
+    for rel, obj in arsenal3d.exports().items():
+        files[os.path.join(ars, rel)] = obj
     # ores, raw ores, ingots: palettes for recolouring the player's vanilla iron textures
     from assets import recolors
     for rel, img in recolors.palettes().items():
@@ -103,11 +106,12 @@ def previews():
     recolors.preview().save(os.path.join(out, "recolor_palettes.png"))
 
     # ur-arsenal sheet: one row per weapon type across the tiers, then armor sets, then materials
-    weapons = arsenal.all_weapon_sprites()
+    # weapons are 3D now: rendered on their own sheet
+    from assets import arsenal3d
+    arsenal3d.preview_sheet().save(os.path.join(out, "arsenal3d.png"))
     armor = arsenal.all_armor_sprites()
     mats = arsenal.all_material_sprites()
-    tiers = list(arsenal.TIERS)
-    rows = [[weapons[f"{t}_{k}"] for t in tiers] for k in arsenal.WEAPONS + ["bow"]]
+    rows = []
     names = list(arsenal.armor_sets())
     for piece in arsenal.ARMOR_PIECES:
         rows.append([armor[f"{n}_{piece}"] for n in names])
@@ -165,7 +169,10 @@ def style_problems():
 def extra_sprite_families():
     """Further linted sprite sets, {family: {name: image}}."""
     from assets import arsenal
-    return {"weapon": arsenal.all_weapon_sprites(), "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
+    from assets import arsenal3d
+    icons = {name: img for name, img in ((rel.rsplit("/", 1)[1][:-4], obj) for rel, obj in arsenal3d.exports().items()
+                                         if rel.startswith("textures/item/") and "/3d/" not in rel)}
+    return {"icon32": icons, "item": {**arsenal.all_armor_sprites(), **arsenal.all_material_sprites(),
                                                                          **arsenal.all_jewelry_sprites()}}
 
 

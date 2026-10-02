@@ -111,6 +111,16 @@ jobs:
           grep -E "ERROR|FATAL|Exception" client.log | grep -v UR-KEYS | head -60 || true
           test -f run/client/untamedrealms-keys.txt || { tail -150 client.log; exit 1; }
           exit ${status:-0}
+      - name: Our models and textures load
+        if: always()
+        shell: bash
+        run: |
+          f=run/client/logs/latest.log
+          [ -f "$f" ] || exit 0
+          bad=$(grep -iE "(unable to load|failed to load|missing texture|exception loading|could not resolve|couldn't load).*(urarsenal|urmagic|urcore|urskills|urquests|urnpcs|urclasses|urtesthub|_urarsenal_)" "$f" | head -40)
+          grep -iE "_urarsenal_|urarsenal:item/3d" "$f" | head -20 || true
+          if [ -n "$bad" ]; then echo "$bad"; echo "::error::Untamed Realms models or textures failed to load"; exit 1; fi
+          echo "no model/texture errors for our mods"
       - name: Key report
         if: always()
         shell: bash

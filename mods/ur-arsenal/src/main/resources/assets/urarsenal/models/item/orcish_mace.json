@@ -1,6 +1,14 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "urarsenal:item/orcish_mace"
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "urarsenal:item/3d/orcish_mace"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "urarsenal:item/orcish_mace"
+      }
+    }
   }
 }

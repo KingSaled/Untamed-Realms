@@ -37,6 +37,8 @@ FAMILIES = {
     "item": dict(size=(16, 16), centered=False, colors=16),
     "icon": dict(size=(16, 16), centered=True, colors=12),
     "weapon": dict(size=(16, 16), centered=False, colors=14),
+    # inventory icons of the 3D weapons (assets/arsenal3d.py)
+    "icon32": dict(size=(32, 32), centered=False, colors=24),
 }
 
 

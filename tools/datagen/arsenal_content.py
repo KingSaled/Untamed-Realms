@@ -81,19 +81,8 @@ for tier, level, material in TIERS:
         name = f"{tier}_{kind}"
         item = f"{NS}:{name}"
         lang[f"item.{NS}.{name}"] = f"{title(tier)} {title(kind)}"
-        if kind == "bow":
-            write(f"assets/{NS}/models/item/{name}.json", {
-                "parent": "minecraft:item/bow", "textures": {"layer0": f"{NS}:item/{name}"},
-                "overrides": [
-                    {"predicate": {"pulling": 1}, "model": f"{NS}:item/{name}_pulling_0"},
-                    {"predicate": {"pulling": 1, "pull": 0.65}, "model": f"{NS}:item/{name}_pulling_1"},
-                    {"predicate": {"pulling": 1, "pull": 0.9}, "model": f"{NS}:item/{name}_pulling_2"},
-                ]})
-            for p in range(3):
-                write(f"assets/{NS}/models/item/{name}_pulling_{p}.json",
-                      {"parent": f"{NS}:item/{name}", "textures": {"layer0": f"{NS}:item/{name}_pulling_{p}"}})
-        else:
-            write(f"assets/{NS}/models/item/{name}.json", {"parent": "minecraft:item/handheld", "textures": {"layer0": f"{NS}:item/{name}"}})
+        # item models (3D, with a 2D inventory icon) are written by ArtForge: tools/artforge/assets/arsenal3d.py
+        if kind != "bow":
             write(f"data/{NS}/weapon_attributes/{name}.json", {"parent": bc})
             (one if hand == "one_handed" else two).append(item)
         if level > 1:

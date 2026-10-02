@@ -1,6 +1,14 @@
 {
-  "parent": "minecraft:item/handheld",
-  "textures": {
-    "layer0": "urarsenal:item/glass_warhammer"
+  "loader": "neoforge:separate_transforms",
+  "base": {
+    "parent": "urarsenal:item/3d/glass_warhammer"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "minecraft:item/generated",
+      "textures": {
+        "layer0": "urarsenal:item/glass_warhammer"
+      }
+    }
   }
 }
