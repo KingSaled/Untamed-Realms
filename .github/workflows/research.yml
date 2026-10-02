@@ -26,14 +26,22 @@ jobs:
             | python3 -c "import json,sys; print(json.load(sys.stdin)[0]['files'][0]['url'])" | xargs curl -sL -o cataclysm.jar
           ls -la client.jar cataclysm.jar
       - run: python3 tools/research/inspect.py client.jar cataclysm.jar
-      - name: Village mods - structures and tags
+      - name: Village mods - find on Modrinth, list structures and tags
         run: |
-          for slug in ctov towns-and-towers; do
-            curl -s "https://api.modrinth.com/v2/project/$slug/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" \
-              | python3 -c "import json,sys; v=json.load(sys.stdin); print(v[0]['files'][0]['url'] if v else '')" > url.txt
-            [ -s url.txt ] && curl -sL -o "$slug.jar" "$(cat url.txt)" && echo "$slug: $(cat url.txt)"
+          python3 - <<'PY'
+          import json, urllib.parse, urllib.request
+          def get(url):
+              return json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "untamed-realms-research"})))
+          facets = urllib.parse.quote(json.dumps([["categories:neoforge"], ["versions:1.21.1"]]))
+          for q in ["overhauled village", "villages", "medieval village", "towns and towers"]:
+              hits = get(f"https://api.modrinth.com/v2/search?query={urllib.parse.quote(q)}&facets={facets}&limit=6")["hits"]
+              print(q, "->", [(h["slug"], h["downloads"], h["project_type"]) for h in hits])
+          PY
+          for slug in ctov t_and_t towns-and-towers; do
+            curl -sf "https://api.modrinth.com/v2/project/$slug/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" -o v.json || { echo "$slug: not found"; continue; }
+            url=$(python3 -c "import json; v=json.load(open('v.json')); print(v[0]['files'][0]['url'] if v else '')")
+            [ -n "$url" ] && curl -sL -o "$slug.jar" "$url" && echo "$slug: $url" && python3 tools/research/structures.py "$slug.jar" || echo "$slug: no 1.21.1 neoforge build"
           done
-          python3 tools/research/structures.py ctov.jar towns-and-towers.jar
       - name: Distant Horizons - versions for NeoForge 1.21.1
         run: |
           curl -s "https://api.modrinth.com/v2/project/distanthorizons/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" \
