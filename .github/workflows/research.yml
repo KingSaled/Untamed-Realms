@@ -26,3 +26,15 @@ jobs:
             | python3 -c "import json,sys; print(json.load(sys.stdin)[0]['files'][0]['url'])" | xargs curl -sL -o cataclysm.jar
           ls -la client.jar cataclysm.jar
       - run: python3 tools/research/inspect.py client.jar cataclysm.jar
+      - name: Village mods - structures and tags
+        run: |
+          for slug in ctov towns-and-towers; do
+            curl -s "https://api.modrinth.com/v2/project/$slug/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" \
+              | python3 -c "import json,sys; v=json.load(sys.stdin); print(v[0]['files'][0]['url'] if v else '')" > url.txt
+            [ -s url.txt ] && curl -sL -o "$slug.jar" "$(cat url.txt)" && echo "$slug: $(cat url.txt)"
+          done
+          python3 tools/research/structures.py ctov.jar towns-and-towers.jar
+      - name: Distant Horizons - versions for NeoForge 1.21.1
+        run: |
+          curl -s "https://api.modrinth.com/v2/project/distanthorizons/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D" \
+            | python3 -c "import json,sys; [print(v['version_number'], v['date_published'], [d.get('project_id') for d in v['dependencies']]) for v in json.load(sys.stdin)[:3]]"
