@@ -1,6 +1,6 @@
 # Modpack resolve report
 
-73 mods in manifest, 0 failed.
+72 mods in manifest, 0 failed.
 
 | Section | Mod | Status | Detail |
 |---|---|---|---|
@@ -23,8 +23,7 @@
 | performance | `fastfurnace` | locked |  |
 | performance | `packet-fixer` | locked |  |
 | performance | `spark` | locked |  |
-| performance | `chunky` | locked |  |
-| performance | `distanthorizons` | added | Project "Distant Horizons" successfully added! (DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar) |
+| performance | `distanthorizons` | locked |  |
 | performance | `yeetus-experimentus` | locked |  |
 | qol | `jei` | locked |  |
 | qol | `jade` | locked |  |
@@ -52,7 +51,7 @@
 | world | `terralith` | locked |  |
 | world | `lithostitched` | locked |  |
 | world | `towns-and-towers` | locked |  |
-| world | `ct-overhaul-village` | added | Project "ChoiceTheorem's Overhauled Village" successfully added! ([Neoforge]ctov-3.6.3.jar) |
+| world | `ct-overhaul-village` | locked |  |
 | world | `dungeons-and-taverns` | locked |  |
 | world | `explorify` | locked |  |
 | world | `repurposed-structures-forge` | locked |  |
