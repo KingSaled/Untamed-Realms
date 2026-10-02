@@ -1,0 +1,28 @@
+name: Art research
+
+# Prints measurements used to match our art to vanilla and to L_Ender's Cataclysm (see
+# tools/research/inspect.py). Nothing is uploaded: the numbers are read from the job log.
+on:
+  push:
+    branches: ['claude/**']
+    paths: ['tools/research/**', '.github/workflows/research.yml']
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      - name: Fetch the 1.21.1 client jar and Cataclysm
+        run: |
+          url=$(curl -s https://piston-meta.mojang.com/mc/game/version_manifest_v2.json | python3 -c "import json,sys; print(next(v['url'] for v in json.load(sys.stdin)['versions'] if v['id']=='1.21.1'))")
+          jar=$(curl -s "$url" | python3 -c "import json,sys; print(json.load(sys.stdin)['downloads']['client']['url'])")
+          curl -sL -o client.jar "$jar"
+          curl -s 'https://api.modrinth.com/v2/project/l_enders-cataclysm/version?loaders=%5B%22neoforge%22%5D&game_versions=%5B%221.21.1%22%5D' \
+            | python3 -c "import json,sys; print(json.load(sys.stdin)[0]['files'][0]['url'])" | xargs curl -sL -o cataclysm.jar
+          ls -la client.jar cataclysm.jar
+      - run: python3 tools/research/inspect.py client.jar cataclysm.jar
