@@ -117,7 +117,7 @@ jobs:
         run: |
           f=run/client/logs/latest.log
           [ -f "$f" ] || exit 0
-          bad=$(grep -iE "(unable to load|failed to load|missing texture|exception loading|could not resolve|couldn't load).*(urarsenal|urmagic|urcore|urskills|urquests|urnpcs|urclasses|urtesthub|_urarsenal_)" "$f" | head -40)
+          bad=$(grep -iE "(unable to load|failed to load|missing texture|exception loading|could not resolve|couldn't load).*(urarsenal|urmagic|urcore|urskills|urquests|urnpcs|urclasses|urtesthub|_urarsenal_)" "$f" | head -40 || true)
           grep -iE "_urarsenal_|urarsenal:item/3d" "$f" | head -20 || true
           if [ -n "$bad" ]; then echo "$bad"; echo "::error::Untamed Realms models or textures failed to load"; exit 1; fi
           echo "no model/texture errors for our mods"
