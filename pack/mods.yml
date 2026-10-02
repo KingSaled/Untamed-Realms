@@ -28,7 +28,6 @@ performance:          # ---- engine & server performance (mostly invisible)
   - fastfurnace
   - packet-fixer       # raises packet size limits for big modpacks
   - spark              # profiler (/spark) for diagnosing lag
-  - chunky             # world pre-generation (/chunky)
   - distanthorizons    # far-away terrain as cheap level-of-detail meshes: huge view distance (client; server sends LODs)
   - yeetus-experimentus # hides the experimental-world warning
 
@@ -99,3 +98,4 @@ exclude:              # ---- never ship these, even if something pulls them in a
   - integrated-api
   - inventory-profiles-next  # its profile bar and buttons clutter every inventory screen
   - libipn
+  - chunky                   # Distant Horizons' Chunky integration crashes the server on chunk load ("Chunky is not loaded")
