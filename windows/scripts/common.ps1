@@ -84,6 +84,8 @@ function Sync-Mods([string]$ModsDir, [string]$Side) {
         if ($modSide -and $modSide -ne 'both' -and $modSide -ne $Side) { continue }
         $file = & $get 'filename'; $url = & $get 'url'; $hashFormat = & $get 'hash-format'; $hash = & $get 'hash'
         if (-not $url -or -not $file) { Write-Warning "No direct download for $($entry.Name) - skipped"; continue }
+        # PowerShell treats [ ] in paths as wildcards (e.g. "[Neoforge]ctov-3.6.3.jar"), so drop them locally
+        $file = $file -replace '[\[\]]', ''
         $wanted.Add($file)
         $dest = Join-Path $ModsDir $file
         if ((Test-Path $dest) -and (Test-FileHash $dest $hashFormat $hash)) { continue }
